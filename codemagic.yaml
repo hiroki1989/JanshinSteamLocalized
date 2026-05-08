@@ -6,6 +6,7 @@ workflows:
     environment:
       vars:
         UNITY_VERSION: "6000.4.0f1"
+        UNITY_CHANGESET: "8cf496087c8f"
       xcode: latest
     scripts:
       - name: Install Unity Hub
@@ -17,10 +18,10 @@ workflows:
         script: |
           /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
             --version $UNITY_VERSION \
+            --changeset $UNITY_CHANGESET \
             --module ios
-          sleep 5
           echo "Installed versions:"
-          ls /Applications/Unity/Hub/Editor/ || true
+          ls /Applications/Unity/Hub/Editor/
 
       - name: Activate Unity License
         script: |
