@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a106dbc8e8b2b4f9327d2cef15579a, type: 3}
+  m_Name: SkillSet_SET_RANDOMHONOR
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSetAsset
+  traitMap:
+  - yakuName: "\u5F79\u724C"
+    trait: 1
+    difficulty: 0
+  - yakuName: "\u98A8\u724C"
+    trait: 1
+    difficulty: 0
+  - yakuName: "\u5C0F\u4E09\u5143"
+    trait: 1
+    difficulty: 1
+  - yakuName: "\u5927\u4E09\u5143"
+    trait: 1
+    difficulty: 3
+  - yakuName: "\u5B57\u4E00\u8272"
+    trait: 1
+    difficulty: 3
+  - yakuName: "\u5C0F\u56DB\u559C"
+    trait: 1
+    difficulty: 3
+  - yakuName: "\u5927\u56DB\u559C"
+    trait: 1
+    difficulty: 3
+  - yakuName: "\u6DF7\u4E00\u8272"
+    trait: 2
+    difficulty: 1
+  - yakuName: "\u30BF\u30F3\u30E4\u30AA"
+    trait: 3
+    difficulty: 0
+  - yakuName: "\u5E73\u548C"
+    trait: 3
+    difficulty: 0
+  - yakuName: "\u4E00\u76C3\u53E3"
+    trait: 3
+    difficulty: 0
+  id: SET_RANDOMHONOR
+  displayName: "\u2463\u9078\u629E\u3057\u305F\u724C\u3092\u30E9\u30F3\u30C0\u30E0\u306A\u5B57\u724C\u306B\u5909\u66F4\u3059\u308B"
+  description: 
+  maxMP: 12
+  startMP: 8
+  regenPerTurn: 1
+  regenOnWin: 3
+  activeSkills:
+  - activeSkillName: RandomHonor
+    mpCost: 2
+  gekiMultiplierByDiff:
+  - 1.1
+  - 1.1
+  - 1.1
+  - 1.1
+  shunAddByDiff: b80b0000b80b0000b80b0000b80b0000
+  iyuHealMulByDiff:
+  - 0.3
+  - 0.3
+  - 0.3
+  - 0.3
+  level: 0
+  gekiPerLevel: 0.05
+  shunPerLevel: 300
+  iyuPerLevel: 0.02

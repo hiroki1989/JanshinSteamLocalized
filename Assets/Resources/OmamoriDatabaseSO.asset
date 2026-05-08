@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da677bb35df730a40a2413fda8d1a8d5, type: 3}
+  m_Name: OmamoriDatabaseSO
+  m_EditorClassIdentifier: Assembly-CSharp::OmamoriDatabaseSO
+  rarityRows:
+  - rarity: 0
+    baseW: 50
+    perDefeat: -0.1
+    count: 1
+  - rarity: 1
+    baseW: 20
+    perDefeat: -0.1
+    count: 2
+  - rarity: 2
+    baseW: 10
+    perDefeat: 0
+    count: 3
+  - rarity: 3
+    baseW: 9
+    perDefeat: 0.1
+    count: 4
+  - rarity: 4
+    baseW: 1
+    perDefeat: 0.1
+    count: 5
+  effectRows:
+  - effect: 0
+    w: 10
+  - effect: 1
+    w: 8
+  - effect: 5
+    w: 10
+  - effect: 6
+    w: 10
+  - effect: 7
+    w: 10
+  - effect: 2
+    w: 8
+  - effect: 3
+    w: 4
+  - effect: 4
+    w: 4
+  specialRows:
+  - sp: 0
+    w: 100
+  baseAtLv1: 10
+  perLv: 5
+  rangeMinus: 2
+  rangePlus: 2
+  allowDup: 0

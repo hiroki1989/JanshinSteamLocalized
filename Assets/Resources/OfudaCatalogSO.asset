@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d830e79d2ac5b4c84c93fb032787ca, type: 3}
+  m_Name: OfudaCatalogSO
+  m_EditorClassIdentifier: Assembly-CSharp::OfudaCatalogSO
+  conditions:
+  - key: "COND:\u6E80\u8CAB\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u6E80\u8CAB\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:\u8DF3\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u8DF3\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.05
+  - key: "COND:\u500D\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u500D\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.07
+  - key: "COND:\u4E09\u500D\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u4E09\u500D\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.09
+  - key: "COND:\u5F79\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u5F79\u6E80\u4EE5\u4E0A\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.14
+  - key: "COND:3\u30BF\u30FC\u30F3\u4EE5\u5185\u306B\u548C\u4E86\u3059\u308B\u3068"
+    label: "3\u30BF\u30FC\u30F3\u4EE5\u5185\u306B\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.1
+  - key: "COND:\u30AB\u30F3\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u30AB\u30F3\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.08
+  - key: "COND:\u30DD\u30F3\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u30DD\u30F3\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:\u30C1\u30FC\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u30C1\u30FC\u3092\u3057\u305F\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:\u30DB\u30F3\u30A4\u30C4\u307E\u305F\u306F\u6E05\u4E00\u8272\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u30DB\u30F3\u30A4\u30C4\u307E\u305F\u306F\u6E05\u4E00\u8272\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.04
+  - key: "COND:\u5BFE\u3005\u548C\u307E\u305F\u306F\u4E03\u5BFE\u5B50\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u5BFE\u3005\u548C\u307E\u305F\u306F\u4E03\u5BFE\u5B50\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.03
+  - key: "COND:\u5E73\u548C\u3092\u548C\u4E86\u3059\u308B\u3068"
+    label: "\u5E73\u548C\u3092\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:HP\u304C10\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C10\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.05
+  - key: "COND:HP\u304C25\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C25\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.03
+  - key: "COND:HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:HP\u304C50\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C50\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:HP\u304C75\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C75\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.03
+  - key: "COND:HP\u304C100\uFF05\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "HP\u304C100\uFF05\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.05
+  - key: "COND:MP\u304C10\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C10\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.05
+  - key: "COND:MP\u304C25\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C25\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.03
+  - key: "COND:MP\u304C50\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C50\uFF05\u4EE5\u4E0B\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:MP\u304C50\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C50\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.01
+  - key: "COND:MP\u304C75\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C75\uFF05\u4EE5\u4E0A\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.03
+  - key: "COND:MP\u304C100\uFF05\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    label: "MP\u304C100\uFF05\u306E\u72B6\u614B\u3067\u548C\u4E86\u3059\u308B\u3068"
+    prob: 0.05
+  effects:
+  - key: "EFFECT:HP\u309210\uFF05\u56DE\u5FA9"
+    label: "HP\u309210\uFF05\u56DE\u5FA9"
+    prob: 0.15
+    magnitude: 10
+    unit: 
+  - key: "EFFECT:HP\u309220\uFF05\u56DE\u5FA9"
+    label: "HP\u309220\uFF05\u56DE\u5FA9"
+    prob: 0.08
+    magnitude: 20
+    unit: 
+  - key: "EFFECT:HP\u309230\uFF05\u56DE\u5FA9"
+    label: "HP\u309230\uFF05\u56DE\u5FA9"
+    prob: 0.07
+    magnitude: 30
+    unit: 
+  - key: "EFFECT:HP\u309240\uFF05\u56DE\u5FA9"
+    label: "HP\u309240\uFF05\u56DE\u5FA9"
+    prob: 0.03
+    magnitude: 40
+    unit: 
+  - key: "EFFECT:HP\u309250\uFF05\u56DE\u5FA9"
+    label: "HP\u309250\uFF05\u56DE\u5FA9"
+    prob: 0.01
+    magnitude: 50
+    unit: 
+  - key: "EFFECT:MP\u309210\uFF05\u56DE\u5FA9"
+    label: "MP\u309210\uFF05\u56DE\u5FA9"
+    prob: 0.15
+    magnitude: 10
+    unit: 
+  - key: "EFFECT:MP\u309220\uFF05\u56DE\u5FA9"
+    label: "MP\u309220\uFF05\u56DE\u5FA9"
+    prob: 0.08
+    magnitude: 20
+    unit: 
+  - key: "EFFECT:MP\u309230\uFF05\u56DE\u5FA9"
+    label: "MP\u309230\uFF05\u56DE\u5FA9"
+    prob: 0.06
+    magnitude: 30
+    unit: 
+  - key: "EFFECT:MP\u309240\uFF05\u56DE\u5FA9"
+    label: "MP\u309240\uFF05\u56DE\u5FA9"
+    prob: 0.04
+    magnitude: 40
+    unit: 
+  - key: "EFFECT:MP\u309250\uFF05\u56DE\u5FA9"
+    label: "MP\u309250\uFF05\u56DE\u5FA9"
+    prob: 0.02
+    magnitude: 50
+    unit: 
+  - key: "EFFECT:\u70B9\u6570\u304C1.1\u500D"
+    label: "\u70B9\u6570\u304C1.1\u500D"
+    prob: 0.12
+    magnitude: 0
+    unit: 
+  - key: "EFFECT:\u70B9\u6570\u304C1.2\u500D"
+    label: "\u70B9\u6570\u304C1.2\u500D"
+    prob: 0.08
+    magnitude: 0
+    unit: 
+  - key: "EFFECT:\u70B9\u6570\u304C1.3\u500D"
+    label: "\u70B9\u6570\u304C1.3\u500D"
+    prob: 0.07
+    magnitude: 0
+    unit: 
+  - key: "EFFECT:\u70B9\u6570\u304C1.4\u500D"
+    label: "\u70B9\u6570\u304C1.4\u500D"
+    prob: 0.03
+    magnitude: 0
+    unit: 
+  - key: "EFFECT:\u70B9\u6570\u304C1.5\u500D"
+    label: "\u70B9\u6570\u304C1.5\u500D"
+    prob: 0.01
+    magnitude: 0
+    unit: 
+  priceMap:
+  - maxProbSum: 0.05
+    rarity: "\u30EC\u30B8\u30A7\u30F3\u30C0\u30EA\u30FC"
+    priceK: 45
+    priceFixed: 1200
+  - maxProbSum: 0.08
+    rarity: "\u30A8\u30D4\u30C3\u30AF"
+    priceK: 63
+    priceFixed: 800
+  - maxProbSum: 0.12
+    rarity: "\u30EC\u30A2"
+    priceK: 76
+    priceFixed: 600
+  - maxProbSum: 0.18
+    rarity: "\u30B3\u30E2\u30F3"
+    priceK: 84
+    priceFixed: 450
+  - maxProbSum: 0.22
+    rarity: "\u30CE\u30FC\u30DE\u30EB"
+    priceK: 300
+    priceFixed: 300

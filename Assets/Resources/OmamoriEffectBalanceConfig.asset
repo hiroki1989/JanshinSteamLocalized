@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d289dd69f6714e4cbcc2347286ce241, type: 3}
+  m_Name: OmamoriEffectBalanceConfig
+  m_EditorClassIdentifier: Assembly-CSharp::OmamoriEffectBalanceConfig
+  effectScales:
+  - effect: 0
+    basePercentAtLevel1: 2
+    percentPerLevel: 2
+  - effect: 1
+    basePercentAtLevel1: 2
+    percentPerLevel: 2
+  - effect: 2
+    basePercentAtLevel1: 2
+    percentPerLevel: 1
+  - effect: 3
+    basePercentAtLevel1: 5
+    percentPerLevel: 5
+  - effect: 4
+    basePercentAtLevel1: 5
+    percentPerLevel: 2
+  - effect: 5
+    basePercentAtLevel1: 4
+    percentPerLevel: 2
+  - effect: 6
+    basePercentAtLevel1: 4
+    percentPerLevel: 2
+  - effect: 7
+    basePercentAtLevel1: 4
+    percentPerLevel: 2

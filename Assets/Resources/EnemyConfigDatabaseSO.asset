@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdb6158d5b41dd45a8471c645b8b466, type: 3}
+  m_Name: EnemyConfigDatabaseSO
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyConfigDatabaseSO
+  entries:
+  - excelKey: 0
+    config:
+      index: 0
+      name: "\u30A2\u30DE\u30C6\u30E9\u30B9"
+      displayNameJapanese: "\u30A2\u30DE\u30C6\u30E9\u30B9"
+      displayNameEnglish: Amaterasu
+      displayNameChineseSimplified: "\u5929\u7167\u5927\u795E"
+      maxHP: 20000
+      skills:
+      - id: "\u653B\u6483"
+        paramX: 500
+        paramY: 0
+        paramZ: 8
+      man: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      pin: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      sou: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      honors: 4
+      deck: "\u30CE\u30FC\u30DE\u30EB\u30C7\u30C3\u30AD"
+  - excelKey: 1
+    config:
+      index: 1
+      name: "\u30B9\u30B5\u30CE\u30AA"
+      displayNameJapanese: "\u30B9\u30B5\u30CE\u30AA"
+      displayNameEnglish: Susanoo
+      displayNameChineseSimplified: "\u987B\u4F50\u4E4B\u7537"
+      maxHP: 24000
+      skills:
+      - id: "\u653B\u6483"
+        paramX: 1000
+        paramY: 0
+        paramZ: 7
+      man: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      pin: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      sou: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      honors: 4
+      deck: "\u30CE\u30FC\u30DE\u30EB\u30C7\u30C3\u30AD"
+  - excelKey: 2
+    config:
+      index: 2
+      name: "\u30D0\u30B9\u30C6\u30C8"
+      displayNameJapanese: "\u30D0\u30B9\u30C6\u30C8"
+      displayNameEnglish: Bastet
+      displayNameChineseSimplified: "\u82AD\u4E1D\u7279"
+      maxHP: 28000
+      skills:
+      - id: "\u9632\u5FA1"
+        paramX: 15
+        paramY: 4
+        paramZ: 9
+      man: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      pin: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      sou: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      honors: 4
+      deck: "\u30CE\u30FC\u30DE\u30EB\u30C7\u30C3\u30AD"
+  - excelKey: 3
+    config:
+      index: 3
+      name: "\u30B7\u30F4\u30A1"
+      displayNameJapanese: "\u30B7\u30F4\u30A1"
+      displayNameEnglish: Shiva
+      displayNameChineseSimplified: "\u6E7F\u5A46"
+      maxHP: 32000
+      skills:
+      - id: "\u6012\u308A"
+        paramX: 15
+        paramY: 4
+        paramZ: 9
+      man: 00000000020000000400000004000000040000000400000004000000040000000400000002000000
+      pin: 00000000020000000400000004000000040000000400000004000000040000000400000002000000
+      sou: 00000000020000000400000004000000040000000400000004000000040000000400000002000000
+      honors: 3
+      deck: "\u30BF\u30F3\u30E4\u30AA\u30C7\u30C3\u30AD"
+  - excelKey: 4
+    config:
+      index: 4
+      name: "\u30A2\u30CC\u30D3\u30B9"
+      displayNameJapanese: "\u30A2\u30CC\u30D3\u30B9"
+      displayNameEnglish: Anubis
+      displayNameChineseSimplified: "\u963F\u52AA\u6BD4\u65AF"
+      maxHP: 36000
+      skills:
+      - id: "\u6BD2"
+        paramX: 3
+        paramY: 500
+        paramZ: 7
+      man: 00000000040000000300000003000000020000000200000002000000030000000300000004000000
+      pin: 00000000040000000300000003000000020000000200000002000000030000000300000004000000
+      sou: 00000000040000000300000003000000020000000200000002000000030000000300000004000000
+      honors: 4
+      deck: "\u30C1\u30E3\u30F3\u30BF\u30C7\u30C3\u30AD"
+  - excelKey: 5
+    config:
+      index: 5
+      name: "\u30D5\u30EC\u30A4\u30E4"
+      displayNameJapanese: "\u30D5\u30EC\u30A4\u30E4"
+      displayNameEnglish: Freyja
+      displayNameChineseSimplified: "\u8299\u857E\u96C5"
+      maxHP: 40000
+      skills:
+      - id: "\u59A8\u5BB3"
+        paramX: 1000
+        paramY: 0
+        paramZ: 7
+      man: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      pin: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      sou: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      honors: 4
+      deck: "\u30DE\u30F3\u30BA\u30C7\u30C3\u30AD"
+  - excelKey: 6
+    config:
+      index: 6
+      name: "\u30DD\u30BB\u30A4\u30C9\u30F3"
+      displayNameJapanese: "\u30DD\u30BB\u30A4\u30C9\u30F3"
+      displayNameEnglish: Poseidon
+      displayNameChineseSimplified: "\u6CE2\u585E\u51AC"
+      maxHP: 44000
+      skills:
+      - id: "\u9EBB\u75FA"
+        paramX: 3
+        paramY: 0
+        paramZ: 9
+      man: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      pin: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      sou: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      honors: 4
+      deck: "\u30D4\u30F3\u30BA\u30C7\u30C3\u30AD"
+  - excelKey: 7
+    config:
+      index: 7
+      name: "\u30AA\u30FC\u30C7\u30A3\u30F3"
+      displayNameJapanese: "\u30AA\u30FC\u30C7\u30A3\u30F3"
+      displayNameEnglish: Odin
+      displayNameChineseSimplified: "\u5965\u4E01"
+      maxHP: 50000
+      skills:
+      - id: "\u653B\u6483"
+        paramX: 1500
+        paramY: 0
+        paramZ: 8
+      man: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      pin: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      sou: 00000000040000000400000004000000040000000400000004000000040000000400000004000000
+      honors: 4
+      deck: "\u30BD\u30FC\u30BA\u30C7\u30C3\u30AD"
+  - excelKey: 8
+    config:
+      index: 8
+      name: "\u30EB\u30FC\u30CA"
+      displayNameJapanese: "\u30EB\u30FC\u30CA"
+      displayNameEnglish: Luna
+      displayNameChineseSimplified: "\u9732\u5A1C"
+      maxHP: 55000
+      skills:
+      - id: "\u7D30\u5DE5"
+        paramX: 1
+        paramY: 0
+        paramZ: 9
+      man: 00000000020000000200000002000000040000000400000004000000020000000200000002000000
+      pin: 00000000020000000200000002000000040000000400000004000000020000000200000002000000
+      sou: 00000000020000000200000002000000040000000400000004000000020000000200000002000000
+      honors: 2
+      deck: "\u4E09\u8272\u30C7\u30C3\u30AD"
+  - excelKey: 9
+    config:
+      index: 9
+      name: "\u30BC\u30A6\u30B9"
+      displayNameJapanese: "\u30BC\u30A6\u30B9"
+      displayNameEnglish: Zeus
+      displayNameChineseSimplified: "\u5B99\u65AF"
+      maxHP: 62000
+      skills:
+      - id: "\u6012\u308A"
+        paramX: 50
+        paramY: 8
+        paramZ: 9
+      - id: "\u9EBB\u75FA"
+        paramX: 2
+        paramY: 0
+        paramZ: 9
+      - id: "\u653B\u6483"
+        paramX: 2500
+        paramY: 0
+        paramZ: 7
+      man: 00000000030000000300000003000000030000000300000003000000030000000300000003000000
+      pin: 00000000020000000200000002000000020000000200000002000000020000000200000002000000
+      sou: 00000000020000000200000002000000020000000200000002000000020000000200000002000000
+      honors: 5
+      deck: "\u5B57\u724C\u30C7\u30C3\u30AD"
+  - excelKey: 10
+    config:
+      index: 10
+      name: "\u30CF\u30C7\u30B9"
+      displayNameJapanese: "\u30CF\u30C7\u30B9"
+      displayNameEnglish: Hades
+      displayNameChineseSimplified: "\u54C8\u8FEA\u65AF"
+      maxHP: 80000
+      skills:
+      - id: "\u653B\u6483"
+        paramX: 3000
+        paramY: 0
+        paramZ: 7
+      - id: "\u7D30\u5DE5"
+        paramX: 2
+        paramY: 0
+        paramZ: 8
+      - id: "\u59A8\u5BB3"
+        paramX: 3000
+        paramY: 0
+        paramZ: 7
+      man: 00000000020000000200000002000000020000000200000002000000020000000200000002000000
+      pin: 00000000020000000200000002000000020000000200000002000000020000000200000002000000
+      sou: 00000000020000000200000002000000020000000200000002000000020000000200000002000000
+      honors: 6
+      deck: "\u5B57\u724C\u30C7\u30C3\u30AD"

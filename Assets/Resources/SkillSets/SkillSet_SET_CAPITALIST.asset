@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1a106dbc8e8b2b4f9327d2cef15579a, type: 3}
+  m_Name: SkillSet_SET_CAPITALIST
+  m_EditorClassIdentifier: Assembly-CSharp::SkillSetAsset
+  traitMap:
+  - yakuName: "\u4E03\u5BFE\u5B50"
+    trait: 1
+    difficulty: 1
+  - yakuName: "\u5BFE\u3005\u548C"
+    trait: 1
+    difficulty: 1
+  - yakuName: "\u6DF7\u8001\u982D"
+    trait: 1
+    difficulty: 2
+  - yakuName: "\u4E09\u6697\u523B"
+    trait: 1
+    difficulty: 2
+  - yakuName: "\u56DB\u6697\u523B"
+    trait: 1
+    difficulty: 3
+  - yakuName: "\u5F79\u724C"
+    trait: 2
+    difficulty: 0
+  - yakuName: "\u4E09\u8272\u540C\u9806"
+    trait: 2
+    difficulty: 1
+  - yakuName: "\u4E00\u76C3\u53E3"
+    trait: 2
+    difficulty: 0
+  - yakuName: "\u56FD\u58EB\u7121\u53CC"
+    trait: 2
+    difficulty: 3
+  - yakuName: "\u4E00\u6C17\u901A\u8CAB"
+    trait: 3
+    difficulty: 1
+  - yakuName: "\u5E73\u548C"
+    trait: 3
+    difficulty: 0
+  - yakuName: "\u30BF\u30F3\u30E4\u30AA"
+    trait: 3
+    difficulty: 0
+  - yakuName: "\u6DF7\u4E00\u8272"
+    trait: 3
+    difficulty: 1
+  id: SET_CAPITALIST
+  displayName: "\u8CC7\u7523\u5BB6"
+  displayNameEnglish: Capitalist
+  displayNameChineseSimplified: "\u8D44\u672C\u5BB6"
+  description: "\u5E02\u5834\u64CD\u4F5C\uFF1A\u30C4\u30E2\u5834\u306E4\u679A\u3092\u3059\u3079\u3066\u30E9\u30F3\u30C0\u30E0\u306A\u724C\u306B\u5909\u63DB\u3059\u308B\u3002\u307E\u305F\u3001\u521D\u671F\u72B6\u614B\u30673000Gold\u3092\u4FDD\u6301\u3057\u3001\u548C\u4E86\u306B\u3088\u3063\u3066\u5165\u624B\u3059\u308BGold\u304C\u5E38\u306B2\u500D\u3002"
+  descriptionEnglish: 'Market Twist: Transforms all 4 tiles in the draw area into
+    random tiles. Also starts the run with 3000 Gold, and Gold gained from winning
+    is always doubled.'
+  descriptionChineseSimplified: "\u63A7\u76D8: \u5C06\u6478\u724C\u533A\u76844\u5F20\u724C\u5168\u90E8\u53D8\u4E3A\u968F\u673A\u724C\u3002\u6B64\u5916\uFF0C\u521D\u59CB\u6301\u67093000Gold\uFF0C\u5E76\u4E14\u548C\u4E86\u83B7\u5F97\u7684Gold\u59CB\u7EC8\u53D8\u4E3A2\u500D\u3002"
+  maxMP: 5000
+  startMP: 8000
+  regenPerTurn: 700
+  regenOnWin: 1000
+  recoverHpPerBattle: 0
+  recoverMpPerBattle: 0
+  activeSkills:
+  - activeSkillName: Capitalist
+    mpCost: 3000
+    icon: {fileID: 0}
+    displayName: "\u8CC7\u7523\u5BB6"
+    displayNameEnglish: Capitalist
+    displayNameChineseSimplified: "\u8D44\u672C\u5BB6"
+    actionName: "\u5E02\u5834\u64CD\u4F5C"
+    actionNameEnglish: Market Twist
+    actionNameChineseSimplified: "\u63A7\u76D8"
+    description: "\u5E02\u5834\u64CD\u4F5C\uFF1A\u30C4\u30E2\u5834\u306E4\u679A\u3092\u3059\u3079\u3066\u30E9\u30F3\u30C0\u30E0\u306A\u724C\u306B\u5909\u63DB\u3059\u308B\u3002\u307E\u305F\u3001\u521D\u671F\u72B6\u614B\u30673000Gold\u3092\u4FDD\u6301\u3057\u3001\u548C\u4E86\u306B\u3088\u3063\u3066\u5165\u624B\u3059\u308BGold\u304C\u5E38\u306B2\u500D\u3002"
+    descriptionEnglish: 'Market Twist: Transforms all 4 tiles in the draw area into
+      random tiles. Also starts the run with 3000 Gold, and Gold gained from winning
+      is always doubled.'
+    descriptionChineseSimplified: "\u63A7\u76D8: \u5C06\u6478\u724C\u533A\u76844\u5F20\u724C\u5168\u90E8\u53D8\u4E3A\u968F\u673A\u724C\u3002\u6B64\u5916\uFF0C\u521D\u59CB\u6301\u67093000Gold\uFF0C\u5E76\u4E14\u548C\u4E86\u83B7\u5F97\u7684Gold\u59CB\u7EC8\u53D8\u4E3A2\u500D\u3002"
+    gekiYaku: []
+    shunYaku: []
+    iyuYaku: []
+  gekiMultiplierByDiff:
+  - 1.1
+  - 1.2
+  - 1.3
+  - 2
+  shunAddByDiff: b80b0000b80b0000b80b0000b80b0000
+  iyuHealMulByDiff:
+  - 0.3
+  - 0.5
+  - 0.7
+  - 0.9
+  shunMpPctByDiff:
+  - 0.4
+  - 0.6
+  - 0.8
+  - 1
+  level: 0
+  gekiPerLevel: 0.1
+  shunPerLevel: 1
+  iyuPerLevel: 0.1

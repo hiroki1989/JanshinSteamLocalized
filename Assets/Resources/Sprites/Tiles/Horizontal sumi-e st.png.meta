@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: fe2d9e747d9b2fc4eb451b1417702743
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -715135554989913452
+    second: Horizontal sumi-e st_0
+  - first:
+      213: -689636418017487131
+    second: Horizontal sumi-e st_1
+  - first:
+      213: -8799916822982196331
+    second: Horizontal sumi-e st_2
+  - first:
+      213: -7869855714427130654
+    second: Horizontal sumi-e st_3
+  - first:
+      213: -5471945534018469690
+    second: Horizontal sumi-e st_4
+  - first:
+      213: -953715084020055608
+    second: Horizontal sumi-e st_5
+  - first:
+      213: -5870630066343060708
+    second: Horizontal sumi-e st_6
+  - first:
+      213: -7944727070953708217
+    second: Horizontal sumi-e st_7
+  - first:
+      213: -660264813874687157
+    second: Horizontal sumi-e st_8
+  - first:
+      213: -5757181139535702309
+    second: Horizontal sumi-e st_9
+  - first:
+      213: 6496998248667021882
+    second: Horizontal sumi-e st_10
+  - first:
+      213: 3487179075325636597
+    second: Horizontal sumi-e st_11
+  - first:
+      213: 7666622000856990181
+    second: Horizontal sumi-e st_12
+  - first:
+      213: 4076827464712445182
+    second: Horizontal sumi-e st_13
+  - first:
+      213: 8238492317695820697
+    second: Horizontal sumi-e st_14
+  - first:
+      213: 4009492701798151081
+    second: Horizontal sumi-e st_15
+  - first:
+      213: -9043129640427909239
+    second: Horizontal sumi-e st_16
+  - first:
+      213: -6537539713877280449
+    second: Horizontal sumi-e st_17
+  - first:
+      213: 1934266660195443004
+    second: Horizontal sumi-e st_18
+  - first:
+      213: 3414727982556886996
+    second: Horizontal sumi-e st_19
+  - first:
+      213: -9193996753254014382
+    second: Horizontal sumi-e st_20
+  - first:
+      213: -1752258810854354461
+    second: Horizontal sumi-e st_21
+  - first:
+      213: -6566136886141588203
+    second: Horizontal sumi-e st_22
+  - first:
+      213: -6943163035591644473
+    second: Horizontal sumi-e st_23
+  - first:
+      213: 7567180583211160111
+    second: Horizontal sumi-e st_24
+  - first:
+      213: -3855066472226469449
+    second: Horizontal sumi-e st_25
+  - first:
+      213: -9138891318956651281
+    second: Horizontal sumi-e st_26
+  - first:
+      213: -2033990190289603593
+    second: Horizontal sumi-e st_27
+  - first:
+      213: -4267230717050651018
+    second: Horizontal sumi-e st_28
+  - first:
+      213: -5941960909178268475
+    second: Horizontal sumi-e st_29
+  - first:
+      213: -568122791539243856
+    second: Horizontal sumi-e st_30
+  - first:
+      213: 1934820908847987019
+    second: Horizontal sumi-e st_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_0
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 687
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a039e60045316f0800000000000000
+      internalID: -715135554989913452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 687
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e615e7e45bed66f0800000000000000
+      internalID: -689636418017487131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_2
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 668
+        width: 25
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5938921064a60e580800000000000000
+      internalID: -8799916822982196331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_3
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 696
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec2efb8ce7a8c290800000000000000
+      internalID: -7869855714427130654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_4
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 653
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c04b86478ebf04b0800000000000000
+      internalID: -5471945534018469690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_5
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 649
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c18d002f29b3c2f0800000000000000
+      internalID: -953715084020055608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_6
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 662
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1bd4effe05578ea0800000000000000
+      internalID: -5870630066343060708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 631
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 745ef5a62d8aeb190800000000000000
+      internalID: -7944727070953708217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_8
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 625
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b435f4766a446d6f0800000000000000
+      internalID: -660264813874687157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_9
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 608
+        width: 26
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd65566a1426a10b0800000000000000
+      internalID: -5757181139535702309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_10
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 633
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32022e0c79f92a50800000000000000
+      internalID: 6496998248667021882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_11
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 639
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffa5f4a4e2f46030800000000000000
+      internalID: 3487179075325636597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_12
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 362
+        width: 852
+        height: 267
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e1864c1710556a60800000000000000
+      internalID: 7666622000856990181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_13
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 624
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efcddbcaafcc39830800000000000000
+      internalID: 4076827464712445182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_14
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 623
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9934b011d11055270800000000000000
+      internalID: 8238492317695820697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_15
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 618
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3333c7e5494a730800000000000000
+      internalID: 4009492701798151081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_16
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 530
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98f0d7c2189508280800000000000000
+      internalID: -9043129640427909239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_17
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 519
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f39f551844ef545a0800000000000000
+      internalID: -6537539713877280449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_18
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 507
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c31a4dd7745e7da10800000000000000
+      internalID: 1934266660195443004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_19
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 465
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7b3e4120d836f20800000000000000
+      internalID: 3414727982556886996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_20
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 398
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25223303aac586080800000000000000
+      internalID: -9193996753254014382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_21
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 405
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e15a7835e9bea7e0800000000000000
+      internalID: -1752258810854354461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_22
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 359
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51de0fa7a4560e4a0800000000000000
+      internalID: -6566136886141588203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_23
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 368
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7caefed610ee4af90800000000000000
+      internalID: -6943163035591644473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_24
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 366
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f22d885d5a6040960800000000000000
+      internalID: 7567180583211160111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_25
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 375
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b94c61f77d008ac0800000000000000
+      internalID: -3855066472226469449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_26
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 366
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fec00bce3c22c2180800000000000000
+      internalID: -9138891318956651281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_27
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 332
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f3b82fc2b0d5c3e0800000000000000
+      internalID: -2033990190289603593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_28
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 327
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67e7f878540c7c4c0800000000000000
+      internalID: -4267230717050651018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_29
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 335
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c41c23f80ae98da0800000000000000
+      internalID: -5941960909178268475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_30
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 88
+        width: 59
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b40085c45f9d18f0800000000000000
+      internalID: -568122791539243856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Horizontal sumi-e st_31
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 335
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b49f1ef8d5dd9da10800000000000000
+      internalID: 1934820908847987019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Horizontal sumi-e st_0: -715135554989913452
+      Horizontal sumi-e st_1: -689636418017487131
+      Horizontal sumi-e st_10: 6496998248667021882
+      Horizontal sumi-e st_11: 3487179075325636597
+      Horizontal sumi-e st_12: 7666622000856990181
+      Horizontal sumi-e st_13: 4076827464712445182
+      Horizontal sumi-e st_14: 8238492317695820697
+      Horizontal sumi-e st_15: 4009492701798151081
+      Horizontal sumi-e st_16: -9043129640427909239
+      Horizontal sumi-e st_17: -6537539713877280449
+      Horizontal sumi-e st_18: 1934266660195443004
+      Horizontal sumi-e st_19: 3414727982556886996
+      Horizontal sumi-e st_2: -8799916822982196331
+      Horizontal sumi-e st_20: -9193996753254014382
+      Horizontal sumi-e st_21: -1752258810854354461
+      Horizontal sumi-e st_22: -6566136886141588203
+      Horizontal sumi-e st_23: -6943163035591644473
+      Horizontal sumi-e st_24: 7567180583211160111
+      Horizontal sumi-e st_25: -3855066472226469449
+      Horizontal sumi-e st_26: -9138891318956651281
+      Horizontal sumi-e st_27: -2033990190289603593
+      Horizontal sumi-e st_28: -4267230717050651018
+      Horizontal sumi-e st_29: -5941960909178268475
+      Horizontal sumi-e st_3: -7869855714427130654
+      Horizontal sumi-e st_30: -568122791539243856
+      Horizontal sumi-e st_31: 1934820908847987019
+      Horizontal sumi-e st_4: -5471945534018469690
+      Horizontal sumi-e st_5: -953715084020055608
+      Horizontal sumi-e st_6: -5870630066343060708
+      Horizontal sumi-e st_7: -7944727070953708217
+      Horizontal sumi-e st_8: -660264813874687157
+      Horizontal sumi-e st_9: -5757181139535702309
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

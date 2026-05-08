@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/SkillSetScene.unity
+    guid: 9f88b192fe8542947863737e083b364f
+  - enabled: 0
+    path: Assets/Scenes/2SpecialTileScene.unity
+    guid: d58ec4e3eb4b2204fbd578dd547c5119
+  - enabled: 1
+    path: Assets/Scenes/EquipScene.unity
+    guid: b2733884ebee27b43a81656c8d139364
+  - enabled: 1
+    path: Assets/Scenes/AngelDialogue.unity
+    guid: 35aaf890867855d49b0268f04d83228c
+  - enabled: 1
+    path: Assets/Scenes/EnemyDialogue.unity
+    guid: 08efd072c9e9f9743b0e5ca5cf805444
+  - enabled: 1
+    path: Assets/Scenes/TierSelectScene.unity
+    guid: 44c2abe76d1e9054fbd752851fc50274
+  - enabled: 1
+    path: Assets/Scenes/RunScene.unity
+    guid: 67c698945eaa8c3499d0613a098acd09
+  - enabled: 1
+    path: Assets/Scenes/OtherScene.unity
+    guid: e3d65deea7198ff4699b0a8fdd69b5f0
+  - enabled: 1
+    path: Assets/Scenes/UpgradeScene.unity
+    guid: 23c9e1d82dc074b4998ba4084bf177c7
+  - enabled: 1
+    path: Assets/Scenes/StageClearScene.unity
+    guid: e109f100196ae0245a56f07f6e02b883
+  - enabled: 1
+    path: Assets/Scenes/ShopScene.unity
+    guid: ee8acb8dad6a6e7479baab91c06e93ad
+  - enabled: 1
+    path: Assets/Scenes/SpecialTileScene.unity
+    guid: ca05466ebbdb28b4f82a5ce092c0b535
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

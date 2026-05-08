@@ -1,0 +1,34 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS generated
+.DS_Store
+Thumbs.dbGeneratedAssets_deleted/ 
+IOS/ 
+debug.log 
+GeneratedAssets_deleted/ 
+IOS/ 
+debug.log 
+IOS/ 
+GeneratedAssets_deleted/ 
+debug.log 
+*.sln 
+*.slnx 

@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 50aaf127873c3c54baa224c0ed081bac
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9074581932374815198
+    second: FudeUI_0
+  - first:
+      213: -5961689477940476012
+    second: FudeUI_1
+  - first:
+      213: -8964797139543309173
+    second: FudeUI_2
+  - first:
+      213: -2362762012957731654
+    second: FudeUI_3
+  - first:
+      213: 6501573751211833980
+    second: FudeUI_4
+  - first:
+      213: 5392314269826251328
+    second: FudeUI_5
+  - first:
+      213: 8881418648037805546
+    second: FudeUI_6
+  - first:
+      213: -4102855685876576811
+    second: FudeUI_7
+  - first:
+      213: -5819861495587848229
+    second: FudeUI_8
+  - first:
+      213: -1764379380201249679
+    second: FudeUI_9
+  - first:
+      213: 3920513842150347066
+    second: FudeUI_10
+  - first:
+      213: 4239066954512734976
+    second: FudeUI_11
+  - first:
+      213: 5307560012536675864
+    second: FudeUI_12
+  - first:
+      213: -5373329881568823835
+    second: FudeUI_13
+  - first:
+      213: 5137304296957154932
+    second: FudeUI_14
+  - first:
+      213: 2081614319678303921
+    second: FudeUI_15
+  - first:
+      213: -4402901092312274752
+    second: FudeUI_16
+  - first:
+      213: -7469658596970601116
+    second: FudeUI_17
+  - first:
+      213: -4222042098860580497
+    second: FudeUI_18
+  - first:
+      213: -3625532919770479554
+    second: FudeUI_19
+  - first:
+      213: 1975991629657190041
+    second: FudeUI_20
+  - first:
+      213: 8091966645051417329
+    second: FudeUI_21
+  - first:
+      213: -4500949208174427078
+    second: FudeUI_22
+  - first:
+      213: 3789652164800522661
+    second: FudeUI_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FudeUI_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 870
+        width: 19
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1f06430346fed70800000000000000
+      internalID: 9074581932374815198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 893
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4978c269103d34da0800000000000000
+      internalID: -5961689477940476012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_2
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 876
+        width: 48
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b844516cf74a69380800000000000000
+      internalID: -8964797139543309173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_3
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 832
+        width: 56
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab41ed8b778c53fd0800000000000000
+      internalID: -2362762012957731654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_4
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 823
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7a3cf141ea3a3a50800000000000000
+      internalID: 6501573751211833980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_5
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 839
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a734a324955da40800000000000000
+      internalID: 5392314269826251328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 840
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aedc2d16433214b70800000000000000
+      internalID: 8881418648037805546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_7
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 822
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dd82a6dd7abf07c0800000000000000
+      internalID: -4102855685876576811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_8
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 840
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf33810ec2bb3fa0800000000000000
+      internalID: -5819861495587848229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_9
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 810
+        width: 47
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 174a4124d4aa387e0800000000000000
+      internalID: -1764379380201249679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_10
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 833
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a319f525196786630800000000000000
+      internalID: 3920513842150347066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_11
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 800
+        width: 41
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00b14d28fe034da30800000000000000
+      internalID: 4239066954512734976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 841
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81ef053f5bd38a940800000000000000
+      internalID: 5307560012536675864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_13
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 831
+        width: 34
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e5391c11f81e65b0800000000000000
+      internalID: -5373329881568823835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 562
+        width: 642
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 476183b1a0f5b4740800000000000000
+      internalID: 5137304296957154932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_15
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 791
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1beaac3e13163ec10800000000000000
+      internalID: 2081614319678303921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_16
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 807
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c82c8bb8c0c5e2c0800000000000000
+      internalID: -4402901092312274752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_17
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 817
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 465ef1ef411765890800000000000000
+      internalID: -7469658596970601116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_18
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 716
+        width: 277
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f61aba6941b4865c0800000000000000
+      internalID: -4222042098860580497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_19
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 805
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e348893b4058fadc0800000000000000
+      internalID: -3625532919770479554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_20
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 575
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99eacdcfae12c6b10800000000000000
+      internalID: 1975991629657190041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_21
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 415
+        width: 739
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f269946ac07c4070800000000000000
+      internalID: 8091966645051417329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_22
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 214
+        width: 430
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3400beca8a6981c0800000000000000
+      internalID: -4500949208174427078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FudeUI_23
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 253
+        width: 437
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a9a931c09c879430800000000000000
+      internalID: 3789652164800522661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FudeUI_0: 9074581932374815198
+      FudeUI_1: -5961689477940476012
+      FudeUI_10: 3920513842150347066
+      FudeUI_11: 4239066954512734976
+      FudeUI_12: 5307560012536675864
+      FudeUI_13: -5373329881568823835
+      FudeUI_14: 5137304296957154932
+      FudeUI_15: 2081614319678303921
+      FudeUI_16: -4402901092312274752
+      FudeUI_17: -7469658596970601116
+      FudeUI_18: -4222042098860580497
+      FudeUI_19: -3625532919770479554
+      FudeUI_2: -8964797139543309173
+      FudeUI_20: 1975991629657190041
+      FudeUI_21: 8091966645051417329
+      FudeUI_22: -4500949208174427078
+      FudeUI_23: 3789652164800522661
+      FudeUI_3: -2362762012957731654
+      FudeUI_4: 6501573751211833980
+      FudeUI_5: 5392314269826251328
+      FudeUI_6: 8881418648037805546
+      FudeUI_7: -4102855685876576811
+      FudeUI_8: -5819861495587848229
+      FudeUI_9: -1764379380201249679
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

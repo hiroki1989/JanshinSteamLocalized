@@ -1,0 +1,4550 @@
+fileFormatVersion: 2
+guid: 7b8a9c7f48f5a91429cdd1d58c6b642f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5479102943719197069
+    second: deco_polkadot_small_white_01_512_0
+  - first:
+      213: 2030120029852008519
+    second: deco_polkadot_small_white_01_512_1
+  - first:
+      213: -3044240850572363127
+    second: deco_polkadot_small_white_01_512_2
+  - first:
+      213: -8489355757186925450
+    second: deco_polkadot_small_white_01_512_3
+  - first:
+      213: 6333675799200530156
+    second: deco_polkadot_small_white_01_512_4
+  - first:
+      213: -8213676840644932799
+    second: deco_polkadot_small_white_01_512_5
+  - first:
+      213: -5778591150715138715
+    second: deco_polkadot_small_white_01_512_6
+  - first:
+      213: -1090073973282368633
+    second: deco_polkadot_small_white_01_512_7
+  - first:
+      213: -5567956930726530647
+    second: deco_polkadot_small_white_01_512_8
+  - first:
+      213: 3584013022300561256
+    second: deco_polkadot_small_white_01_512_9
+  - first:
+      213: 1430885100390470529
+    second: deco_polkadot_small_white_01_512_10
+  - first:
+      213: -4156161390175548887
+    second: deco_polkadot_small_white_01_512_11
+  - first:
+      213: -7877097815233412484
+    second: deco_polkadot_small_white_01_512_12
+  - first:
+      213: -7786456879119733028
+    second: deco_polkadot_small_white_01_512_13
+  - first:
+      213: -5411576901969391299
+    second: deco_polkadot_small_white_01_512_14
+  - first:
+      213: -4841190049651689247
+    second: deco_polkadot_small_white_01_512_15
+  - first:
+      213: 443382607111303269
+    second: deco_polkadot_small_white_01_512_16
+  - first:
+      213: -3941858490998251504
+    second: deco_polkadot_small_white_01_512_17
+  - first:
+      213: 2318440482406558416
+    second: deco_polkadot_small_white_01_512_18
+  - first:
+      213: -8964233945072246203
+    second: deco_polkadot_small_white_01_512_19
+  - first:
+      213: -2410197141879773860
+    second: deco_polkadot_small_white_01_512_20
+  - first:
+      213: 1079174521480726833
+    second: deco_polkadot_small_white_01_512_21
+  - first:
+      213: 1901253479917171634
+    second: deco_polkadot_small_white_01_512_22
+  - first:
+      213: -5116571682215820382
+    second: deco_polkadot_small_white_01_512_23
+  - first:
+      213: -1535818320014296555
+    second: deco_polkadot_small_white_01_512_24
+  - first:
+      213: -4113009766986956727
+    second: deco_polkadot_small_white_01_512_25
+  - first:
+      213: 43871089295281791
+    second: deco_polkadot_small_white_01_512_26
+  - first:
+      213: 8518111087794874767
+    second: deco_polkadot_small_white_01_512_27
+  - first:
+      213: 8592626420132216509
+    second: deco_polkadot_small_white_01_512_28
+  - first:
+      213: -6825148720258508693
+    second: deco_polkadot_small_white_01_512_29
+  - first:
+      213: -1278119727440553768
+    second: deco_polkadot_small_white_01_512_30
+  - first:
+      213: -7775159809980708980
+    second: deco_polkadot_small_white_01_512_31
+  - first:
+      213: -5972160414909819512
+    second: deco_polkadot_small_white_01_512_32
+  - first:
+      213: -7655711921543526882
+    second: deco_polkadot_small_white_01_512_33
+  - first:
+      213: -489013318591312061
+    second: deco_polkadot_small_white_01_512_34
+  - first:
+      213: 147817995073004874
+    second: deco_polkadot_small_white_01_512_35
+  - first:
+      213: -3440996495281461490
+    second: deco_polkadot_small_white_01_512_36
+  - first:
+      213: -1401078950564422547
+    second: deco_polkadot_small_white_01_512_37
+  - first:
+      213: 2865354974918363902
+    second: deco_polkadot_small_white_01_512_38
+  - first:
+      213: 72194166047160350
+    second: deco_polkadot_small_white_01_512_39
+  - first:
+      213: 2749701764283060882
+    second: deco_polkadot_small_white_01_512_40
+  - first:
+      213: 3092294102298620415
+    second: deco_polkadot_small_white_01_512_41
+  - first:
+      213: 8951307597917290024
+    second: deco_polkadot_small_white_01_512_42
+  - first:
+      213: -5500857553546727435
+    second: deco_polkadot_small_white_01_512_43
+  - first:
+      213: 6163727150579969195
+    second: deco_polkadot_small_white_01_512_44
+  - first:
+      213: -8048244234404959349
+    second: deco_polkadot_small_white_01_512_45
+  - first:
+      213: 4561814076435908954
+    second: deco_polkadot_small_white_01_512_46
+  - first:
+      213: 2505731860702791208
+    second: deco_polkadot_small_white_01_512_47
+  - first:
+      213: -7443842399994240424
+    second: deco_polkadot_small_white_01_512_48
+  - first:
+      213: -6714245402781042403
+    second: deco_polkadot_small_white_01_512_49
+  - first:
+      213: -7477198307915422689
+    second: deco_polkadot_small_white_01_512_50
+  - first:
+      213: -7660079038944274854
+    second: deco_polkadot_small_white_01_512_51
+  - first:
+      213: 221327471640598940
+    second: deco_polkadot_small_white_01_512_52
+  - first:
+      213: 1615726705501176750
+    second: deco_polkadot_small_white_01_512_53
+  - first:
+      213: -5779961408163874259
+    second: deco_polkadot_small_white_01_512_54
+  - first:
+      213: -7652849380628721621
+    second: deco_polkadot_small_white_01_512_55
+  - first:
+      213: -3915398397657369923
+    second: deco_polkadot_small_white_01_512_56
+  - first:
+      213: 8644290940532026907
+    second: deco_polkadot_small_white_01_512_57
+  - first:
+      213: -7797448249449222206
+    second: deco_polkadot_small_white_01_512_58
+  - first:
+      213: 6101905298888011880
+    second: deco_polkadot_small_white_01_512_59
+  - first:
+      213: 3185810224206343424
+    second: deco_polkadot_small_white_01_512_60
+  - first:
+      213: -2191330536533808742
+    second: deco_polkadot_small_white_01_512_61
+  - first:
+      213: -939401132654792890
+    second: deco_polkadot_small_white_01_512_62
+  - first:
+      213: -1928902164239203058
+    second: deco_polkadot_small_white_01_512_63
+  - first:
+      213: -1876631074595302798
+    second: deco_polkadot_small_white_01_512_64
+  - first:
+      213: -55797402620511430
+    second: deco_polkadot_small_white_01_512_65
+  - first:
+      213: -8325943937699081134
+    second: deco_polkadot_small_white_01_512_66
+  - first:
+      213: 8792573175810003939
+    second: deco_polkadot_small_white_01_512_67
+  - first:
+      213: 1355156613372663688
+    second: deco_polkadot_small_white_01_512_68
+  - first:
+      213: -745728954233519923
+    second: deco_polkadot_small_white_01_512_69
+  - first:
+      213: -8451138510499196341
+    second: deco_polkadot_small_white_01_512_70
+  - first:
+      213: 7304623759295321982
+    second: deco_polkadot_small_white_01_512_71
+  - first:
+      213: 1135060070365286457
+    second: deco_polkadot_small_white_01_512_72
+  - first:
+      213: 7373442613631513395
+    second: deco_polkadot_small_white_01_512_73
+  - first:
+      213: -3877991630222613765
+    second: deco_polkadot_small_white_01_512_74
+  - first:
+      213: -7617268793744066308
+    second: deco_polkadot_small_white_01_512_75
+  - first:
+      213: -8083318057227166367
+    second: deco_polkadot_small_white_01_512_76
+  - first:
+      213: 7269612441551786749
+    second: deco_polkadot_small_white_01_512_77
+  - first:
+      213: 4265687256384115967
+    second: deco_polkadot_small_white_01_512_78
+  - first:
+      213: -3635325671941178916
+    second: deco_polkadot_small_white_01_512_79
+  - first:
+      213: 2246300985915221356
+    second: deco_polkadot_small_white_01_512_80
+  - first:
+      213: -6145362147830230401
+    second: deco_polkadot_small_white_01_512_81
+  - first:
+      213: 5405392149134736896
+    second: deco_polkadot_small_white_01_512_82
+  - first:
+      213: 5939406076735494288
+    second: deco_polkadot_small_white_01_512_83
+  - first:
+      213: 2958017951366340372
+    second: deco_polkadot_small_white_01_512_84
+  - first:
+      213: 2032243115129531071
+    second: deco_polkadot_small_white_01_512_85
+  - first:
+      213: -6415532259759952911
+    second: deco_polkadot_small_white_01_512_86
+  - first:
+      213: 1053149921042209077
+    second: deco_polkadot_small_white_01_512_87
+  - first:
+      213: 8770999830514940654
+    second: deco_polkadot_small_white_01_512_88
+  - first:
+      213: 818164529758751074
+    second: deco_polkadot_small_white_01_512_89
+  - first:
+      213: 7051746645929752904
+    second: deco_polkadot_small_white_01_512_90
+  - first:
+      213: 5732203108054514635
+    second: deco_polkadot_small_white_01_512_91
+  - first:
+      213: -1558078212819501229
+    second: deco_polkadot_small_white_01_512_92
+  - first:
+      213: -417701642169498130
+    second: deco_polkadot_small_white_01_512_93
+  - first:
+      213: 3552411264102333926
+    second: deco_polkadot_small_white_01_512_94
+  - first:
+      213: -4418088489227835083
+    second: deco_polkadot_small_white_01_512_95
+  - first:
+      213: -3168000490338505609
+    second: deco_polkadot_small_white_01_512_96
+  - first:
+      213: 6908602964188671381
+    second: deco_polkadot_small_white_01_512_97
+  - first:
+      213: 4770345229568856724
+    second: deco_polkadot_small_white_01_512_98
+  - first:
+      213: -9061862292367238297
+    second: deco_polkadot_small_white_01_512_99
+  - first:
+      213: -8387137973756234028
+    second: deco_polkadot_small_white_01_512_100
+  - first:
+      213: -5758719269692403199
+    second: deco_polkadot_small_white_01_512_101
+  - first:
+      213: -8628225527903085462
+    second: deco_polkadot_small_white_01_512_102
+  - first:
+      213: 7291975540151029986
+    second: deco_polkadot_small_white_01_512_103
+  - first:
+      213: 3739936073250400805
+    second: deco_polkadot_small_white_01_512_104
+  - first:
+      213: 5597951580091953258
+    second: deco_polkadot_small_white_01_512_105
+  - first:
+      213: 7097007717061659340
+    second: deco_polkadot_small_white_01_512_106
+  - first:
+      213: -7713272586389679554
+    second: deco_polkadot_small_white_01_512_107
+  - first:
+      213: -1256491502241631046
+    second: deco_polkadot_small_white_01_512_108
+  - first:
+      213: -2332231776999030626
+    second: deco_polkadot_small_white_01_512_109
+  - first:
+      213: 5940648465340608964
+    second: deco_polkadot_small_white_01_512_110
+  - first:
+      213: 7272415201457133399
+    second: deco_polkadot_small_white_01_512_111
+  - first:
+      213: 7486913292748310319
+    second: deco_polkadot_small_white_01_512_112
+  - first:
+      213: 4639655484005974629
+    second: deco_polkadot_small_white_01_512_113
+  - first:
+      213: 2766767188822656591
+    second: deco_polkadot_small_white_01_512_114
+  - first:
+      213: 7964422088284225567
+    second: deco_polkadot_small_white_01_512_115
+  - first:
+      213: 1305023625387341744
+    second: deco_polkadot_small_white_01_512_116
+  - first:
+      213: 7545445766659334174
+    second: deco_polkadot_small_white_01_512_117
+  - first:
+      213: -8083926157661310007
+    second: deco_polkadot_small_white_01_512_118
+  - first:
+      213: 4863135092571913288
+    second: deco_polkadot_small_white_01_512_119
+  - first:
+      213: 5978964401046111746
+    second: deco_polkadot_small_white_01_512_120
+  - first:
+      213: 7752320399080520294
+    second: deco_polkadot_small_white_01_512_121
+  - first:
+      213: -8780749278379238062
+    second: deco_polkadot_small_white_01_512_122
+  - first:
+      213: -1663398263793363855
+    second: deco_polkadot_small_white_01_512_123
+  - first:
+      213: 1368323524784216940
+    second: deco_polkadot_small_white_01_512_124
+  - first:
+      213: -3485174864656327373
+    second: deco_polkadot_small_white_01_512_125
+  - first:
+      213: 5485760767674096565
+    second: deco_polkadot_small_white_01_512_126
+  - first:
+      213: -3445580933527106170
+    second: deco_polkadot_small_white_01_512_127
+  - first:
+      213: 6013701155228594508
+    second: deco_polkadot_small_white_01_512_128
+  - first:
+      213: 1480827934914867213
+    second: deco_polkadot_small_white_01_512_129
+  - first:
+      213: -8639295568787870568
+    second: deco_polkadot_small_white_01_512_130
+  - first:
+      213: -4894185467629742193
+    second: deco_polkadot_small_white_01_512_131
+  - first:
+      213: -5217364051562429577
+    second: deco_polkadot_small_white_01_512_132
+  - first:
+      213: -1894984237282963410
+    second: deco_polkadot_small_white_01_512_133
+  - first:
+      213: -4471739941829184513
+    second: deco_polkadot_small_white_01_512_134
+  - first:
+      213: -4790512250993814970
+    second: deco_polkadot_small_white_01_512_135
+  - first:
+      213: -1003966702524470392
+    second: deco_polkadot_small_white_01_512_136
+  - first:
+      213: -4781763694398100243
+    second: deco_polkadot_small_white_01_512_137
+  - first:
+      213: -6567221339230610815
+    second: deco_polkadot_small_white_01_512_138
+  - first:
+      213: 4289957796039503321
+    second: deco_polkadot_small_white_01_512_139
+  - first:
+      213: 6455153738823769220
+    second: deco_polkadot_small_white_01_512_140
+  - first:
+      213: 7411163998634479352
+    second: deco_polkadot_small_white_01_512_141
+  - first:
+      213: -890274447398761814
+    second: deco_polkadot_small_white_01_512_142
+  - first:
+      213: -3318725040470751477
+    second: deco_polkadot_small_white_01_512_143
+  - first:
+      213: 1125400410784094413
+    second: deco_polkadot_small_white_01_512_144
+  - first:
+      213: 7009168702676279883
+    second: deco_polkadot_small_white_01_512_145
+  - first:
+      213: -1456724396107501332
+    second: deco_polkadot_small_white_01_512_146
+  - first:
+      213: -3426186619795740510
+    second: deco_polkadot_small_white_01_512_147
+  - first:
+      213: -435734158627975800
+    second: deco_polkadot_small_white_01_512_148
+  - first:
+      213: -7268271853468898180
+    second: deco_polkadot_small_white_01_512_149
+  - first:
+      213: 3616873347935057538
+    second: deco_polkadot_small_white_01_512_150
+  - first:
+      213: 4947365714786137461
+    second: deco_polkadot_small_white_01_512_151
+  - first:
+      213: -4588806514634110962
+    second: deco_polkadot_small_white_01_512_152
+  - first:
+      213: -2361203371323948701
+    second: deco_polkadot_small_white_01_512_153
+  - first:
+      213: 4267499495594729473
+    second: deco_polkadot_small_white_01_512_154
+  - first:
+      213: 1399804388995087720
+    second: deco_polkadot_small_white_01_512_155
+  - first:
+      213: -2882890173961136092
+    second: deco_polkadot_small_white_01_512_156
+  - first:
+      213: -1187636275980220722
+    second: deco_polkadot_small_white_01_512_157
+  - first:
+      213: -6348467646105835114
+    second: deco_polkadot_small_white_01_512_158
+  - first:
+      213: 6322506930277981020
+    second: deco_polkadot_small_white_01_512_159
+  - first:
+      213: -3597025635205303166
+    second: deco_polkadot_small_white_01_512_160
+  - first:
+      213: 448580096111959136
+    second: deco_polkadot_small_white_01_512_161
+  - first:
+      213: -5748498468332591295
+    second: deco_polkadot_small_white_01_512_162
+  - first:
+      213: 900155725125411643
+    second: deco_polkadot_small_white_01_512_163
+  - first:
+      213: 9197435206397735249
+    second: deco_polkadot_small_white_01_512_164
+  - first:
+      213: 6338982677995832895
+    second: deco_polkadot_small_white_01_512_165
+  - first:
+      213: 1836832114777109236
+    second: deco_polkadot_small_white_01_512_166
+  - first:
+      213: 3994800870677422575
+    second: deco_polkadot_small_white_01_512_167
+  - first:
+      213: 3419793790649386378
+    second: deco_polkadot_small_white_01_512_168
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 501
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d890e28091fa90c40800000000000000
+      internalID: 5479102943719197069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_1
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7400cbe396f6c2c10800000000000000
+      internalID: 2030120029852008519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ab6e2531fa0c5d0800000000000000
+      internalID: -3044240850572363127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67cb4f8daefbf2a80800000000000000
+      internalID: -8489355757186925450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ceef5d5059cb5e750800000000000000
+      internalID: 6333675799200530156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_5
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b818d6e68230e80800000000000000
+      internalID: -8213676840644932799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_6
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56d8867f6f15ecfa0800000000000000
+      internalID: -5778591150715138715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_7
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7831b9b2f774fd0f0800000000000000
+      internalID: -1090073973282368633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_8
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1fe5bfba4aab2b0800000000000000
+      internalID: -5567956930726530647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_9
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86f5998dad8fcb130800000000000000
+      internalID: 3584013022300561256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_10
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1835c2bea668bd310800000000000000
+      internalID: 1430885100390470529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_11
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 501
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92a84656c395256c0800000000000000
+      internalID: -4156161390175548887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_12
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 501
+        width: 43
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c72c10e854deea290800000000000000
+      internalID: -7877097815233412484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_13
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdeeb2d09b2f0f390800000000000000
+      internalID: -7786456879119733028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_14
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31d76bba7736e4b0800000000000000
+      internalID: -5411576901969391299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_15
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e8fa50bc43a0dcb0800000000000000
+      internalID: -4841190049651689247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 560b47cc126372600800000000000000
+      internalID: 443382607111303269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_17
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01021395694bb49c0800000000000000
+      internalID: -3941858490998251504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_18
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0da6abac551cc2020800000000000000
+      internalID: 2318440482406558416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_19
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5426874b8b4a89380800000000000000
+      internalID: -8964233945072246203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_20
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55289f18724d8ed0800000000000000
+      internalID: -2410197141879773860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_21
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 139c283728ff9fe00800000000000000
+      internalID: 1079174521480726833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_22
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b3307a77fb926a10800000000000000
+      internalID: 1901253479917171634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_23
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a304bde9294ef8b0800000000000000
+      internalID: -5116571682215820382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_24
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51ab204006dafaae0800000000000000
+      internalID: -1535818320014296555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_25
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 461
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 940c7099867abe6c0800000000000000
+      internalID: -4113009766986956727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 421
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7eca55f58cdb9000800000000000000
+      internalID: 43871089295281791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_27
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f89645947e8663670800000000000000
+      internalID: 8518111087794874767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_28
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbefd9314342f3770800000000000000
+      internalID: 8592626420132216509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_29
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6897cd66633841a0800000000000000
+      internalID: -6825148720258508693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_30
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d89c7131e4334ee0800000000000000
+      internalID: -1278119727440553768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_31
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c87c43ee855191490800000000000000
+      internalID: -7775159809980708980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_32
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88596a79ebf9e1da0800000000000000
+      internalID: -5972160414909819512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_33
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16ccada19271c590800000000000000
+      internalID: -7655711921543526882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_34
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34f0ee64afca639f0800000000000000
+      internalID: -489013318591312061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_35
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a45acbfeea72d0200800000000000000
+      internalID: 147817995073004874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_36
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0762613bef1f30d0800000000000000
+      internalID: -3440996495281461490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_37
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 421
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c94512e1e5e8ce0800000000000000
+      internalID: -1401078950564422547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_38
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 421
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efa486b1b29c3c720800000000000000
+      internalID: 2865354974918363902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_39
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e18b816263c700100800000000000000
+      internalID: 72194166047160350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_40
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2925b52af27e82620800000000000000
+      internalID: 2749701764283060882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_41
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff17b843a190aea20800000000000000
+      internalID: 3092294102298620415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_42
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82e7d1195de693c70800000000000000
+      internalID: 8951307597917290024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_43
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ffa2d8233709a3b0800000000000000
+      internalID: -5500857553546727435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_44
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bacefb6cf25f98550800000000000000
+      internalID: 6163727150579969195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_45
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8be4be9284ee4090800000000000000
+      internalID: -8048244234404959349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_46
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a59c655abb1de4f30800000000000000
+      internalID: 4561814076435908954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_47
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8268193f9d526c220800000000000000
+      internalID: 2505731860702791208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_48
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8522a50c6c822b890800000000000000
+      internalID: -7443842399994240424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_49
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d19bf68316532d2a0800000000000000
+      internalID: -6714245402781042403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_50
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f14ac8d31c7ab3890800000000000000
+      internalID: -7477198307915422689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_51
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 381
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a569f4ce2bee1b590800000000000000
+      internalID: -7660079038944274854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_52
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 341
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c995c2ea920521300800000000000000
+      internalID: 221327471640598940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_53
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea3828fc0e63c6610800000000000000
+      internalID: 1615726705501176750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_54
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2afcea09b379cfa0800000000000000
+      internalID: -5779961408163874259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_55
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b209e0ce80e9bc590800000000000000
+      internalID: -7652849380628721621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_56
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2bf79e6e5b9a9c0800000000000000
+      internalID: -3915398397657369923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_57
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ee98d9fc0b6f770800000000000000
+      internalID: 8644290940532026907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_58
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf66193126e9c390800000000000000
+      internalID: -7797448249449222206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_59
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8603b414a825ea450800000000000000
+      internalID: 6101905298888011880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_60
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d60af0585463c20800000000000000
+      internalID: 3185810224206343424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_61
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a99af68bc74d691e0800000000000000
+      internalID: -2191330536533808742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_62
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64fe282a5a396f2f0800000000000000
+      internalID: -939401132654792890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_63
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 341
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e054a0e83b92b35e0800000000000000
+      internalID: -1928902164239203058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_64
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 341
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27299400bfdd4f5e0800000000000000
+      internalID: -1876631074595302798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_65
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3b3a65de84c93ff0800000000000000
+      internalID: -55797402620511430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_66
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25411a5f91e447c80800000000000000
+      internalID: -8325943937699081134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_67
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e398c5e7be750a70800000000000000
+      internalID: 8792573175810003939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_68
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 887591b82cb7ec210800000000000000
+      internalID: 1355156613372663688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_69
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc000389773a6a5f0800000000000000
+      internalID: -745728954233519923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_70
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42521efc4687ba80800000000000000
+      internalID: -8451138510499196341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_71
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e771da68b9c3f5560800000000000000
+      internalID: 7304623759295321982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_72
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9305ad4ce1b80cf00800000000000000
+      internalID: 1135060070365286457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_73
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333fb3dadfab35660800000000000000
+      internalID: 7373442613631513395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_74
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf2a4a6a82b9e2ac0800000000000000
+      internalID: -3877991630222613765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_75
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf8773ed3660a4690800000000000000
+      internalID: -7617268793744066308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_76
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d5970ed0942df80800000000000000
+      internalID: -8083318057227166367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_77
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 301
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df25471eff9d2e460800000000000000
+      internalID: 7269612441551786749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_78
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 261
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff49fa785f3c23b30800000000000000
+      internalID: 4265687256384115967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_79
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd97619ef8abc8dc0800000000000000
+      internalID: -3635325671941178916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_80
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c65261468d67c2f10800000000000000
+      internalID: 2246300985915221356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_81
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f729272afa947baa0800000000000000
+      internalID: -6145362147830230401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_82
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00e7cd8458fc30b40800000000000000
+      internalID: 5405392149134736896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_83
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0989d94cb520d6250800000000000000
+      internalID: 5939406076735494288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_84
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41f5b6e87adfc0920800000000000000
+      internalID: 2958017951366340372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_85
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fba678e885af33c10800000000000000
+      internalID: 2032243115129531071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_86
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fbe2f3966377f6a0800000000000000
+      internalID: -6415532259759952911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_87
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53993faf54a8d9e00800000000000000
+      internalID: 1053149921042209077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_88
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eeabad600e9d8b970800000000000000
+      internalID: 8770999830514940654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_89
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 261
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26948141e44ba5b00800000000000000
+      internalID: 818164529758751074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_90
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 261
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 849f1b47636dcd160800000000000000
+      internalID: 7051746645929752904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_91
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcbbaf33b50ec8f40800000000000000
+      internalID: 5732203108054514635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_92
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f3e98de18906ae0800000000000000
+      internalID: -1558078212819501229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_93
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee5c36cc196043af0800000000000000
+      internalID: -417701642169498130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_94
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed7ae42933bc4130800000000000000
+      internalID: 3552411264102333926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_95
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53925555debcfa2c0800000000000000
+      internalID: -4418088489227835083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_96
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c2c1db6500904d0800000000000000
+      internalID: -3168000490338505609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_97
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59d2da6eac940ef50800000000000000
+      internalID: 6908602964188671381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_98
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4925e6046bba33240800000000000000
+      internalID: 4770345229568856724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_99
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76b91f3c14ccd3280800000000000000
+      internalID: -9061862292367238297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_100
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d6f1182376ea9b80800000000000000
+      internalID: -8387137973756234028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_101
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10299c0d55be410b0800000000000000
+      internalID: -5758719269692403199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_102
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6c116fb892624880800000000000000
+      internalID: -8628225527903085462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_103
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 221
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e01a858e1d423560800000000000000
+      internalID: 7291975540151029986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_104
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 181
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a62c82b0ce6e330800000000000000
+      internalID: 3739936073250400805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_105
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60b7398d4befad40800000000000000
+      internalID: 5597951580091953258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_106
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca8aa7cae2ad7260800000000000000
+      internalID: 7097007717061659340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_107
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e321c780373f4f490800000000000000
+      internalID: -7713272586389679554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_108
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab43799c2ab009ee0800000000000000
+      internalID: -1256491502241631046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_109
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9048163e8f32afd0800000000000000
+      internalID: -2332231776999030626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_110
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1b818ed4c617250800000000000000
+      internalID: 5940648465340608964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_111
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 757d006481fcce460800000000000000
+      internalID: 7272415201457133399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_112
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f27c96ee8fbd6e760800000000000000
+      internalID: 7486913292748310319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_113
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5628e5ca41e536040800000000000000
+      internalID: 4639655484005974629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_114
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f460bf96918856620800000000000000
+      internalID: 2766767188822656591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_115
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 181
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f10c47521bf478e60800000000000000
+      internalID: 7964422088284225567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_116
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 181
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b774bea2106c1210800000000000000
+      internalID: 1305023625387341744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_117
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1064b182fec6b860800000000000000
+      internalID: 7545445766659334174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_118
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3fb167dff10df80800000000000000
+      internalID: -8083926157661310007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_119
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c3c77c9935d7340800000000000000
+      internalID: 4863135092571913288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_120
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2064f01e17c89f250800000000000000
+      internalID: 5978964401046111746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_121
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a75345456c59b60800000000000000
+      internalID: 7752320399080520294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_122
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d1070cd03842680800000000000000
+      internalID: -8780749278379238062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_123
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1745896971c6ae8e0800000000000000
+      internalID: -1663398263793363855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_124
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6bd2900ff24df210800000000000000
+      internalID: 1368323524784216940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_125
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33d1a040deb22afc0800000000000000
+      internalID: -3485174864656327373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_126
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bb1df77a56512c40800000000000000
+      internalID: 5485760767674096565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_127
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d024c7566de20d0800000000000000
+      internalID: -3445580933527106170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_128
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41b1c6b655f47350800000000000000
+      internalID: 6013701155228594508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_129
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 141
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d00731a3925fc8410800000000000000
+      internalID: 1480827934914867213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_130
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89ceac0047e0b1880800000000000000
+      internalID: -8639295568787870568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_131
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f87dc096f3c541cb0800000000000000
+      internalID: -4894185467629742193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_132
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7738ab2b9033897b0800000000000000
+      internalID: -5217364051562429577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_133
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e20d8c150e9a3b5e0800000000000000
+      internalID: -1894984237282963410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_134
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff37857173031f1c0800000000000000
+      internalID: -4471739941829184513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_135
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6425b5b2d7ea48db0800000000000000
+      internalID: -4790512250993814970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_136
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b65b17a913112f0800000000000000
+      internalID: -1003966702524470392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_137
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: decaa8b3143c3adb0800000000000000
+      internalID: -4781763694398100243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_138
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18a5bc19cfa8cd4a0800000000000000
+      internalID: -6567221339230610815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_139
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd2a56e2edf88b30800000000000000
+      internalID: 4289957796039503321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_140
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c1025ef10559950800000000000000
+      internalID: 6455153738823769220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_141
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 101
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe85c6046eb9d660800000000000000
+      internalID: 7411163998634479352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_142
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 101
+        width: 43
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaa80326b1c15a3f0800000000000000
+      internalID: -890274447398761814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_143
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b070c87b82581f1d0800000000000000
+      internalID: -3318725040470751477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_144
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc85dd206b93e9f00800000000000000
+      internalID: 1125400410784094413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_145
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b422ec58cc1954160800000000000000
+      internalID: 7009168702676279883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_146
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce0fd5a31eca8cbe0800000000000000
+      internalID: -1456724396107501332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_147
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a8e0e80c6db370d0800000000000000
+      internalID: -3426186619795740510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_148
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88dc9726716f3f9f0800000000000000
+      internalID: -435734158627975800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_149
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7c240b1249e12b90800000000000000
+      internalID: -7268271853468898180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_150
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2863f3d9527b13230800000000000000
+      internalID: 3616873347935057538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_151
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57536c3c7e298a440800000000000000
+      internalID: 4947365714786137461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_152
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e084c3899c84150c0800000000000000
+      internalID: -4588806514634110962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_153
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36108c14b025b3fd0800000000000000
+      internalID: -2361203371323948701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_154
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100251a5e24393b30800000000000000
+      internalID: 4267499495594729473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_155
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 61
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86db511ecaa1d6310800000000000000
+      internalID: 1399804388995087720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_156
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 27
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428159639aaedf7d0800000000000000
+      internalID: -2882890173961136092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_157
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6c4df691ba48fe0800000000000000
+      internalID: -1187636275980220722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_158
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 0
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6992dcdbf46b5e7a0800000000000000
+      internalID: -6348467646105835114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_159
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5b1a251e8e0eb750800000000000000
+      internalID: 6322506930277981020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_160
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2843d9d1e3cc41ec0800000000000000
+      internalID: -3597025635205303166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_161
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06c5012883da93600800000000000000
+      internalID: 448580096111959136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_162
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 0
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 147a823991b3930b0800000000000000
+      internalID: -5748498468332591295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_163
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3362aedcdefd7c00800000000000000
+      internalID: 900155725125411643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_164
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 0
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1513202179ad3af70800000000000000
+      internalID: 9197435206397735249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_165
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f36cb47092798f750800000000000000
+      internalID: 6338982677995832895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_166
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 0
+        width: 54
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f2b151931dbd7910800000000000000
+      internalID: 1836832114777109236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_167
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 21
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe1262df932607730800000000000000
+      internalID: 3994800870677422575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deco_polkadot_small_white_01_512_168
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 0
+        width: 59
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a854eb0755c857f20800000000000000
+      internalID: 3419793790649386378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      deco_polkadot_small_white_01_512_0: 5479102943719197069
+      deco_polkadot_small_white_01_512_1: 2030120029852008519
+      deco_polkadot_small_white_01_512_10: 1430885100390470529
+      deco_polkadot_small_white_01_512_100: -8387137973756234028
+      deco_polkadot_small_white_01_512_101: -5758719269692403199
+      deco_polkadot_small_white_01_512_102: -8628225527903085462
+      deco_polkadot_small_white_01_512_103: 7291975540151029986
+      deco_polkadot_small_white_01_512_104: 3739936073250400805
+      deco_polkadot_small_white_01_512_105: 5597951580091953258
+      deco_polkadot_small_white_01_512_106: 7097007717061659340
+      deco_polkadot_small_white_01_512_107: -7713272586389679554
+      deco_polkadot_small_white_01_512_108: -1256491502241631046
+      deco_polkadot_small_white_01_512_109: -2332231776999030626
+      deco_polkadot_small_white_01_512_11: -4156161390175548887
+      deco_polkadot_small_white_01_512_110: 5940648465340608964
+      deco_polkadot_small_white_01_512_111: 7272415201457133399
+      deco_polkadot_small_white_01_512_112: 7486913292748310319
+      deco_polkadot_small_white_01_512_113: 4639655484005974629
+      deco_polkadot_small_white_01_512_114: 2766767188822656591
+      deco_polkadot_small_white_01_512_115: 7964422088284225567
+      deco_polkadot_small_white_01_512_116: 1305023625387341744
+      deco_polkadot_small_white_01_512_117: 7545445766659334174
+      deco_polkadot_small_white_01_512_118: -8083926157661310007
+      deco_polkadot_small_white_01_512_119: 4863135092571913288
+      deco_polkadot_small_white_01_512_12: -7877097815233412484
+      deco_polkadot_small_white_01_512_120: 5978964401046111746
+      deco_polkadot_small_white_01_512_121: 7752320399080520294
+      deco_polkadot_small_white_01_512_122: -8780749278379238062
+      deco_polkadot_small_white_01_512_123: -1663398263793363855
+      deco_polkadot_small_white_01_512_124: 1368323524784216940
+      deco_polkadot_small_white_01_512_125: -3485174864656327373
+      deco_polkadot_small_white_01_512_126: 5485760767674096565
+      deco_polkadot_small_white_01_512_127: -3445580933527106170
+      deco_polkadot_small_white_01_512_128: 6013701155228594508
+      deco_polkadot_small_white_01_512_129: 1480827934914867213
+      deco_polkadot_small_white_01_512_13: -7786456879119733028
+      deco_polkadot_small_white_01_512_130: -8639295568787870568
+      deco_polkadot_small_white_01_512_131: -4894185467629742193
+      deco_polkadot_small_white_01_512_132: -5217364051562429577
+      deco_polkadot_small_white_01_512_133: -1894984237282963410
+      deco_polkadot_small_white_01_512_134: -4471739941829184513
+      deco_polkadot_small_white_01_512_135: -4790512250993814970
+      deco_polkadot_small_white_01_512_136: -1003966702524470392
+      deco_polkadot_small_white_01_512_137: -4781763694398100243
+      deco_polkadot_small_white_01_512_138: -6567221339230610815
+      deco_polkadot_small_white_01_512_139: 4289957796039503321
+      deco_polkadot_small_white_01_512_14: -5411576901969391299
+      deco_polkadot_small_white_01_512_140: 6455153738823769220
+      deco_polkadot_small_white_01_512_141: 7411163998634479352
+      deco_polkadot_small_white_01_512_142: -890274447398761814
+      deco_polkadot_small_white_01_512_143: -3318725040470751477
+      deco_polkadot_small_white_01_512_144: 1125400410784094413
+      deco_polkadot_small_white_01_512_145: 7009168702676279883
+      deco_polkadot_small_white_01_512_146: -1456724396107501332
+      deco_polkadot_small_white_01_512_147: -3426186619795740510
+      deco_polkadot_small_white_01_512_148: -435734158627975800
+      deco_polkadot_small_white_01_512_149: -7268271853468898180
+      deco_polkadot_small_white_01_512_15: -4841190049651689247
+      deco_polkadot_small_white_01_512_150: 3616873347935057538
+      deco_polkadot_small_white_01_512_151: 4947365714786137461
+      deco_polkadot_small_white_01_512_152: -4588806514634110962
+      deco_polkadot_small_white_01_512_153: -2361203371323948701
+      deco_polkadot_small_white_01_512_154: 4267499495594729473
+      deco_polkadot_small_white_01_512_155: 1399804388995087720
+      deco_polkadot_small_white_01_512_156: -2882890173961136092
+      deco_polkadot_small_white_01_512_157: -1187636275980220722
+      deco_polkadot_small_white_01_512_158: -6348467646105835114
+      deco_polkadot_small_white_01_512_159: 6322506930277981020
+      deco_polkadot_small_white_01_512_16: 443382607111303269
+      deco_polkadot_small_white_01_512_160: -3597025635205303166
+      deco_polkadot_small_white_01_512_161: 448580096111959136
+      deco_polkadot_small_white_01_512_162: -5748498468332591295
+      deco_polkadot_small_white_01_512_163: 900155725125411643
+      deco_polkadot_small_white_01_512_164: 9197435206397735249
+      deco_polkadot_small_white_01_512_165: 6338982677995832895
+      deco_polkadot_small_white_01_512_166: 1836832114777109236
+      deco_polkadot_small_white_01_512_167: 3994800870677422575
+      deco_polkadot_small_white_01_512_168: 3419793790649386378
+      deco_polkadot_small_white_01_512_17: -3941858490998251504
+      deco_polkadot_small_white_01_512_18: 2318440482406558416
+      deco_polkadot_small_white_01_512_19: -8964233945072246203
+      deco_polkadot_small_white_01_512_2: -3044240850572363127
+      deco_polkadot_small_white_01_512_20: -2410197141879773860
+      deco_polkadot_small_white_01_512_21: 1079174521480726833
+      deco_polkadot_small_white_01_512_22: 1901253479917171634
+      deco_polkadot_small_white_01_512_23: -5116571682215820382
+      deco_polkadot_small_white_01_512_24: -1535818320014296555
+      deco_polkadot_small_white_01_512_25: -4113009766986956727
+      deco_polkadot_small_white_01_512_26: 43871089295281791
+      deco_polkadot_small_white_01_512_27: 8518111087794874767
+      deco_polkadot_small_white_01_512_28: 8592626420132216509
+      deco_polkadot_small_white_01_512_29: -6825148720258508693
+      deco_polkadot_small_white_01_512_3: -8489355757186925450
+      deco_polkadot_small_white_01_512_30: -1278119727440553768
+      deco_polkadot_small_white_01_512_31: -7775159809980708980
+      deco_polkadot_small_white_01_512_32: -5972160414909819512
+      deco_polkadot_small_white_01_512_33: -7655711921543526882
+      deco_polkadot_small_white_01_512_34: -489013318591312061
+      deco_polkadot_small_white_01_512_35: 147817995073004874
+      deco_polkadot_small_white_01_512_36: -3440996495281461490
+      deco_polkadot_small_white_01_512_37: -1401078950564422547
+      deco_polkadot_small_white_01_512_38: 2865354974918363902
+      deco_polkadot_small_white_01_512_39: 72194166047160350
+      deco_polkadot_small_white_01_512_4: 6333675799200530156
+      deco_polkadot_small_white_01_512_40: 2749701764283060882
+      deco_polkadot_small_white_01_512_41: 3092294102298620415
+      deco_polkadot_small_white_01_512_42: 8951307597917290024
+      deco_polkadot_small_white_01_512_43: -5500857553546727435
+      deco_polkadot_small_white_01_512_44: 6163727150579969195
+      deco_polkadot_small_white_01_512_45: -8048244234404959349
+      deco_polkadot_small_white_01_512_46: 4561814076435908954
+      deco_polkadot_small_white_01_512_47: 2505731860702791208
+      deco_polkadot_small_white_01_512_48: -7443842399994240424
+      deco_polkadot_small_white_01_512_49: -6714245402781042403
+      deco_polkadot_small_white_01_512_5: -8213676840644932799
+      deco_polkadot_small_white_01_512_50: -7477198307915422689
+      deco_polkadot_small_white_01_512_51: -7660079038944274854
+      deco_polkadot_small_white_01_512_52: 221327471640598940
+      deco_polkadot_small_white_01_512_53: 1615726705501176750
+      deco_polkadot_small_white_01_512_54: -5779961408163874259
+      deco_polkadot_small_white_01_512_55: -7652849380628721621
+      deco_polkadot_small_white_01_512_56: -3915398397657369923
+      deco_polkadot_small_white_01_512_57: 8644290940532026907
+      deco_polkadot_small_white_01_512_58: -7797448249449222206
+      deco_polkadot_small_white_01_512_59: 6101905298888011880
+      deco_polkadot_small_white_01_512_6: -5778591150715138715
+      deco_polkadot_small_white_01_512_60: 3185810224206343424
+      deco_polkadot_small_white_01_512_61: -2191330536533808742
+      deco_polkadot_small_white_01_512_62: -939401132654792890
+      deco_polkadot_small_white_01_512_63: -1928902164239203058
+      deco_polkadot_small_white_01_512_64: -1876631074595302798
+      deco_polkadot_small_white_01_512_65: -55797402620511430
+      deco_polkadot_small_white_01_512_66: -8325943937699081134
+      deco_polkadot_small_white_01_512_67: 8792573175810003939
+      deco_polkadot_small_white_01_512_68: 1355156613372663688
+      deco_polkadot_small_white_01_512_69: -745728954233519923
+      deco_polkadot_small_white_01_512_7: -1090073973282368633
+      deco_polkadot_small_white_01_512_70: -8451138510499196341
+      deco_polkadot_small_white_01_512_71: 7304623759295321982
+      deco_polkadot_small_white_01_512_72: 1135060070365286457
+      deco_polkadot_small_white_01_512_73: 7373442613631513395
+      deco_polkadot_small_white_01_512_74: -3877991630222613765
+      deco_polkadot_small_white_01_512_75: -7617268793744066308
+      deco_polkadot_small_white_01_512_76: -8083318057227166367
+      deco_polkadot_small_white_01_512_77: 7269612441551786749
+      deco_polkadot_small_white_01_512_78: 4265687256384115967
+      deco_polkadot_small_white_01_512_79: -3635325671941178916
+      deco_polkadot_small_white_01_512_8: -5567956930726530647
+      deco_polkadot_small_white_01_512_80: 2246300985915221356
+      deco_polkadot_small_white_01_512_81: -6145362147830230401
+      deco_polkadot_small_white_01_512_82: 5405392149134736896
+      deco_polkadot_small_white_01_512_83: 5939406076735494288
+      deco_polkadot_small_white_01_512_84: 2958017951366340372
+      deco_polkadot_small_white_01_512_85: 2032243115129531071
+      deco_polkadot_small_white_01_512_86: -6415532259759952911
+      deco_polkadot_small_white_01_512_87: 1053149921042209077
+      deco_polkadot_small_white_01_512_88: 8770999830514940654
+      deco_polkadot_small_white_01_512_89: 818164529758751074
+      deco_polkadot_small_white_01_512_9: 3584013022300561256
+      deco_polkadot_small_white_01_512_90: 7051746645929752904
+      deco_polkadot_small_white_01_512_91: 5732203108054514635
+      deco_polkadot_small_white_01_512_92: -1558078212819501229
+      deco_polkadot_small_white_01_512_93: -417701642169498130
+      deco_polkadot_small_white_01_512_94: 3552411264102333926
+      deco_polkadot_small_white_01_512_95: -4418088489227835083
+      deco_polkadot_small_white_01_512_96: -3168000490338505609
+      deco_polkadot_small_white_01_512_97: 6908602964188671381
+      deco_polkadot_small_white_01_512_98: 4770345229568856724
+      deco_polkadot_small_white_01_512_99: -9061862292367238297
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
