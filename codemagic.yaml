@@ -8,19 +8,23 @@ workflows:
         UNITY_VERSION: "6000.4.0f1"
       xcode: latest
     scripts:
-      - name: Set Unity path
+      - name: Install Unity Hub
         script: |
-          UNITY_BIN="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
-          if [ ! -f "$UNITY_BIN" ]; then
-            echo "Unity not found at $UNITY_BIN"
-            echo "Available versions:"
-            ls /Applications/Unity/Hub/Editor/ || echo "No Unity versions found"
-            exit 1
-          fi
-          echo "UNITY_BIN=$UNITY_BIN" >> $CM_ENV
+          brew install --cask unity-hub || true
+          sleep 5
+
+      - name: Install Unity with iOS module
+        script: |
+          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
+            --version $UNITY_VERSION \
+            --module ios
+          sleep 5
+          echo "Installed versions:"
+          ls /Applications/Unity/Hub/Editor/ || true
 
       - name: Activate Unity License
         script: |
+          UNITY_BIN="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
           "$UNITY_BIN" \
             -batchmode -quit -nographics \
             -logFile - \
@@ -29,6 +33,7 @@ workflows:
 
       - name: Build Unity iOS Project
         script: |
+          UNITY_BIN="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
           "$UNITY_BIN" \
             -batchmode -quit -nographics \
             -logFile - \
