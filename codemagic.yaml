@@ -9,23 +9,29 @@ workflows:
         UNITY_CHANGESET: "8cf496087c8f"
       xcode: latest
     scripts:
-      - name: Install Unity Hub
+      - name: Download and Install Unity
         script: |
-          brew install --cask unity-hub || true
-          sleep 5
+          # Unity本体をダウンロード
+          curl -L -o Unity.pkg \
+            "https://download.unity3d.com/download_unity/$UNITY_CHANGESET/MacEditorInstaller/Unity.pkg"
+          sudo installer -pkg Unity.pkg -target /
+          rm Unity.pkg
 
-      - name: Install Unity with iOS module
+      - name: Install iOS Support Module
         script: |
-          /Applications/Unity\ Hub.app/Contents/MacOS/Unity\ Hub -- --headless install \
-            --version $UNITY_VERSION \
-            --changeset $UNITY_CHANGESET \
-            --module ios
-          echo "Installed versions:"
-          ls /Applications/Unity/Hub/Editor/
+          curl -L -o iOSSupport.pkg \
+            "https://download.unity3d.com/download_unity/$UNITY_CHANGESET/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-$UNITY_VERSION.pkg"
+          sudo installer -pkg iOSSupport.pkg -target /
+          rm iOSSupport.pkg
+
+      - name: Find Unity binary
+        script: |
+          UNITY_BIN=$(find /Applications/Unity* -name "Unity" -type f -path "*/MacOS/Unity" 2>/dev/null | head -1)
+          echo "Found Unity at: $UNITY_BIN"
+          echo "UNITY_BIN=$UNITY_BIN" >> $CM_ENV
 
       - name: Activate Unity License
         script: |
-          UNITY_BIN="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
           "$UNITY_BIN" \
             -batchmode -quit -nographics \
             -logFile - \
@@ -34,7 +40,6 @@ workflows:
 
       - name: Build Unity iOS Project
         script: |
-          UNITY_BIN="/Applications/Unity/Hub/Editor/$UNITY_VERSION/Unity.app/Contents/MacOS/Unity"
           "$UNITY_BIN" \
             -batchmode -quit -nographics \
             -logFile - \
