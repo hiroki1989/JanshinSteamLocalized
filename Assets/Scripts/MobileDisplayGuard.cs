@@ -3,46 +3,47 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// iOS / Android 向け画面表示の一括ガード。
-/// ─────────────────────────────────────────────
+/// iOS / Android 向け画面表示の一括ガード（v3）
+/// ──────────────────────────────────────────────────
 /// ★ 使い方：このファイルを Assets/ 以下に置くだけ。
-///   [RuntimeInitializeOnLoadMethod] で自動起動するため、
 ///   シーンにアタッチする必要はありません。
-///
-/// やっていること：
-///  1. 全シーンの CanvasScaler を ScaleWithScreenSize (1920×1080) に統一
-///  2. WindowAspectResizer / FixedAspect をモバイルで無効化
-///  3. Screen.SetResolution の誤使用を防ぐラッパー提供
-///  4. 画面向きを横固定
-/// ─────────────────────────────────────────────
-/// PC ビルドには一切影響しません（#if ガードで分岐済み）。
+/// ──────────────────────────────────────────────────
 /// </summary>
 public sealed class MobileDisplayGuard : MonoBehaviour
 {
-    // ===== 設定（必要に応じて変更） =====
     private const float REF_WIDTH  = 1920f;
     private const float REF_HEIGHT = 1080f;
-    private const float MATCH      = 0.5f;   // 0=幅基準, 1=高さ基準, 0.5=中間
+    private const string PF_FULLSCREEN = "PF_Option_Fullscreen";
 
-    // ===== 自動起動 =====
+    // デバッグ表示（リリース前に false に変更）
+    private const bool SHOW_DEBUG = true;
+    private const float DEBUG_HIDE_AFTER = 8f;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bootstrap()
     {
 #if UNITY_IOS || UNITY_ANDROID
-        // 既に存在していたら二重生成しない
-        if (FindObjectOfType<MobileDisplayGuard>() != null) return;
+        try
+        {
+            PlayerPrefs.SetInt(PF_FULLSCREEN, 1);
+            PlayerPrefs.Save();
+        }
+        catch { }
 
+        if (FindObjectOfType<MobileDisplayGuard>() != null) return;
         var go = new GameObject("[MobileDisplayGuard]");
         go.AddComponent<MobileDisplayGuard>();
         DontDestroyOnLoad(go);
 #endif
     }
 
-    // ===== 初期化 =====
+#if UNITY_IOS || UNITY_ANDROID
+
+    private float _debugTimer;
+    private GUIStyle _debugStyle;
+
     private void Awake()
     {
-#if UNITY_IOS || UNITY_ANDROID
-        // (A) 画面向きを横固定
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.autorotateToPortrait           = false;
         Screen.autorotateToPortraitUpsideDown = false;
@@ -50,25 +51,27 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         Screen.autorotateToLandscapeRight     = true;
         Screen.orientation = ScreenOrientation.AutoRotation;
 
-        // (B) 最初のシーンを修正
         FixCurrentScene();
-
-        // (C) 以後のシーン遷移にもフック
         SceneManager.sceneLoaded += OnSceneLoaded;
-#endif
     }
 
     private void OnDestroy()
     {
-#if UNITY_IOS || UNITY_ANDROID
         SceneManager.sceneLoaded -= OnSceneLoaded;
-#endif
     }
 
-    // ===== シーン読み込みごとに自動修正 =====
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        try { PlayerPrefs.SetInt(PF_FULLSCREEN, 1); } catch { }
         FixCurrentScene();
+    }
+
+    private void LateUpdate()
+    {
+        if (Screen.fullScreenMode != FullScreenMode.FullScreenWindow)
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+
+        if (SHOW_DEBUG) _debugTimer += Time.unscaledDeltaTime;
     }
 
     private void FixCurrentScene()
@@ -77,71 +80,104 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         DisablePCOnlyScripts();
     }
 
-    // ───── ① 全 CanvasScaler を統一 ─────
+    // ───── ① CanvasScaler → Expand モード ─────
     private void FixAllCanvasScalers()
     {
-        // includeInactive = true で非アクティブの Canvas も拾う
         foreach (var scaler in FindObjectsOfType<CanvasScaler>(true))
-        {
-            ApplyStandardScaler(scaler);
-        }
+            ApplyMobileScaler(scaler);
     }
 
-    /// <summary>
-    /// CanvasScaler に標準設定を適用する。
-    /// 動的に Canvas を生成するコードからも呼べるよう public static にしてある。
-    /// 使い方: MobileDisplayGuard.ApplyStandardScaler(myScaler);
-    /// </summary>
-    public static void ApplyStandardScaler(CanvasScaler scaler)
+    public static void ApplyMobileScaler(CanvasScaler scaler)
     {
         if (scaler == null) return;
-
-#if UNITY_IOS || UNITY_ANDROID
         scaler.uiScaleMode        = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(REF_WIDTH, REF_HEIGHT);
-        scaler.screenMatchMode     = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-        scaler.matchWidthOrHeight  = MATCH;
-#endif
+        scaler.screenMatchMode     = CanvasScaler.ScreenMatchMode.Expand;
+        scaler.matchWidthOrHeight  = 0f;
     }
 
-    // ───── ② PC 専用スクリプトを無効化 ─────
+    // ───── ② PC 専用スクリプトを無効化（型名で検索） ─────
+    //  WindowAspectResizer / FixedAspect が削除済みでもエラーにならない
     private void DisablePCOnlyScripts()
     {
-        // WindowAspectResizer（毎フレーム Screen.SetResolution を呼んでしまう）
-        foreach (var w in FindObjectsOfType<WindowAspectResizer>(true))
+        DisableByTypeName("WindowAspectResizer");
+        DisableByTypeName("FixedAspect");
+    }
+
+    private static void DisableByTypeName(string typeName)
+    {
+        try
         {
-            w.enabled = false;
+            var type = System.Type.GetType(typeName);
+            if (type == null)
+            {
+                // アセンブリ全体から探す
+                foreach (var asm in System.AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    type = asm.GetType(typeName);
+                    if (type != null) break;
+                }
+            }
+            if (type == null) return; // クラスが存在しない → 何もしない
+
+            var objects = FindObjectsOfType(type, true);
+            foreach (var obj in objects)
+            {
+                var mb = obj as MonoBehaviour;
+                if (mb != null) mb.enabled = false;
+            }
+        }
+        catch { }
+    }
+
+    // ───── デバッグ表示 ─────
+    private void OnGUI()
+    {
+        if (!SHOW_DEBUG) return;
+        if (_debugTimer > DEBUG_HIDE_AFTER) return;
+
+        if (_debugStyle == null)
+        {
+            _debugStyle = new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 28,
+                fontStyle = FontStyle.Bold,
+            };
+            _debugStyle.normal.textColor = Color.yellow;
         }
 
-        // FixedAspect（カメラ rect を毎フレーム触る）
-        foreach (var f in FindObjectsOfType<FixedAspect>(true))
+        float sw = Screen.width;
+        float sh = Screen.height;
+        float aspect = sw / Mathf.Max(1f, sh);
+
+        string scalerInfo = "No CanvasScaler";
+        var cs = FindObjectOfType<CanvasScaler>();
+        if (cs != null)
         {
-            f.enabled = false;
+            scalerInfo = string.Format("Scaler: {0} / {1} / ref={2}x{3}",
+                cs.uiScaleMode, cs.screenMatchMode,
+                cs.referenceResolution.x, cs.referenceResolution.y);
         }
+
+        string text = string.Format(
+            "Screen: {0}x{1} ({2:F2}:1)\n" +
+            "Safe: {3:F0}x{4:F0}\n" +
+            "{5}\n" +
+            "FullScreen: {6}\n" +
+            "Scene: {7}",
+            sw, sh, aspect,
+            Screen.safeArea.width, Screen.safeArea.height,
+            scalerInfo,
+            Screen.fullScreenMode,
+            SceneManager.GetActiveScene().name);
+
+        GUI.color = new Color(0, 0, 0, 0.7f);
+        GUI.DrawTexture(new Rect(8, 8, 720, 200), Texture2D.whiteTexture);
+        GUI.color = Color.white;
+        GUI.Label(new Rect(16, 12, 700, 192), text, _debugStyle);
     }
 
-    // ───── ③ Screen.SetResolution ラッパー ─────
-    /// <summary>
-    /// モバイルでは何もしない安全な SetResolution。
-    /// 既存コードの Screen.SetResolution(...) を
-    /// MobileDisplayGuard.SafeSetResolution(...) に置換するだけで対応完了。
-    /// </summary>
-    public static void SafeSetResolution(int w, int h, FullScreenMode mode)
-    {
-#if UNITY_IOS || UNITY_ANDROID
-        // モバイルでは解像度変更しない（OSに任せる）
-        return;
 #else
-        Screen.SetResolution(w, h, mode);
+    public static void ApplyMobileScaler(CanvasScaler scaler) { }
 #endif
-    }
-
-    public static void SafeSetResolution(int w, int h, bool fullscreen)
-    {
-#if UNITY_IOS || UNITY_ANDROID
-        return;
-#else
-        Screen.SetResolution(w, h, fullscreen);
-#endif
-    }
 }

@@ -446,23 +446,9 @@ private void ApplyFullscreen(bool isFullscreen, bool applyResolutionWhenWindowed
             {
                 Vector2Int size = new Vector2Int(Screen.width, Screen.height);
 
-                // ★Windowモードへ切り替えた瞬間だけ、現在サイズが不正なら安全なサイズを使う
                 if (size.x <= 0 || size.y <= 0)
                 {
-                    try
-                    {
-                        var fixedAspect = FindObjectOfType<FixedAspect>(true);
-                        if (fixedAspect != null)
-                        {
-                            size = fixedAspect.CalcBestWindowedSizeFromDesktop();
-                        }
-                    }
-                    catch { }
-
-                    if (size.x <= 0 || size.y <= 0)
-                    {
-                        size = new Vector2Int(1280, 720);
-                    }
+                    size = new Vector2Int(1280, 720);
                 }
 
                 Screen.SetResolution(size.x, size.y, FullScreenMode.Windowed);
