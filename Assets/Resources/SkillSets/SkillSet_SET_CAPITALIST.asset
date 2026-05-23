@@ -69,7 +69,7 @@ MonoBehaviour:
   recoverMpPerBattle: 0
   activeSkills:
   - activeSkillName: Capitalist
-    mpCost: 3000
+    mpCost: 3900
     icon: {fileID: 0}
     displayName: "\u8CC7\u7523\u5BB6"
     displayNameEnglish: Capitalist

@@ -64,7 +64,7 @@ MonoBehaviour:
   recoverMpPerBattle: 0
   activeSkills:
   - activeSkillName: RandomHonor
-    mpCost: 3200
+    mpCost: 4000
     icon: {fileID: 0}
     displayName: "\u66F8\u5BB6"
     displayNameEnglish: Calligrapher

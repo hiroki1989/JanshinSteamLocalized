@@ -210,7 +210,19 @@ public void StartNewRunFromMenu()
         LoadSceneSafe(battleScene);
     }
 
-    public void GoFromBattleWinToUpgrade() => LoadSceneSafe(upgradeScene);
+    // ★変更: 勝利→強化画面遷移時にインタースティシャル広告を挟む
+    public void GoFromBattleWinToUpgrade()
+    {
+        var adMgr = InterstitialAdManager.Instance;
+        if (adMgr != null)
+        {
+            adMgr.ShowAdIfReady(() => LoadSceneSafe(upgradeScene));
+        }
+        else
+        {
+            LoadSceneSafe(upgradeScene);
+        }
+    }
     public void GoFromBattleLoseToReward()
     {
         // 「敗北」会話：会話後は 報酬(StageClear) へ
@@ -311,11 +323,11 @@ public void GoToEnemyDialogueForSecretHades()
     string enemyTalk = PlayerPrefs.GetString("EnemyDialogueScene", "");
     if (!string.IsNullOrEmpty(enemyTalk))
     {
-        SceneManager.LoadScene(enemyTalk);
+        SafeSceneLoader.Load(enemyTalk);
         return;
     }
 
-    SceneManager.LoadScene("RunScene");
+    SafeSceneLoader.Load("RunScene");
 }
 
 private void AdvanceToNextEnemy()
@@ -415,7 +427,7 @@ private void LoadSceneSafe(string sceneName)
     {
     }
 
-    SceneManager.LoadScene(sceneName);
+    SafeSceneLoader.Load(sceneName);
 }
     private void TrySyncEnemyToGameManager()
     {

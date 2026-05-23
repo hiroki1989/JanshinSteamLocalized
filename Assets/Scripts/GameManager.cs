@@ -1047,6 +1047,9 @@ private IEnumerator __ScoringStepReveal_Co(bool attackerIsPlayer, Button advance
     // 最後まで出たらOKボタンを有効化
     __SetScoringOkButtonsInteractable(true);
 
+    // ★ミッション達成パネル表示（達成していればOKボタンを一旦無効化して達成パネルを出す）
+    try { TryShowMissionCompletePanel(); } catch { }
+
     // ★追加：段階表示が終わったら透明進行ボタンを必ず閉じる
     __SetScoringStepAdvanceButtonVisible(advanceButton, false);
 
@@ -17814,6 +17817,9 @@ private void ClearRunEphemeral()
         runGold = 0;
         GameManager.RunCurrency.Set(0);
         PlayerPrefs.DeleteKey(KeyRunGold);
+
+        // ★ミッション状態リセット
+        try { MissionSystem.ResetForNewRun(); MissionSystem.ClearRunSeed(); } catch { }
 
         // お札（ラン中のみ有効）
         PlayerPrefs.DeleteKey(KeyRunOfuda);

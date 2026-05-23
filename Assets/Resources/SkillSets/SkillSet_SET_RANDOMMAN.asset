@@ -59,7 +59,7 @@ MonoBehaviour:
   recoverMpPerBattle: 1000
   activeSkills:
   - activeSkillName: RandomMan
-    mpCost: 2800
+    mpCost: 3800
     icon: {fileID: 0}
     displayName: "\u67D3\u8272\u5E2B"
     displayNameEnglish: Dyer

@@ -1214,6 +1214,10 @@ private void ResetEnemyProgressionSafe()
         PlayerPrefs.DeleteKey("Run_SuspendJSON");
         PlayerPrefs.SetInt("PF_ResumeDirect", 0);
         PlayerPrefs.DeleteKey("PF_ResumeScene");
+
+        // ★ミッション状態リセット
+        try { MissionSystem.ResetForNewRun(); MissionSystem.ClearRunSeed(); } catch { }
+
         PlayerPrefs.Save();
 
     }

@@ -17,6 +17,9 @@ private IEnumerator __PlayerWin_ShowCutinAndScoring_Flow_Co(
         // ★実績：プレイヤー和了（役満/スコア達成）をここで拾う
         try { AchievementSystem.NotifyPlayerWin(yaku, totalPoints); } catch { }
 
+        // ★ミッション達成判定
+        try { CheckMissionOnPlayerWin(yaku); } catch { }
+
         // ★追加：直前局の勝者フラグを「敵ではない」にしておく（次局開始時の手牌リセット方式に使用）
         _addonLastHandWinnerWasEnemy = false;
 

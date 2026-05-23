@@ -9,6 +9,9 @@ using TMPro;
 // Game Over overlay + transition to rewardSceneName. It doesn't touch existing logic.
 //
 // Drop this alongside your existing GameManager partial files.
+//
+// ★変更点: __OnClick_GameOverOk() にインタースティシャル広告を挿入。
+//   広告表示後（またはスキップ後）に既存の遷移処理を実行する。
 
 public partial class GameManager : MonoBehaviour
 {
@@ -172,8 +175,30 @@ if (!scoringActive)
         _goOverlay.SetAsLastSibling();
     }
 
+    // ★★★ 変更: 広告を挟んでから遷移処理へ ★★★
     private void __OnClick_GameOverOk()
-    {// 次回開始時に全回復させる
+    {
+        // OKボタン連打防止
+        if (_goOk != null) _goOk.interactable = false;
+
+        // インタースティシャル広告を試みる（頻度制御は InterstitialAdManager 側で行う）
+        var adMgr = InterstitialAdManager.Instance;
+        if (adMgr != null)
+        {
+            adMgr.ShowAdIfReady(() => __OnClick_GameOverOk_Body());
+        }
+        else
+        {
+            __OnClick_GameOverOk_Body();
+        }
+    }
+
+    /// <summary>
+    /// 広告表示後（またはスキップ後）に実行される、既存の敗北遷移処理。
+    /// </summary>
+    private void __OnClick_GameOverOk_Body()
+    {
+// 次回開始時に全回復させる
 try { PlayerPrefs.SetInt("PF_PendingFullHeal", 1); PlayerPrefs.Save(); } catch {}
 // 古い持ち越しHPは無効化
 try { PlayerPrefs.DeleteKey("Run_PlayerHP"); PlayerPrefs.Save(); } catch {}
@@ -199,7 +224,7 @@ string scene = null;
 try { scene = string.IsNullOrEmpty(rewardSceneName) ? null : rewardSceneName; } catch { scene = null; }
 if (string.IsNullOrEmpty(scene)) scene = "RewardScene";
 
-// ★追加：敗北時の報酬をここで“付与”してから遷移する
+// ★追加：敗北時の報酬をここで"付与"してから遷移する
 try
 {
     int defeated = 0;

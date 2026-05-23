@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e862de01f32c714c992b805f925e5e8, type: 3}
+  m_Name: MissionPoolSO
+  m_EditorClassIdentifier: Assembly-CSharp::MissionPoolSO
+  pool:
+  - yakuKey: MENZEN_TSUMO
+    displayNameOverride: 
+    difficulty: 0
+    excluded: 0
+  - yakuKey: TANYAO
+    displayNameOverride: 
+    difficulty: 0
+    excluded: 0
+  - yakuKey: PINFU
+    displayNameOverride: 
+    difficulty: 0
+    excluded: 0
+  - yakuKey: YAKUHAI
+    displayNameOverride: 
+    difficulty: 0
+    excluded: 0
+  - yakuKey: IIPEIKOU
+    displayNameOverride: 
+    difficulty: 0
+    excluded: 0
+  - yakuKey: CHIITOITSU
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: SANSHOKU_DOUJUN
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: ITTSU
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: CHANTA
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: TOITOI
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: SANANKOU
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: SANSHOKU_DOUKOU
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: SHOUSANGEN
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: HONROUTOU
+    displayNameOverride: 
+    difficulty: 1
+    excluded: 0
+  - yakuKey: HONITSU
+    displayNameOverride: 
+    difficulty: 2
+    excluded: 0
+  - yakuKey: JUNCHAN
+    displayNameOverride: 
+    difficulty: 2
+    excluded: 0
+  - yakuKey: RYANPEIKOU
+    displayNameOverride: 
+    difficulty: 2
+    excluded: 0
+  - yakuKey: SANKANTSU
+    displayNameOverride: 
+    difficulty: 2
+    excluded: 0
+  - yakuKey: CHINITSU
+    displayNameOverride: 
+    difficulty: 2
+    excluded: 0
+  - yakuKey: KOKUSHI
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: SUUANKOU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: DAISANGEN
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: SHOUSUUSHI
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: DAISUUSHI
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: TSUUIISOU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: CHINROUTOU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: RYUUIISOU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: CHUUREN_POUTOU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0
+  - yakuKey: SUUKANTSU
+    displayNameOverride: 
+    difficulty: 3
+    excluded: 0

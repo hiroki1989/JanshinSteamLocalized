@@ -1,28 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 /// <summary>
-/// iOS / Android 向けレターボックス表示ガード（v4）
+/// iOS / Android 向けレターボックス表示ガード（v5）
 /// ──────────────────────────────────────────────────
 /// ★ 使い方：このファイルを Assets/ 以下に置くだけ。
 ///
-/// 動作：
-///  1. Editor で 1920×1080 (16:9) で作った配置を一切変えず、
-///     iPhone の画面に縦幅合わせで縮小表示する
-///  2. 横が余った分は黒帯（レターボックス）で埋める
-///  3. 全シーンで自動適用（DontDestroyOnLoad）
-///
-/// 仕組み：
-///  - CanvasScaler: ScaleWithScreenSize / 1920×1080 / Match=1（高さ基準）
-///    → Canvas論理高さが常に1080になる
-///    → iPhone 19.5:9 では Canvas論理幅が ≈2340 になる（1920より広い）
-///  - 各Canvas の既存UIを 1920×1080 の中央固定フレームに自動収容
-///    → 子要素の anchor/position は一切変わらない
-///  - フレームの外側に黒パネルを配置して余白を隠す
-///
-/// PC ビルドには一切影響しません。
+/// v4 → v5 変更点：
+///  - デバッグ表示を削除
+///  - 起動直後の画面サイズ未確定問題を修正
+///    （数フレーム待ってから適用する）
 /// ──────────────────────────────────────────────────
 /// </summary>
 public sealed class MobileDisplayGuard : MonoBehaviour
@@ -30,10 +20,6 @@ public sealed class MobileDisplayGuard : MonoBehaviour
     private const float REF_WIDTH  = 1920f;
     private const float REF_HEIGHT = 1080f;
     private const string PF_FULLSCREEN = "PF_Option_Fullscreen";
-
-    // デバッグ表示（リリース前に false に変更）
-    private const bool SHOW_DEBUG = true;
-    private const float DEBUG_HIDE_AFTER = 8f;
 
     // レターボックス済みCanvas を追跡（二重適用防止）
     private static readonly HashSet<int> _processedCanvasIds = new HashSet<int>();
@@ -58,8 +44,7 @@ public sealed class MobileDisplayGuard : MonoBehaviour
 
 #if UNITY_IOS || UNITY_ANDROID
 
-    private float _debugTimer;
-    private GUIStyle _debugStyle;
+    private bool _initialFixDone = false;
 
     private void Awake()
     {
@@ -70,14 +55,32 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         Screen.autorotateToLandscapeRight     = true;
         Screen.orientation = ScreenOrientation.AutoRotation;
 
-        _processedCanvasIds.Clear();
-        FixCurrentScene();
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        // 最初のシーンは画面サイズが未確定なので、
+        // 数フレーム待ってから適用する
+        StartCoroutine(DeferredInitialFix());
     }
 
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    /// <summary>
+    /// 起動直後は Screen.width/height が確定していないため、
+    /// 数フレーム待ってから初回適用を行う。
+    /// </summary>
+    private IEnumerator DeferredInitialFix()
+    {
+        // 3フレーム待つ（iOSで画面回転＋解像度確定に必要な猶予）
+        yield return null;
+        yield return null;
+        yield return null;
+
+        _processedCanvasIds.Clear();
+        FixCurrentScene();
+        _initialFixDone = true;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -92,10 +95,9 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         if (Screen.fullScreenMode != FullScreenMode.FullScreenWindow)
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
 
-        // 動的生成された Canvas も拾う
-        CheckForNewCanvases();
-
-        if (SHOW_DEBUG) _debugTimer += Time.unscaledDeltaTime;
+        // 動的生成された Canvas も拾う（初回適用完了後のみ）
+        if (_initialFixDone)
+            CheckForNewCanvases();
     }
 
     // ============================================================
@@ -131,24 +133,23 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         if (_processedCanvasIds.Contains(id)) return;
         _processedCanvasIds.Add(id);
 
+        // ── 古いレターボックスフレームが残っていたら破棄 ──
+        CleanupOldLetterbox(canvas.transform as RectTransform);
+
         // ── CanvasScaler 設定 ──
         var scaler = canvas.GetComponent<CanvasScaler>();
         if (scaler == null) scaler = canvas.gameObject.AddComponent<CanvasScaler>();
 
         scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution  = new Vector2(REF_WIDTH, REF_HEIGHT);
-        // Match=1（高さ基準）→ 論理高さが常に1080、幅は端末に応じて広がる
         scaler.screenMatchMode      = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
         scaler.matchWidthOrHeight   = 1f;
 
         // ── 現在のアスペクト比チェック ──
         float screenAspect = (float)Screen.width / Mathf.Max(1f, Screen.height);
-        float refAspect    = REF_WIDTH / REF_HEIGHT; // 16/9 ≈ 1.778
+        float refAspect    = REF_WIDTH / REF_HEIGHT;
 
-        // 16:9 以下（縦長）なら横にはみ出る可能性あり → その場合は別対応
-        // 16:9 以上（横長）なら高さ基準で横に余白ができる → レターボックス
-        // どちらでもフレームを入れれば安全
-        if (Mathf.Abs(screenAspect - refAspect) < 0.01f) return; // ほぼ16:9なら不要
+        if (Mathf.Abs(screenAspect - refAspect) < 0.01f) return;
 
         RectTransform canvasRT = canvas.transform as RectTransform;
         if (canvasRT == null) return;
@@ -158,7 +159,6 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         var frameRT = frameGO.GetComponent<RectTransform>();
         frameRT.SetParent(canvasRT, false);
 
-        // フレームを中央に固定、サイズ 1920×1080
         frameRT.anchorMin = new Vector2(0.5f, 0.5f);
         frameRT.anchorMax = new Vector2(0.5f, 0.5f);
         frameRT.pivot     = new Vector2(0.5f, 0.5f);
@@ -178,50 +178,56 @@ public sealed class MobileDisplayGuard : MonoBehaviour
             child.SetParent(frameRT, false);
         }
 
-        // フレームを最初の子にする（描画順を維持）
         frameRT.SetAsFirstSibling();
 
-        // ── 黒帯パネル（フレームの外を覆う） ──
+        // ── 黒帯パネル ──
         if (screenAspect > refAspect)
         {
-            // 横長端末 → 左右に黒帯
-            CreateBlackBar(canvasRT, "BarLeft",
-                new Vector2(0f, 0f), new Vector2(0f, 1f),  // 左端 stretch
-                new Vector2(1f, 0.5f),
-                anchoredPos: Vector2.zero,
-                sizeDelta: new Vector2(REF_WIDTH, 0f),      // 幅はフレーム左端まで
-                calcSide: true, isLeft: true);
-
-            CreateBlackBar(canvasRT, "BarRight",
-                new Vector2(1f, 0f), new Vector2(1f, 1f),  // 右端 stretch
-                new Vector2(0f, 0.5f),
-                anchoredPos: Vector2.zero,
-                sizeDelta: new Vector2(REF_WIDTH, 0f),
-                calcSide: true, isLeft: false);
+            CreateBlackBar(canvasRT, "__BarLeft",  true, true);
+            CreateBlackBar(canvasRT, "__BarRight", true, false);
         }
         else
         {
-            // 縦長端末 → 上下に黒帯
-            CreateBlackBar(canvasRT, "BarTop",
-                new Vector2(0f, 1f), new Vector2(1f, 1f),
-                new Vector2(0.5f, 0f),
-                anchoredPos: Vector2.zero,
-                sizeDelta: new Vector2(0f, REF_HEIGHT),
-                calcSide: false, isLeft: false);
-
-            CreateBlackBar(canvasRT, "BarBottom",
-                new Vector2(0f, 0f), new Vector2(1f, 0f),
-                new Vector2(0.5f, 1f),
-                anchoredPos: Vector2.zero,
-                sizeDelta: new Vector2(0f, REF_HEIGHT),
-                calcSide: false, isLeft: false);
+            CreateBlackBar(canvasRT, "__BarTop",    false, false);
+            CreateBlackBar(canvasRT, "__BarBottom", false, true);
         }
     }
 
+    /// <summary>
+    /// DeferredInitialFix で再適用するとき、
+    /// 最初のフレームで作られた壊れたフレーム/黒帯を先に除去する。
+    /// </summary>
+    private void CleanupOldLetterbox(RectTransform canvasRT)
+    {
+        if (canvasRT == null) return;
+        var toDestroy = new List<GameObject>();
+        for (int i = 0; i < canvasRT.childCount; i++)
+        {
+            var child = canvasRT.GetChild(i);
+            if (child.name == "__LetterboxFrame" ||
+                child.name == "__BarLeft" ||
+                child.name == "__BarRight" ||
+                child.name == "__BarTop" ||
+                child.name == "__BarBottom")
+            {
+                // フレーム内の子を Canvas 直下に戻す
+                if (child.name == "__LetterboxFrame")
+                {
+                    var grandchildren = new List<Transform>();
+                    for (int j = 0; j < child.childCount; j++)
+                        grandchildren.Add(child.GetChild(j));
+                    foreach (var gc in grandchildren)
+                        gc.SetParent(canvasRT, false);
+                }
+                toDestroy.Add(child.gameObject);
+            }
+        }
+        foreach (var go in toDestroy)
+            Object.DestroyImmediate(go);
+    }
+
     private void CreateBlackBar(RectTransform parent, string name,
-        Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot,
-        Vector2 anchoredPos, Vector2 sizeDelta,
-        bool calcSide, bool isLeft)
+        bool isHorizontal, bool isLeftOrBottom)
     {
         var go = new GameObject(name, typeof(RectTransform), typeof(Image));
         var rt = go.GetComponent<RectTransform>();
@@ -231,54 +237,55 @@ public sealed class MobileDisplayGuard : MonoBehaviour
         img.color = Color.black;
         img.raycastTarget = false;
 
-        if (calcSide)
+        if (isHorizontal)
         {
-            // 左右バー：Canvas幅の半分 - フレーム幅の半分 = バーの幅
-            // Canvas論理幅 = Screen.width / scaleFactor
-            // scaleFactor = Screen.height / REF_HEIGHT (match=1)
             float scaleFactor = Screen.height / REF_HEIGHT;
             float canvasLogicalWidth = Screen.width / scaleFactor;
             float barWidth = (canvasLogicalWidth - REF_WIDTH) / 2f;
-            barWidth = Mathf.Max(0f, barWidth) + 2f; // +2 で隙間防止
+            barWidth = Mathf.Max(0f, barWidth) + 2f;
 
-            if (isLeft)
+            if (isLeftOrBottom) // left
             {
                 rt.anchorMin = new Vector2(0f, 0f);
                 rt.anchorMax = new Vector2(0f, 1f);
                 rt.pivot     = new Vector2(0f, 0.5f);
-                rt.anchoredPosition = Vector2.zero;
-                rt.sizeDelta = new Vector2(barWidth, 0f);
             }
-            else
+            else // right
             {
                 rt.anchorMin = new Vector2(1f, 0f);
                 rt.anchorMax = new Vector2(1f, 1f);
                 rt.pivot     = new Vector2(1f, 0.5f);
-                rt.anchoredPosition = Vector2.zero;
-                rt.sizeDelta = new Vector2(barWidth, 0f);
             }
+            rt.anchoredPosition = Vector2.zero;
+            rt.sizeDelta = new Vector2(barWidth, 0f);
         }
         else
         {
-            // 上下バー
             float scaleFactor = Screen.width / REF_WIDTH;
             float canvasLogicalHeight = Screen.height / scaleFactor;
             float barHeight = (canvasLogicalHeight - REF_HEIGHT) / 2f;
             barHeight = Mathf.Max(0f, barHeight) + 2f;
 
-            rt.anchorMin = anchorMin;
-            rt.anchorMax = anchorMax;
-            rt.pivot     = pivot;
+            if (isLeftOrBottom) // bottom
+            {
+                rt.anchorMin = new Vector2(0f, 0f);
+                rt.anchorMax = new Vector2(1f, 0f);
+                rt.pivot     = new Vector2(0.5f, 0f);
+            }
+            else // top
+            {
+                rt.anchorMin = new Vector2(0f, 1f);
+                rt.anchorMax = new Vector2(1f, 1f);
+                rt.pivot     = new Vector2(0.5f, 1f);
+            }
             rt.anchoredPosition = Vector2.zero;
             rt.sizeDelta = new Vector2(0f, barHeight);
         }
 
-        // 黒帯は最前面に
         rt.SetAsLastSibling();
     }
 
     // ───── ② Camera にもレターボックス適用 ─────
-    //  （3Dオブジェクトやパーティクルがある場合に備えて）
     private void ApplyLetterboxToAllCameras()
     {
         float screenAspect = (float)Screen.width / Mathf.Max(1f, Screen.height);
@@ -286,18 +293,16 @@ public sealed class MobileDisplayGuard : MonoBehaviour
 
         foreach (var cam in FindObjectsOfType<Camera>(true))
         {
-            if (cam.targetTexture != null) continue; // RenderTexture用カメラはスキップ
+            if (cam.targetTexture != null) continue;
 
             if (screenAspect > targetAspect)
             {
-                // 横長 → 左右に黒帯
                 float normalizedWidth = targetAspect / screenAspect;
                 float barWidth = (1f - normalizedWidth) / 2f;
                 cam.rect = new Rect(barWidth, 0f, normalizedWidth, 1f);
             }
             else if (screenAspect < targetAspect)
             {
-                // 縦長 → 上下に黒帯
                 float normalizedHeight = screenAspect / targetAspect;
                 float barHeight = (1f - normalizedHeight) / 2f;
                 cam.rect = new Rect(0f, barHeight, 1f, normalizedHeight);
@@ -352,46 +357,6 @@ public sealed class MobileDisplayGuard : MonoBehaviour
                 ApplyLetterboxToCanvas(canvas);
             }
         }
-    }
-
-    // ───── デバッグ表示 ─────
-    private void OnGUI()
-    {
-        if (!SHOW_DEBUG) return;
-        if (_debugTimer > DEBUG_HIDE_AFTER) return;
-
-        if (_debugStyle == null)
-        {
-            _debugStyle = new GUIStyle(GUI.skin.label)
-            {
-                fontSize = 28,
-                fontStyle = FontStyle.Bold,
-            };
-            _debugStyle.normal.textColor = Color.yellow;
-        }
-
-        float sw = Screen.width;
-        float sh = Screen.height;
-        float aspect = sw / Mathf.Max(1f, sh);
-        float barW = 0f;
-        float refAspect = REF_WIDTH / REF_HEIGHT;
-        if (aspect > refAspect)
-            barW = (sw - sh * refAspect) / 2f;
-
-        string text = string.Format(
-            "Screen: {0}x{1} ({2:F2}:1)\n" +
-            "Ref: {3}x{4} ({5:F2}:1)\n" +
-            "Black bar width: {6:F0}px\n" +
-            "Scene: {7}",
-            sw, sh, aspect,
-            REF_WIDTH, REF_HEIGHT, refAspect,
-            barW,
-            SceneManager.GetActiveScene().name);
-
-        GUI.color = new Color(0, 0, 0, 0.7f);
-        GUI.DrawTexture(new Rect(8, 8, 620, 150), Texture2D.whiteTexture);
-        GUI.color = Color.white;
-        GUI.Label(new Rect(16, 12, 600, 142), text, _debugStyle);
     }
 
 #else
