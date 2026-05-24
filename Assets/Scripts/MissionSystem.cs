@@ -181,6 +181,13 @@ public static class MissionSystem
     }
 
     // ===== 達成判定 =====
+    /// <summary>
+    /// プレイヤーの和了役リスト（ローカライズ済み表示名、例: "平和(+1)"）と
+    /// ミッション対象役を照合する。
+    ///
+    /// ★yakuKey（例: "PINFU"）と displayName（例: "平和"）の両方で照合する。
+    ///   プレイヤー役リストはローカライズ済みのため、yakuKey だけでは一致しない。
+    /// </summary>
     public static bool CheckCompletion(List<string> playerYakuList)
     {
         if (!HasActiveMission) return false;
@@ -188,8 +195,13 @@ public static class MissionSystem
 
         if (playerYakuList == null || playerYakuList.Count == 0) return false;
 
-        string targetNorm = NormalizeForMatch(s_cachedYakuKey);
-        if (string.IsNullOrEmpty(targetNorm)) return false;
+        // 照合対象を複数用意（yakuKey と displayName の両方）
+        string targetKeyNorm  = NormalizeForMatch(s_cachedYakuKey);       // "pinfu"
+        string targetDispNorm = NormalizeForMatch(s_cachedDisplayName);   // "平和"
+
+        bool hasKey  = !string.IsNullOrEmpty(targetKeyNorm);
+        bool hasDisp = !string.IsNullOrEmpty(targetDispNorm);
+        if (!hasKey && !hasDisp) return false;
 
         for (int i = 0; i < playerYakuList.Count; i++)
         {
@@ -199,7 +211,16 @@ public static class MissionSystem
             string norm = NormalizeForMatch(raw);
             if (string.IsNullOrEmpty(norm)) continue;
 
-            if (norm.Contains(targetNorm) || targetNorm.Contains(norm))
+            // displayName（ローカライズ名）で照合（メイン）
+            if (hasDisp && (norm.Contains(targetDispNorm) || targetDispNorm.Contains(norm)))
+            {
+                s_completed = true;
+                Save();
+                return true;
+            }
+
+            // yakuKey（英語キー）で照合（フォールバック）
+            if (hasKey && (norm.Contains(targetKeyNorm) || targetKeyNorm.Contains(norm)))
             {
                 s_completed = true;
                 Save();

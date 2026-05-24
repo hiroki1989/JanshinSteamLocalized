@@ -3019,9 +3019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &190286857
 MonoBehaviour:
@@ -8475,9 +8475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &537399081
 MonoBehaviour:
@@ -12920,9 +12920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &776966185
 MonoBehaviour:
@@ -15246,9 +15246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &869127706
 MonoBehaviour:
@@ -21790,9 +21790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &1139656516
 MonoBehaviour:
@@ -27229,9 +27229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!1 &1473770716
 GameObject:
@@ -28304,9 +28304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!114 &1542889549
 MonoBehaviour:
@@ -31081,9 +31081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!1 &1707485194
 GameObject:
@@ -37414,9 +37414,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a488aaa16f707479c065ca1ca3c37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIGradient
-  m_color1: {r: 0.9909587, g: 1, b: 0.6273585, a: 1}
-  m_color2: {r: 0.8514379, g: 1, b: 0.8349056, a: 1}
-  m_angle: 65
+  m_color1: {r: 1, g: 0.8054244, b: 0.7704402, a: 1}
+  m_color2: {r: 1, g: 0.13901775, b: 0, a: 1}
+  m_angle: -13
   m_ignoreRatio: 1
 --- !u!1 &2003385537
 GameObject:

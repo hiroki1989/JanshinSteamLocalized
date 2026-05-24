@@ -179,6 +179,13 @@ if (!preferRyanpeikou)
         names.Add(FormatYaku(YakuKeyChinitsu, v));
         yakuKeys.Add(YakuKeyChinitsu);
     }
+    // ★追加：七対子＋混老頭の複合（全牌が老頭牌または字牌）
+    if (IsHonroutou(handForDecomp))
+    {
+        han += 2;
+        names.Add(FormatYaku(YakuKeyHonroutou, 2));
+        yakuKeys.Add(YakuKeyHonroutou);
+    }
 
     return new DetailedResult
     {

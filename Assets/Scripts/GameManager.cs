@@ -15119,6 +15119,9 @@ if (playerWinDamageAnimSeconds <= 0f)
     UpdateHpUI();
     UpdateMpUI();
 
+    // ★修正：ダメージ確定後に中断データを上書き保存（古いHP復元バグ防止）
+    TryAutoSaveSuspendSnapshot();
+
     _freezeProgression = false;
     __ProceedAfterScoreOK_Internal(_wasEnemyScoring);
     return;
@@ -15151,6 +15154,9 @@ if (playerWinDamageAnimSeconds <= 0f)
             _pendingEnemyWinDamageFinal = 0;
 
             UpdateHpUI();
+
+            // ★修正：ダメージ確定後に中断データを上書き保存（古いHP復元バグ防止）
+            TryAutoSaveSuspendSnapshot();
 
             _freezeProgression = false;
             __ProceedAfterScoreOK_Internal(_wasEnemyScoring);
@@ -15393,6 +15399,9 @@ catch { }
 
     _enemyWinDamageAnimating = false;
 
+    // ★修正：ダメージ確定後に中断データを上書き保存（古いHP復元バグ防止）
+    TryAutoSaveSuspendSnapshot();
+
     // 演出が終わったので次へ進める
     _freezeProgression = false;
     __ProceedAfterScoreOK_Internal(wasEnemyScoring);
@@ -15462,6 +15471,9 @@ private void __UpdateEnemyHpUI_VisualOnly(int displayHP)
 
 private void __ProceedAfterScoreOK_Internal(bool _wasEnemyScoring)
 {
+// ★修正：敗北演出が既に走っている場合は絶対に次局へ進めない
+if (_defeatTransitionRunning) return;
+
 if (Mathf.Max(0, playerHP) <= 0)
 {
     // ラン一時要素（通貨/お札/ラン限定強化など）はここで従来通りクリア
@@ -21347,6 +21359,12 @@ catch { }
     UpdateMpUI();
 
     _playerWinDamageAnimating = false;
+
+    // ★修正：ダメージ確定後に中断データを上書き保存する。
+    //   OnApplicationPause で保存された古いスナップショット（flag=1）を
+    //   最新のHP状態で更新し、次局 StartNextHand() で TryLoadSuspendSnapshot() が
+    //   古いHPを復元してしまうバグを防ぐ。
+    TryAutoSaveSuspendSnapshot();
 
     // 演出が終わったので次へ進める
     _freezeProgression = false;

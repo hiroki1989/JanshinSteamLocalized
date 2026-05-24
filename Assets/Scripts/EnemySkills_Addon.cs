@@ -652,7 +652,9 @@ private System.Collections.IEnumerator __EnemySkill_ApplyDamageToPlayerAnimated_
 
     if (Mathf.Max(0, playerHP) <= 0)
     {
-        StartCoroutine(__ShowDefeatCutinThenGoToReward());
+        // ★修正：StartDefeatTransitionIfNeeded を使い _defeatTransitionRunning を
+        //   確実にセットする（直接 StartCoroutine すると二重起動や進行再開を防げない）
+        StartDefeatTransitionIfNeeded();
         yield break;
     }
 }
