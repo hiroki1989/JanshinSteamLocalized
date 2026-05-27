@@ -877,7 +877,12 @@ private void StartPlayerSkillCutin(string skillDisplayName)
 }
 private void __StartScoringStepReveal(bool attackerIsPlayer)
 {
-    if (!scoringStepRevealEnabled) return;
+    if (!scoringStepRevealEnabled)
+    {
+        // ★修正：段階表示が無効でもミッション達成パネルは表示する
+        try { TryShowMissionCompletePanel(); } catch { }
+        return;
+    }
 
     // 既に走っていたら止めてから再スタート
     __StopScoringStepReveal();
@@ -886,6 +891,8 @@ private void __StartScoringStepReveal(bool attackerIsPlayer)
     var roots = attackerIsPlayer ? scoringStepRoots_Player : scoringStepRoots_Enemy;
     if (roots == null || roots.Count == 0)
     {
+        // ★修正：段階表示ルートが無くてもミッション達成パネルは表示する
+        try { TryShowMissionCompletePanel(); } catch { }
         return;
     }
 
@@ -9547,6 +9554,9 @@ void EnterEnemyTurnAfterPlayer()
     // ★追加：稀に EnemyTurn が重複実行されて、1ターンで複数回捨てることがあるのを防ぐ
     if (_enemyTurnRunning) return;
 
+    // ★修正：敗北演出中は敵ターンを開始しない
+    if (_defeatTransitionRunning) return;
+
     // ★追加：敵ターンに入った時点でオファーフェーズのガードは確実に解除する
     _beginOfferPhaseInProgress = false;
 
@@ -13867,6 +13877,10 @@ if (string.Equals(winKind, "ツモ", StringComparison.OrdinalIgnoreCase))
 // 例：lines?.Add($"お札：加点+{ofudaExtra} / 倍率x{ofudaMult:0.###}");
 
 // ★修正：いきなりスコアパネルを出さず、カットイン→スコア表示のコルーチンへ
+
+// ★ミッション達成判定（実際のプレイヤー和了フローはここを通る）
+try { CheckMissionOnPlayerWin(yakuNames); } catch { }
+
 StartCoroutine(__WinCutInThenShowScoring(
     winKind,          /* 「ロン」 or 「ツモ」 */
     true,             /* isPlayer: プレイヤーの和了なので true */
@@ -15933,6 +15947,13 @@ private string BuildRoundLabelForUI()
 private bool _addonLastHandWinnerWasEnemy = false;
 private void StartNextHand()
 {
+    // ★修正：敗北演出が走っている最中は次局を絶対に開始しない
+    if (_defeatTransitionRunning)
+    {
+        Debug.LogWarning("[StartNextHand] Blocked: defeat transition is running.");
+        return;
+    }
+
     _playerHasWonThisHand = false;
     _enemyHasWonThisHand  = false;
 
@@ -15961,6 +15982,9 @@ private bool _enemyIsRiichi = false;
 private readonly System.Collections.Generic.HashSet<string> _enemyRiichiWaits = new System.Collections.Generic.HashSet<string>();
 private System.Collections.IEnumerator __MatchStartIntroAndDeal_Co()
 {
+    // ★修正：敗北演出中に新局が始まるのを防ぐ
+    if (_defeatTransitionRunning) yield break;
+
     // 壁を構築
     BuildWall();
 

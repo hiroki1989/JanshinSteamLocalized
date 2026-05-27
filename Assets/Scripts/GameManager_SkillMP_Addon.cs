@@ -623,6 +623,9 @@ UpdateRightInfoUI_Manual();
 
 // 中断復元の保留フラグはここで消費
 _pendingSuspendLoadoutApply = false;
+
+// ★ミッションUI初期化（MissionBootstrap不要。Start()の末尾で直接呼ぶ）
+try { InitMissionUI(); } catch (System.Exception e) { Debug.LogWarning("[Mission] InitMissionUI in Start() error: " + e); }
 }
 [Header("MP Gain Animation")]
 [SerializeField] private float mpRegenAnimSeconds = 0.4f;
