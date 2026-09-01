@@ -698,13 +698,36 @@ public static int GrantUniqueOmamori(string enemyName, UniqueOmamoriEffectKind k
     if (!OmamoriExcelV2.TryEnsureLoaded())
         OmamoriExcelV2.UseBuiltInDefaults();
 
-    // ★ハーデス神器レベル法則：Tier1=12、Tier2=22、Tier3=32...
-    int tier = 1;
-    try { tier = Mathf.Max(1, PlayerPrefs.GetInt("PF_CurrentTier", 1)); } catch { tier = 1; }
-    int lv = 12 + (tier - 1) * 10;
+    // ★神器レベル：通常お守りと同じレベル設定にする
+    //   引数 level が 1 以下（未指定/旧呼び出し）の場合は、
+    //   通常お守りと同じく「このRunで倒した人数 ± ランダムオフセット」で算出する。
+    int lv;
+    if (level >= 2)
+    {
+        // 呼び出し側が明示的にレベルを渡してきた場合はそれを尊重
+        lv = Mathf.Max(1, level);
+    }
+    else
+    {
+        int defeatedThisRun = 0;
+        try { defeatedThisRun = Mathf.Max(0, PlayerPrefs.GetInt("Run_DefeatedEnemyCount", 0)); } catch { defeatedThisRun = 0; }
 
-    // レジェ相当：ランダム5効果
-    var effects = OmamoriExcelV2.RollEffects(5, lv);
+        int lvForLottery = defeatedThisRun;
+        try
+        {
+            int randomOffset = UnityEngine.Random.Range(-2, 3); // -2,-1,0,1,2（通常お守りと同じ）
+            lvForLottery = defeatedThisRun + randomOffset;
+        }
+        catch
+        {
+            lvForLottery = defeatedThisRun;
+        }
+
+        lv = Mathf.Max(1, lvForLottery);
+    }
+
+    // 特殊効果に加えて付与する通常効果は3つ
+    var effects = OmamoriExcelV2.RollEffects(3, lv);
 
     var inst = new OmamoriInstance
     {

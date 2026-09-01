@@ -1,21 +1,26 @@
 using UnityEngine;
-using UnityEngine.Advertisements;
+using GoogleMobileAds.Api;
 
 /// <summary>
-/// Unity Ads SDK の初期化を行うシングルトン。
+/// Google AdMob SDK の初期化を行うシングルトン。
 /// 最初のシーン（Menu等）の空 GameObject にアタッチしてください。
 /// DontDestroyOnLoad で全シーンに常駐します。
+///
+/// ★ SDK導入手順:
+///   1. https://github.com/googleads/googleads-mobile-unity/releases から
+///      最新の GoogleMobileAds-vX.X.X.unitypackage をダウンロード
+///   2. Assets → Import Package → Custom Package で導入
+///   3. Assets → Google Mobile Ads → Settings で App ID を設定
+///      テスト用 iOS App ID:  ca-app-pub-3940256099942544~1458002511
+///      テスト用 Android App ID: ca-app-pub-3940256099942544~3347511713
+///      ※ リリース時に AdMob ダッシュボードで発行した本番 App ID に差し替える
 /// </summary>
-public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
+public class AdsInitializer : MonoBehaviour
 {
     public static AdsInitializer Instance { get; private set; }
 
-    [Header("Game IDs (Unity Dashboard で発行されたもの)")]
-    [SerializeField] private string _iOSGameId     = "6119488";
-    [SerializeField] private string _androidGameId  = "6119489";
-
-    [Header("テストモード（リリース時に OFF にする）")]
-    [SerializeField] private bool _testMode = true;
+    /// <summary>SDK 初期化が完了したか</summary>
+    public static bool IsSDKReady { get; private set; } = false;
 
     // ========== 広告カット課金フラグ ==========
     private const string PrefKey_AdFree = "IAP_AdFree";
@@ -46,39 +51,21 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        InitializeAds();
+        InitializeAdMob();
     }
 
-    private void InitializeAds()
+    private void InitializeAdMob()
     {
-        string gameId = "";
-#if UNITY_IOS
-        gameId = _iOSGameId;
-#elif UNITY_ANDROID
-        gameId = _androidGameId;
-#elif UNITY_EDITOR
-        gameId = _androidGameId; // Editor ではテスト用に Android ID を使用
-#endif
+        Debug.Log("[AdsInitializer] Initializing AdMob...");
 
-        if (!Advertisement.isInitialized && Advertisement.isSupported)
+        MobileAds.Initialize(initStatus =>
         {
-            Advertisement.Initialize(gameId, _testMode, this);
-        }
-    }
+            IsSDKReady = true;
+            Debug.Log("[AdsInitializer] AdMob initialization complete.");
 
-    // ========== IUnityAdsInitializationListener ==========
-
-    public void OnInitializationComplete()
-    {
-        Debug.Log("[AdsInitializer] Unity Ads initialization complete.");
-
-        // SDK 初期化完了後に広告をプリロード
-        try { InterstitialAdManager.Instance?.LoadAd(); } catch { }
-        try { RewardedAdManager.Instance?.LoadAd(); }     catch { }
-    }
-
-    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
-    {
-        Debug.LogError($"[AdsInitializer] Unity Ads init failed: {error} - {message}");
+            // SDK 初期化完了後に広告をプリロード
+            try { InterstitialAdManager.Instance?.LoadAd(); } catch { }
+            try { RewardedAdManager.Instance?.LoadAd(); }     catch { }
+        });
     }
 }

@@ -1680,6 +1680,7 @@ GameObject:
   - component: {fileID: 803746955}
   - component: {fileID: 803746954}
   - component: {fileID: 803746953}
+  - component: {fileID: 803746957}
   m_Layer: 0
   m_Name: Ad
   m_TagString: Untagged
@@ -1699,8 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eac37104591664d8c8651f1b0e9809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardedAdManager
-  _iOSAdUnitId: Rewarded_iOS
-  _androidAdUnitId: Rewarded_Android
+  _adUnitId: ca-app-pub-3940256099942544/1712485313
   gemReward: 1
   maxDailyViews: 10
 --- !u!114 &803746954
@@ -1715,8 +1715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be71958277d42674f87df949df6709b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InterstitialAdManager
-  _iOSAdUnitId: Interstitial_iOS
-  _androidAdUnitId: Interstitial_Android
+  _adUnitId: ca-app-pub-3940256099942544/4411468910
   showEveryNth: 3
   cooldownSeconds: 100
 --- !u!114 &803746955
@@ -1731,9 +1730,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df344ad6f1e15c84bb51e68acffd5fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AdsInitializer
-  _iOSGameId: 6119488
-  _androidGameId: 6119489
-  _testMode: 1
 --- !u!4 &803746956
 Transform:
   m_ObjectHideFlags: 0
@@ -1749,6 +1745,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &803746957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803746952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d2c4c96ed5f684599acc98c4f1172c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IAPManager
+  removeAdsProductId: com.yourapp.removeads
+  gems100ProductId: com.yourapp.gems_100
+  gems500ProductId: com.yourapp.gems_500
+  gems1200ProductId: com.yourapp.gems_1200
+  gems100Amount: 10
+  gems500Amount: 55
+  gems1200Amount: 130
 --- !u!1 &820825282
 GameObject:
   m_ObjectHideFlags: 0
@@ -4672,6 +4687,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1536164263038218395, guid: 2c7ac854f2d39a14e816e12065e5292d, type: 3}
+      propertyPath: m_Volume
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536164263038218395, guid: 2c7ac854f2d39a14e816e12065e5292d, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: 335732e80096831409ade8ff630e61db, type: 3}
@@ -4929,7 +4948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6854176992737631493, guid: 2c7ac854f2d39a14e816e12065e5292d, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6854176992737631493, guid: 2c7ac854f2d39a14e816e12065e5292d, type: 3}
       propertyPath: m_Resource
