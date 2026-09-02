@@ -32,3 +32,5 @@ GeneratedAssets_deleted/
 debug.log 
 *.sln 
 *.slnx 
+Pods/
+Podfile.lock
