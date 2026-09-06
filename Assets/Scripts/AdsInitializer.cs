@@ -1,71 +1,69 @@
+using System;
+using GoogleMobileAds.Common;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using GoogleMobileAds.Ump.Api;
 
-/// <summary>
-/// Google AdMob SDK の初期化を行うシングルトン。
-/// 最初のシーン（Menu等）の空 GameObject にアタッチしてください。
-/// DontDestroyOnLoad で全シーンに常駐します。
-///
-/// ★ SDK導入手順:
-///   1. https://github.com/googleads/googleads-mobile-unity/releases から
-///      最新の GoogleMobileAds-vX.X.X.unitypackage をダウンロード
-///   2. Assets → Import Package → Custom Package で導入
-///   3. Assets → Google Mobile Ads → Settings で App ID を設定
-///      テスト用 iOS App ID:  ca-app-pub-3940256099942544~1458002511
-///      テスト用 Android App ID: ca-app-pub-3940256099942544~3347511713
-///      ※ リリース時に AdMob ダッシュボードで発行した本番 App ID に差し替える
-/// </summary>
-public class AdsInitializer : MonoBehaviour
+public sealed class AdsInitializer : MonoBehaviour
 {
     public static AdsInitializer Instance { get; private set; }
-
-    /// <summary>SDK 初期化が完了したか</summary>
-    public static bool IsSDKReady { get; private set; } = false;
-
-    // ========== 広告カット課金フラグ ==========
-    private const string PrefKey_AdFree = "IAP_AdFree";
-
-    /// <summary>
-    /// 広告カット課金済みかどうか。
-    /// true にすると InterstitialAdManager が広告を一切表示しなくなる。
-    /// </summary>
-    public static bool IsAdFree
-    {
-        get => PlayerPrefs.GetInt(PrefKey_AdFree, 0) == 1;
-        set
-        {
-            PlayerPrefs.SetInt(PrefKey_AdFree, value ? 1 : 0);
-            PlayerPrefs.Save();
+    public static bool IsSDKReady { get; private set; }
+    public static event Action StateChanged, AdFreeChanged;
+    const string AdFreeKey = "IAP_AdFree";
+    bool consentBusy, initializing;
+    public static bool IsSupported => Application.isEditor || Application.platform == RuntimePlatform.IPhonePlayer;
+    public static bool CanRequestAds => IsSupported && ConsentInformation.CanRequestAds();
+    public static bool PrivacyOptionsRequired => IsSupported &&
+        ConsentInformation.PrivacyOptionsRequirementStatus == PrivacyOptionsRequirementStatus.Required;
+    public static bool IsAdFree {
+        get => PlayerPrefs.GetInt(AdFreeKey, 0) == 1;
+        set {
+            if (IsAdFree == value) return;
+            PlayerPrefs.SetInt(AdFreeKey, value ? 1 : 0); PlayerPrefs.Save(); AdFreeChanged?.Invoke();
         }
     }
-
-    // ========================================================
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        InitializeAdMob();
+    void Awake() {
+        if (Instance && Instance != this) { Destroy(gameObject); return; }
+        Instance = this; DontDestroyOnLoad(gameObject); MobileAdsEventExecutor.Initialize();
     }
-
-    private void InitializeAdMob()
-    {
-        Debug.Log("[AdsInitializer] Initializing AdMob...");
-
-        MobileAds.Initialize(initStatus =>
-        {
-            IsSDKReady = true;
-            Debug.Log("[AdsInitializer] AdMob initialization complete.");
-
-            // SDK 初期化完了後に広告をプリロード
-            try { InterstitialAdManager.Instance?.LoadAd(); } catch { }
-            try { RewardedAdManager.Instance?.LoadAd(); }     catch { }
-        });
+    void Start() => RetryConsent();
+    void OnMain(Action action) {
+        MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this) action(); });
     }
+    public void RetryConsent() {
+        if (!IsSupported || consentBusy) return;
+        consentBusy = true; StateChanged?.Invoke();
+        ConsentInformation.Update(new ConsentRequestParameters(), error => OnMain(() => {
+            if (error != null) { FinishConsent(error.Message); return; }
+            ConsentForm.LoadAndShowConsentFormIfRequired(e => OnMain(() => FinishConsent(e?.Message)));
+        }));
+    }
+    void FinishConsent(string error) {
+        consentBusy = false;
+        if (!string.IsNullOrEmpty(error)) Debug.LogWarning("[Ads] Consent: " + error);
+        if (CanRequestAds) InitializeAdMob();
+        StateChanged?.Invoke();
+    }
+    void InitializeAdMob() {
+        if (IsSDKReady) { Preload(); return; }
+        if (initializing) return;
+        initializing = true;
+        MobileAds.SetiOSAppPauseOnBackground(true);
+        MobileAds.Initialize(status => OnMain(() => {
+            if (!this) return;
+            initializing = false;
+            if (status == null) {
+                Debug.LogWarning("[Ads] Initialization returned no status. Retry consent to retry initialization.");
+                StateChanged?.Invoke(); return;
+            }
+            IsSDKReady = true; Preload(); StateChanged?.Invoke();
+        }));
+    }
+    void Preload() { InterstitialAdManager.Instance?.LoadAd(); RewardedAdManager.Instance?.LoadAd(); }
+    public void ShowPrivacyOptions() {
+        if (consentBusy || !PrivacyOptionsRequired) return;
+        consentBusy = true;
+        ConsentForm.ShowPrivacyOptionsForm(e => OnMain(() => FinishConsent(e?.Message)));
+    }
+    void OnDestroy() { if (Instance == this) { Instance = null; IsSDKReady = false; } }
 }

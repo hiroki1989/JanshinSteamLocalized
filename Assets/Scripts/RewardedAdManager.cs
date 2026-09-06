@@ -1,197 +1,85 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using GoogleMobileAds.Common;
 
-/// <summary>
-/// AdMob リワード広告マネージャー。
-/// 広告を最後まで視聴したプレイヤーに宝石（Gems）を付与する。
-///
-/// AdsInitializer と同じ GameObject にアタッチしてください。
-/// </summary>
-public class RewardedAdManager : MonoBehaviour
+public sealed class RewardedAdManager : MonoBehaviour
 {
     public static RewardedAdManager Instance { get; private set; }
-
-    [Header("広告ユニットID (AdMob ダッシュボードで作成したもの)")]
-    [Tooltip("テスト用ID が初期値。リリース時に本番IDに差し替えること。")]
-#if UNITY_IOS
-    [SerializeField] private string _adUnitId = "ca-app-pub-3940256099942544/1712485313"; // iOS テスト用
-#elif UNITY_ANDROID
-    [SerializeField] private string _adUnitId = "ca-app-pub-3940256099942544/5224354917"; // Android テスト用
-#else
-    [SerializeField] private string _adUnitId = "unused";
-#endif
-
-    [Header("1回の視聴完了で付与する宝石数")]
-    [SerializeField] private int gemReward = 5;
-
-    [Header("1日の視聴回数上限 (0 = 無制限)")]
-    [SerializeField] private int maxDailyViews = 10;
-
-    private RewardedAd _rewardedAd;
-    private bool _isLoaded = false;
-    private Action<bool> _onResult;
-
-    // 日次視聴カウンター
-    private const string PrefKey_DailyAdDate  = "RewardedAd_Date";
-    private const string PrefKey_DailyAdCount = "RewardedAd_Count";
-
-    // ========================================================
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+    public static event Action StateChanged;
+    [Header("iOS ad unit (Google test ID by default)")]
+    [SerializeField] string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
+    [SerializeField, Min(1)] int gemReward = 1;
+    [SerializeField, Min(0)] int maxDailyViews = 10;
+    const string DateKey = "RewardedAd_Date", CountKey = "RewardedAd_Count";
+    RewardedAd ad;
+    bool loading, showing, earned, finishing;
+    int failures, generation;
+    Coroutine retry;
+    Action<bool> completion;
+    public bool IsLoading => loading;
+    public bool IsShowing => showing;
+    public bool IsReady => !showing && AdsInitializer.CanRequestAds && ad != null && ad.CanShowAd() && !DailyLimitReached;
+    public int GemRewardAmount => Mathf.Max(1, gemReward);
+    public bool DailyLimitReached => maxDailyViews > 0 &&
+        PlayerPrefs.GetString(DateKey, "") == DateTime.Now.ToString("yyyyMMdd") &&
+        PlayerPrefs.GetInt(CountKey, 0) >= maxDailyViews;
+    void Awake() {
+        if (Instance && Instance != this) { Destroy(gameObject); return; }
+        Instance = this; DontDestroyOnLoad(gameObject);
     }
-
-    // ========== 公開プロパティ ==========
-
-    /// <summary>広告がロード済みで表示可能か</summary>
-    public bool IsReady => _isLoaded && _rewardedAd != null && _rewardedAd.CanShowAd() && !IsDailyLimitReached();
-
-    /// <summary>1回の視聴で貰える宝石数</summary>
-    public int GemRewardAmount => gemReward;
-
-    // ========== 広告のロード ==========
-
-    public void LoadAd()
-    {
-        if (!AdsInitializer.IsSDKReady) return;
-
-        // 前の広告を破棄
-        if (_rewardedAd != null)
-        {
-            _rewardedAd.Destroy();
-            _rewardedAd = null;
-        }
-        _isLoaded = false;
-
-        var adRequest = new AdRequest();
-
-        RewardedAd.Load(_adUnitId, adRequest, (RewardedAd ad, LoadAdError error) =>
-        {
-            if (error != null || ad == null)
-            {
-                Debug.LogWarning($"[RewardedAd] Load failed: {error}");
-                _isLoaded = false;
-                return;
+    void Start() { if (AdsInitializer.IsSDKReady) LoadAd(); }
+    public void LoadAd() {
+        if (!showing && ad != null && !ad.CanShowAd()) { ad.Destroy(); ad = null; }
+        if (loading || showing || ad != null || !AdsInitializer.IsSDKReady || !AdsInitializer.CanRequestAds) return;
+        if (retry != null) { StopCoroutine(retry); retry = null; }
+        loading = true; int request = ++generation; StateChanged?.Invoke();
+        RewardedAd.Load(_adUnitId, new AdRequest(), (loaded, error) => MobileAdsEventExecutor.ExecuteInUpdate(() => {
+            if (!this || request != generation) { loaded?.Destroy(); return; }
+            loading = false;
+            if (error != null || loaded == null) {
+                loaded?.Destroy(); retry = StartCoroutine(Retry()); StateChanged?.Invoke(); return;
             }
-
-            _rewardedAd = ad;
-            _isLoaded = true;
-            Debug.Log("[RewardedAd] Ad loaded.");
-
-            // コールバック登録
-            _rewardedAd.OnAdFullScreenContentClosed += OnAdClosed;
-            _rewardedAd.OnAdFullScreenContentFailed += OnAdShowFailed;
-        });
+            ad = loaded; failures = 0;
+            loaded.OnAdFullScreenContentClosed += () => MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this && ad == loaded && !finishing) StartCoroutine(FinishAfterClose()); });
+            loaded.OnAdFullScreenContentFailed += _ => MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this && ad == loaded) Finish(); });
+            StateChanged?.Invoke();
+        }));
     }
-
-    // ========== 広告の表示 ==========
-
-    /// <summary>
-    /// リワード広告を表示する。
-    /// 視聴完了で宝石を付与し、onResult(true) を呼ぶ。
-    /// スキップ/失敗時は onResult(false)。
-    /// </summary>
-    public void ShowAd(Action<bool> onResult = null)
-    {
-        _onResult = onResult;
-
-        if (IsDailyLimitReached())
-        {
-            Debug.Log("[RewardedAd] Daily limit reached.");
-            _onResult?.Invoke(false);
-            return;
-        }
-
-        if (_isLoaded && _rewardedAd != null && _rewardedAd.CanShowAd())
-        {
-            _isLoaded = false;
-
-            _rewardedAd.Show(reward =>
-            {
-                // ★ 視聴完了 → 宝石を付与
-                try { SpecialTileSystem.AddGems(gemReward); } catch { }
-                IncrementDailyCount();
-                Debug.Log($"[RewardedAd] Reward granted: {gemReward} gems. (type: {reward.Type}, amount: {reward.Amount})");
-                _onResult?.Invoke(true);
-            });
-        }
-        else
-        {
-            Debug.Log("[RewardedAd] Not loaded yet.");
-            _onResult?.Invoke(false);
-        }
+    IEnumerator Retry() {
+        yield return new WaitForSecondsRealtime(Mathf.Min(60, 2 << Mathf.Min(failures++, 5)));
+        retry = null; LoadAd();
     }
-
-    // ========== コールバック ==========
-
-    private void OnAdClosed()
-    {
-        Debug.Log("[RewardedAd] Ad closed.");
-        if (_rewardedAd != null)
-        {
-            _rewardedAd.Destroy();
-            _rewardedAd = null;
-        }
-        LoadAd();
+    public void ShowAd(Action<bool> onResult = null) {
+        if (!IsReady) { onResult?.Invoke(false); if (!showing) LoadAd(); return; }
+        completion = onResult; showing = true; earned = false; finishing = false;
+        var shown = ad; StateChanged?.Invoke();
+        try {
+            shown.Show(_ => MobileAdsEventExecutor.ExecuteInUpdate(() => {
+                if (!this || ad != shown || !showing || earned) return;
+                try {
+                    SpecialTileSystem.AddGems(GemRewardAmount);
+                    earned = true; IncrementDailyCount();
+                } catch (Exception e) { Debug.LogException(e); }
+                StateChanged?.Invoke();
+            }));
+        } catch (Exception e) { Debug.LogException(e); Finish(); }
     }
-
-    private void OnAdShowFailed(AdError error)
-    {
-        Debug.LogWarning($"[RewardedAd] Show failed: {error}");
-        if (_rewardedAd != null)
-        {
-            _rewardedAd.Destroy();
-            _rewardedAd = null;
-        }
-        _onResult?.Invoke(false);
-        LoadAd();
+    IEnumerator FinishAfterClose() { finishing = true; yield return null; Finish(); }
+    void Finish() {
+        if (!showing) return;
+        bool success = earned; var callback = completion; completion = null;
+        showing = false; finishing = false; ad?.Destroy(); ad = null;
+        StateChanged?.Invoke(); LoadAd(); callback?.Invoke(success);
     }
-
-    private void OnDestroy()
-    {
-        if (_rewardedAd != null)
-        {
-            _rewardedAd.Destroy();
-        }
-    }
-
-    // ========== 日次制限 ==========
-
-    private bool IsDailyLimitReached()
-    {
-        if (maxDailyViews <= 0) return false;
-
+    void IncrementDailyCount() {
         string today = DateTime.Now.ToString("yyyyMMdd");
-        string savedDate = PlayerPrefs.GetString(PrefKey_DailyAdDate, "");
-
-        if (savedDate != today) return false;
-
-        int count = PlayerPrefs.GetInt(PrefKey_DailyAdCount, 0);
-        return count >= maxDailyViews;
+        int count = PlayerPrefs.GetString(DateKey, "") == today ? PlayerPrefs.GetInt(CountKey, 0) : 0;
+        PlayerPrefs.SetString(DateKey, today); PlayerPrefs.SetInt(CountKey, count + 1); PlayerPrefs.Save();
     }
-
-    private void IncrementDailyCount()
-    {
-        string today = DateTime.Now.ToString("yyyyMMdd");
-        string savedDate = PlayerPrefs.GetString(PrefKey_DailyAdDate, "");
-
-        int count = 0;
-        if (savedDate == today)
-        {
-            count = PlayerPrefs.GetInt(PrefKey_DailyAdCount, 0);
-        }
-
-        count++;
-        PlayerPrefs.SetString(PrefKey_DailyAdDate, today);
-        PlayerPrefs.SetInt(PrefKey_DailyAdCount, count);
-        PlayerPrefs.Save();
+    void OnDestroy() {
+        ++generation; ad?.Destroy(); ad = null;
+        if (Instance == this) { Instance = null; var callback = completion; completion = null; callback?.Invoke(earned); }
     }
 }
