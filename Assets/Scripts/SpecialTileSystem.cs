@@ -86,8 +86,8 @@ public struct Entry
     // 所持上限（既存仕様：20）
     private const int OWNED_MAX = 20;
 
-    public static int GetGems() => PlayerPrefs.GetInt(KEY_GEMS, 0);
-    public static void SetGems(int v) { PlayerPrefs.SetInt(KEY_GEMS, Mathf.Max(0, v)); PlayerPrefs.Save(); }
+    public static int GetGems() => GemWallet.Balance;
+    public static void SetGems(int v) => GemWallet.Set(v);
 
     public static bool TryConsumeGems(int cost)
     {
@@ -96,14 +96,7 @@ public struct Entry
         SetGems(g - cost);
         return true;
     }
-public static void AddGems(int add)
-{
-    if (add <= 0) return;
-    int v = GetGems();
-    v = Mathf.Max(0, v + add);
-    PlayerPrefs.SetInt("SP_Gems", v);
-    PlayerPrefs.Save();
-}
+public static void AddGems(int add) => GemWallet.Add(add);
 
     public static int GetEquipSlotsUnlocked()
     {

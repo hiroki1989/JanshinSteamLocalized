@@ -479,7 +479,7 @@ public TMP_FontAsset GetBodyFont()
             { "fixed.poison_status_suffix", "ダメージ" },
 
             { "fixed.paralysis_status_prefix", "麻痺！ " },
-            { "fixed.paralysis_status_suffix", "ターンの間、スキルと鳴きが封じられた" },
+            { "fixed.paralysis_status_suffix", "ターンの間、アクティブスキルが封じられる（鳴きは可能）" },
 
             { "fixed.skill_quoted_prefix", "敵スキル『" },
             { "fixed.skill_quoted_middle", "』！ " },
@@ -913,7 +913,7 @@ AddAll(_ja, new Dictionary<string, string>
             { "fixed.poison_status_suffix", " damage each turn" },
 
             { "fixed.paralysis_status_prefix", "Paralysis! " },
-            { "fixed.paralysis_status_suffix", " turns, skills and calls are sealed" },
+            { "fixed.paralysis_status_suffix", " turns, active skills are sealed (calls remain available)" },
 
             { "fixed.skill_quoted_prefix", "Enemy Skill \"" },
             { "fixed.skill_quoted_middle", "\"! " },
@@ -1353,7 +1353,7 @@ AddAll(_en, new Dictionary<string, string>
             { "fixed.poison_status_suffix", "伤害" },
 
             { "fixed.paralysis_status_prefix", "麻痹！ " },
-            { "fixed.paralysis_status_suffix", "回合内，技能和鸣牌被封锁" },
+            { "fixed.paralysis_status_suffix", "回合内主动技能被封印（仍可鸣牌）" },
 
             { "fixed.skill_quoted_prefix", "敌方技能「" },
             { "fixed.skill_quoted_middle", "」！" },

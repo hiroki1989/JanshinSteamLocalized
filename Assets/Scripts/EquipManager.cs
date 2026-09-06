@@ -407,7 +407,7 @@ private string ReplaceTraitWordsWithIcons(string src)
                 label.alignment = TextAlignmentOptions.Left;
                 label.richText = true;
 
-                if (ownedListFont) label.font = ownedListFont;
+                if (TMPro.TMP_Settings.defaultFontAsset) label.font = TMPro.TMP_Settings.defaultFontAsset;
                 if (ownedListFontSize > 0f) label.fontSize = ownedListFontSize;
                 label.color = ownedListTextColor;
 
@@ -488,7 +488,7 @@ private string ReplaceTraitWordsWithIcons(string src)
         tmp.alignment = TextAlignmentOptions.Left;
         tmp.enableWordWrapping = true;
 
-        if (ownedListFont) tmp.font = ownedListFont;
+        if (TMPro.TMP_Settings.defaultFontAsset) tmp.font = TMPro.TMP_Settings.defaultFontAsset;
         tmp.color = ownedListTextColor;
         tmp.fontSize = (ownedListFontSize > 0f) ? ownedListFontSize : 28f;
 

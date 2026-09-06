@@ -750,6 +750,7 @@ private IEnumerator WaitPlayerCutinAnimationOrSeconds(CutinSpriteAnimator animat
 }
 private void OnDisable()
 {
+    __CleanupFirstMatchTutorial();
     if (_preparedForSceneUnload)
         return;
 
@@ -5859,6 +5860,10 @@ private void __BeginOfferPhase_AfterEnemySkills()
 }
 private IEnumerator __DealOfferTiles_Sequential_Co(int offersToDeal)
 {
+    bool showTutorialAfterDraw = !_tutorialFirstDrawReached && __ShouldShowFirstMatchTutorial();
+    _tutorialFirstDrawReached = true;
+    _tutorialDealingFirstDraw = showTutorialAfterDraw;
+    UpdateButtons();
     // スキル予約があれば先頭に置く（これも「入った瞬間」に鳴らす）
     if (!string.IsNullOrEmpty(_skillNextOfferTile))
     {
@@ -5915,6 +5920,10 @@ if (statusTMP) statusTMP.text = GetGameFixedText_Local("status_replace_to_tenpai
     try { UpdateMpUI(); } catch { }
 
     TryRegenMP_TurnStart();
+    // Show the guide only after the first player draw is fully visible.
+    _tutorialDealingFirstDraw = false;
+    if (showTutorialAfterDraw && phase == Phase.Offer && __ShouldShowFirstMatchTutorial())
+        yield return StartCoroutine(__RunFirstMatchTutorial_Co());
 }
 private System.Collections.IEnumerator __PlayDealOfferTilesSE_Co(int count)
 {
@@ -6900,7 +6909,7 @@ private void EvaluateWinUI_New()
     if (phase == Phase.ChoosingCall) return; // do not override call UI
 
     // Ron: during enemy turn, check the last enemy tiles directly
-    canRonNow = (phase == Phase.EnemyTurn) && CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
+    canRonNow = (phase == Phase.EnemyTurn) && CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
 
     // Tsumo: during our offer/draw
 if (phase == Phase.Offer && !suppressTsumoThisOffer)
@@ -6955,7 +6964,7 @@ private void UpdateButtons()
     bool isScoring = (phase == Phase.Scoring);
 
     // ★追加：プレイヤースキル（カットイン開始〜変換演出終了まで）は「全てのボタン操作」を無効化
-    bool isPlayerSkillBusy = (_playerSkillCutinRunning || _playerSkillTransformRunning);
+    bool isPlayerSkillBusy = (_playerSkillCutinRunning || _playerSkillTransformRunning || _rinshanDrawRunning || _tutorialDealingFirstDraw);
 
     // ★追加：無効中でもボタンの見た目は暗くしない
     SetNoDimButtons_Temporary(isPlayerSkillBusy);
@@ -7242,7 +7251,7 @@ if (btnRon)
 
     if (btnCanRon)
     {
-        bool enable = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
+        bool enable = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
         btnRon.gameObject.SetActive(true);
         btnRon.interactable = enable;
         btnRon.onClick.RemoveAllListeners();
@@ -7393,6 +7402,7 @@ private List<(int meldIndex, string id)> FindKakanCandidates()
 
 private void OnClickKanFromHand()
 {
+    if (_rinshanDrawRunning || deck.Count == 0) return;
     // 自分のツモ番で捨て牌待ちのフェーズ以外では発動しない
     if (!(phase == Phase.Offer ||
           phase == Phase.NeedDiscardAfterCall ||
@@ -7443,9 +7453,9 @@ private void DoAnkan(string baseId)
     // ドラ表示+嶺上表示牌
     AddKanIndicator();
 
-StartCoroutine(__RinshanToHandFlow(1f, 1f, Phase.Offer, GetGameFixedText_Local("ankan_rinshan_draw")));
+StartCoroutine(__RinshanToHandFlow(1f, 1f, phase, GetGameFixedText_Local("ankan_rinshan_draw")));
     // 直ちに Offer フェーズ継続扱い（UIを固めないため）
-    phase = Phase.Offer;
+
     UpdateButtons();
 }
 
@@ -7470,9 +7480,9 @@ private void DoKakan(int meldIndex, string baseId)
 
     AddKanIndicator();
 
-StartCoroutine(__RinshanToHandFlow(1f, 1f, Phase.Offer, GetGameFixedText_Local("kakan_rinshan_draw")));
+StartCoroutine(__RinshanToHandFlow(1f, 1f, phase, GetGameFixedText_Local("kakan_rinshan_draw")));
 
-    phase = Phase.Offer;
+
     UpdateButtons();
 }
 private void EnsureBottomButtons()
@@ -8478,6 +8488,7 @@ private bool ApplyHadesCalligrapherSkill(List<int> selectedHandList)
 }
 private void OnClickConfirm()
 {
+    if (_rinshanDrawRunning || _tutorialDealingFirstDraw) return;
     if (phase == Phase.Scoring) return;
 
     // --- 手牌から捨てる系（鳴き後／一時的要求） ---
@@ -9764,10 +9775,10 @@ private bool PauseForPlayerReactionOnEnemyDiscard()
     // このターンの敵捨て牌（lastEnemyTurnTiles）はここで必ず埋まっている
     if (lastEnemyTurnTiles == null || lastEnemyTurnTiles.Count == 0) return false;
 
-    bool canRon = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _); // 内部で NormalizeEnemyTileId を使っている【turn55file5†L40-L50】
-bool canPon = lastEnemyTurnTiles.Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
-bool canChi = lastEnemyTurnTiles.Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
-bool canKan = lastEnemyTurnTiles.Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canRon = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _); // 内部で NormalizeEnemyTileId を使っている【turn55file5†L40-L50】
+bool canPon = AvailableEnemyTurnTiles().Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
+bool canChi = AvailableEnemyTurnTiles().Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
+bool canKan = AvailableEnemyTurnTiles().Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
 
     if (!(canRon || canPon || canChi || canKan)) return false;
 
@@ -10045,10 +10056,10 @@ private void AfterEnemyDiscardCommonFlow()
     }
 
 // プレイヤーが敵捨て牌で鳴ける/ロンできるなら停止（既存仕様維持）
-bool canRon_After = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
-bool canPon_After = lastEnemyTurnTiles.Any(t => CanPonWithBase(NormalizeEnemyTileId(t)));
-bool canChi_After = lastEnemyTurnTiles.Any(t => CanChiWithBase(NormalizeEnemyTileId(t)));
-bool canKan_After = lastEnemyTurnTiles.Any(t => CanKanWithBase(NormalizeEnemyTileId(t)));
+bool canRon_After = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
+bool canPon_After = AvailableEnemyTurnTiles().Any(t => CanPonWithBase(NormalizeEnemyTileId(t)));
+bool canChi_After = AvailableEnemyTurnTiles().Any(t => CanChiWithBase(NormalizeEnemyTileId(t)));
+bool canKan_After = AvailableEnemyTurnTiles().Any(t => CanKanWithBase(NormalizeEnemyTileId(t)));
 
 if (isRiichi && !canRon_After)
 {
@@ -11426,10 +11437,10 @@ private void AutoSkipEnemyIfNothing(float waitSec)
     //        代わりに、予約した _AutoSkip 側でカットイン終了まで待つ。
 
     // 1) 理論上の行動可（宣言はここ1回だけ）
-    bool canRon = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
-    bool canPon = lastEnemyTurnTiles.Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
-    bool canChi = lastEnemyTurnTiles.Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
-    bool canKan = lastEnemyTurnTiles.Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canRon = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
+    bool canPon = AvailableEnemyTurnTiles().Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canChi = AvailableEnemyTurnTiles().Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canKan = AvailableEnemyTurnTiles().Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
 
     // ★リーチ中はポン/チー/カン不可
     if (isRiichi)
@@ -11493,10 +11504,10 @@ private System.Collections.IEnumerator _AutoSkip(float t)
     // ★重要：ここで最終チェック（敵捨て牌でロン/鳴き候補が出ていたら、絶対に進めない）
     if (phase == Phase.EnemyTurn)
     {
-        bool canRon = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
-        bool canPon = lastEnemyTurnTiles != null && lastEnemyTurnTiles.Any(x => CanPonWithBase(NormalizeEnemyDiscardForAction(x)));
-        bool canChi = lastEnemyTurnTiles != null && lastEnemyTurnTiles.Any(x => CanChiWithBase(NormalizeEnemyDiscardForAction(x)));
-        bool canKan = lastEnemyTurnTiles != null && lastEnemyTurnTiles.Any(x => CanKanWithBase(NormalizeEnemyDiscardForAction(x)));
+        bool canRon = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
+        bool canPon = lastEnemyTurnTiles != null && AvailableEnemyTurnTiles().Any(x => CanPonWithBase(NormalizeEnemyDiscardForAction(x)));
+        bool canChi = lastEnemyTurnTiles != null && AvailableEnemyTurnTiles().Any(x => CanChiWithBase(NormalizeEnemyDiscardForAction(x)));
+        bool canKan = lastEnemyTurnTiles != null && AvailableEnemyTurnTiles().Any(x => CanKanWithBase(NormalizeEnemyDiscardForAction(x)));
 
         if (isRiichi)
         {
@@ -11957,14 +11968,7 @@ if (callMode == CallMode.Chi)
     
 private void ConfirmCall()
 {
-    // ★追加：敵スキル「麻痺」中は鳴き（チー／ポン／カン）不可
-    if (EnemySkills_IsPlayerParalyzed())
-    {
-        if (statusTMP) statusTMP.text = "麻痺中のため鳴きはできません";
-        return;
-    }
-
-    // ★追加：リーチ中は鳴き（チー／ポン／カン）不可
+    // Paralysis seals active skills only; normal calls remain available.
     if (isRiichi)
     {
         if (statusTMP) statusTMP.text = "リーチ中は鳴けません";
@@ -13228,10 +13232,11 @@ private bool CanTsumoWithAny(System.Collections.Generic.IEnumerable<string> cand
 
 private void OnClickWin()
 {
+    if (_rinshanDrawRunning || _tutorialDealingFirstDraw) return;
     // Ron ...
     if (phase == Phase.EnemyTurn)
     {
-if (selectedEnemyIndex >= 0 && selectedEnemyIndex < enemyDiscards.Count)
+if (selectedEnemyIndex >= Math.Max(0, enemyDiscards.Count - lastEnemyTurnTiles.Count) && selectedEnemyIndex < enemyDiscards.Count && !enemyUsedIndices.Contains(selectedEnemyIndex))
 {
     string usedRaw = enemyDiscards[selectedEnemyIndex];
     string used = NormalizeEnemyDiscardForAction(usedRaw); // ★ロジック用に正規化（*_sp 等を除去）
@@ -16050,14 +16055,6 @@ if (isGroupEnd && !isLast)
     // ★追加：1局ごとの自動セーブ（アプリを落としても、この局の開始時点から復元できる）
     TryAutoSaveSuspendSnapshot();
 
-    // ★チュートリアル：初めて対局を始めたとき（配牌完了・敵が捨てる前）だけ、
-    //   進行を一度停止してチュートリアルパネルを順番に表示する。
-    //   終了後に元の進行（敵ターン）を再開する。次回以降は表示しない。
-    if (__ShouldShowFirstMatchTutorial())
-    {
-        yield return StartCoroutine(__RunFirstMatchTutorial_Co());
-    }
-
     StartCoroutine(EnterEnemyTurnAfterPlayerAfterDelay(0.5f));
 }
 private void TryAutoSaveSuspendSnapshot()
@@ -16569,7 +16566,7 @@ while (_freezeProgression)
     bool canRonNowLocal = false;
     if (phase == Phase.EnemyTurn)
     {
-        canRonNowLocal = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
+        canRonNowLocal = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
     }
 
     // 鳴き・ロンの対象牌がない場合のみ、プレイヤー側のオファー／ツモ番へ移行
@@ -16819,12 +16816,12 @@ bool canCallNowLocal = false;
 
 if (phase == Phase.EnemyTurn)
 {
-    canRonNowLocal = CanRonWithAny(lastEnemyTurnTiles, out _, out _, out _, out _, out _);
+    canRonNowLocal = CanRonWithAny(AvailableEnemyTurnTiles(), out _, out _, out _, out _, out _);
 
     // 鳴きも見る（敵捨て牌の正規化を揃える）
-    bool canPon = lastEnemyTurnTiles.Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
-    bool canChi = lastEnemyTurnTiles.Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
-    bool canKan = lastEnemyTurnTiles.Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canPon = AvailableEnemyTurnTiles().Any(t => CanPonWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canChi = AvailableEnemyTurnTiles().Any(t => CanChiWithBase(NormalizeEnemyDiscardForAction(t)));
+    bool canKan = AvailableEnemyTurnTiles().Any(t => CanKanWithBase(NormalizeEnemyDiscardForAction(t)));
 
     if (isRiichi) { canPon = false; canChi = false; canKan = false; } // 既存方針踏襲
     canCallNowLocal = (canPon || canChi || canKan);
@@ -17884,6 +17881,7 @@ private void DBG_AttachHandEditHook(GameObject tileGO, int handIndex)
 
 private void Update()
 {
+    if (_tutorialRunning) return;
     // 新InputSystem: ESC でメニュー開閉
     var kb = Keyboard.current;
     if (kb != null && kb.escapeKey.wasPressedThisFrame)
@@ -18523,7 +18521,7 @@ private void EnsureInGameDeckBuilt()
         lrt.anchorMin = lrt.anchorMax = lrt.pivot = new Vector2(0.5f,0.5f);
         lrt.sizeDelta = new Vector2(Mathf.Max(200f, inGameOkSize.x-20f), Mathf.Max(40f, inGameOkSize.y-20f));
         var lbl = labelGO.GetComponent<TextMeshProUGUI>();
-        if (inGameDeckFont) lbl.font = inGameDeckFont;
+        if (TMPro.TMP_Settings.defaultFontAsset) lbl.font = TMPro.TMP_Settings.defaultFontAsset;
         lbl.fontSize = Mathf.Max(24, inGameDeckFontSize);
         lbl.alignment = TextAlignmentOptions.Center;
         lbl.text = string.IsNullOrEmpty(inGameOkText)? "OK" : inGameOkText;
@@ -18625,7 +18623,7 @@ private void IG_BuildRow(int rowIndex, string label, int startIdx, int length)
     var labelGO = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI), typeof(LayoutElement));
     var labelRT = (RectTransform)labelGO.transform; labelRT.SetParent(rowRT, false);
     var tmp = labelGO.GetComponent<TextMeshProUGUI>();
-    if (inGameDeckFont) tmp.font = inGameDeckFont;
+    if (TMPro.TMP_Settings.defaultFontAsset) tmp.font = TMPro.TMP_Settings.defaultFontAsset;
     tmp.fontSize = inGameDeckFontSize;
     tmp.text = label;
     tmp.alignment = TextAlignmentOptions.MidlineRight;
@@ -18667,7 +18665,7 @@ private void IG_BuildRow(int rowIndex, string label, int startIdx, int length)
         var txtGO = new GameObject("Count", typeof(RectTransform), typeof(TextMeshProUGUI));
         var txtRT = (RectTransform)txtGO.transform; txtRT.SetParent(cellRT, false);
         var t = txtGO.GetComponent<TextMeshProUGUI>();
-        if (inGameDeckFont) t.font = inGameDeckFont;
+        if (TMPro.TMP_Settings.defaultFontAsset) t.font = TMPro.TMP_Settings.defaultFontAsset;
         t.alignment = TextAlignmentOptions.Center;
 
         if (rowIndex == 0) { _igManIcons[i] = img; _igManCount[i] = t; }
@@ -18764,31 +18762,29 @@ private void ClearCallChoiceButtons()
     }
 }
 
+private bool _rinshanDrawRunning;
+private IEnumerable<string> AvailableEnemyTurnTiles()
+{
+    int start = Math.Max(0, enemyDiscards.Count - lastEnemyTurnTiles.Count);
+    for (int i = 0; i < lastEnemyTurnTiles.Count; i++)
+        if (!enemyUsedIndices.Contains(start + i)) yield return lastEnemyTurnTiles[i];
+}
 private IEnumerator __RinshanToHandFlow(float delayBeforeDraw, float delayBeforeSort, Phase next, string statusAfter)
 {
-    // 0.5s 待機 → 手牌右端に追加
-    yield return new WaitForSeconds(delayBeforeDraw);
-
-    if (deck.Count > 0)
-    {
-        var rinshan = deck.Pop();
-        hand.Add(rinshan);          // ★右端（未ソート）に入る
-        RefreshHandUI();
+    if (_rinshanDrawRunning) yield break;
+    _rinshanDrawRunning = true;
+    UpdateButtons();
+    try {
+        yield return new WaitForSeconds(delayBeforeDraw);
+        if (deck.Count > 0) { hand.Add(deck.Pop()); RefreshHandUI(); }
+        yield return new WaitForSeconds(delayBeforeSort);
+        SortHand(); selHand.Clear(); RefreshHandUI();
+        phase = next;
+        if (statusTMP && !string.IsNullOrEmpty(statusAfter)) statusTMP.text = statusAfter;
+    } finally {
+        _rinshanDrawRunning = false;
         UpdateButtons();
     }
-
-    // さらに 0.5s 後に並び替え
-    yield return new WaitForSeconds(delayBeforeSort);
-
-    SortHand();
-    RefreshHandUI();
-
-    // 進行フェーズを確定
-    phase = next;
-    UpdateButtons();
-
-    if (statusTMP && !string.IsNullOrEmpty(statusAfter))
-        statusTMP.text = statusAfter;
 }
 private void RevealUraDoraIfEligible()
 {
@@ -19831,6 +19827,8 @@ public string equippedOmamoriIdsCsv;
 
     // 敵側
     public List<string> enemyDiscards;
+    public List<int> consumedEnemyDiscards;
+    public List<string> currentEnemyTurnTiles;
     public List<string> enemyDeck;         // 敵山（Stack を List 化）
     public List<string> enemyHand;         // 敵手牌
 
@@ -19974,6 +19972,8 @@ ss.equippedOmamoriIdsCsv = DumpPlayerDataIntIdsCsv_Safe(new string[]
     ss.melds = new List<List<string>>(melds.Select(m => new List<string>(m)));
 
     ss.enemyDiscards = new List<string>(enemyDiscards);
+    ss.consumedEnemyDiscards = new List<int>(enemyUsedIndices);
+    ss.currentEnemyTurnTiles = new List<string>(lastEnemyTurnTiles);
     ss.enemyDeck = new List<string>(enemyDeck.ToArray());
     ss.enemyHand = new List<string>(_enemyHand);
 
@@ -20158,6 +20158,11 @@ try { PlayerPrefs.Save(); } catch { }
         }
 
         enemyUsedIndices.Clear();
+        if (ss.consumedEnemyDiscards != null)
+            foreach (int consumed in ss.consumedEnemyDiscards)
+                if (consumed >= 0 && consumed < enemyDiscards.Count) enemyUsedIndices.Add(consumed);
+        lastEnemyTurnTiles.Clear();
+        if (ss.currentEnemyTurnTiles != null) lastEnemyTurnTiles.AddRange(ss.currentEnemyTurnTiles);
         _committedDiscardInstanceIDs.Clear();
 
         melds.Clear();

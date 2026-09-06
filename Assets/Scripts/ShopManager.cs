@@ -51,8 +51,10 @@ public class ShopManager : MonoBehaviour
         RefreshAllUI();
     }
 
+    private void OnDisable() => GemWallet.Changed -= RefreshAllUI;
     private void OnEnable()
     {
+        GemWallet.Changed += RefreshAllUI;
         RefreshAllUI();
     }
 

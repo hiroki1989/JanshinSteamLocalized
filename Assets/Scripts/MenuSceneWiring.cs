@@ -18,14 +18,14 @@ public class MenuSceneWiring : MonoBehaviour
         if (startButton)
         {
             // 既存のリスナーを除去してから、確実に張り直す
-            startButton.onClick.RemoveAllListeners();
+            startButton.onClick = new Button.ButtonClickedEvent();
             // MenuController に public な OnClickStartBattleFlow() がある前提
             startButton.onClick.AddListener(menu.OnClickStartBattleFlow);
         }
 
         if (otherButton)
         {
-            otherButton.onClick.RemoveAllListeners();
+            otherButton.onClick = new Button.ButtonClickedEvent();
             otherButton.onClick.AddListener(menu.OnClickOpenOtherScene);
         }
     }

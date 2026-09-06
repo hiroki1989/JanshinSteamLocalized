@@ -340,10 +340,10 @@ private void OnChangeLanguageDropdown(int index)
     }
     private void BackToPreviousScene()
     {
-        string returnScene = "RunScene";
-        try { returnScene = PlayerPrefs.GetString("PF_ReturnSceneFromOther", "RunScene"); } catch { returnScene = "RunScene"; }
+        string returnScene = "MenuScene";
+        try { returnScene = PlayerPrefs.GetString("PF_ReturnSceneFromOther", "MenuScene"); } catch { returnScene = "MenuScene"; }
 
-        if (string.IsNullOrEmpty(returnScene)) returnScene = "RunScene";
+        if (string.IsNullOrEmpty(returnScene)) returnScene = "MenuScene";
 
         try { UnityEngine.SceneManagement.SceneManager.LoadScene(returnScene); } catch { }
     }

@@ -1,251 +1,142 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Purchasing;
 using UnityEngine.Purchasing.Extension;
 
-/// <summary>
-/// App内課金（IAP）マネージャー。
-/// 
-/// 【商品一覧】
-///   - 広告カット（非消耗型 = 一度買えば永久）
-///   - 宝石パック 3種（消耗型 = 何度でも購入可能）
-///
-/// 【セットアップ】
-///   1. Unity Editor → Window → Package Manager → "In App Purchasing" をインストール
-///   2. Edit → Project Settings → Services → In-App Purchasing を有効化
-///   3. AdsInitializer と同じ GameObject にアタッチ
-///   4. App Store Connect で同じ Product ID の商品を作成
-///
-/// 【商品IDの変更】
-///   Inspector で Product ID を変更可能。
-///   App Store Connect 側の商品IDと完全一致させること。
-/// </summary>
-public class IAPManager : MonoBehaviour, IDetailedStoreListener
+// Compatibility API from the installed Unity IAP 5.4.2; iOS uses StoreKit 2.
+public sealed class IAPManager : MonoBehaviour, IDetailedStoreListener
 {
     public static IAPManager Instance { get; private set; }
-
-    // ========== 商品 ID（Inspector で変更可能） ==========
-
-    [Header("商品 ID（App Store Connect と一致させること）")]
-    [SerializeField] private string removeAdsProductId = "com.yourapp.removeads";
-    [SerializeField] private string gems100ProductId   = "com.yourapp.gems_100";
-    [SerializeField] private string gems500ProductId   = "com.yourapp.gems_500";
-    [SerializeField] private string gems1200ProductId  = "com.yourapp.gems_1200";
-
-    [Header("宝石パックの付与数")]
-    [SerializeField] private int gems100Amount  = 100;
-    [SerializeField] private int gems500Amount  = 500;
-    [SerializeField] private int gems1200Amount = 1200;
-
-    // ========== 内部状態 ==========
-
-    private IStoreController   _controller;
-    private IExtensionProvider _extensions;
-    private bool _isInitialized = false;
-
-    /// <summary>IAP が初期化済みか</summary>
-    public bool IsInitialized => _isInitialized;
-
-    /// <summary>購入完了時に外部から受け取るコールバック（UIリフレッシュ用）</summary>
+    [SerializeField] string removeAdsProductId = "com.yourapp.removeads";
+    [SerializeField] string gems100ProductId = "com.yourapp.gems_100";
+    [SerializeField] string gems500ProductId = "com.yourapp.gems_500";
+    [SerializeField] string gems1200ProductId = "com.yourapp.gems_1200";
+    [SerializeField, Min(1)] int gems100Amount = 10;
+    [SerializeField, Min(1)] int gems500Amount = 55;
+    [SerializeField, Min(1)] int gems1200Amount = 130;
+    IStoreController controller;
+    IExtensionProvider extensions;
+    bool initializing, busy, restoring;
     public event Action OnPurchaseCompleted;
-
-    // ========== 商品IDの公開（UI側から参照用） ==========
-
+    public static event Action StateChanged;
+    public bool IsInitialized => controller != null;
+    public bool IsBusy => busy || initializing || restoring;
+    public string Status { get; private set; } = "connecting";
     public string RemoveAdsProductId => removeAdsProductId;
-    public string Gems100ProductId   => gems100ProductId;
-    public string Gems500ProductId   => gems500ProductId;
-    public string Gems1200ProductId  => gems1200ProductId;
-
-    // ========================================================
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        InitializePurchasing();
+    public string Gems100ProductId => gems100ProductId;
+    public string Gems500ProductId => gems500ProductId;
+    public string Gems1200ProductId => gems1200ProductId;
+    public int Gems100Amount => gems100Amount;
+    public int Gems500Amount => gems500Amount;
+    public int Gems1200Amount => gems1200Amount;
+    public bool HasProductionIds => new[] {removeAdsProductId,gems100ProductId,gems500ProductId,gems1200ProductId}
+        .All(id => !string.IsNullOrWhiteSpace(id) && !id.StartsWith("com.yourapp.")) &&
+        new[] {removeAdsProductId,gems100ProductId,gems500ProductId,gems1200ProductId}.Distinct().Count() == 4;
+    void Awake() {
+        if (Instance && Instance != this) { Destroy(gameObject); return; }
+        Instance = this; DontDestroyOnLoad(gameObject);
     }
-
-    // ========== 初期化 ==========
-
-    private void InitializePurchasing()
-    {
-        if (_isInitialized) return;
-
-        var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-
-        // 広告カット（非消耗型：一度購入すれば永久に有効）
-        builder.AddProduct(removeAdsProductId, ProductType.NonConsumable);
-
-        // 宝石パック（消耗型：何度でも購入可能）
-        builder.AddProduct(gems100ProductId,  ProductType.Consumable);
-        builder.AddProduct(gems500ProductId,  ProductType.Consumable);
-        builder.AddProduct(gems1200ProductId, ProductType.Consumable);
-
-        UnityPurchasing.Initialize(this, builder);
+    void Start() => InitializePurchasing();
+    void UpdateState(string state) {
+        Status = state;
+        if (StateChanged != null) foreach (Action callback in StateChanged.GetInvocationList())
+            try { callback(); } catch (Exception e) { Debug.LogException(e); }
     }
-
-    // ========== 購入メソッド（UIボタンから呼ぶ） ==========
-
-    public void BuyRemoveAds()  => InitiatePurchase(removeAdsProductId);
-    public void BuyGems100()    => InitiatePurchase(gems100ProductId);
-    public void BuyGems500()    => InitiatePurchase(gems500ProductId);
-    public void BuyGems1200()   => InitiatePurchase(gems1200ProductId);
-
-    private void InitiatePurchase(string productId)
-    {
-        if (!_isInitialized)
-        {
-            Debug.LogWarning("[IAPManager] Not initialized yet.");
-            return;
-        }
-
-        if (_controller == null)
-        {
-            Debug.LogWarning("[IAPManager] Store controller is null.");
-            return;
-        }
-
-        _controller.InitiatePurchase(productId);
+    public void InitializePurchasing() {
+        if (initializing || IsInitialized) return;
+        if (!Application.isEditor && Application.platform != RuntimePlatform.IPhonePlayer) { UpdateState("unsupported"); return; }
+        if (!Application.isEditor && !HasProductionIds) { UpdateState("configuration"); return; }
+        initializing = true; UpdateState("connecting");
+        try {
+            var module = StandardPurchasingModule.Instance();
+#if UNITY_EDITOR
+            module.useFakeStoreUIMode = FakeStoreUIMode.StandardUser;
+#endif
+            var builder = ConfigurationBuilder.Instance(module);
+            builder.AddProduct(removeAdsProductId, ProductType.NonConsumable);
+            builder.AddProduct(gems100ProductId, ProductType.Consumable);
+            builder.AddProduct(gems500ProductId, ProductType.Consumable);
+            builder.AddProduct(gems1200ProductId, ProductType.Consumable);
+            UnityPurchasing.Initialize(this, builder);
+        } catch (Exception e) { initializing = false; UpdateState("unavailable"); Debug.LogException(e); }
     }
-
-    // ========== 購入の復元（iOS 必須） ==========
-
-    /// <summary>
-    /// 購入を復元する。設定画面の「購入を復元」ボタンから呼ぶ。
-    /// iOS では非消耗型の購入復元ボタンが必須（ないとリジェクトされる）。
-    /// </summary>
-    public void RestorePurchases(Action<bool> onComplete = null)
-    {
-        if (!_isInitialized)
-        {
-            onComplete?.Invoke(false);
-            return;
-        }
-
-#if UNITY_IOS
-        var apple = _extensions.GetExtension<IAppleExtensions>();
-apple.RestoreTransactions((result, error) =>
-{
-    Debug.Log($"[IAPManager] Restore result: {result}, error: {error}");
-    onComplete?.Invoke(result);
-});
+    public bool CanBuy(string id) => !IsBusy && IsInitialized && controller.products.WithID(id)?.availableToPurchase == true &&
+        (id != removeAdsProductId || !AdsInitializer.IsAdFree);
+    public void BuyRemoveAds() => Buy(removeAdsProductId);
+    public void BuyGems100() => Buy(gems100ProductId);
+    public void BuyGems500() => Buy(gems500ProductId);
+    public void BuyGems1200() => Buy(gems1200ProductId);
+    void Buy(string id) {
+        if (!CanBuy(id)) { if (!IsBusy) UpdateState("unavailable"); return; }
+        busy = true; UpdateState("purchasing");
+        try { controller.InitiatePurchase(id); }
+        catch (Exception e) { busy = false; UpdateState("failed"); Debug.LogException(e); }
+    }
+    // Planned Japanese prices; App Store metadata remains authoritative in a live store.
+    public string GetLocalizedPrice(string id, string fallback = "—") {
+#if !UNITY_EDITOR
+        if (IsInitialized && controller.products.WithID(id)?.availableToPurchase == true)
+            return controller.products.WithID(id).metadata.isoCurrencyCode == "JPY" ? controller.products.WithID(id).metadata.localizedPrice.ToString("0", System.Globalization.CultureInfo.InvariantCulture) + "円" : controller.products.WithID(id).metadata.localizedPriceString;
+#endif
+        if (id == removeAdsProductId) return "800円";
+        if (id == gems100ProductId) return "100円";
+        if (id == gems500ProductId) return "400円";
+        if (id == gems1200ProductId) return "900円";
+        return fallback;
+    }
+    public bool IsRemoveAdsPurchased() => AdsInitializer.IsAdFree;
+    public void RestorePurchases(Action<bool> onComplete = null) {
+        if (!IsInitialized || IsBusy) { onComplete?.Invoke(false); return; }
+        restoring = true; UpdateState("restoring");
+#if UNITY_IOS && !UNITY_EDITOR
+        try {
+            extensions.GetExtension<IAppleExtensions>().RestoreTransactions((success, error) => {
+                restoring = false;
+                UpdateState(success ? (AdsInitializer.IsAdFree ? "restored" : "restoreEmpty") : "restoreFailed");
+                onComplete?.Invoke(success);
+            });
+        } catch (Exception e) { restoring = false; UpdateState("restoreFailed"); Debug.LogException(e); onComplete?.Invoke(false); }
 #else
-        // Android は自動復元されるため不要
-        Debug.Log("[IAPManager] Restore not needed on this platform.");
-        onComplete?.Invoke(true);
+        restoring = false; UpdateState(AdsInitializer.IsAdFree ? "restored" : "restoreEmpty"); onComplete?.Invoke(true);
 #endif
     }
-
-    // ========== ローカライズ価格の取得 ==========
-
-    /// <summary>
-    /// 商品のローカライズ済み価格文字列を取得する（例: "¥480", "$3.99"）。
-    /// 未初期化や商品が見つからない場合は fallback を返す。
-    /// </summary>
-    public string GetLocalizedPrice(string productId, string fallback = "---")
-    {
-        if (!_isInitialized || _controller == null) return fallback;
-
-        var product = _controller.products.WithID(productId);
-        if (product == null || !product.availableToPurchase) return fallback;
-
-        return product.metadata.localizedPriceString;
+    public void OnInitialized(IStoreController store, IExtensionProvider provider) {
+        controller = store; extensions = provider; initializing = false;
+        var item = store.products.WithID(removeAdsProductId);
+        if (item != null && item.hasReceipt) AdsInitializer.IsAdFree = true;
+#if UNITY_IOS && !UNITY_EDITOR
+        provider.GetExtension<IAppleExtensions>().RegisterPurchaseDeferredListener(_ => {
+            busy = false; UpdateState("deferred");
+        });
+#endif
+        UpdateState(Application.isEditor ? "testStore" : "ready");
     }
-
-    /// <summary>広告カットが購入済みかどうか</summary>
-    public bool IsRemoveAdsPurchased()
-    {
-        if (!_isInitialized || _controller == null) return AdsInitializer.IsAdFree;
-
-        var product = _controller.products.WithID(removeAdsProductId);
-        if (product != null && product.hasReceipt)
-        {
-            return true;
-        }
-        return AdsInitializer.IsAdFree;
+    public void OnInitializeFailed(InitializationFailureReason reason) => OnInitializeFailed(reason, "");
+    public void OnInitializeFailed(InitializationFailureReason reason, string message) {
+        initializing = false; UpdateState("unavailable"); Debug.LogWarning("[IAP] " + reason + ": " + message);
     }
-
-    // ========== IDetailedStoreListener コールバック ==========
-
-    public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
-    {
-        _controller = controller;
-        _extensions = extensions;
-        _isInitialized = true;
-        Debug.Log("[IAPManager] IAP initialization complete.");
-
-        // 広告カットの復元チェック（アプリ再インストール時など）
-        var removeAds = controller.products.WithID(removeAdsProductId);
-        if (removeAds != null && removeAds.hasReceipt)
-        {
-            AdsInitializer.IsAdFree = true;
-            Debug.Log("[IAPManager] Remove Ads already purchased - restored.");
+    public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
+        var product = args.purchasedProduct;
+        int amount = product.definition.id == gems100ProductId ? gems100Amount :
+            product.definition.id == gems500ProductId ? gems500Amount :
+            product.definition.id == gems1200ProductId ? gems1200Amount : 0;
+        try {
+            if (product.definition.id == removeAdsProductId) AdsInitializer.IsAdFree = true;
+            else if (amount > 0 && !string.IsNullOrWhiteSpace(product.transactionID))
+                GemWallet.GrantPurchase(product.definition.id + ":" + product.transactionID, amount);
+            else { busy = false; UpdateState("pending"); return PurchaseProcessingResult.Pending; }
+        } catch (Exception e) {
+            busy = false; UpdateState("pending"); Debug.LogException(e); return PurchaseProcessingResult.Pending;
         }
-    }
-
-    public void OnInitializeFailed(InitializationFailureReason error)
-    {
-        Debug.LogError($"[IAPManager] Init failed: {error}");
-    }
-
-    public void OnInitializeFailed(InitializationFailureReason error, string message)
-    {
-        Debug.LogError($"[IAPManager] Init failed: {error} - {message}");
-    }
-
-    public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
-    {
-        string productId = args.purchasedProduct.definition.id;
-        Debug.Log($"[IAPManager] Purchase success: {productId}");
-
-        // ===== 広告カット =====
-        if (productId == removeAdsProductId)
-        {
-            AdsInitializer.IsAdFree = true;
-            Debug.Log("[IAPManager] Ads removed permanently.");
-        }
-        // ===== 宝石 100 =====
-        else if (productId == gems100ProductId)
-        {
-            try { SpecialTileSystem.AddGems(gems100Amount); } catch { }
-            Debug.Log($"[IAPManager] Added {gems100Amount} gems.");
-        }
-        // ===== 宝石 500 =====
-        else if (productId == gems500ProductId)
-        {
-            try { SpecialTileSystem.AddGems(gems500Amount); } catch { }
-            Debug.Log($"[IAPManager] Added {gems500Amount} gems.");
-        }
-        // ===== 宝石 1200 =====
-        else if (productId == gems1200ProductId)
-        {
-            try { SpecialTileSystem.AddGems(gems1200Amount); } catch { }
-            Debug.Log($"[IAPManager] Added {gems1200Amount} gems.");
-        }
-        else
-        {
-            Debug.LogWarning($"[IAPManager] Unknown product: {productId}");
-        }
-
-        // 購入完了イベントを発火（UI更新用）
-        try { OnPurchaseCompleted?.Invoke(); } catch { }
-
+        busy = false; UpdateState(restoring ? "restoring" : "purchased");
+        if (OnPurchaseCompleted != null) foreach (Action callback in OnPurchaseCompleted.GetInvocationList())
+            try { callback(); } catch (Exception e) { Debug.LogException(e); }
         return PurchaseProcessingResult.Complete;
     }
-
-    public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
-    {
-        Debug.LogWarning($"[IAPManager] Purchase failed: {product.definition.id} - {failureReason}");
+    public void OnPurchaseFailed(Product product, PurchaseFailureReason reason) {
+        busy = false; UpdateState(reason == PurchaseFailureReason.UserCancelled ? "cancelled" : "failed");
     }
-
-    public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
-    {
-        Debug.LogWarning($"[IAPManager] Purchase failed: {product.definition.id} - {failureDescription.reason} - {failureDescription.message}");
-    }
+    public void OnPurchaseFailed(Product product, PurchaseFailureDescription failure) => OnPurchaseFailed(product, failure.reason);
+    void OnDestroy() { if (Instance == this) Instance = null; }
 }

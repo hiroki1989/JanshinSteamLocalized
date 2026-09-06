@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;            // Image, LayoutGroup 等
 using TMPro;                     // TextMeshProUGUI 用
 
-public class UpgradeManager : MonoBehaviour
+public partial class UpgradeManager : MonoBehaviour
 {
 
     [Header("Next Scene")]
@@ -839,6 +839,7 @@ RefreshCurrentHpMpText();
 
     // ★追加：宝石の取得抽選は UpgradeScene に入った直後に行う（当選時のみ結果パネル）
     TryProcessPendingGemReward_OnEnterUpgrade();
+    BuildSelectedTileShopUI();
 }
 private void OnEnable()
 {
@@ -848,6 +849,7 @@ private void OnEnable()
 private void OnDisable()
 {
     LocalizationManager.LanguageChanged -= OnLanguageChanged_Local;
+    CloseSelectedTileShop();
 }
 
 private void OnLanguageChanged_Local(LocalizationManager.Language language)
@@ -856,6 +858,7 @@ private void OnLanguageChanged_Local(LocalizationManager.Language language)
     RefreshTraitOffers();
     RefreshUI();
     RefreshUpgradeLabels();
+    RefreshSelectedTileShopLabels();
 }
 public void OnClickBuy()
 {
@@ -1190,7 +1193,7 @@ private void EnsureDeckPanelBuilt()
         lrt.sizeDelta = new Vector2(Mathf.Max(200f, okButtonSize.x - 20f), Mathf.Max(40f, okButtonSize.y - 20f));
 
         var lbl = labelGO.GetComponent<TextMeshProUGUI>();
-        if (deckFont) lbl.font = deckFont;
+        if (TMPro.TMP_Settings.defaultFontAsset) lbl.font = TMPro.TMP_Settings.defaultFontAsset;
         lbl.fontSize  = Mathf.Max(24, deckFontSize);
         lbl.alignment = TextAlignmentOptions.Center;
         lbl.text      = string.IsNullOrEmpty(okButtonText) ? GetUpgradeFixedText_Local("ok") : okButtonText;
@@ -1213,7 +1216,7 @@ private void EnsureDeckPanelBuilt()
         var lbl = _deckOkButton.GetComponentInChildren<TextMeshProUGUI>();
         if (lbl)
         {
-            if (deckFont) lbl.font = deckFont;
+            if (TMPro.TMP_Settings.defaultFontAsset) lbl.font = TMPro.TMP_Settings.defaultFontAsset;
             lbl.fontSize  = Mathf.Max(24, deckFontSize);
             lbl.alignment = TextAlignmentOptions.Center;
             lbl.text      = string.IsNullOrEmpty(okButtonText) ? GetUpgradeFixedText_Local("ok") : okButtonText;
@@ -1321,7 +1324,7 @@ private void BuildRow(int rowIndex, string label, int startIdx, int length)
     var labelGO = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI), typeof(LayoutElement));
     var labelRT = (RectTransform)labelGO.transform; labelRT.SetParent(rowRT, false);
     var tmp = labelGO.GetComponent<TextMeshProUGUI>();
-    if (deckFont) tmp.font = deckFont;
+    if (TMPro.TMP_Settings.defaultFontAsset) tmp.font = TMPro.TMP_Settings.defaultFontAsset;
     tmp.fontSize = deckFontSize;
     tmp.text = label;
     tmp.alignment = TextAlignmentOptions.MidlineRight;
@@ -1367,7 +1370,7 @@ private void BuildRow(int rowIndex, string label, int startIdx, int length)
         var txtGO = new GameObject("Count", typeof(RectTransform), typeof(TextMeshProUGUI));
         var txtRT = (RectTransform)txtGO.transform; txtRT.SetParent(cellRT, false);
         var t = txtGO.GetComponent<TextMeshProUGUI>();
-        if (deckFont) t.font = deckFont;
+        if (TMPro.TMP_Settings.defaultFontAsset) t.font = TMPro.TMP_Settings.defaultFontAsset;
         t.alignment = TextAlignmentOptions.Center;
 
         // 配列へ

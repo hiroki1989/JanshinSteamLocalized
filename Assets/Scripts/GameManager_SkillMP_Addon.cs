@@ -981,6 +981,7 @@ Debug.LogWarning($"[MP] mpCost not found in equipped set '{(_skillSet ? _skillSe
 }
 private void OnClickSkill_MP()
 {
+    if (_tutorialRunning) return;
     __RecoverStalePlayerSkillBusyFlags();
 
     if (EnemySkills_IsPlayerParalyzed())
