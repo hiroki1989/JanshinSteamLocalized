@@ -21,16 +21,12 @@
 
 # OS generated
 .DS_Store
-Thumbs.dbGeneratedAssets_deleted/ 
-IOS/ 
-debug.log 
-GeneratedAssets_deleted/ 
-IOS/ 
-debug.log 
-IOS/ 
-GeneratedAssets_deleted/ 
-debug.log 
-*.sln 
-*.slnx 
+Thumbs.db
+/GeneratedAssets_deleted/
+# Only ignore the exported Xcode project at the repository root.
+# A bare IOS/ also excludes Assets/Plugins/iOS on Windows.
+/IOS/
+debug.log
+*.slnx
 Pods/
 Podfile.lock
