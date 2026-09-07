@@ -25,12 +25,12 @@ public class ForceCocoaPodsInstall : IPostprocessBuildWithReport
         string newPodfile = @"source 'https://cdn.cocoapods.org/'
 
 platform :ios, '15.0'
-use_frameworks! :linkage => :static
+use_frameworks!
 
 target 'UnityFramework' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'GoogleUserMessagingPlatform'
-  pod 'UnityAds'
+  pod 'UnityAds', '~> 4.19'
 end
 
 target 'Unity-iPhone' do
@@ -46,7 +46,7 @@ post_install do |installer|
 end
 ";
         File.WriteAllText(podfilePath, newPodfile);
-        UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Podfile rewritten completely");
+        UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Podfile rewritten with dynamic linking");
 
         // 3. Xcode プロジェクト設定
         string projPath = PBXProject.GetPBXProjectPath(buildPath);
