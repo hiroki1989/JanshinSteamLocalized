@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be71958277d42674f87df949df6709b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InterstitialAdManager
-  _adUnitId: ca-app-pub-3940256099942544/4411468910
+  _adUnitId: ca-app-pub-1886549062462061/7396961011
   showEveryNth: 1
   cooldownSeconds: 0
 --- !u!114 &7713109655105720873
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9eac37104591664d8c8651f1b0e9809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardedAdManager
-  _adUnitId: ca-app-pub-3940256099942544/1712485313
+  _adUnitId: ca-app-pub-1886549062462061/9974540397
   gemReward: 1
   maxDailyViews: 10
 --- !u!114 &5573366590171174885
