@@ -213,6 +213,7 @@ public void StartNewRunFromMenu()
     // ★変更: 勝利→強化画面遷移時にインタースティシャル広告を挟む
     public void GoFromBattleWinToUpgrade()
     {
+        ClearFinishedBattleResume();
         var adMgr = InterstitialAdManager.Instance;
         if (adMgr != null)
         {
@@ -330,8 +331,16 @@ public void GoToEnemyDialogueForSecretHades()
     SafeSceneLoader.Load("RunScene");
 }
 
+private static void ClearFinishedBattleResume()
+{
+    foreach (string key in new[] { "Run_HasSuspend", "Run_SuspendJSON", "Run_EnemyHP", "Run_EnemyMaxHP", "PF_ResumeScene" })
+        PlayerPrefs.DeleteKey(key);
+    PlayerPrefs.SetInt("PF_ResumeDirect", 0);
+    PlayerPrefs.Save();
+}
 private void AdvanceToNextEnemy()
 {
+    ClearFinishedBattleResume();
     var names = GetEnemyNames();
     if (names == null || names.Length == 0) return;
 

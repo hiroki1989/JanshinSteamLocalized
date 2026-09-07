@@ -4891,6 +4891,7 @@ private void Awake()
 {
     if (_inst != null && _inst != this) { Destroy(gameObject); return; }
     _inst = this;
+    ValidateBattleResume();
 
     // ★重要：中断復元がある場合、ここでお守り/Shopの上乗せを絶対にしない（復元スナップショットを優先）
     bool hasSuspendForAwake = false;
@@ -15460,14 +15461,10 @@ StartDefeatTransitionIfNeeded();
     void GoNextRoundOrDefeat()
     {
         int nextRound = roundNumber + 1;
-        bool roundsFinished = (nextRound > maxRounds);
-
-        // 未撃破のまま最大局数を終了 → 敗北（敗北カットイン→報酬へ）
-        if (roundsFinished)
+        if (nextRound > maxRounds)
         {
             __EnsureOmamoriAtLeastOneForReward();
-
-StartDefeatTransitionIfNeeded();
+            StartDefeatTransitionIfNeeded(roundLimitReached: true);
             return;
         }
         roundNumber = nextRound;
@@ -19157,17 +19154,12 @@ StartDefeatTransitionIfNeeded();
 
     // ★流局は「1局消化」なので、次局へ進める（roundNumber を進めて StartNextHand）
     int nextRound = roundNumber + 1;
-    bool roundsFinished = (nextRound > maxRounds);
-
-    // 未撃破のまま最大局数を終了 → 敗北（敗北カットイン→報酬へ）
-    if (roundsFinished)
-    {
-        __EnsureOmamoriAtLeastOneForReward();
-
-StartDefeatTransitionIfNeeded();
-        return;
-    }
-
+        if (nextRound > maxRounds)
+        {
+            __EnsureOmamoriAtLeastOneForReward();
+            StartDefeatTransitionIfNeeded(roundLimitReached: true);
+            return;
+        }
     roundNumber = nextRound;
     RefreshTopUI();
     StartNextHand();
@@ -19175,11 +19167,13 @@ StartDefeatTransitionIfNeeded();
 private bool _victoryCutinTransitionRunning = false;
 private bool _defeatTransitionRunning = false;
 
-private void StartDefeatTransitionIfNeeded()
+private void StartDefeatTransitionIfNeeded(bool roundLimitReached = false)
 {
-    if (_defeatTransitionRunning)
+    if (_defeatTransitionRunning || _preparedForSceneUnload ||
+        (playerHP > 0 && !(roundLimitReached && roundNumber >= maxRounds)))
         return;
 
+    Debug.Log($"[BattleDefeat] reason={(roundLimitReached ? "RoundLimit" : "HPZero")} round={roundNumber}/{maxRounds} playerHP={playerHP} enemyHP={enemyHP}");
     _defeatTransitionRunning = true;
     _freezeProgression = true;
     phase = Phase.Scoring;
@@ -19899,6 +19893,7 @@ private void OnClickMenuSuspend()
 }
 private void SaveSuspendSnapshot(bool markAsSuspend)
 {
+    if (_defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
     var ss = new SuspendSnapshot();
 
     ss.roundNumber = roundNumber;
@@ -20012,6 +20007,28 @@ ss.equippedOmamoriIdsCsv = DumpPlayerDataIntIdsCsv_Safe(new string[]
 
     if (statusTMP) statusTMP.text = markAsSuspend ? "中断データを保存しました" : "";
 }
+private static void ClearBattleResume()
+{
+    PlayerPrefs.DeleteKey(PF_SUSPEND_FLAG);
+    PlayerPrefs.DeleteKey(PF_SUSPEND_JSON);
+    PlayerPrefs.DeleteKey("Run_EnemyHP");
+    PlayerPrefs.DeleteKey("Run_EnemyMaxHP");
+    PlayerPrefs.SetInt("PF_ResumeDirect", 0);
+    PlayerPrefs.DeleteKey("PF_ResumeScene");
+    PlayerPrefs.Save();
+}
+private static void ValidateBattleResume()
+{
+    if (PlayerPrefs.GetInt(PF_SUSPEND_FLAG, 0) != 1) return;
+    try
+    {
+        var saved = JsonUtility.FromJson<SuspendSnapshot>(PlayerPrefs.GetString(PF_SUSPEND_JSON, ""));
+        int expected = PlayerPrefs.GetInt("PF_CurrentEnemyIndex", PlayerPrefs.GetInt("CurrentEnemyIndex", 0));
+        if (saved != null && saved.currentEnemyIndex == expected && saved.playerHP > 0 && saved.enemyHP > 0) return;
+    }
+    catch { }
+    ClearBattleResume();
+}
 private bool TryLoadSuspendSnapshot()
 {
     try
@@ -20041,7 +20058,7 @@ private bool TryLoadSuspendSnapshot()
         }
 
         var ss = JsonUtility.FromJson<SuspendSnapshot>(json);
-        if (ss == null) return false;
+        if (ss == null || ss.currentEnemyIndex != ProgressionFlowController.GetCurrentEnemyIndex() || ss.enemyHP <= 0 || ss.playerHP <= 0) { ClearBattleResume(); return false; }
         // ===== このセッションは「中断復元」扱い。以後の上乗せ処理を絶対に止める =====
         _suspendRestoredThisSession = true;
 
