@@ -4936,8 +4936,6 @@ try
 
             if (started == 0 && isFirstEnemy)
             {
-                MissionSystem.ResetForNewRun();
-                MissionSystem.ClearRunSeed();
                 PlayerPrefs.SetInt("Run_DefeatedEnemyCount", 0);
                 PlayerPrefs.SetInt("Run_LastCountedEnemyIndex", -1);
 

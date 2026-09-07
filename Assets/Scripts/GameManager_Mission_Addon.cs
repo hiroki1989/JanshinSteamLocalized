@@ -78,6 +78,11 @@ public partial class GameManager : MonoBehaviour
         try
         {
             MissionSystem.Load();
+            int enemyKey = EnemyConfigExcel.MapRuntimeIndexToExcelKey(ProgressionFlowController.GetCurrentEnemyIndex());
+            // Keep the dialogue's mission and completion state; repair missing/stale assignments only.
+            if (!MissionSystem.HasActiveMission || MissionSystem.CurrentEnemyKey != enemyKey)
+                MissionSystem.AssignForEnemy(enemyKey, ResolveMissionPool());
+
 
             if (missionCompleteCloseButton)
             {
