@@ -92,8 +92,16 @@ public void RefreshUI()
                 slotNameTexts[i].text = GetEmptySlotText();
         }
 
-        if (slotButtons != null && i < slotButtons.Length && slotButtons[i])
+        if (slotButtons != null && i < slotButtons.Length && slotButtons[i]) {
             slotButtons[i].interactable = !string.IsNullOrEmpty(id);
+            var host = slotButtons[i].transform;
+            Image icon = null;
+            foreach (var image in host.GetComponentsInChildren<Image>(true))
+                if (image.transform != host && image.name.StartsWith("IconOfuda")) { icon = image; break; }
+            if (!icon) icon = ItemArtwork.EnsureIcon(host);
+            ItemArtwork.Ofuda(icon, !string.IsNullOrEmpty(id) && _ofudaMap.TryGetValue(id, out var item) ? item.rarity : null);
+            if (slotNameTexts != null && i < slotNameTexts.Length) ItemArtwork.ShopSlot(icon, slotNameTexts[i]);
+        }
     }
 
     if (capacityTMP)

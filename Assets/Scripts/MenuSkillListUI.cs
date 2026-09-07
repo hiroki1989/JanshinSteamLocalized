@@ -95,7 +95,7 @@ void BuildList()
         if (label)
         {
             label.alignment = TextAlignmentOptions.TopLeft;
-            label.enableWordWrapping = true;
+            label.textWrappingMode = TMPro.TextWrappingModes.Normal;
             label.enableAutoSizing = true;
             label.fontSizeMin = 16;
             label.fontSizeMax = 36;

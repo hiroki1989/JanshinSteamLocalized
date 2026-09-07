@@ -121,7 +121,7 @@ if (!scoringActive)
         bRect.pivot = new Vector2(0.5f, 1f);
         bRect.sizeDelta = new Vector2(-48, 160);
         bRect.anchoredPosition = new Vector2(0, -74);
-        _goBody.enableWordWrapping = false;
+        _goBody.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
         _goBody.text = "";
 
         // OK button

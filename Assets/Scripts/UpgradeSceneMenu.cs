@@ -136,6 +136,7 @@ private void ShowUniqueOmamoriResultPanel(int omamoriId, string enemyName)
     if (uniqueOmamoriTitleTMP) uniqueOmamoriTitleTMP.text = title;
     if (uniqueOmamoriDescTMP)  uniqueOmamoriDescTMP.text  = desc;
 
+    ItemArtwork.UniquePanel(uniqueOmamoriResultPanelRoot, uniqueOmamoriDescTMP, uniqueOmamoriTitleTMP, omamoriId);
     uniqueOmamoriResultPanelRoot.SetActive(true);
     uniqueOmamoriResultPanelRoot.transform.SetAsLastSibling();
     _uniquePanelShowing = true;

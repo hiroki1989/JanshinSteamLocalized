@@ -22,7 +22,7 @@ public sealed class MobileDisplayGuard : MonoBehaviour
     private const string PF_FULLSCREEN = "PF_Option_Fullscreen";
 
     // レターボックス済みCanvas を追跡（二重適用防止）
-    private static readonly HashSet<int> _processedCanvasIds = new HashSet<int>();
+    private static readonly HashSet<EntityId> _processedCanvasIds = new HashSet<EntityId>();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Bootstrap()
@@ -129,7 +129,9 @@ public sealed class MobileDisplayGuard : MonoBehaviour
     private void ApplyLetterboxToCanvas(Canvas canvas)
     {
         if (canvas == null) return;
-        int id = canvas.GetInstanceID();
+        // These overlays calculate their layout in screen coordinates, including the safe margins.
+        if (canvas.GetComponent<SkillDescriptionPopup>() || canvas.GetComponentInChildren<WinTileLightning>(true)) return;
+        var id = canvas.GetEntityId();
         if (_processedCanvasIds.Contains(id)) return;
         _processedCanvasIds.Add(id);
 
@@ -351,7 +353,7 @@ public sealed class MobileDisplayGuard : MonoBehaviour
                 var parentCanvas = canvas.transform.parent.GetComponentInParent<Canvas>();
                 if (parentCanvas != null) continue;
             }
-            int id = canvas.GetInstanceID();
+            var id = canvas.GetEntityId();
             if (!_processedCanvasIds.Contains(id))
             {
                 ApplyLetterboxToCanvas(canvas);

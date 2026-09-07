@@ -382,6 +382,7 @@ private void ShowUniqueOmamoriResultPanel(int omamoriId)
         uniqueOmamoriDescTMP.text = ReplaceTraitWordsWithIcons(desc);
     }
 
+    ItemArtwork.UniquePanel(uniqueOmamoriResultPanelRoot, uniqueOmamoriDescTMP, uniqueOmamoriTitleTMP, omamoriId);
     uniqueOmamoriResultPanelRoot.SetActive(true);
     _uniquePanelShowing = true;
     uniqueOmamoriOkButton.onClick.RemoveListener(OnClickUniqueOmamoriOk);
@@ -463,47 +464,13 @@ private static UnityEngine.Color GetRarityColorSafe_Local(string rarityKeyOrRaw,
 }
 private void SetOmamoriIconVisual(int omamoriId, string rarityKeyOrRaw, string rarityJp)
 {
-    if (!omamoriIconImage) return;
-
-    // ★Spriteを未設定ならここで補完（報酬用→無ければ所持一覧用）
-    if (omamoriIconImage.sprite == null)
-    {
-        var sp = rewardOmamoriIconSprite ? rewardOmamoriIconSprite : ownedOmamoriIconSprite;
-        if (sp) omamoriIconImage.sprite = sp;
+    ItemArtwork.Omamori(omamoriIconImage, omamoriId);
+    if (omamoriIconImage && omamoriDescTMP) {
+        omamoriIconImage.transform.SetParent(omamoriDescTMP.transform.parent, false);
+        ItemArtwork.Rect(omamoriIconImage.rectTransform, new Vector2(0,.25f), new Vector2(.25f,.76f), new Vector2(12,8), new Vector2(-6,-8));
+        ItemArtwork.Rect(omamoriDescTMP.rectTransform, new Vector2(.26f,.25f), new Vector2(.97f,.76f), Vector2.zero, Vector2.zero);
+        ItemArtwork.Text(omamoriDescTMP, 30);
     }
-    omamoriIconImage.preserveAspect = true;
-
-    // ★神器（ユニーク）は常に赤Tint（他レア度の色分けとは別枠）
-    // まず ID が分かるなら PlayerData 側の判定を優先する
-    if (omamoriId > 0)
-    {
-        try
-        {
-            if (PlayerData.TryGetOmamoriRarityColor(omamoriId, out var cById))
-            {
-                omamoriIconImage.color = cById;
-
-                if (!omamoriIconImage.gameObject.activeSelf)
-                    omamoriIconImage.gameObject.SetActive(true);
-
-                return;
-            }
-        }
-        catch { }
-    }
-
-    if (string.IsNullOrEmpty(rarityKeyOrRaw) && string.IsNullOrEmpty(rarityJp))
-    {
-        if (omamoriIconImage.gameObject.activeSelf)
-            omamoriIconImage.gameObject.SetActive(false);
-        return;
-    }
-
-    var c = GetRarityColorSafe_Local(rarityKeyOrRaw, rarityJp);
-    omamoriIconImage.color = c;
-
-    if (!omamoriIconImage.gameObject.activeSelf)
-        omamoriIconImage.gameObject.SetActive(true);
 }
 private static string RarityToJp_Local(string rarityRaw)
 {
@@ -952,7 +919,7 @@ private void RebuildOwnedList()
 
         if (label)
         {
-            label.enableWordWrapping = true;
+            label.textWrappingMode = TMPro.TextWrappingModes.Normal;
             label.alignment = TextAlignmentOptions.Left;
             label.richText = true;
 
@@ -988,26 +955,10 @@ else
 }
         }
 
-        // ★追加：所持一覧のアイコン（行プレハブ内の Image 名が ownedOmamoriIconChildName のものを探す）
         var icon = FindOwnedRowIconImage(go);
-        if (icon)
-        {
-            // Sprite
-            if (ownedOmamoriIconSprite) icon.sprite = ownedOmamoriIconSprite;
-            icon.preserveAspect = true;
-
-            // Tint（PlayerData 側の色を使う：神器もここで赤にできる）
-            if (PlayerData.TryGetOmamoriRarityColor(id, out var c))
-            {
-                icon.color = c;
-                if (!icon.gameObject.activeSelf) icon.gameObject.SetActive(true);
-            }
-            else
-            {
-                if (icon.gameObject.activeSelf) icon.gameObject.SetActive(false);
-            }
-
-        }
+        if (!icon) icon = ItemArtwork.EnsureIcon(go.transform);
+        ItemArtwork.Omamori(icon, id);
+        ItemArtwork.OwnedRow(go, icon, label);
         // ★背景グレーアウト（選択中）＋装備中アイコン表示
         ApplyOwnedRowVisual(go, isSelected, PlayerData.EquippedOmamori == id);
 
@@ -1144,7 +1095,7 @@ private void CreatePlainRowInOwnedList(string message)
     le.minHeight = le.preferredHeight = 120;
 var tmp = go.GetComponent<TextMeshProUGUI>();
 tmp.alignment = TextAlignmentOptions.Left;
-tmp.enableWordWrapping = true;
+tmp.textWrappingMode = TMPro.TextWrappingModes.Normal;
 tmp.richText = true;
 
 ApplyTraitSpriteAssetToTMP(tmp);

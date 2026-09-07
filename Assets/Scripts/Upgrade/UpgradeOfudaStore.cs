@@ -171,24 +171,15 @@ private void RefreshOfferSlotsUI()
 
         Color rarityColor = GetRarityColor(o.rarity);
         Color bgColor = rarityColor;
-        bgColor.a = 1.00f;
+        bgColor = Color.Lerp(new Color(.07f,.09f,.10f,1f), rarityColor, .16f);
 
         if (slot.backgroundImage)
         {
             slot.backgroundImage.color = bgColor;
         }
 
-        if (slot.iconImage)
-        {
-            if (ofudaIconSprite)
-                slot.iconImage.sprite = ofudaIconSprite;
-
-            slot.iconImage.preserveAspect = true;
-            slot.iconImage.color = rarityColor;
-
-            if (!slot.iconImage.gameObject.activeSelf)
-                slot.iconImage.gameObject.SetActive(true);
-        }
+        ItemArtwork.Ofuda(slot.iconImage, o.rarity);
+        ItemArtwork.ShopSlot(slot.iconImage, slot.nameTMP, slot.priceTMP);
 
         if (slot.nameTMP)
         {
@@ -369,11 +360,11 @@ private void RefreshEquippedOfudaUI()
             else
             {
                 // Spriteはオファー用と同じものを流用（装備中でも同じ見た目にする）
-                if (ofudaIconSprite)
-                    equippedOfudaIconImages[i].sprite = ofudaIconSprite;
+                ItemArtwork.Ofuda(equippedOfudaIconImages[i], def.rarity);
 
                 equippedOfudaIconImages[i].preserveAspect = true;
-                equippedOfudaIconImages[i].color = GetRarityColor(def.rarity);
+                var label = equippedOfudaIconImages[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>();
+                ItemArtwork.ShopSlot(equippedOfudaIconImages[i], label);
 
                 if (!equippedOfudaIconImages[i].gameObject.activeSelf)
                     equippedOfudaIconImages[i].gameObject.SetActive(true);

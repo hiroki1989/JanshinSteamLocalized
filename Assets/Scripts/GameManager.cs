@@ -2596,6 +2596,7 @@ private void UpdateRightInfoUI_Manual()
 
     EnemyAddon_SetOfudaSplitInfo(ofudaSplitTexts);
 
+    WireActiveSkillDescription();
     UpdateOmamoriIconUI_Manual();
     UpdateOfudaIconsUI_Manual(ofudaRarityTags);
 }
@@ -2609,43 +2610,14 @@ private static string ExtractFirstToken(string s)
 }
 private void UpdateOmamoriIconUI_Manual()
 {
-    if (!_omamoriIconImage) return;
-
-    int id = 0;
-    try { id = PlayerData.EquippedOmamori; } catch { id = 0; }
-
-    if (id <= 0)
-    {
-        if (_omamoriIconImage.gameObject.activeSelf)
-            _omamoriIconImage.gameObject.SetActive(false);
-        return;
-    }
-
-    // ★神器（ユニーク）は必ず赤Tint（PlayerData 側で Color.red を返す）
-    if (PlayerData.TryGetOmamoriRarityColor(id, out var cById))
-    {
-        _omamoriIconImage.color = cById;
-    }
-    else
-    {
-        // フォールバック（何らかの理由でID判定できない場合のみ）
-        string rarityJp = "";
-        try
-        {
-            string name = PlayerData.GetOmamoriName(id);
-            rarityJp = ExtractFirstToken(name);
+    ItemArtwork.Omamori(_omamoriIconImage, PlayerData.EquippedOmamori);
+    if (_omamoriIconImage) {
+        ItemArtwork.Rect(_omamoriIconImage.rectTransform, new Vector2(0,0), new Vector2(.27f,1), new Vector2(4,18), new Vector2(-2,-48));
+        if (_omamoriInfoTMP) {
+            ItemArtwork.Rect(_omamoriInfoTMP.rectTransform, new Vector2(.28f,0), Vector2.one, new Vector2(2,12), new Vector2(-8,-48));
+            ItemArtwork.Text(_omamoriInfoTMP, 21);
         }
-        catch
-        {
-            rarityJp = "";
-        }
-
-        var c = GetRarityColorSafe(rarityJp, rarityJp);
-        _omamoriIconImage.color = c;
     }
-
-    if (!_omamoriIconImage.gameObject.activeSelf)
-        _omamoriIconImage.gameObject.SetActive(true);
 }
 private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string[] rarityTags)
 {
@@ -2716,36 +2688,18 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
 }
 private void UpdateOfudaIconsUI_Manual(string[] rarityTags)
 {
-    if (_ofudaIconImages == null || _ofudaIconImages.Length == 0)
-        return;
-
-    for (int i = 0; i < _ofudaIconImages.Length; i++)
-    {
-        var img = _ofudaIconImages[i];
-        if (!img) continue;
-
-        string r = "";
-        if (rarityTags != null && i < rarityTags.Length && rarityTags[i] != null)
-            r = rarityTags[i];
-
-        // 未装備扱い（空/ー/- すべて）
-        bool empty =
-            string.IsNullOrEmpty(r) ||
-            r == "" ||
-            r == "" ||
-            r.Trim().Length == 0;
-
-        if (empty)
-        {
-            // ★重要：GameObjectを非アクティブにしない（子TMPが消えるため）
-            if (img.enabled) img.enabled = false;
-            continue;
+    if (_ofudaIconImages == null) return;
+    for (int i = 0; i < _ofudaIconImages.Length; i++) {
+        var icon = _ofudaIconImages[i];
+        string rarity = rarityTags != null && i < rarityTags.Length ? rarityTags[i] : null;
+        ItemArtwork.Ofuda(icon, rarity);
+        if (!icon) continue;
+        float top = 1f - (i * .29f + .13f), bottom = top - .27f;
+        ItemArtwork.Rect(icon.rectTransform, new Vector2(0,bottom), new Vector2(.25f,top), new Vector2(4,4), new Vector2(-2,-4));
+        if (_ofudaInfoTMPs != null && i < _ofudaInfoTMPs.Length && _ofudaInfoTMPs[i]) {
+            ItemArtwork.Rect(_ofudaInfoTMPs[i].rectTransform, new Vector2(.26f,bottom), new Vector2(1,top), new Vector2(2,4), new Vector2(-8,-4));
+            ItemArtwork.Text(_ofudaInfoTMPs[i], 22);
         }
-
-        var c = GetRarityColorSafe(r, r);
-        img.color = c;
-
-        if (!img.enabled) img.enabled = true;
     }
 }
 
@@ -3204,10 +3158,10 @@ private void ApplyTraitSpriteAssetToTMP(TextMeshProUGUI tmp)
     int key = 0;
     unchecked
     {
-        key = key * 397 ^ (traitIconsSpriteAssetGeki ? traitIconsSpriteAssetGeki.GetInstanceID() : 0);
-        key = key * 397 ^ (traitIconsSpriteAssetShun ? traitIconsSpriteAssetShun.GetInstanceID() : 0);
-        key = key * 397 ^ (traitIconsSpriteAssetIyu  ? traitIconsSpriteAssetIyu.GetInstanceID()  : 0);
-        key = key * 397 ^ (primary ? primary.GetInstanceID() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetGeki ? traitIconsSpriteAssetGeki.GetEntityId().GetHashCode() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetShun ? traitIconsSpriteAssetShun.GetEntityId().GetHashCode() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetIyu  ? traitIconsSpriteAssetIyu.GetEntityId().GetHashCode()  : 0);
+        key = key * 397 ^ (primary ? primary.GetEntityId().GetHashCode() : 0);
     }
 
     if (_traitSpriteAssetRuntime == null || _traitSpriteAssetRuntimeKey != key)
@@ -9658,6 +9612,7 @@ int sc = EnemyAI_ComputeClosedHandScore(_enemyHand, cand, isTsumo: true);
                 WireEnemyTurnClickTargets();
                 UpdateButtons();
 
+                _winStrikeEnemyDiscardIndex = baseIndexWin + bestI;
                 EnemyAI_DeclareEnemyTsumoWin(bestWin, bestScore);
                 return;
             }
@@ -11468,7 +11423,7 @@ private void AutoSkipEnemyIfNothing(float waitSec)
         {
             var go = (i < enemyDiscardArea.childCount) ? enemyDiscardArea.GetChild(i).gameObject : null;
             if (!go) continue;
-            if (_committedDiscardInstanceIDs.Contains(go.GetInstanceID())) continue;
+            if (_committedDiscardInstanceIDs.Contains(go.GetEntityId())) continue;
 
             var b = go.GetComponentInChildren<UnityEngine.UI.Button>(true);
             if (b != null && b.interactable)
@@ -16937,7 +16892,7 @@ private void ProcessEnemyAttackEffects()
     tmp.fontSize = 42f;
     tmp.text = (amount >= 0 ? "+" : "") + amount.ToString();
     tmp.color = color;
-    tmp.enableWordWrapping = false;
+    tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
 
     float t = 0f;
     while (t < duration)
@@ -17881,7 +17836,7 @@ private void DBG_AttachHandEditHook(GameObject tileGO, int handIndex)
 
 private void Update()
 {
-    if (_tutorialRunning) return;
+    if (_tutorialRunning || _activeSkillPopup) return;
     // 新InputSystem: ESC でメニュー開閉
     var kb = Keyboard.current;
     if (kb != null && kb.escapeKey.wasPressedThisFrame)
@@ -19001,7 +18956,7 @@ private TextMeshProUGUI CreateTopRightText(string text)
     tmp.text = text;
     tmp.fontSize = 20;
     tmp.alignment = TextAlignmentOptions.MidlineRight;
-    tmp.enableWordWrapping = false;
+    tmp.textWrappingMode = TMPro.TextWrappingModes.NoWrap;
     tmp.raycastTarget = false;
     return tmp;
 }
@@ -19050,6 +19005,9 @@ private IEnumerator __WinCutInThenShowScoring(
         _enemyWonHandSnapshot = new List<string>(_enemyHand);
 
     _enemyTurnRunning = false;
+    _autoSkipPending = false;
+    _autoConfirmOfferPending = false;
+    yield return PlayWinStrike(isPlayer, __IsTsumoKind(baseWinKind) || __IsTsumoKind(label), usedTileLabel);
 if (winCutinTMP)
 {
     bool isTsumoLabel = __IsTsumoKind(baseWinKind) || __IsTsumoKind(label);
@@ -19598,7 +19556,7 @@ private void AutoPreselectForCurrentCall()
             if (listIdx < 0 || listIdx >= enemyDiscardArea.childCount) return false;
             var go = enemyDiscardArea.GetChild(listIdx).gameObject;
             // Add-on 側の _committedDiscardInstanceIDs を参照（partial なので参照可）
-            return _committedDiscardInstanceIDs != null && _committedDiscardInstanceIDs.Contains(go.GetInstanceID());
+            return _committedDiscardInstanceIDs != null && _committedDiscardInstanceIDs.Contains(go.GetEntityId());
         }
         catch { return false; }
     }

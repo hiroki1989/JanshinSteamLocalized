@@ -523,7 +523,7 @@ if (!hasLayout)
     // Index-based set (legacy). May become stale if child order changes, so we also keep instanceIDs.
     private readonly HashSet<int> _meldCommittedIndices = new HashSet<int>();
     // Robust lock: GameObject instanceIDs of discard tiles used in enemy melds during the current 局
-    private readonly HashSet<int> _committedDiscardInstanceIDs = new HashSet<int>();
+    private readonly HashSet<EntityId> _committedDiscardInstanceIDs = new HashSet<EntityId>();
 
     private readonly List<List<string>> _enemyCommittedMelds = new List<List<string>>();
     private List<string> _enemyCommittedPair = null;
@@ -983,7 +983,7 @@ foreach (var t in trips)
     // ★当ターン捨て牌は除外（ここが阻害の本丸）
     if (t.idx >= startThisTurn) continue;
 
-    if (t.go != null && _committedDiscardInstanceIDs.Contains(t.go.GetInstanceID())) continue;
+    if (t.go != null && _committedDiscardInstanceIDs.Contains(t.go.GetEntityId())) continue;
     if (_meldCommittedIndices.Contains(t.idx)) continue;
     if (string.IsNullOrEmpty(t.id)) continue;
     unused.Add(t);
@@ -1123,7 +1123,7 @@ if (_enemyHasBaseHand && !_enemyIsInTenpai)
                     {
                         _meldCommittedIndices.Add(t.idx);
                         if (t.go != null)
-                            _committedDiscardInstanceIDs.Add(t.go.GetInstanceID());
+                            _committedDiscardInstanceIDs.Add(t.go.GetEntityId());
                     }
                 }
 
@@ -1262,7 +1262,7 @@ private void CommitGroup(List<DiscardTrip> picks, bool isPair)
     foreach (var p in picks)
     {
         _meldCommittedIndices.Add(p.idx); // legacy
-        if (p.go != null) _committedDiscardInstanceIDs.Add(p.go.GetInstanceID()); // robust lock
+        if (p.go != null) _committedDiscardInstanceIDs.Add(p.go.GetEntityId()); // robust lock
         GreyHighlightEnemyDiscard(p.idx);
     }
 
@@ -1858,7 +1858,7 @@ private void GreyCommittedDiscards()
         var go = container.GetChild(i).gameObject;
 
         bool committed =
-            _committedDiscardInstanceIDs.Contains(go.GetInstanceID()) ||
+            _committedDiscardInstanceIDs.Contains(go.GetEntityId()) ||
             _meldCommittedIndices.Contains(i) ||
             (enemyUsedIndices != null && enemyUsedIndices.Contains(i)); // ★追加：和了等でグレー確定した捨て牌も維持対象に
 
@@ -2879,17 +2879,7 @@ if (_enemyWinTitle != null)
     _autoSkipPending = false;
     _autoConfirmOfferPending = false;
     phase = Phase.Scoring;
-    if (_enemyWinOverlay != null)
-    {
-        StartCoroutine(__EnemyWin_ShowCutinAndScoring_Flow_Co(
-            score, hpDmg, applied, prevPl, prevEn));
-    }
-else
-{
-    __SetScoringPanelActive(false);  // false = 敵側パネル
-    WireScoringOK();
-    __StartScoringStepReveal(false); // ★追加：敵パネルも段階表示を開始
-}
+    StartCoroutine(__EnemyWin_ShowCutinAndScoring_Flow_Co(score, hpDmg, applied, prevPl, prevEn));
     // 表ドラ／裏ドラ表示牌（インジケータ）を敵用パネルに反映
     RefreshScoringDoraUI_Enemy(doraIndicators);
 }
@@ -2905,8 +2895,7 @@ System.Collections.IEnumerator __EnemyWin_ShowCutinAndScoring_Flow_Co(
     // ★追加：直前局の勝者が「敵」であることを記録（次局開始時の手牌リセット方式に使用）
     _addonLastHandWinnerWasEnemy = true;
 
-    // 1) 和了確定から 0.5 秒待つ（敵のツモ演出用）
-    yield return new UnityEngine.WaitForSeconds(1.5f);
+    yield return PlayWinStrike(false, _enemyLastWinWasTsumo, _enemyLastWinTileId);
 // ★ここで敵の手牌をオープン
 EnemyRevealHandNow();
 
@@ -3072,7 +3061,7 @@ private bool TryOfferPlayerReactionThenScore(int score, int hpDmg, int prevPl, i
     for (int i = start; i < enemyDiscards.Count; i++)
     {
         var go = (enemyDiscardArea && i < enemyDiscardArea.childCount) ? enemyDiscardArea.GetChild(i).gameObject : null;
-        if (go && !_committedDiscardInstanceIDs.Contains(go.GetInstanceID()))
+        if (go && !_committedDiscardInstanceIDs.Contains(go.GetEntityId()))
         {
 string raw = enemyDiscards[i];
 
@@ -3162,7 +3151,7 @@ private System.Collections.IEnumerator __EnemyWin_ShowCutinAndScoring_Co(
     }
 
     // 0.5秒の“間”を置く（敵のツモ演出のため）
-    yield return new WaitForSeconds(0.5f);
+    yield return PlayWinStrike(false, _enemyLastWinWasTsumo, _enemyLastWinTileId);
 
     // カットイン付きオーバーレイを表示しつつ、敵側スコアパネルを開く
     // （カットイン用の EnemyOverlay / 手牌のコピーは EnsureEnemyWinOverlay で準備済み）
@@ -3483,6 +3472,7 @@ private bool EnemyAddon_TryRonOnPlayerDiscards(List<string> discardedIds)
 
     int baseIndex = discards.Count - discardedIds.Count;
     int absoluteDiscardIndex = baseIndex + bestIdx;
+    _winStrikePlayerDiscardIndex = absoluteDiscardIndex;
     if (absoluteDiscardIndex >= 0)
     {
         _enemyRonGreyPlayerDiscardIndices.Add(absoluteDiscardIndex);

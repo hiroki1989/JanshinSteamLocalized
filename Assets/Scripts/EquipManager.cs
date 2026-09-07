@@ -81,10 +81,10 @@ private void ApplyTraitSpriteAssetToTMP(TextMeshProUGUI tmp)
     int key = 0;
     unchecked
     {
-        key = key * 397 ^ (traitIconsSpriteAssetGeki ? traitIconsSpriteAssetGeki.GetInstanceID() : 0);
-        key = key * 397 ^ (traitIconsSpriteAssetShun ? traitIconsSpriteAssetShun.GetInstanceID() : 0);
-        key = key * 397 ^ (traitIconsSpriteAssetIyu  ? traitIconsSpriteAssetIyu.GetInstanceID()  : 0);
-        key = key * 397 ^ (primary ? primary.GetInstanceID() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetGeki ? traitIconsSpriteAssetGeki.GetEntityId().GetHashCode() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetShun ? traitIconsSpriteAssetShun.GetEntityId().GetHashCode() : 0);
+        key = key * 397 ^ (traitIconsSpriteAssetIyu  ? traitIconsSpriteAssetIyu.GetEntityId().GetHashCode()  : 0);
+        key = key * 397 ^ (primary ? primary.GetEntityId().GetHashCode() : 0);
     }
 
     if (_traitSpriteAssetRuntime == null || _traitSpriteAssetRuntimeKey != key)
@@ -339,7 +339,7 @@ private string ReplaceTraitWordsWithIcons(string src)
         if (equippedEffectsTMP)
         {
             equippedEffectsTMP.gameObject.SetActive(true);
-            equippedEffectsTMP.enableWordWrapping = true;
+            equippedEffectsTMP.textWrappingMode = TMPro.TextWrappingModes.Normal;
             equippedEffectsTMP.alignment = TextAlignmentOptions.Left;
             equippedEffectsTMP.richText = true;
 
@@ -403,7 +403,7 @@ private string ReplaceTraitWordsWithIcons(string src)
 
             if (label)
             {
-                label.enableWordWrapping = true;
+                label.textWrappingMode = TMPro.TextWrappingModes.Normal;
                 label.alignment = TextAlignmentOptions.Left;
                 label.richText = true;
 
@@ -486,7 +486,7 @@ private string ReplaceTraitWordsWithIcons(string src)
         var tmp = go.GetComponent<TextMeshProUGUI>();
         tmp.text = message;
         tmp.alignment = TextAlignmentOptions.Left;
-        tmp.enableWordWrapping = true;
+        tmp.textWrappingMode = TMPro.TextWrappingModes.Normal;
 
         if (TMPro.TMP_Settings.defaultFontAsset) tmp.font = TMPro.TMP_Settings.defaultFontAsset;
         tmp.color = ownedListTextColor;
@@ -497,87 +497,22 @@ private string ReplaceTraitWordsWithIcons(string src)
 
     private void RefreshEquippedOmamoriIcon(int eqId)
     {
-        if (!equippedOmamoriIconImage) return;
-
-        if (eqId == 0)
-        {
-            if (equippedOmamoriIconImage.gameObject.activeSelf)
-                equippedOmamoriIconImage.gameObject.SetActive(false);
-            return;
-        }
-
-        if (omamoriIconSprite)
-            equippedOmamoriIconImage.sprite = omamoriIconSprite;
-
-        equippedOmamoriIconImage.preserveAspect = true;
-
-        // ★神器（ユニーク）は必ず赤Tint（PlayerData 側で Color.red を返す）
-        if (PlayerData.TryGetOmamoriRarityColor(eqId, out var cById))
-        {
-            equippedOmamoriIconImage.color = cById;
-        }
-        else
-        {
-            // フォールバック（何らかの理由でID判定できない場合のみ）
-            string name = PlayerData.GetOmamoriName_Localized(eqId);
-            string rarityKey = ExtractOmamoriRarityKeyFromName_Local(name);
-            string rarityDisplay = string.IsNullOrEmpty(rarityKey) ? "" : LocalizationManager.Rarity(rarityKey);
-
-            if (string.IsNullOrEmpty(rarityKey))
-            {
-                if (equippedOmamoriIconImage.gameObject.activeSelf)
-                    equippedOmamoriIconImage.gameObject.SetActive(false);
-                return;
-            }
-
-            equippedOmamoriIconImage.color = GetRarityColorSafe_Local(rarityKey, rarityDisplay);
-        }
-        if (!equippedOmamoriIconImage.gameObject.activeSelf)
-            equippedOmamoriIconImage.gameObject.SetActive(true);
+    if (!equippedOmamoriIconImage) return;
+    ItemArtwork.Omamori(equippedOmamoriIconImage, eqId);
+    ItemArtwork.Rect(equippedOmamoriIconImage.rectTransform, new Vector2(0,0), new Vector2(.22f,1), new Vector2(12,20), new Vector2(-8,-20));
+    if (equippedEffectsTMP) {
+        ItemArtwork.Rect(equippedEffectsTMP.rectTransform, new Vector2(.23f,0), Vector2.one, new Vector2(8,16), new Vector2(-24,-16));
+        ItemArtwork.Text(equippedEffectsTMP, 30);
     }
+}
     private void RefreshOwnedRowIcon(GameObject rowGo, int omamoriId)
     {
-        if (!rowGo) return;
-
-        var icon = FindOwnedRowIconImage(rowGo);
-        if (!icon) return;
-
-        if (omamoriId <= 0)
-        {
-            if (icon.gameObject.activeSelf)
-                icon.gameObject.SetActive(false);
-            return;
-        }
-
-        if (omamoriIconSprite)
-            icon.sprite = omamoriIconSprite;
-
-        icon.preserveAspect = true;
-
-        // ★神器（ユニーク）は必ず赤Tint（PlayerData 側で Color.red を返す）
-        if (PlayerData.TryGetOmamoriRarityColor(omamoriId, out var cById))
-        {
-            icon.color = cById;
-        }
-        else
-        {
-            // フォールバック（何らかの理由でID判定できない場合のみ）
-            string name = PlayerData.GetOmamoriName_Localized(omamoriId);
-            string rarityKey = ExtractOmamoriRarityKeyFromName_Local(name);
-            string rarityDisplay = string.IsNullOrEmpty(rarityKey) ? "" : LocalizationManager.Rarity(rarityKey);
-
-            if (string.IsNullOrEmpty(rarityKey))
-            {
-                if (icon.gameObject.activeSelf)
-                    icon.gameObject.SetActive(false);
-                return;
-            }
-
-            icon.color = GetRarityColorSafe_Local(rarityKey, rarityDisplay);
-        }
-        if (!icon.gameObject.activeSelf)
-            icon.gameObject.SetActive(true);
-    }
+    if (!rowGo) return;
+    var icon = FindOwnedRowIconImage(rowGo);
+    if (!icon) icon = ItemArtwork.EnsureIcon(rowGo.transform);
+    ItemArtwork.Omamori(icon, omamoriId);
+    ItemArtwork.OwnedRow(rowGo, icon, rowGo.GetComponentInChildren<TextMeshProUGUI>());
+}
 
     private Image FindOwnedRowIconImage(GameObject rowGo)
     {
