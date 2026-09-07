@@ -13,7 +13,7 @@ public class ForceCocoaPodsInstall : IPostprocessBuildWithReport
 
         string buildPath = report.summary.outputPath;
 
-        // Pods ディレクトリと Podfile.lock を削除して強制再インストール
+        // Pods を削除して強制再インストール
         string podsDir = Path.Combine(buildPath, "Pods");
         string podfileLock = Path.Combine(buildPath, "Podfile.lock");
 
@@ -26,6 +26,16 @@ public class ForceCocoaPodsInstall : IPostprocessBuildWithReport
         {
             File.Delete(podfileLock);
             UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Deleted Podfile.lock");
+        }
+
+        // xcpretty を無効化するためにGemfileを修正
+        string gemfile = Path.Combine(buildPath, "Gemfile");
+        if (File.Exists(gemfile))
+        {
+            string content = File.ReadAllText(gemfile);
+            content = content.Replace("gem 'xcpretty'", "# gem 'xcpretty'");
+            File.WriteAllText(gemfile, content);
+            UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Disabled xcpretty");
         }
     }
 }
