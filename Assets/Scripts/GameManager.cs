@@ -14107,13 +14107,13 @@ _goldGainThisWin = 0;
 _goldGainDisplayTextThisWin = "-";
 
 // まず「この和了で敵に与えた最終ダメージ」をベースにGOLDを算出する
-if (_currentScoringAttackerIsPlayer && finalDamageForApply > 0)
+if (_currentScoringAttackerIsPlayer)
 {
     float r = UnityEngine.Random.Range(0.01f, 0.0400001f); // [0.05, 0.08]
     int goldBase = finalDamageForApply;
 
     int goldGainBase = Mathf.RoundToInt(goldBase * r);
-    if (goldGainBase < 1) goldGainBase = 1;
+    if (goldGainBase < 1) goldGainBase = finalDamageForApply > 0 ? 1 : 0;
 
     int goldGain = goldGainBase;
     var mulTexts = new List<string>();
@@ -14170,6 +14170,17 @@ if (_currentScoringAttackerIsPlayer && finalDamageForApply > 0)
 
     runGold += goldGain;
     SaveRunGold();
+
+    // Mission Gold is a fixed bonus, paid with this win, once per enemy.
+    int missionGold = MissionSystem.ClaimReward();
+    if (missionGold > 0)
+    {
+        runGold = RunCurrency.Get();
+        _goldGainThisWin += missionGold;
+        string missionLabel = MonetizationText.Get("ミッション", "Mission", "任务");
+        _goldGainDisplayTextThisWin += $" ＋ {missionLabel} {missionGold:#,0} ＝ {_goldGainThisWin:#,0}";
+    }
+    RefreshMissionDisplayText();
 
     sb.AppendLine();
     sb.AppendLine($"GOLD 獲得　{_goldGainDisplayTextThisWin}　（この和了のダメージ {goldBase:N0} × {r:0.###}）");
@@ -18995,6 +19006,7 @@ private IEnumerator __WinCutInThenShowScoring(
     int fu, int han, string baseWinKind, string usedTileLabel)
 {
     _scoringUsedTileLabel = usedTileLabel;
+    if (isPlayer) CheckMissionOnPlayerWin(yakuLines);
     var prevPhase = phase;
     phase = Phase.Scoring;
 

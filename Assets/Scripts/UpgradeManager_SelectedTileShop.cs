@@ -12,6 +12,16 @@ public partial class UpgradeManager
     private readonly System.Collections.Generic.List<UnityEngine.EventSystems.BaseRaycaster> selectedShopRaycasters = new System.Collections.Generic.List<UnityEngine.EventSystems.BaseRaycaster>();
     private bool selectedTileDestroyMode;
     private int selectedShopTile = -1;
+    private Transform selectedTileShopCard;
+    private Transform GetSelectedTileShopCard()
+    {
+        if (selectedTileShopCard) return selectedTileShopCard;
+        if (!selectedTileShopRoot) return null;
+        // Also supports an already-authored modal inside a mobile letterbox frame.
+        foreach (var child in selectedTileShopRoot.GetComponentsInChildren<RectTransform>(true))
+            if (child.name == "Card") return selectedTileShopCard = child;
+        return null;
+    }
 
     private string TileShopText(string ja,string en,string zh) => MonetizationText.Get(ja,en,zh);
     private int SelectedTilePrice => Mathf.Max(1, selectedTileCostMultiplier) *
@@ -31,14 +41,15 @@ public partial class UpgradeManager
         chooseBuyButton.GetComponentInChildren<TMP_Text>().text=TileShopText("牌を選んで購入","Choose a tile to buy","选择购买的牌");
         chooseDestroyButton.GetComponentInChildren<TMP_Text>().text=TileShopText("牌を選んで破壊","Choose a tile to remove","选择销毁的牌");
         if(!selectedTileShopRoot) {
-            var root=new GameObject("SelectedTileShop",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster),typeof(Image));
+            var root=new GameObject("SelectedTileShop",typeof(RectTransform),typeof(Canvas),typeof(CanvasScaler),typeof(GraphicRaycaster),typeof(Image),typeof(SelectedTileShopOverlay));
             root.transform.SetParent(transform,false);
             var canvas=root.GetComponent<Canvas>(); canvas.renderMode=RenderMode.ScreenSpaceOverlay; canvas.sortingOrder=32500;
             var scaler=root.GetComponent<CanvasScaler>(); scaler.uiScaleMode=CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            scaler.referenceResolution=new Vector2(1600,900); scaler.matchWidthOrHeight=.5f;
+            scaler.referenceResolution=new Vector2(1600,900); scaler.matchWidthOrHeight=1f;
             root.GetComponent<Image>().color=new Color(0,0,0,.9f);
             selectedTileShopRoot=root;
             var card=TileShopRect("Card",root.transform,Vector2.zero,new Vector2(1080,800));
+            selectedTileShopCard = card;
             card.gameObject.AddComponent<Image>().color=new Color(.055f,.075f,.1f);
             TileShopLabel("Title",card,new Vector2(0,348),new Vector2(900,48),32);
             TileShopLabel("Hint",card,new Vector2(0,294),new Vector2(1000,52),22);
@@ -54,7 +65,8 @@ public partial class UpgradeManager
             TileShopButton("Cancel",card,new Vector2(-240,-345),new Vector2(340,58));
             TileShopButton("Confirm",card,new Vector2(240,-345),new Vector2(440,58));
         }
-        var modal=selectedTileShopRoot.transform.Find("Card");
+        if (!selectedTileShopRoot.GetComponent<SelectedTileShopOverlay>()) selectedTileShopRoot.AddComponent<SelectedTileShopOverlay>();
+        var modal=GetSelectedTileShopCard();
         for(int i=0;i<34;i++) {
             int tile=i; var button=modal.Find("Tile"+i).GetComponent<Button>();
             button.onClick=new Button.ButtonClickedEvent();
@@ -115,7 +127,8 @@ public partial class UpgradeManager
     }
     private void RefreshSelectedTileShop() {
         if(!selectedTileShopRoot) return;
-        var card=selectedTileShopRoot.transform.Find("Card");
+        var card=GetSelectedTileShopCard();
+        if (!card) { Debug.LogError("Selected tile shop Card is missing."); return; }
         card.Find("Title").GetComponent<TMP_Text>().text=selectedTileDestroyMode ? TileShopText("指定した牌を1枚破壊","Remove one chosen tile","销毁一张指定的牌") : TileShopText("指定した牌を1枚購入","Buy one chosen tile","购买一张指定的牌");
         card.Find("Hint").GetComponent<TMP_Text>().text=TileShopText("牌を選び、金額を確認して実行してください。","Select a tile, review the price, then confirm.","请选择牌，确认价格后执行。")+"  Gold: "+CurrentGold;
         var counts=PlayerData.GetDeckCountsCopy();

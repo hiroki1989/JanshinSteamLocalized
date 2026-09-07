@@ -140,6 +140,10 @@ public partial class GameManager : MonoBehaviour
             case FirstMatchTutorialContent.FocusTarget.PassiveSkills: return tutorialPassiveFocus;
             case FirstMatchTutorialContent.FocusTarget.Omamori: return _omamoriInfoTMP ? _omamoriInfoTMP.transform.parent : null;
             case FirstMatchTutorialContent.FocusTarget.Ofuda: return ofudaPanel;
+            case FirstMatchTutorialContent.FocusTarget.DoraIndicators:
+                if (wanpaiArea && !wanpaiArea.GetComponent<TutorialFocusVisibleChildren>()) wanpaiArea.gameObject.AddComponent<TutorialFocusVisibleChildren>();
+                return wanpaiArea;
+            case FirstMatchTutorialContent.FocusTarget.SeatWind: return playerSeatTMP ? playerSeatTMP.transform : null;
             default: return null;
         }
     }

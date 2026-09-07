@@ -466,10 +466,19 @@ private void SetOmamoriIconVisual(int omamoriId, string rarityKeyOrRaw, string r
 {
     ItemArtwork.Omamori(omamoriIconImage, omamoriId);
     if (omamoriIconImage && omamoriDescTMP) {
+        var detail = omamoriDescTMP.transform.parent as RectTransform;
+        if (detail && detail.name == "DetailRoot")
+            ItemArtwork.Rect(detail, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
         omamoriIconImage.transform.SetParent(omamoriDescTMP.transform.parent, false);
         ItemArtwork.Rect(omamoriIconImage.rectTransform, new Vector2(0,.25f), new Vector2(.25f,.76f), new Vector2(12,8), new Vector2(-6,-8));
         ItemArtwork.Rect(omamoriDescTMP.rectTransform, new Vector2(.26f,.25f), new Vector2(.97f,.76f), Vector2.zero, Vector2.zero);
         ItemArtwork.Text(omamoriDescTMP, 30);
+        omamoriDescTMP.color = new Color(.10f, .12f, .14f, 1f);
+        if (omamoriNameTMP) {
+            ItemArtwork.Rect(omamoriNameTMP.rectTransform, new Vector2(.06f,.80f), new Vector2(.94f,.96f), Vector2.zero, Vector2.zero);
+            ItemArtwork.Text(omamoriNameTMP, 48);
+            omamoriNameTMP.alignment = TextAlignmentOptions.Center;
+        }
     }
 }
 private static string RarityToJp_Local(string rarityRaw)
@@ -756,14 +765,7 @@ private void ApplyRarityVisual(string rarity)
     bgColor.a = 1f;
     SetOmamoriRewardBackgroundVisual(true, bgColor);
 
-    // 念のため：神器でない通常ケースの時に「レア度色」を強制反映しておく
-    if (omamoriIconImage != null)
-    {
-        if (_pendingOmamoriId != 999 && _pendingOmamoriId != 1000 && _pendingOmamoriId != 1001)
-        {
-            omamoriIconImage.color = rarityCol;
-        }
-    }
+    // ItemArtwork の親 Image は透明のまま保ち、絵柄とオーラを表示する。
 }
     // Legendary 演出（④）
     private void PlayLegendaryEffect()

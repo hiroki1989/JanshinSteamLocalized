@@ -7,7 +7,7 @@ using TMPro;
 /// GameManager 用ミッション拡張（partial）。
 /// ・RunScene 上にミッションテキストを常時表示
 /// ・プレイヤー和了時にミッション達成判定＋達成パネル表示
-/// ・達成パネルの閉じるボタンでGold獲得＋反映
+/// ・達成した和了のGoldに報酬を加算（パネルを閉じる操作では付与しない）
 ///
 /// ★役プール（難易度設定）は MissionPoolSO（ScriptableObject）に集約。
 ///   Assets/Resources/MissionPoolSO.asset を作成し、そこで全役の難易度を設定する。
@@ -110,6 +110,7 @@ public partial class GameManager : MonoBehaviour
         }
 
         string text = MissionSystem.GetMissionDisplayText();
+        missionDisplayTMP.richText = true;
         bool claimed = MissionSystem.IsAlreadyClaimed(MissionSystem.CurrentEnemyKey);
         bool completed = MissionSystem.IsCompleted;
 
@@ -143,6 +144,7 @@ public partial class GameManager : MonoBehaviour
             if (completed)
             {
                 _missionJustCompleted = true;
+                RefreshMissionDisplayText();
                 Debug.Log($"[Mission] ミッション達成！ 報酬={MissionSystem.CurrentGold}");
             }
         }
@@ -158,6 +160,7 @@ public partial class GameManager : MonoBehaviour
     public void TryShowMissionCompletePanel()
     {
         if (!_missionJustCompleted) return;
+        if (!missionCompletePanel || !missionCompleteCloseButton) { _missionJustCompleted = false; return; }
 
         __SetScoringOkButtonsInteractable(false);
 
@@ -185,14 +188,6 @@ public partial class GameManager : MonoBehaviour
     {
         try
         {
-            int reward = MissionSystem.ClaimReward();
-
-            if (reward > 0)
-            {
-                runGold = GameManager.RunCurrency.Get();
-                Debug.Log($"[Mission] 報酬 {reward} Gold を獲得。所持Gold={runGold}");
-            }
-
             _missionJustCompleted = false;
 
             if (missionCompletePanel)

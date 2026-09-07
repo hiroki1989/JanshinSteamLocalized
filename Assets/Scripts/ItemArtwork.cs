@@ -146,8 +146,9 @@ public sealed class ItemArtwork : MonoBehaviour
     public static void ShopSlot(Image icon, TMP_Text name, TMP_Text price = null)
     {
         if (!icon || !name) return;
-        Rect(icon.rectTransform, new Vector2(0,0), new Vector2(.32f,1), new Vector2(5,60), new Vector2(-3,-22));
-        Rect(name.rectTransform, new Vector2(.32f,0), Vector2.one, new Vector2(4,62), new Vector2(-12,-16));
+        float bottom = price ? 60f : 12f;
+        Rect(icon.rectTransform, new Vector2(0,0), new Vector2(.32f,1), new Vector2(5,bottom), new Vector2(-3,-22));
+        Rect(name.rectTransform, new Vector2(.32f,0), Vector2.one, new Vector2(4,bottom + 2f), new Vector2(-12,-16));
         Text(name, 28);
         if (price)
         {

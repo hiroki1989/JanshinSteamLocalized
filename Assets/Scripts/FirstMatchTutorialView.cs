@@ -249,7 +249,7 @@ public sealed class FirstMatchTutorialView : MonoBehaviour
             var canvas=rt.GetComponentInParent<Canvas>(); if(canvas) canvas=canvas.rootCanvas;
             var camera=canvas && canvas.renderMode!=RenderMode.ScreenSpaceOverlay ? canvas.worldCamera : null;
             var rects=new List<RectTransform>();
-            if(rt.GetComponent<LayoutGroup>()) foreach(Transform child in rt)
+            if(rt.GetComponent<LayoutGroup>() || rt.GetComponent<TutorialFocusVisibleChildren>()) foreach(Transform child in rt)
                 if(child.gameObject.activeInHierarchy && child is RectTransform childRect && child.GetComponentInChildren<Graphic>())
                     rects.Add(child.Find("Art/Image") as RectTransform ?? childRect);
             if(rects.Count==0) rects.Add(rt);

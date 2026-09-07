@@ -18,7 +18,7 @@ public sealed class FirstMatchTutorialContent : ScriptableObject
             language == LocalizationManager.Language.ChineseSimplified ? chineseSimplified ?? "" : japanese ?? "";
     }
 
-    public enum FocusTarget { PlayerHP, EnemyHP, Hand, Offer, Shanten, EnemyDiscard, Discard, MP, SkillButton, SkillInfo, PassiveSkills, Omamori, Ofuda }
+    public enum FocusTarget { PlayerHP, EnemyHP, Hand, Offer, Shanten, EnemyDiscard, Discard, MP, SkillButton, SkillInfo, PassiveSkills, Omamori, Ofuda, DoraIndicators, SeatWind }
 
     [Serializable]
     public class Step

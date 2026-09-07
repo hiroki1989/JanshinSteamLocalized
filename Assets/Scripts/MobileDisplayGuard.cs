@@ -130,7 +130,7 @@ public sealed class MobileDisplayGuard : MonoBehaviour
     {
         if (canvas == null) return;
         // These overlays calculate their layout in screen coordinates, including the safe margins.
-        if (canvas.GetComponent<SkillDescriptionPopup>() || canvas.GetComponentInChildren<WinTileLightning>(true)) return;
+        if (canvas.GetComponent<SkillDescriptionPopup>() || canvas.GetComponent<SelectedTileShopOverlay>() || canvas.GetComponentInChildren<WinTileLightning>(true)) return;
         var id = canvas.GetEntityId();
         if (_processedCanvasIds.Contains(id)) return;
         _processedCanvasIds.Add(id);

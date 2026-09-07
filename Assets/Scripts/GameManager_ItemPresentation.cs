@@ -8,6 +8,7 @@ public partial class GameManager
 {
     [Header("Win lightning / 和了牌への落雷")]
     [SerializeField, Range(.6f, 2f)] private float winStrikeDuration = 1.05f;
+    [Tooltip("和了牌に雷が落ちる瞬間の効果音。未設定なら標準の雷音を再生します。プレイヤー・敵の両方に適用。")]
     [SerializeField] private AudioClip winStrikeSound;
     private SkillDescriptionPopup _activeSkillPopup;
     private int _winStrikeEnemyDiscardIndex = -1;
