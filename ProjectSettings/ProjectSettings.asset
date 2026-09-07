@@ -878,11 +878,11 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: 92b3cd5f-e245-446c-951e-8e272523c799
+  cloudProjectId: 2e08c0be-eee2-4e77-ae89-f747ca21e1ad
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: My project
-  organizationId: kjyh622
+  projectName: Janshin -infinity-
+  organizationId: owlgamestudio1989
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
