@@ -19175,6 +19175,8 @@ private void StartDefeatTransitionIfNeeded(bool roundLimitReached = false)
 
     Debug.Log($"[BattleDefeat] reason={(roundLimitReached ? "RoundLimit" : "HPZero")} round={roundNumber}/{maxRounds} playerHP={playerHP} enemyHP={enemyHP}");
     _defeatTransitionRunning = true;
+    ClearBattleResume();
+    PersistRunPlayerHP(false);
     _freezeProgression = true;
     phase = Phase.Scoring;
     // Cancel delayed turn/deal/score continuations before starting the terminal flow.
@@ -19989,6 +19991,8 @@ ss.equippedOmamoriIdsCsv = DumpPlayerDataIntIdsCsv_Safe(new string[]
         else
         {
             PlayerPrefs.SetInt(PF_SUSPEND_FLAG, 0);
+            PlayerPrefs.SetInt("PF_ResumeDirect", 0);
+            PlayerPrefs.DeleteKey("PF_ResumeScene");
         }
         PersistRunPlayerHP(false);
 

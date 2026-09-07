@@ -226,6 +226,7 @@ public void StartNewRunFromMenu()
     }
     public void GoFromBattleLoseToReward()
     {
+        ClearFinishedBattleResume();
         // 「敗北」会話：会話後は 報酬(StageClear) へ
         PlayerPrefs.SetString(KeyAngelMode, "Defeat");
         PlayerPrefs.SetString(KeyAngelNextScene, rewardScene);

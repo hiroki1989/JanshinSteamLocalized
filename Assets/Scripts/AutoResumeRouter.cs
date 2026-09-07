@@ -12,6 +12,15 @@ void Awake()
         // 中断再開フラグを「消費」してから遷移（＝一度きり）
         if (PlayerPrefs.GetInt("PF_ResumeDirect", 0) == 1)
         {
+            // A stale redirect must never restart a completed battle.
+            if (PlayerPrefs.GetInt("Run_HasSuspend", 0) != 1 ||
+                string.IsNullOrEmpty(PlayerPrefs.GetString("Run_SuspendJSON", "")))
+            {
+                PlayerPrefs.SetInt("PF_ResumeDirect", 0);
+                PlayerPrefs.DeleteKey("PF_ResumeScene");
+                PlayerPrefs.Save();
+                return;
+            }
             var target = PlayerPrefs.GetString("PF_ResumeScene", resumeSceneName);
 
             // ★ここで消費（次回以降は会話をスキップしない）
