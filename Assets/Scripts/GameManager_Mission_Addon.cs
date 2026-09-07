@@ -117,12 +117,12 @@ public partial class GameManager : MonoBehaviour
         if (claimed || completed)
         {
             missionDisplayTMP.text = $"<s>{text}</s>";
-            missionDisplayTMP.color = missionCompletedColor;
+            missionDisplayTMP.color = Color.white;
         }
         else
         {
             missionDisplayTMP.text = text;
-            missionDisplayTMP.color = missionActiveColor;
+            missionDisplayTMP.color = Color.white;
         }
     }
 

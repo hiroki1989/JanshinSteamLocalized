@@ -67,7 +67,7 @@ public static class MissionSystem
     private const string PrefKey_MissionDispName   = "Mission_DispName";
     private const string PrefKey_MissionGold       = "Mission_Gold";
 
-    private static string PrefKey_Claimed(int excelKey) => $"Mission_Claimed_{excelKey}";
+    private static string PrefKey_Claimed(int excelKey) => $"Mission_Run_{PlayerPrefs.GetInt("Mission_RunGeneration", 0)}_Claimed_{excelKey}";
 
     // ===== 公開プロパティ =====
     public static bool HasActiveMission => !string.IsNullOrEmpty(s_cachedYakuKey);
@@ -80,6 +80,7 @@ public static class MissionSystem
     // ===== 初期化・ロード =====
     public static void ResetForNewRun()
     {
+        PlayerPrefs.SetInt("Mission_RunGeneration", PlayerPrefs.GetInt("Mission_RunGeneration", 0) + 1);
         s_currentPoolIndex = -1;
         s_currentEnemyKey = -1;
         s_completed = false;

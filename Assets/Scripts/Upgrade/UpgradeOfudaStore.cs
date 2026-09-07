@@ -171,7 +171,7 @@ private void RefreshOfferSlotsUI()
 
         Color rarityColor = GetRarityColor(o.rarity);
         Color bgColor = rarityColor;
-        bgColor = Color.Lerp(new Color(.07f,.09f,.10f,1f), rarityColor, .16f);
+        bgColor.a = 1f;
 
         if (slot.backgroundImage)
         {
@@ -270,7 +270,7 @@ private static string ColorizeRarityPrefix(string displayName, string rarity)
     string rest = displayName.Substring(end + 1);
 
     string hex = ColorUtility.ToHtmlStringRGB(GetRarityColor(rarity));
-    return $"<color=#{hex}>{prefix}</color>{rest}";
+    return $"<color=#{hex}>{prefix}</color>\n{rest.TrimStart()}";
 }
 private static Color GetRarityColor(string rarity)
 {

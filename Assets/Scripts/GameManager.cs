@@ -793,7 +793,7 @@ private void __PrepareForSceneUnload(bool stopAllCoroutines = true)
         _playerSkillTransformRunning = false;
         _enemySkillCutinRunning = false;
         _enemyRiichiCutinRunning = false;
-        _freezeProgression = false;
+        _freezeProgression = true;
 
         // 透明進行ボタン・OKボタン状態を通常化
         try { __StopScoringStepReveal(); } catch { }
@@ -4935,6 +4935,8 @@ try
 
             if (started == 0 && isFirstEnemy)
             {
+                MissionSystem.ResetForNewRun();
+                MissionSystem.ClearRunSeed();
                 PlayerPrefs.SetInt("Run_DefeatedEnemyCount", 0);
                 PlayerPrefs.SetInt("Run_LastCountedEnemyIndex", -1);
 
@@ -15443,7 +15445,7 @@ private void __UpdateEnemyHpUI_VisualOnly(int displayHP)
 private void __ProceedAfterScoreOK_Internal(bool _wasEnemyScoring)
 {
 // ★修正：敗北演出が既に走っている場合は絶対に次局へ進めない
-if (_defeatTransitionRunning) return;
+if (_defeatTransitionRunning || _preparedForSceneUnload) return;
 
 if (Mathf.Max(0, playerHP) <= 0)
 {
@@ -15904,6 +15906,7 @@ private string BuildRoundLabelForUI()
 private bool _addonLastHandWinnerWasEnemy = false;
 private void StartNextHand()
 {
+    if (_defeatTransitionRunning || _preparedForSceneUnload) return;
     _playerHasWonThisHand = false;
     _enemyHasWonThisHand  = false;
 
@@ -15932,6 +15935,7 @@ private bool _enemyIsRiichi = false;
 private readonly System.Collections.Generic.HashSet<string> _enemyRiichiWaits = new System.Collections.Generic.HashSet<string>();
 private System.Collections.IEnumerator __MatchStartIntroAndDeal_Co()
 {
+    if (_defeatTransitionRunning || _preparedForSceneUnload) yield break;
     // 壁を構築
     BuildWall();
 
@@ -16074,6 +16078,7 @@ private void EnterUpgradeFlow()
 }
 void StartNextStage()
 {
+    if (_defeatTransitionRunning || _preparedForSceneUnload) return;
     // Excel から敵名・HP・デッキ重み等を確実に適用（失敗しても Inspector には絶対に戻さない）
     if (!TryApplyExcelEnemyConfigForCurrentIndex())
     {
@@ -17847,6 +17852,7 @@ private void DBG_AttachHandEditHook(GameObject tileGO, int handIndex)
 
 private void Update()
 {
+    if (_defeatTransitionRunning || _preparedForSceneUnload) return;
     if (_tutorialRunning || _activeSkillPopup) return;
     // 新InputSystem: ESC でメニュー開閉
     var kb = Keyboard.current;
@@ -19138,6 +19144,7 @@ if (winCutinTMP)
 }
 private void __ProceedAfterRyukyoku()
 {
+    if (_defeatTransitionRunning || _preparedForSceneUnload) return;
     // ★ノーテン罰などでHPが0になっている可能性があるので、敗北チェックはここで行う
     if (Mathf.Max(0, playerHP) <= 0)
     {
@@ -19174,6 +19181,12 @@ private void StartDefeatTransitionIfNeeded()
         return;
 
     _defeatTransitionRunning = true;
+    _freezeProgression = true;
+    phase = Phase.Scoring;
+    // Cancel delayed turn/deal/score continuations before starting the terminal flow.
+    StopAllCoroutines();
+    CancelInvoke();
+    __SetScoringOkButtonsInteractable(false);
     StartCoroutine(__ShowDefeatCutinThenGoToReward());
 }
 private Sprite __GetDefeatCutinPortraitSprite_Local()

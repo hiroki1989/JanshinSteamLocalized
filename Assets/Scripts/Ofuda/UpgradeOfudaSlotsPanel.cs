@@ -163,7 +163,7 @@ private static string ColorizeRarityPrefix(string displayName, string rarity)
     string rest = displayName.Substring(end + 1);
 
     string hex = ColorUtility.ToHtmlStringRGB(OfudaRarityColors.Get(rarity));
-    return $"<color=#{hex}>{prefix}</color>{rest}";
+    return $"<color=#{hex}>{prefix}</color>\n{rest.TrimStart()}";
 }
 private static string GetEmptySlotText()
 {

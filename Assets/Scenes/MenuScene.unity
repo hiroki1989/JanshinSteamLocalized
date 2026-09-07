@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InterstitialAdManager
   _adUnitId: ca-app-pub-1886549062462061/7396961011
   showEveryNth: 1
-  cooldownSeconds: 100
+  cooldownSeconds: 0
 --- !u!114 &803746955
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -142,13 +142,17 @@ public sealed class WinTileLightning : MaskableGraphic
     static AudioClip Thunder()
     {
         if(generatedThunder) return generatedThunder;
-        const int rate=22050; var data=new float[(int)(rate*.75f)];var random=new System.Random(7761);float low=0;
+        const int rate=44100; var data=new float[(int)(rate*.65f)];var random=new System.Random(7761);float low=0;
         for(int i=0;i<data.Length;i++)
         {
             float t=i/(float)rate,n=(float)random.NextDouble()*2-1;low=Mathf.Lerp(low,n,.075f);
-            float crack=n*Mathf.Exp(-t*70)*.38f;
-            float rumble=(low*.9f+Mathf.Sin(2*Mathf.PI*(70*t-20*t*t))*.32f)*Mathf.Exp(-t*6);
-            data[i]=Mathf.Clamp((crack+rumble)*Mathf.Min(1,t/.003f),-.8f,.8f);
+            // A fast broadband crack followed by a short, weighty impact.
+            float crack=(n-low)*Mathf.Exp(-t*42)*1.05f;
+            float impact=Mathf.Sin(2*Mathf.PI*(125*t-55*t*t))*.48f*Mathf.Exp(-t*17);
+            float rumble=low*.65f*Mathf.Exp(-t*10);
+            float echo=t>.035f ? n*.18f*Mathf.Exp(-(t-.035f)*55) : 0;
+            float sample=(crack+impact+rumble+echo)*Mathf.Min(1,t/.0005f);
+            data[i]=.94f*(float)System.Math.Tanh(sample*1.5f)*Mathf.Clamp01((.65f-t)/.025f);
         }
         generatedThunder=AudioClip.Create("WinningTileThunder",data.Length,1,rate,false);generatedThunder.SetData(data,0);return generatedThunder;
     }

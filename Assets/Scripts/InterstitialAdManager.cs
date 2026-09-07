@@ -7,8 +7,8 @@ public sealed class InterstitialAdManager : MonoBehaviour
 {
     public static InterstitialAdManager Instance { get; private set; }
     [SerializeField] string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
-    [SerializeField, Min(1)] int showEveryNth = 3;
-    [SerializeField, Min(0)] float cooldownSeconds = 100;
+    [SerializeField, Min(1)] int showEveryNth = 1;
+    [SerializeField, Min(0)] float cooldownSeconds = 0;
     InterstitialAd ad;
     bool loading, showing;
     int requests, failures, generation;

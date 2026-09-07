@@ -473,7 +473,7 @@ private void SetOmamoriIconVisual(int omamoriId, string rarityKeyOrRaw, string r
         ItemArtwork.Rect(omamoriIconImage.rectTransform, new Vector2(0,.25f), new Vector2(.25f,.76f), new Vector2(12,8), new Vector2(-6,-8));
         ItemArtwork.Rect(omamoriDescTMP.rectTransform, new Vector2(.26f,.25f), new Vector2(.97f,.76f), Vector2.zero, Vector2.zero);
         ItemArtwork.Text(omamoriDescTMP, 30);
-        omamoriDescTMP.color = new Color(.10f, .12f, .14f, 1f);
+        omamoriDescTMP.color = Color.white;
         if (omamoriNameTMP) {
             ItemArtwork.Rect(omamoriNameTMP.rectTransform, new Vector2(.06f,.80f), new Vector2(.94f,.96f), Vector2.zero, Vector2.zero);
             ItemArtwork.Text(omamoriNameTMP, 48);
@@ -748,13 +748,14 @@ private void ApplyRarityVisual(string rarity)
         omamoriRarityTMP.color = rarityCol;
     }
 
-    // 名前は従来の仕様を維持（Legendaryだけ色を付ける）
+    // レア度だけ色を付け、レベルなどの文字は白にする。
     if (omamoriNameTMP)
     {
-        if (string.Equals(rarity, "Legendary", System.StringComparison.OrdinalIgnoreCase))
-            omamoriNameTMP.color = new Color(1f, 0.85f, 0.3f, 1f);
-        else
-            omamoriNameTMP.color = rarityCol;
+        omamoriNameTMP.color = Color.white;
+        string name = _pendingOmamoriName ?? "";
+        if (!string.IsNullOrEmpty(rarityJp))
+            name = name.Replace(rarityJp, $"<color=#{ColorUtility.ToHtmlStringRGB(rarityCol)}>{rarityJp}</color>");
+        omamoriNameTMP.text = name;
     }
 
     // ★アイコンTint：ID優先（神器は赤）＋通常はレア度色
