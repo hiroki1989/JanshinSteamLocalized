@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
+using UnityEditor.iOS.Xcode;
 using System.IO;
 
 public class ForceCocoaPodsInstall : IPostprocessBuildWithReport
@@ -28,14 +29,30 @@ public class ForceCocoaPodsInstall : IPostprocessBuildWithReport
             UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Deleted Podfile.lock");
         }
 
-        // xcpretty を無効化するためにGemfileを修正
-        string gemfile = Path.Combine(buildPath, "Gemfile");
-        if (File.Exists(gemfile))
-        {
-            string content = File.ReadAllText(gemfile);
-            content = content.Replace("gem 'xcpretty'", "# gem 'xcpretty'");
-            File.WriteAllText(gemfile, content);
-            UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Disabled xcpretty");
-        }
+        // Xcodeプロジェクトに不足しているフレームワークを追加
+        string projPath = PBXProject.GetPBXProjectPath(buildPath);
+        PBXProject proj = new PBXProject();
+        proj.ReadFromFile(projPath);
+
+        string frameworkGuid = proj.GetUnityFrameworkTargetGuid();
+
+        // Unity Ads / Purchasing が必要とするフレームワーク
+        proj.AddFrameworkToProject(frameworkGuid, "AdSupport.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "CoreTelephony.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "StoreKit.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "GameController.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "WebKit.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "CFNetwork.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "SystemConfiguration.framework", false);
+        proj.AddFrameworkToProject(frameworkGuid, "CoreServices.framework", false);
+
+        // ビルド設定
+        proj.SetBuildProperty(frameworkGuid, "CLANG_ENABLE_MODULES", "YES");
+        proj.SetBuildProperty(frameworkGuid, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
+        proj.AddBuildProperty(frameworkGuid, "OTHER_LDFLAGS", "-ObjC");
+
+        proj.WriteToFile(projPath);
+
+        UnityEngine.Debug.Log("[ForceCocoaPodsInstall] Added missing frameworks and linker flags");
     }
 }
