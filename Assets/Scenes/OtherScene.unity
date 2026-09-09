@@ -302,7 +302,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2637,7 +2637,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3145,7 +3145,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3189,12 +3189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: By spending gold in the Upgrade Screen between battles against the gods,
-      you can purchase ofuda, recover HP and MP, strengthen your stats, build your
-      deck, and enhance your passive skills. Any upgrades made in the Upgrade Screen
-      return to their initial state if you are defeated. The effects of ofuda can
-      be extremely powerful when used well. If one seems promising, try picking it
-      up for now.
+    text: By spending gold in the Upgrade Screen between battles against the gods, you can purchase ofuda, recover HP and MP, strengthen your stats, build your deck, and enhance your passive skills. Any upgrades made in the Upgrade Screen return to their initial state if you are defeated. The effects of ofuda can be extremely powerful when used well. If one seems promising, try picking it up for now.
   chineseSimplified:
     text: "\u5728\u4E0E\u4F17\u795E\u6218\u6597\u4E4B\u95F4\u7684\u5F3A\u5316\u754C\u9762\u4E2D\uFF0C\u6D88\u8017\u91D1\u5E01\u540E\uFF0C\u4F60\u53EF\u4EE5\u8D2D\u4E70\u5FA1\u672D\u3001\u56DE\u590DHP\u548CMP\u3001\u5F3A\u5316\u5C5E\u6027\u3001\u6784\u7B51\u724C\u7EC4\uFF0C\u4EE5\u53CA\u5F3A\u5316\u88AB\u52A8\u6280\u80FD\u3002\u5728\u5F3A\u5316\u754C\u9762\u4E2D\u8FDB\u884C\u7684\u5F3A\u5316\u4E00\u65E6\u6218\u8D25\uFF0C\u90FD\u4F1A\u6062\u590D\u5230\u521D\u59CB\u72B6\u6001\u3002\u5FA1\u672D\u7684\u6548\u679C\u5982\u679C\u8FD0\u7528\u5F97\u5F53\u4F1A\u975E\u5E38\u5F3A\u529B\u3002\u53EA\u8981\u89C9\u5F97\u4E0D\u9519\uFF0C\u5C31\u5148\u8BD5\u7740\u5165\u624B\u5427\u3002"
 --- !u!1 &161839046
@@ -3472,7 +3467,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3766,7 +3761,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4045,7 +4040,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4108,7 +4103,7 @@ RectTransform:
   m_Father: {fileID: 983273992}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4334,7 +4329,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4472,7 +4467,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4767,7 +4762,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4811,12 +4806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: The yaku assigned to passive skills differ from skill to skill, and each
-      one has its own level. Yaku at level 0 do not activate the passive skill effect.
-      The effect only activates when the yaku reaches level 1 or higher. At the start
-      of a run, each passive skill has only one yaku at level 1. In the Upgrade Screen
-      between battles, you can spend gold to raise the level of these yaku. However,
-      if you are defeated, everything returns to its initial state.
+    text: The yaku assigned to passive skills differ from skill to skill, and each one has its own level. Yaku at level 0 do not activate the passive skill effect. The effect only activates when the yaku reaches level 1 or higher. At the start of a run, each passive skill has only one yaku at level 1. In the Upgrade Screen between battles, you can spend gold to raise the level of these yaku. However, if you are defeated, everything returns to its initial state.
   chineseSimplified:
     text: "\u5206\u914D\u7ED9\u88AB\u52A8\u6280\u80FD\u7684\u5F79\u79CD\u4F1A\u56E0\u6280\u80FD\u4E0D\u540C\u800C\u5404\u4E0D\u76F8\u540C\uFF0C\u5E76\u4E14\u6BCF\u4E2A\u5F79\u79CD\u90FD\u8BBE\u6709\u5404\u81EA\u7684\u7B49\u7EA7\u3002\u7B49\u7EA7\u4E3A0\u7684\u5F79\u79CD\u4E0D\u4F1A\u89E6\u53D1\u88AB\u52A8\u6280\u80FD\u6548\u679C\uFF0C\u53EA\u6709\u8FBE\u52301\u7EA7\u4EE5\u4E0A\u65F6\u6548\u679C\u624D\u4F1A\u751F\u6548\u3002\u5728\u5F00\u59CB\u6218\u6597\u65F6\uFF0C\u6BCF\u79CD\u88AB\u52A8\u6280\u80FD\u90FD\u53EA\u6709\u4E00\u4E2A1\u7EA7\u5F79\u79CD\u3002\u5728\u6218\u6597\u95F4\u9699\u7684\u5F3A\u5316\u754C\u9762\u4E2D\uFF0C\u4F60\u53EF\u4EE5\u6D88\u8017\u91D1\u5E01\u6765\u63D0\u5347\u8FD9\u4E9B\u5F79\u79CD\u7684\u7B49\u7EA7\u3002\u4E0D\u8FC7\uFF0C\u4E00\u65E6\u6218\u8D25\uFF0C\u4E00\u5207\u90FD\u4F1A\u6062\u590D\u5230\u521D\u59CB\u72B6\u6001\u3002"
 --- !u!1 &211086714
@@ -5306,7 +5296,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -5350,15 +5340,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: 'Your opponents are gods. They will not resort to petty tricks like stealing
-      your tiles with pon or chi. When a god reaches tenpai, it will declare riichi
-      openly and honorably. But do not let your guard down. As gods, your enemies
-      are always the dealer. They may even wield powers beyond human understanding
-      and use skills of their own.
+    text: 'Your opponents are gods. They will not resort to petty tricks like stealing your tiles with pon or chi. When a god reaches tenpai, it will declare riichi openly and honorably. But do not let your guard down. As gods, your enemies are always the dealer. They may even wield powers beyond human understanding and use skills of their own.
 
 
-      You will battle against ten gods. And
-      when your yaku reach their fullness in the battle against the final god...'
+      You will battle against ten gods. And when your yaku reach their fullness in the battle against the final god...'
   chineseSimplified:
     text: "\u4E0E\u4F60\u5BF9\u5CD9\u7684\u654C\u4EBA\u662F\u4F17\u795E\u3002\u4ED6\u4EEC\u4E0D\u4F1A\u7528\u78B0\u3001\u5403\u4E4B\u7C7B\u7684\u5C0F\u624B\u6BB5\u4ECE\u73A9\u5BB6\u624B\u4E2D\u593A\u724C\u3002\u5F53\u5929\u795E\u542C\u724C\u65F6\uFF0C\u4ED6\u4EEC\u4F1A\u5802\u5802\u6B63\u6B63\u5730\u5BA3\u544A\u7ACB\u76F4\u3002\u7136\u800C\u4E0D\u8981\u5927\u610F\u3002\u6B63\u56E0\u4E3A\u5BF9\u624B\u662F\u795E\uFF0C\u4ED6\u4EEC\u59CB\u7EC8\u90FD\u662F\u5E84\u5BB6\u3002\u8FD8\u53EF\u80FD\u65BD\u5C55\u8D85\u8D8A\u4EBA\u667A\u7684\u529B\u91CF\uFF0C\u4F7F\u7528\u5C5E\u4E8E\u4ED6\u4EEC\u81EA\u5DF1\u7684\u6280\u80FD\u3002\n\n\u73A9\u5BB6\u5C06\u4E0E\u5341\u4F4D\u795E\u660E\u4EA4\u6218\u3002\u800C\u5F53\u4F60\u5728\u4E0E\u6700\u540E\u4E00\u4F4D\u795E\u7684\u6218\u6597\u4E2D\u8BA9\u5F79\u6EE1\u76C8\u4E4B\u65F6\u2026\u2026"
 --- !u!1 &239347090
@@ -5468,7 +5453,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -5605,8 +5590,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1986472013}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6116,7 +6101,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6543,7 +6528,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -6803,7 +6788,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7095,7 +7080,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -7351,7 +7336,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -8060,7 +8045,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -8580,7 +8565,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -8911,7 +8896,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -9144,7 +9129,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -9299,7 +9284,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -9343,18 +9328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: "Each playable character has an active skill that consumes MP and a passive
-      skill that takes effect simply by being equipped. Active skills are an essential
-      part of your strategy for gaining the upper hand in battle. Since MP recovers
-      by a fixed amount each turn, you should use them proactively.\n\nPassive skills
-      come in three types: \u6483, \u7652, and \u77AC. Each playable character is
-      assigned different yaku for these categories. When you win with a yaku assigned
-      to \u6483, X% bonus damage is added to the damage dealt to the enemy. When
-      you win with a yaku assigned to \u7652, you recover player HP equal to X% of
-      the base points. When you win with a yaku assigned to \u77AC, you recover player
-      MP equal to X% of the base points.\n\nSeize the initiative first. Make effective
-      use of your active skill while aiming for \u6483 yaku. When your HP or MP starts
-      to run low, aim for \u7652 or \u77AC yaku to recover."
+    text: "Each playable character has an active skill that consumes MP and a passive skill that takes effect simply by being equipped. Active skills are an essential part of your strategy for gaining the upper hand in battle. Since MP recovers by a fixed amount each turn, you should use them proactively.\n\nPassive skills come in three types: \u6483, \u7652, and \u77AC. Each playable character is assigned different yaku for these categories. When you win with a yaku assigned to \u6483, X% bonus damage is added to the damage dealt to the enemy. When you win with a yaku assigned to \u7652, you recover player HP equal to X% of the base points. When you win with a yaku assigned to \u77AC, you recover player MP equal to X% of the base points.\n\nSeize the initiative first. Make effective use of your active skill while aiming for \u6483 yaku. When your HP or MP starts to run low, aim for \u7652 or \u77AC yaku to recover."
   chineseSimplified:
     text: "\u6BCF\u4E2A\u53EF\u64CD\u4F5C\u89D2\u8272\u90FD\u62E5\u6709\u4E00\u4E2A\u9700\u8981\u6D88\u8017MP\u4F7F\u7528\u7684\u4E3B\u52A8\u6280\u80FD\uFF0C\u4EE5\u53CA\u4E00\u4E2A\u53EA\u8981\u88C5\u5907\u4E0A\u5C31\u4F1A\u751F\u6548\u7684\u88AB\u52A8\u6280\u80FD\u3002\u4E3B\u52A8\u6280\u80FD\u662F\u8BA9\u5BF9\u5C40\u671D\u6709\u5229\u65B9\u5411\u53D1\u5C55\u7684\u5173\u952E\u7B56\u7565\u3002MP\u6BCF\u56DE\u5408\u90FD\u4F1A\u6062\u590D\u4E00\u5B9A\u6570\u503C\uFF0C\u56E0\u6B64\u5EFA\u8BAE\u79EF\u6781\u4F7F\u7528\u3002\n\n\u88AB\u52A8\u6280\u80FD\u5206\u4E3A\u6483\u3001\u7652\u3001\u77AC\u4E09\u79CD\uFF0C\u6BCF\u4E2A\u89D2\u8272\u90FD\u4F1A\u5206\u522B\u5BF9\u5E94\u4E0D\u540C\u7684\u5F79\u79CD\u3002\u548C\u51FA\u88AB\u5206\u914D\u4E3A\u6483\u7684\u5F79\u79CD\u65F6\uFF0C\u4F1A\u5BF9\u654C\u4EBA\u8FFD\u52A0X%\u7684\u4F24\u5BB3\u3002\u548C\u51FA\u88AB\u5206\u914D\u4E3A\u7652\u7684\u5F79\u79CD\u65F6\uFF0C\u73A9\u5BB6\u4F1A\u56DE\u590D\u76F8\u5F53\u4E8E\u57FA\u7840\u70B9X%\u7684HP\u3002\u548C\u51FA\u88AB\u5206\u914D\u4E3A\u77AC\u7684\u5F79\u79CD\u65F6\uFF0C\u73A9\u5BB6\u4F1A\u56DE\u590D\u76F8\u5F53\u4E8E\u57FA\u7840\u70B9X%\u7684MP\u3002\n\n\u9996\u5148\u8981\u62A2\u5360\u5148\u673A\u3002\u4E00\u8FB9\u6709\u6548\u4F7F\u7528\u4E3B\u52A8\u6280\u80FD\uFF0C\u4E00\u8FB9\u4F18\u5148\u7784\u51C6\u6483\u7684\u5F79\u79CD\u3002\u5F53HP\u6216MP\u5F00\u59CB\u4E0D\u8DB3\u65F6\uFF0C\u5C31\u6539\u4E3A\u7784\u51C6\u7652\u6216\u77AC\u7684\u5F79\u79CD\u6765\u8FDB\u884C\u56DE\u590D\u3002"
 --- !u!1 &469645381
@@ -10435,7 +10409,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -11171,7 +11145,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -11494,7 +11468,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -11799,7 +11773,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -12146,7 +12120,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -12694,7 +12668,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13017,7 +12991,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13172,7 +13146,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13674,7 +13648,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -13718,12 +13692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: Once you are in tenpai, you can declare riichi. However, when you declare
-      riichi, the four tiles currently in the draw area are immediately discarded
-      to the table. Even if one of them is your winning tile, you cannot win on it,
-      but there is no furiten, so do not hesitate to declare riichi. Choose a good
-      wait and go for riichi. Of course, if you can aim for enough points, you may
-      also choose to win by tsumo without declaring riichi.
+    text: Once you are in tenpai, you can declare riichi. However, when you declare riichi, the four tiles currently in the draw area are immediately discarded to the table. Even if one of them is your winning tile, you cannot win on it, but there is no furiten, so do not hesitate to declare riichi. Choose a good wait and go for riichi. Of course, if you can aim for enough points, you may also choose to win by tsumo without declaring riichi.
   chineseSimplified:
     text: "\u542C\u724C\u540E\uFF0C\u4F60\u53EF\u4EE5\u5BA3\u544A\u7ACB\u76F4\u3002\u4E0D\u8FC7\uFF0C\u4E00\u65E6\u5BA3\u544A\u7ACB\u76F4\uFF0C\u5F53\u524D\u6478\u724C\u533A\u4E2D\u76844\u5F20\u724C\u4F1A\u7ACB\u523B\u88AB\u5F03\u7F6E\u5230\u573A\u4E0A\u3002\u5373\u4F7F\u5176\u4E2D\u6709\u548C\u724C\u6240\u9700\u7684\u724C\uFF0C\u4F60\u4E5F\u4E0D\u80FD\u548C\u724C\uFF0C\u4F46\u8FD9\u91CC\u6CA1\u6709\u632F\u542C\uFF0C\u56E0\u6B64\u4E0D\u5FC5\u987E\u8651\uFF0C\u653E\u5FC3\u7ACB\u76F4\u5373\u53EF\u3002\u8BF7\u9009\u62E9\u597D\u7684\u542C\u724C\u5F62\u5F0F\u540E\u518D\u7ACB\u76F4\u3002\u5F53\u7136\uFF0C\u5982\u679C\u4F60\u5DF2\u7ECF\u80FD\u4E89\u53D6\u5230\u8DB3\u591F\u7684\u70B9\u6570\uFF0C\u4E5F\u53EF\u4EE5\u4E0D\u7ACB\u76F4\uFF0C\u76F4\u63A5\u81EA\u6478\u548C\u724C\u3002"
 --- !u!1 &712625552
@@ -13910,7 +13879,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -14744,7 +14713,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -15050,7 +15019,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -15979,7 +15948,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -16483,7 +16452,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -16527,12 +16496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: "Battles against the gods are fought one on one. The gods take damage based
-      on the score of the player\u2019s winning hand. Of course, the gods will show
-      no mercy. The player also takes damage when a god wins a hand.\n\nThe match
-      lasts until South 4, and each round ends in a draw after 12 turns. You are
-      defeated when your HP reaches 0. But even in defeat, that is not the end. You
-      are not allowed to end here. Prepare for the next battle."
+    text: "Battles against the gods are fought one on one. The gods take damage based on the score of the player\u2019s winning hand. Of course, the gods will show no mercy. The player also takes damage when a god wins a hand.\n\nThe match lasts until South 4, and each round ends in a draw after 12 turns. You are defeated when your HP reaches 0. But even in defeat, that is not the end. You are not allowed to end here. Prepare for the next battle."
   chineseSimplified:
     text: "\u4E0E\u4F17\u795E\u7684\u6218\u6597\u5C06\u4EE5\u4E00\u5BF9\u4E00\u7684\u5F62\u5F0F\u8FDB\u884C\u3002\u795E\u660E\u4F1A\u6839\u636E\u73A9\u5BB6\u548C\u724C\u7684\u70B9\u6570\u53D7\u5230\u4F24\u5BB3\u3002\u5F53\u7136\uFF0C\u4F17\u795E\u4E5F\u7EDD\u4E0D\u4F1A\u624B\u4E0B\u7559\u60C5\u3002\u5F53\u795E\u660E\u548C\u724C\u65F6\uFF0C\u73A9\u5BB6\u4E5F\u4F1A\u53D7\u5230\u4F24\u5BB3\u3002\n\n\u5BF9\u5C40\u8FDB\u884C\u5230\u53574\u5C40\u4E3A\u6B62\uFF0C\u6BCF\u5C40\u572812\u56DE\u5408\u540E\u6D41\u5C40\u3002\n\n\u5F53\u73A9\u5BB6\u7684HP\u964D\u4E3A0\u65F6\uFF0C\u5C31\u4F1A\u8D25\u5317\u3002\u4F46\u5373\u4F7F\u8D25\u5317\uFF0C\u4E5F\u5E76\u975E\u5C31\u6B64\u7ED3\u675F\u3002\u4F60\u4E0D\u88AB\u5141\u8BB8\u5728\u6B64\u6B62\u6B65\u3002\u4E3A\u4E0B\u4E00\u573A\u6218\u6597\u505A\u597D\u51C6\u5907\u3002"
 --- !u!1 &834874650
@@ -16643,7 +16607,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -16687,9 +16651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: "The player and the gods each have their own separate decks. In the Upgrade
-      Screen between battles against the gods, you can build the player\u2019s deck.
-      Each god\u2019s deck has its own distinct characteristics."
+    text: "The player and the gods each have their own separate decks. In the Upgrade Screen between battles against the gods, you can build the player\u2019s deck. Each god\u2019s deck has its own distinct characteristics."
   chineseSimplified:
     text: "\u73A9\u5BB6\u4E0E\u4F17\u795E\u5404\u81EA\u62E5\u6709\u72EC\u7ACB\u7684\u724C\u7EC4\u3002\u5728\u4E0E\u4F17\u795E\u6218\u6597\u4E4B\u95F4\u7684\u5F3A\u5316\u754C\u9762\u4E2D\uFF0C\u73A9\u5BB6\u53EF\u4EE5\u6784\u7B51\u81EA\u5DF1\u7684\u724C\u7EC4\u3002\u4E0D\u540C\u795E\u660E\u7684\u724C\u7EC4\u5404\u6709\u4E0D\u540C\u7684\u7279\u70B9\u3002"
 --- !u!1 &839597033
@@ -16875,7 +16837,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -17430,7 +17392,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -17725,7 +17687,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -17881,7 +17843,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -18310,7 +18272,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -18985,7 +18947,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -19172,7 +19134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &992997331
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19340,7 +19302,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20018,7 +19980,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20258,7 +20220,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20547,7 +20509,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20685,7 +20647,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -20729,14 +20691,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: 'By continuing to battle the gods, you can obtain omamori. Equipping omamori
-      allows you to strengthen your stats and enhance the effects of your passive
-      skills.
+    text: 'By continuing to battle the gods, you can obtain omamori. Equipping omamori allows you to strengthen your stats and enhance the effects of your passive skills.
 
 
-      When you defeat a god, you may occasionally obtain a divine
-      relic. Divine relics are immensely powerful. They may become the key to breaking
-      through your current limits.'
+      When you defeat a god, you may occasionally obtain a divine relic. Divine relics are immensely powerful. They may become the key to breaking through your current limits.'
   chineseSimplified:
     text: "\u901A\u8FC7\u4E0D\u65AD\u4E0E\u4F17\u795E\u4EA4\u6218\uFF0C\u4F60\u53EF\u4EE5\u83B7\u5F97\u5FA1\u5B88\u3002\u88C5\u5907\u5FA1\u5B88\u540E\uFF0C\u53EF\u4EE5\u5F3A\u5316\u81EA\u8EAB\u5C5E\u6027\uFF0C\u4E5F\u53EF\u4EE5\u63D0\u5347\u88AB\u52A8\u6280\u80FD\u7684\u6548\u679C\u3002\n\n\u51FB\u8D25\u795E\u660E\u65F6\uFF0C\u4F60\u5076\u5C14\u8FD8\u53EF\u80FD\u83B7\u5F97\u795E\u5668\u3002\u795E\u5668\u62E5\u6709\u6781\u5176\u5F3A\u5927\u7684\u529B\u91CF\uFF0C\u6216\u8BB8\u4F1A\u6210\u4E3A\u6253\u7834\u73B0\u72B6\u7684\u5173\u952E\u3002"
 --- !u!1 &1071731722
@@ -20999,7 +20957,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -21507,7 +21465,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -21662,7 +21620,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -21894,7 +21852,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -22032,7 +21990,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -22262,7 +22220,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -22417,7 +22375,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -22676,7 +22634,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -22965,7 +22923,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -23240,7 +23198,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -23284,8 +23242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: When you defeat the gods, you may obtain gems. By offering them up, you
-      can receive special tiles or strengthen your stats.
+    text: When you defeat the gods, you may obtain gems. By offering them up, you can receive special tiles or strengthen your stats.
   chineseSimplified:
     text: "\u51FB\u8D25\u4F17\u795E\u540E\uFF0C\u4F60\u6709\u65F6\u4F1A\u83B7\u5F97\u5B9D\u77F3\u3002\u5C06\u5176\u732E\u4E0A\u540E\uFF0C\u4F60\u53EF\u4EE5\u83B7\u5F97\u7279\u6B8A\u724C\uFF0C\u6216\u5F3A\u5316\u81EA\u8EAB\u5C5E\u6027\u3002"
 --- !u!1 &1211791270
@@ -25204,7 +25161,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -25342,7 +25299,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -25497,7 +25454,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -25946,7 +25903,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -26704,7 +26661,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -27989,7 +27946,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -28033,11 +27990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: When you equip a special tile, it is added to your deck as a red dora.
-      Depending on its rarity, a special tile may enhance the effects of your passive
-      skills or possess a unique special effect. You can equip up to four special
-      tiles. At the start, however, you can only equip one, so offer gems to increase
-      your number of equipment slots.
+    text: When you equip a special tile, it is added to your deck as a red dora. Depending on its rarity, a special tile may enhance the effects of your passive skills or possess a unique special effect. You can equip up to four special tiles. At the start, however, you can only equip one, so offer gems to increase your number of equipment slots.
   chineseSimplified:
     text: "\u88C5\u5907\u7279\u6B8A\u724C\u540E\uFF0C\u5B83\u4F1A\u4F5C\u4E3A\u7EA2\u5B9D\u724C\u52A0\u5165\u4F60\u7684\u724C\u7EC4\u3002\u6839\u636E\u7A00\u6709\u5EA6\u7684\u4E0D\u540C\uFF0C\u7279\u6B8A\u724C\u6709\u7684\u4F1A\u5F3A\u5316\u88AB\u52A8\u6280\u80FD\u7684\u6548\u679C\uFF0C\u6709\u7684\u5219\u62E5\u6709\u72EC\u7279\u7684\u7279\u6B8A\u6548\u679C\u3002\u7279\u6B8A\u724C\u6700\u591A\u53EF\u4EE5\u88C5\u59074\u4E2A\u3002\u521D\u59CB\u72B6\u6001\u4E0B\u53EA\u80FD\u88C5\u59071\u4E2A\uFF0C\u6240\u4EE5\u732E\u4E0A\u5B9D\u77F3\u6765\u589E\u52A0\u88C5\u5907\u680F\u4F4D\u5427\u3002"
 --- !u!1 &1434672468
@@ -28270,7 +28223,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -28407,7 +28360,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -28833,7 +28786,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -29981,7 +29934,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -30514,7 +30467,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -30856,7 +30809,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -32391,7 +32344,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -32827,8 +32780,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 455376311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33570,7 +33523,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -33726,7 +33679,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -33865,7 +33818,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -34756,7 +34709,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -35197,7 +35150,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -35593,7 +35546,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -36055,7 +36008,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -36343,7 +36296,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -36476,7 +36429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1862076410
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36496,7 +36449,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108.7, y: -206.9}
+  m_AnchoredPosition: {x: -4.2, y: -206.9}
   m_SizeDelta: {x: 258.43, y: 50.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862076411
@@ -36826,7 +36779,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -38214,7 +38167,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -38581,7 +38534,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -40315,7 +40268,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -40469,7 +40422,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -40765,7 +40718,7 @@ RectTransform:
   m_Father: {fileID: 1190967713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -41041,7 +40994,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -41364,7 +41317,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1

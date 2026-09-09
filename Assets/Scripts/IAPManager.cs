@@ -30,8 +30,9 @@ public sealed class IAPManager : MonoBehaviour, IDetailedStoreListener
     public int Gems100Amount => gems100Amount;
     public int Gems500Amount => gems500Amount;
     public int Gems1200Amount => gems1200Amount;
+    // Registered product IDs may use any prefix; the store determines availability.
     public bool HasProductionIds => new[] {removeAdsProductId,gems100ProductId,gems500ProductId,gems1200ProductId}
-        .All(id => !string.IsNullOrWhiteSpace(id) && !id.StartsWith("com.yourapp.")) &&
+        .All(id => !string.IsNullOrWhiteSpace(id)) &&
         new[] {removeAdsProductId,gems100ProductId,gems500ProductId,gems1200ProductId}.Distinct().Count() == 4;
     void Awake() {
         if (Instance && Instance != this) { Destroy(gameObject); return; }

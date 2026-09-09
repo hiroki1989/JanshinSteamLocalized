@@ -21,6 +21,8 @@ public sealed class FirstMatchTutorialView : MonoBehaviour
     private Action completed;
     private LocalizationManager.Language language;
     [SerializeField] private TMP_FontAsset font;
+    [SerializeField] private TMP_FontAsset japaneseBodyHintFont;
+    private TMP_FontAsset preparedMeiryoFont;
     [SerializeField] private RectTransform root, card, illustration, safe;
     [SerializeField] private List<RectTransform> shades = new List<RectTransform>();
     [SerializeField] private RectTransform focus;
@@ -177,8 +179,42 @@ public sealed class FirstMatchTutorialView : MonoBehaviour
         else { index++; ShowPage(); }
     }
 
+    private void OnDestroy()
+    {
+        if (!preparedMeiryoFont) return;
+        foreach (var atlas in preparedMeiryoFont.atlasTextures) if (atlas) Release(atlas);
+        if (preparedMeiryoFont.material) Release(preparedMeiryoFont.material);
+        Release(preparedMeiryoFont);
+        preparedMeiryoFont = null;
+    }
+
     private void ShowPage()
     {
+        // Populate the primary font before TMP can choose a global fallback for a missing glyph.
+        if (language == LocalizationManager.Language.Japanese && japaneseBodyHintFont)
+        {
+            if (!preparedMeiryoFont)
+            {
+                var source = japaneseBodyHintFont.sourceFontFile;
+                if (!source) throw new InvalidOperationException("Tutorial Meiryo source font is missing.");
+                preparedMeiryoFont = TMP_FontAsset.CreateFontAsset(source, 64, 8,
+                    UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA, 2048, 2048,
+                    AtlasPopulationMode.Dynamic, true);
+                preparedMeiryoFont.name = "Tutorial Meiryo Body and Hint";
+                preparedMeiryoFont.fallbackFontAssetTable = new List<TMP_FontAsset>();
+            }
+            var copy = string.Join("\n", pages.ConvertAll(page => page.Body + "\n" + page.Hint))
+                + "\n" + contentAsset.skipBody.Get(language);
+            preparedMeiryoFont.TryAddCharacters(copy, out string missing);
+            if (!string.IsNullOrWhiteSpace(missing))
+                Debug.LogWarning("Tutorial Meiryo does not contain: " + missing);
+            foreach (var text in new[] { bodyText, bodyExampleText, hintText })
+            {
+                if (!text) continue;
+                text.font = preparedMeiryoFont;
+                text.fontSharedMaterial = preparedMeiryoFont.material;
+            }
+        }
         var p = pages[index];
         titleText.text = confirmingSkip ? contentAsset.skipTitle.Get(language) : p.Title;
         bodyText.text = confirmingSkip ? contentAsset.skipBody.Get(language) : p.Body;

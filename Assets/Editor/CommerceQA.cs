@@ -41,7 +41,14 @@ internal static class CommerceQA
             iapSingleton.SetValue(null,iap);
             Check(iap.Gems100Amount==10&&iap.Gems500Amount==55&&iap.Gems1200Amount==130,"Authored pack amounts preserved");
             Check(iap.GetLocalizedPrice(iap.RemoveAdsProductId)=="800円" && iap.GetLocalizedPrice(iap.Gems100ProductId)=="100円" && iap.GetLocalizedPrice(iap.Gems500ProductId)=="400円" && iap.GetLocalizedPrice(iap.Gems1200ProductId)=="900円","Requested Japanese prices");
-            Check(!iap.HasProductionIds,"Unregistered IDs are identified");
+            Check(iap.HasProductionIds,"Configured product IDs are accepted regardless of prefix");
+            var originalId=iap.Gems100ProductId;
+            try {
+                Set(iap,"gems100ProductId"," ");
+                Check(!iap.HasProductionIds,"Blank product IDs are rejected");
+                Set(iap,"gems100ProductId",iap.RemoveAdsProductId);
+                Check(!iap.HasProductionIds,"Duplicate product IDs are rejected");
+            } finally { Set(iap,"gems100ProductId",originalId); }
             Check(!iap.CanBuy(iap.Gems100ProductId),"Purchasing disabled before store is ready");
             iap.OnPurchaseFailed(null,UnityEngine.Purchasing.PurchaseFailureReason.UserCancelled);
             Check(!iap.IsBusy&&iap.Status=="cancelled","Cancellation releases purchase lock and provides status");
