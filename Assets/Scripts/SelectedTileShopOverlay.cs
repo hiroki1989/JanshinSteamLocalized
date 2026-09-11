@@ -1,4 +1,4 @@
 using UnityEngine;
 
-// This modal sizes itself against the screen; MobileDisplayGuard must not reparent it.
+// Identifies the tile-selection modal. Its 1600x900 design is fitted by MobileDisplayGuard.
 public sealed class SelectedTileShopOverlay : MonoBehaviour { }
