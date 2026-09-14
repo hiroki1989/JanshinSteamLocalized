@@ -2596,9 +2596,9 @@ private void UpdateRightInfoUI_Manual()
 
     EnemyAddon_SetOfudaSplitInfo(ofudaSplitTexts);
 
-    WireActiveSkillDescription();
     UpdateOmamoriIconUI_Manual();
     UpdateOfudaIconsUI_Manual(ofudaRarityTags);
+    WireActiveSkillDescription();
 }
 private static string ExtractFirstToken(string s)
 {

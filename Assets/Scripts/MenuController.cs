@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 // Menu -> AngelDialogue -> EnemyDialogue -> Battle
-public class MenuController : MonoBehaviour
+public partial class MenuController : MonoBehaviour
 {
 [SerializeField] private string tierSelectSceneName = "TierSelectScene";
 [SerializeField] private string angelDialogueScene = "AngelDialogue";
@@ -66,6 +66,7 @@ private void Awake()
 }
 private void Start()
 {
+    StartCoroutine(RunMenuTutorial());
     ApplySavedDisplayMode(applyResolutionWhenWindowed: false);
 
     RefreshCurrentEnemyUI();

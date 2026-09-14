@@ -31,6 +31,7 @@ public sealed class FirstMatchTutorialView : MonoBehaviour
     [SerializeField] private Image progress;
     private int index;
     private bool confirmingSkip, closing;
+    public bool WasSkipped => confirmingSkip;
     private readonly Vector3[] corners = new Vector3[4];
     private readonly Color gold = new Color(.94f, .76f, .4f);
     private readonly Color ink = new Color(.055f, .075f, .11f);

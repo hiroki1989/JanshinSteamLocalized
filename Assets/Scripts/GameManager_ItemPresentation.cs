@@ -16,6 +16,7 @@ public partial class GameManager
 
     private void WireActiveSkillDescription()
     {
+        WireEquipmentDescriptions();
         var text = _skillActionNameTMP ? _skillActionNameTMP : _skillNameTMP;
         if (!text) return;
         text.raycastTarget = true;

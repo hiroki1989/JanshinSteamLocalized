@@ -31,6 +31,7 @@ public sealed class TutorialResetOption : MonoBehaviour
     public void ResetTutorial()
     {
         PlayerPrefs.DeleteKey(string.IsNullOrWhiteSpace(completionKey) ? "FirstMatchTutorialDoneV1" : completionKey);
+        PlayerPrefs.DeleteKey(MenuController.MenuTutorialDoneKey);
         PlayerPrefs.Save();
         resetRequested = true;
         Refresh(LocalizationManager.Instance.CurrentLanguage);
@@ -42,10 +43,10 @@ public sealed class TutorialResetOption : MonoBehaviour
         bool zh = language == LocalizationManager.Language.ChineseSimplified;
         if (buttonLabel) buttonLabel.text = en ? "Show tutorial again" : zh ? "重新显示教程" : "チュートリアルを再表示";
         if (statusLabel) statusLabel.text = resetRequested
-            ? (en ? "The tutorial will appear at the start of your next new match."
-                : zh ? "下次开始新对局时将显示教程。" : "次に新しい対局を開始すると、チュートリアルが表示されます。")
-            : (en ? "Reset the tutorial so it appears in your next new match."
-                : zh ? "重置教程，下次开始新对局时再次显示。" : "初回フラグをリセットし、次の新しい対局で説明を表示します。");
+            ? (en ? "The guides will appear when you return to the menu and start a new match."
+                : zh ? "返回菜单及开始新对局时，将再次显示教程。" : "メニューに戻ったときと、新しい対局で説明を再表示します。")
+            : (en ? "Reset both the menu and match tutorials."
+                : zh ? "重置菜单与对局教程。" : "メニューと対局のチュートリアルを再表示します。");
         var font = TMP_Settings.defaultFontAsset;
         if (!font) font = LocalizationManager.Instance.GetBodyFont();
         if (font)
