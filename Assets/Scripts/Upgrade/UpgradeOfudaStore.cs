@@ -1,10 +1,38 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public sealed class UpgradeOfudaStore : MonoBehaviour
 {
+public void ApplyShopPresentation()
+{
+    for(int index=0;index<offerSlots.Length;index++){
+        var slot=offerSlots[index];
+        if(slot.button==null)continue;
+        var host=slot.button.transform;
+        // Always paint the button's own rect, including empty/sold-out offers.
+        // Do not retain the legacy sprite/aspect settings when an offer is empty.
+        var tint=index<_offering.Count ? GetRarityColor(_offering[index].rarity) : new Color(.95f,.95f,.89f,1f);
+        tint.a=1f;
+        var face=slot.button.GetComponent<Image>();
+        if(!face)face=slot.button.gameObject.AddComponent<Image>();
+        if(slot.backgroundImage && slot.backgroundImage!=face)slot.backgroundImage.enabled=false;
+        var oldGradient=slot.button.GetComponent<UIGradient>();if(oldGradient)oldGradient.enabled=false;
+        face.sprite=UpgradePanelPresentation.RarityGradient(tint);
+        face.overrideSprite=null;
+        face.color=Color.white;face.type=Image.Type.Simple;
+        face.preserveAspect=false;face.enabled=true;face.raycastTarget=true;
+        slot.button.targetGraphic=face;
+        foreach(var image in host.GetComponentsInChildren<Image>(true))if(image.sprite&&image.sprite.name=="T_5_coin_bag2_")UpgradePanelPresentation.Place(image.rectTransform,host,new Vector2(-45,-116),new Vector2(36,36));
+        if(slot.iconImage)slot.iconImage.transform.SetParent(host,false);
+        if(slot.nameTMP)slot.nameTMP.transform.SetParent(host,false);
+        if(slot.priceTMP)slot.priceTMP.transform.SetParent(host,false);
+        ItemArtwork.ShopSlot(slot.iconImage,slot.nameTMP,slot.priceTMP);
+        if(slot.priceTMP){slot.priceTMP.alignment=TextAlignmentOptions.Center;}
+        foreach(var t in host.GetComponentsInChildren<TMP_Text>(true)){UpgradePanelPresentation.Black40(t);}
+    }
+}
 [Header("UI Roots")]
 [SerializeField] private TextMeshProUGUI currencyTMP;
 [SerializeField] private Button nextButton;        // 「次へ」（既存の UpgradeNextButton と併用OK）
@@ -202,6 +230,7 @@ private void RefreshOfferSlotsUI()
             slot.button.onClick.AddListener(() => TryBuy(cap));
         }
     }
+    if(offerSlots.Length>0 && offerSlots[0].button && offerSlots[0].button.transform.Find("PresentationFrame"))ApplyShopPresentation();
 }
     private void TryBuy(int index)
     {

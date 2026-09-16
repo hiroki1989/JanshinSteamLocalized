@@ -317,7 +317,7 @@ void EnemySkills_OnEnemyTurn(int enemyTurnCounter)
         }
         // ★追加：敵が「このターンに立直した」or「このターンに和了した」場合は
         //         スキル発動だけ抑止する（カウントは進める）
-        bool suppressFireThisTurn =
+        bool suppressFireThisTurn = _consumableSealThisEnemyTurn ||
             (enemyTurnCounter == _enemyRiichiDeclaredTurnCounter) ||
             (enemyTurnCounter == (_enemyRiichiDeclaredTurnCounter + 1)) ||
             (enemyTurnCounter == _enemyWinDeclaredTurnCounter);
@@ -625,6 +625,7 @@ private System.Collections.IEnumerator __EnemySkill_ApplyDamageToPlayerAnimated_
     dmg = Mathf.RoundToInt(dmg * (1f - Mathf.Clamp01(_om.dmgTakenDown)));
     if (dmg < 0) dmg = 0;
 
+    dmg = ConsumablesModifyIncoming(dmg, false);
     int endHP = Mathf.Max(0, startHP - dmg);
 
     // SE（和了ダメージ演出と同じSE/Sourceを使う）

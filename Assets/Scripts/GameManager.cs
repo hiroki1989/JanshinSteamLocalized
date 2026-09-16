@@ -260,6 +260,7 @@ private int GetTraitEffectiveLevelForScoring(
         if (hostSet != null && !string.IsNullOrEmpty(activeSkillName) && !string.IsNullOrEmpty(yakuName))
         {
             baseLv = Mathf.Max(0, hostSet.GetTraitYakuLevel(activeSkillName, trait, yakuName));
+            if (baseLv > 0) baseLv += RunConsumables.TraitBonus(trait);
         }
     }
     catch
@@ -750,6 +751,7 @@ private IEnumerator WaitPlayerCutinAnimationOrSeconds(CutinSpriteAnimator animat
 }
 private void OnDisable()
 {
+    if (_consumableWindow) _consumableWindow.Close();
     __CleanupFirstMatchTutorial();
     if (_preparedForSceneUnload)
         return;
@@ -1548,6 +1550,7 @@ private void ApplyDamageToPlayer(int baseDamage, string reason = "")
     }
     catch { }
 
+dmg = ConsumablesModifyIncoming(dmg, false);
 playerHP = Mathf.Max(0, playerHP - dmg);
 
 try
@@ -2947,6 +2950,7 @@ catch
         {
             // 想定：未解放 = -1
             baseLv = hostSet.GetTraitYakuLevel(skillName, trait, yaku);
+            if (baseLv > 0) baseLv += RunConsumables.TraitBonus(trait);
         }
         catch
         {
@@ -4399,6 +4403,7 @@ private bool pendingNextStage = false;
     }
 void ClearRunItems()
 {
+    RunConsumables.ResetRun();
     runItemIds.Clear();
     try { UnityEngine.PlayerPrefs.DeleteKey(RunItemsKey); } catch {}
 
@@ -5795,6 +5800,7 @@ private void __BeginOfferPhase_AfterEnemySkills()
 
     offers.Clear();
     selOffer.Clear();
+    ConsumablesOnPlayerTurn();
     int offersToDeal = 4;
     _pendingTsumoPenalty = 0; // 次の BeginOfferPhase で引く枚数を減らす（未使用）
 
@@ -5815,6 +5821,7 @@ private void __BeginOfferPhase_AfterEnemySkills()
 }
 private IEnumerator __DealOfferTiles_Sequential_Co(int offersToDeal)
 {
+    _consumableDealing = true;
     bool showTutorialAfterDraw = !_tutorialFirstDrawReached && __ShouldShowFirstMatchTutorial();
     _tutorialFirstDrawReached = true;
     _tutorialDealingFirstDraw = showTutorialAfterDraw;
@@ -5877,6 +5884,8 @@ if (statusTMP) statusTMP.text = GetGameFixedText_Local("status_replace_to_tenpai
     TryRegenMP_TurnStart();
     // Show the guide only after the first player draw is fully visible.
     _tutorialDealingFirstDraw = false;
+    _consumableDealing = false;
+    RefreshConsumableButton();
     if (showTutorialAfterDraw && phase == Phase.Offer && __ShouldShowFirstMatchTutorial())
         yield return StartCoroutine(__RunFirstMatchTutorial_Co());
 }
@@ -6900,6 +6909,8 @@ if (phase == Phase.Offer && !suppressTsumoThisOffer)
     }
 private void UpdateButtons()
 {
+    EnsureConsumableButton();
+    RefreshConsumableButton();
     EnsureBottomButtons();
 
     if ((!btnMenuOption || !btnMenuSuspend || !btnMenuExit || !btnMenuClose) && menuPanel)
@@ -9532,6 +9543,7 @@ void EnterEnemyTurnAfterPlayer()
     //   - 局の「ターン数」は、敵のツモ番開始を 1ターン目としてカウントする
     //   - 次に回ってくる敵のツモ番開始で +1 していく
     _enemyTurnCounter++;
+    ConsumablesOnEnemyTurn();
     _playerTsumoCountThisRound = _enemyTurnCounter;
     // ★追加：敵ツモ番開始の瞬間に、ターン表示も更新する（これが無いと表示がプレイヤー番でしか変わらない）
     RefreshTopUI();
@@ -13938,6 +13950,7 @@ int finalDamageForApply = Mathf.Max(0, totalPoints);
 if (!_currentScoringAttackerIsPlayer)
 {
     finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
+    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), finalDamageForApply, playerHP, true);
 }
 
 int traitMpHeal = Mathf.Max(0, mpRecovered);
@@ -13993,6 +14006,7 @@ catch { }
     catch { ofudaHpHealAbs = 0; ofudaMpHealAbs = 0; }
 }
 
+finalDamageForApply = ConsumablesModifyOutgoingWin(finalDamageForApply);
 int finalMpHeal = Mathf.Max(0, traitMpHeal + ofudaMpHealAbs);
 int finalHpHeal = Mathf.Max(0, traitHpHeal + ofudaHpHealAbs);
 
@@ -14054,6 +14068,7 @@ if (finalDamageForApply > 0)
 
         // レジェンダリー②（直後の敵和了ダメージ半減）が有効な場合、表示値だけ半減後にする（ここでは消費しない）
         finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
+    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), finalDamageForApply, playerHP, true);
 
 // 敵側ではダメージ適用はしない（スコアOK直後に演出付きで適用する）
 // ここは UI 表示のための値だけ整える
@@ -15115,6 +15130,7 @@ if (playerWinDamageAnimSeconds <= 0f)
 
         // 既に演出中なら二重起動しない
         if (_enemyWinDamageAnimating) return;
+        _pendingEnemyWinDamageFinal = ConsumablesModifyIncoming(_pendingEnemyWinDamageFinal, true);
 
         // 演出時間が0以下なら即時反映して続行
         if (enemyWinDamageAnimSeconds <= 0f)
@@ -15504,6 +15520,7 @@ StartDefeatTransitionIfNeeded();
 // 1) 敵撃破した場合：次の敵へ or クリア
 if (defeatedThisEnemy)
 {
+RunConsumables.EndBattle();
 // ★追加：敵撃破で継続効果を消滅
 _legendaryDamageHalfPending = false;
 _legendaryDamageHalfEnemyKey = null;
@@ -17794,6 +17811,7 @@ private void SaveRunGold()
 }
 private void ClearRunEphemeral()
 {
+    RunConsumables.ResetRun();
     try
     {
         // 通貨
@@ -17848,7 +17866,7 @@ private void DBG_AttachHandEditHook(GameObject tileGO, int handIndex)
 private void Update()
 {
     if (_defeatTransitionRunning || _preparedForSceneUnload) return;
-    if (_tutorialRunning || _activeSkillPopup) return;
+    if (_tutorialRunning || _activeSkillPopup || _consumableWindow) return;
     // 新InputSystem: ESC でメニュー開閉
     var kb = Keyboard.current;
     if (kb != null && kb.escapeKey.wasPressedThisFrame)
@@ -19173,6 +19191,7 @@ private void StartDefeatTransitionIfNeeded(bool roundLimitReached = false)
 
     Debug.Log($"[BattleDefeat] reason={(roundLimitReached ? "RoundLimit" : "HPZero")} round={roundNumber}/{maxRounds} playerHP={playerHP} enemyHP={enemyHP}");
     _defeatTransitionRunning = true;
+    RunConsumables.ResetRun();
     ClearBattleResume();
     PersistRunPlayerHP(false);
     _freezeProgression = true;
@@ -19766,6 +19785,7 @@ private void OnClickMenuOption()
 [System.Serializable]
 private class SuspendSnapshot
 {
+    public RunConsumables.State consumables;
     public int roundNumber;
 
     // ===== HP/MP（現在値と最大値を必ず保存）=====
@@ -19895,6 +19915,7 @@ private void SaveSuspendSnapshot(bool markAsSuspend)
 {
     if (_defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
     var ss = new SuspendSnapshot();
+    ss.consumables = RunConsumables.Load();
 
     ss.roundNumber = roundNumber;
 
@@ -20063,6 +20084,7 @@ private bool TryLoadSuspendSnapshot()
         if (ss == null || ss.currentEnemyIndex != ProgressionFlowController.GetCurrentEnemyIndex() || ss.enemyHP <= 0 || ss.playerHP <= 0) { ClearBattleResume(); return false; }
         // ===== このセッションは「中断復元」扱い。以後の上乗せ処理を絶対に止める =====
         _suspendRestoredThisSession = true;
+        if (ss.consumables != null) RunConsumables.Save(ss.consumables);
 
         // ===== 装備（スキル）を PlayerPrefs に先に戻す（SkillMP_Addon.Start() がこれを読む）=====
         try { PlayerPrefs.SetString("EquippedSkillSetId", ss.equippedSkillSetId ?? ""); } catch {}

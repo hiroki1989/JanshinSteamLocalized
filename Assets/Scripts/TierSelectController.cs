@@ -249,6 +249,7 @@ public class TierSelectController : MonoBehaviour
 
         // 新規ラン開始の完全初期化
         MissionSystem.ResetForNewRun();
+        RunConsumables.ResetRun();
         MissionSystem.ClearRunSeed();
         PlayerPrefs.SetInt("PF_ResumeDirect", 0);
         PlayerPrefs.DeleteKey("PF_ResumeScene");

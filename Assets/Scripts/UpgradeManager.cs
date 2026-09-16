@@ -1522,6 +1522,7 @@ private void RefreshUpgradeLabels()
 
     // ★追加：現在HP/MP（現在値/最大値）を更新
     RefreshCurrentHpMpText();
+    RefreshPresentationStatusLabels();
 }
 private void OnClickBuyHealHp()
 {
@@ -2004,6 +2005,7 @@ public void ApplySectionMode(UpgradeSectionMode mode)
     // ラベル等を最新化
     RefreshUpgradeLabels();
     RefreshUI();
+    ApplyShopPresentation(mode);
 }
 
 

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -100,7 +100,7 @@ public void RefreshUI()
                 if (image.transform != host && image.name.StartsWith("IconOfuda")) { icon = image; break; }
             if (!icon) icon = ItemArtwork.EnsureIcon(host);
             ItemArtwork.Ofuda(icon, !string.IsNullOrEmpty(id) && _ofudaMap.TryGetValue(id, out var item) ? item.rarity : null);
-            if (slotNameTexts != null && i < slotNameTexts.Length) ItemArtwork.ShopSlot(icon, slotNameTexts[i]);
+            if (slotNameTexts != null && i < slotNameTexts.Length) { ItemArtwork.ShopSlot(icon, slotNameTexts[i]); UpgradePanelPresentation.Black40(slotNameTexts[i]); }
         }
     }
 

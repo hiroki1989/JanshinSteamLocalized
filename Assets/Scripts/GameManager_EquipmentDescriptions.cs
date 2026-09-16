@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -57,11 +57,11 @@ public partial class GameManager
         BuildActiveSkillInfoSplitTexts(ResolveActiveSkillForMP(), out _, out _, out var geki, out var shun, out var iyu, out _);
         string body = EquipmentText(
             "対応する役で和了すると、自動で効果が発動します。MPは消費しません。\nLv.0の役は未解放です。\n\n【撃】敵へのダメージを増加\n",
-            "Win with a listed yaku to trigger its passive effect without spending MP.\nYaku at Lv.0 are locked.\n\n[Strike] Increases damage to the enemy\n",
-            "以对应役种和牌时自动发动效果，不消耗MP。\nLv.0的役种尚未解锁。\n\n【击】增加对敌人的伤害\n") + geki
-            + EquipmentText("\n\n【瞬】MPを回復\n", "\n\n[Flash] Restores MP\n", "\n\n【瞬】恢复MP\n") + shun
-            + EquipmentText("\n\n【癒】HPを回復\n", "\n\n[Heal] Restores HP\n", "\n\n【愈】恢复HP\n") + iyu;
-        ShowEquipmentDescription(EquipmentText("パッシブスキル", "Passive skills", "被动技能"), body);
+            "Win with a listed yaku to trigger its passive effect without spending MP.\nYaku at Lv.0 are locked.\n\n【撃】 Increases damage to the enemy\n",
+            "以对应役种和牌时自动发动效果，不消耗MP。\nLv.0的役种尚未解锁。\n\n【撃】增加对敌人的伤害\n") + geki
+            + EquipmentText("\n\n【瞬】MPを回復\n", "\n\n【瞬】 Restores MP\n", "\n\n【瞬】恢复MP\n") + shun
+            + EquipmentText("\n\n【癒】HPを回復\n", "\n\n【癒】 Restores HP\n", "\n\n【癒】恢复HP\n") + iyu;
+        ShowEquipmentDescription(EquipmentText("パッシブスキル", "Passive skills", "被动技能"), ReplaceTraitWordsWithIcons(body));
     }
 
     public void ShowOmamoriDescription()

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events; // ★追加：UnityAction
 
-public sealed class UpgradeSceneMenu : MonoBehaviour
+public sealed partial class UpgradeSceneMenu : MonoBehaviour
 {
     [Header("Menu Root (3択)")]
     [SerializeField] private GameObject menuRoot;
@@ -69,6 +69,7 @@ private void Awake()
 
     // ★追加：SerializeField に割り当たっていない「戻る」ボタンが残っていても救う
     AutoWireAllBackButtons();
+    BuildConsumableStore();
 }
 private void OnClickGemResultOk()
 {
@@ -291,6 +292,7 @@ private void OnChooseTraitYaku()
         SafeSetActive(menuRoot, false);
         SafeSetActive(upgradeManager ? upgradeManager.gameObject : null, false);
         SafeSetActive(ofudaStoreRoot, true);
+        UpgradePanelPresentation.Ofuda(ofudaStoreRoot);
     }
 
     private void OnChooseStatus()

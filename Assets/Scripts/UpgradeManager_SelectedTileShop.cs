@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,7 +58,7 @@ public partial class UpgradeManager
                 var button=TileShopButton("Tile"+tile,card,new Vector2(-464+116*column,190-112*row),new Vector2(104,104));
                 var art=TileShopRect("Art",button.transform,new Vector2(0,14),new Vector2(54,66));
                 var image=art.gameObject.AddComponent<Image>(); image.sprite=LoadTileSpriteByIndex(tile); image.preserveAspect=true; image.raycastTarget=false;
-                var label=button.GetComponentInChildren<TMP_Text>(); label.name="Count"; label.rectTransform.anchoredPosition=new Vector2(0,-36); label.rectTransform.sizeDelta=new Vector2(98,24);
+                var label=button.GetComponentInChildren<TMP_Text>(); label.name="Count"; label.rectTransform.anchoredPosition=new Vector2(0,-36); label.rectTransform.sizeDelta=new Vector2(98,44);
             }
             TileShopLabel("Selection",card,new Vector2(0,-236),new Vector2(980,40),26);
             TileShopLabel("Status",card,new Vector2(0,-279),new Vector2(990,34),22);
@@ -135,7 +135,7 @@ public partial class UpgradeManager
         for(int i=0;i<34;i++) {
             var button=card.Find("Tile"+i).GetComponent<Button>();
             button.interactable=!selectedTileDestroyMode || (counts[i]>0 && PlayerData.TotalDeckCount()>Mathf.Max(1,minDeckSize));
-            button.GetComponent<Image>().color=i==selectedShopTile ? new Color(.65f,.46f,.13f) : new Color(.15f,.2f,.26f);
+            button.GetComponent<Image>().color=i==selectedShopTile ? new Color(.65f,.46f,.13f) : new Color(.88f,.90f,.86f);
             button.GetComponentInChildren<TMP_Text>().text="×"+counts[i];
         }
         card.Find("Selection").GetComponent<TMP_Text>().text=selectedShopTile<0 ? TileShopText("牌を選択してください","Select a tile","请选择牌") : TileShopText(PlayerData.TileName(selectedShopTile), GameManager.IndexToId(selectedShopTile), PlayerData.TileName(selectedShopTile))+"  ×1";
@@ -157,8 +157,8 @@ public partial class UpgradeManager
         text.color=Color.white; text.raycastTarget=false; text.alignment=TextAlignmentOptions.Center; return text;
     }
     private Button TileShopButton(string name,Transform parent,Vector2 position,Vector2 size) {
-        var rect=TileShopRect(name,parent,position,size); var image=rect.gameObject.AddComponent<Image>(); image.color=new Color(.15f,.2f,.26f);
+        var rect=TileShopRect(name,parent,position,size); var image=rect.gameObject.AddComponent<Image>(); image.color=new Color(.88f,.90f,.86f);
         var button=rect.gameObject.AddComponent<Button>(); button.targetGraphic=image;
-        TileShopLabel("Label",rect,Vector2.zero,size-new Vector2(12,8),24); return button;
+        UpgradePanelPresentation.Black40(TileShopLabel("Label",rect,Vector2.zero,size-new Vector2(12,8),40)); return button;
     }
 }

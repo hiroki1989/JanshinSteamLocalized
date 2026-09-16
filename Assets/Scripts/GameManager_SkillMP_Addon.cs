@@ -670,6 +670,7 @@ private IEnumerator __AnimatePlayerMP_Visual_Co(int from, int to, float seconds)
 }
 private int ComputeFinalSkillMpCost(int baseCost)
 {
+    if (RunConsumables.Load().freeCast) return 0;
     var om = __Om();
 
     float mul = 1f - Mathf.Clamp01(om.skillMpCostDown);
@@ -930,7 +931,7 @@ private int GetMaxSkillCastsThisTurn()
     }
     catch { uniqueExtra = 0; }
 
-    return Mathf.Max(1, baseLimit + extraLegendary + runExtra + uniqueExtra);
+    return Mathf.Max(1, baseLimit + extraLegendary + runExtra + uniqueExtra + RunConsumables.Load().castsBonus);
 }
 
 
@@ -1031,6 +1032,7 @@ if (!_lastSkillApplied)
 }
 
 // 成功したのでMP消費
+ConsumablesConsumeFreeCast();
 int startMp = Mathf.Max(0, _mp);
 _mp = Mathf.Max(0, _mp - finalCost);
 int endMp = Mathf.Max(0, _mp);

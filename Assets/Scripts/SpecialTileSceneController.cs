@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -358,7 +358,12 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
                 icon.sprite = sp;
                 icon.enabled = (sp != null);
             }
-            if (fxTMP) fxTMP.text = BuildEntryText(e);
+            if (fxTMP) {
+                fxTMP.text = BuildEntryText(e); UpgradePanelPresentation.Black40(fxTMP);
+                var layout=row.GetComponent<LayoutElement>()??row.AddComponent<LayoutElement>();
+                float width=Mathf.Max(220,fxTMP.rectTransform.rect.width);
+                layout.minHeight=layout.preferredHeight=Mathf.Max(((RectTransform)row.transform).rect.height,fxTMP.GetPreferredValues(fxTMP.text,width,Mathf.Infinity).y+32);
+            }
 
             var btn = row.GetComponent<Button>();
             if (btn)
@@ -515,13 +520,13 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
 
         var owned = SpecialTileSystem.GetOwned();
         _ownedCache = (owned != null) ? new List<SpecialTileSystem.Entry>(owned) : new List<SpecialTileSystem.Entry>();
-        if (ownedTMP) ownedTMP.text = BuildOwnedText(owned);
+        if (ownedTMP) { ownedTMP.text = BuildOwnedText(owned); UpgradePanelPresentation.Black40(ownedTMP); }
 
         int ownedCount = (owned != null) ? owned.Count : 0;
         if (ownedCountTMP) ownedCountTMP.text = $"{ownedCount}/{OwnedMax}";
 
         var eq = SpecialTileSystem.GetEquipped();
-        if (equippedTMP) equippedTMP.text = BuildEquippedText(eq);
+        if (equippedTMP) { equippedTMP.text = BuildEquippedText(eq); UpgradePanelPresentation.Black40(equippedTMP); }
 
         int slots = SpecialTileSystem.GetEquipSlotsUnlocked();
         int eqCount = (eq != null) ? eq.Count : 0;
@@ -662,6 +667,7 @@ RefreshAll();
             var img = equippedSlotImages[i];
             var info = (equippedSlotInfoTMPs != null && i < equippedSlotInfoTMPs.Length) ? equippedSlotInfoTMPs[i] : null;
 
+            UpgradePanelPresentation.Black40(info);
             if (!img) continue;
             bool hasEntry = (i < slots && i < eq.Count);
 

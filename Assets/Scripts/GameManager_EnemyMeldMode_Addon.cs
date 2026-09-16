@@ -30,6 +30,7 @@ private int ApplyDamageToPlayer_WithOmamori(int baseDamage, string reason /* "en
         }
     }
     catch { }
+final = ConsumablesModifyIncoming(final, reason == "enemy_win");
 int before = playerHP;
 playerHP = Mathf.Max(0, playerHP - final);
 
