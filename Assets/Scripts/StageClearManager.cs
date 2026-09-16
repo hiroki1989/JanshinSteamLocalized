@@ -816,7 +816,6 @@ public void OnClickRewardOK()
     // クリア後は“次の対局にデッキ構成を持ち越さない”
     try { PlayerData.ResetDeckToDefault(); } catch {}
 
-    ResetEnemyProgressionSafe(); // ★既存：敵進行を確実に初期化
     if (!string.IsNullOrEmpty(menuSceneName))
         SceneManager.LoadScene(menuSceneName, LoadSceneMode.Single);
     else
