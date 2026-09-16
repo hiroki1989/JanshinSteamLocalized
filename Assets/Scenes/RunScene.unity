@@ -6955,7 +6955,7 @@ MonoBehaviour:
   enemyWinOkManual: {fileID: 0}
   enemyWinTilesManual: {fileID: 1776314272}
   winStrikeDuration: 1.05
-  winStrikeSound: {fileID: 0}
+  winStrikeSound: {fileID: 8300000, guid: dc6fd788efa05ec448f77f879d77901f, type: 3}
   missionPoolAsset: {fileID: 11400000, guid: fe7bd4788fc7f604a9abbe67abc7ba00, type: 2}
   missionDisplayTMP: {fileID: 2127372276}
   missionCompletePanel: {fileID: 1818444456}
