@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public partial class GameManager
 {
+    bool _consumableBloodPactAppliedThisScoring;
+    public string RenderConsumableDescription(string text) => ReplaceTraitWordsWithIcons(text);
     Button _consumableButton;
     ConsumableWindow _consumableWindow;
     bool _consumableSealThisEnemyTurn, _consumableDealing, _consumablePreviousFreeze;
@@ -56,18 +58,19 @@ public partial class GameManager
             t.text=ItemText("アイテム","Items","道具")+" "+s.bag.Count+"/"+RunConsumables.Capacity;
         _consumableButton.interactable=CanUseConsumableNow() && !_consumableWindow;
     }
-    void OpenConsumableInventory()
-    {
-        if(_consumableWindow || !CanUseConsumableNow())return;
-        _consumablePreviousFreeze=_freezeProgression;
-        _freezeProgression=true;
-        Sprite frame=Resources.Load<Sprite>("Consumables/PanelFrame");
-        _consumableWindow=ConsumableWindow.Open(transform,ItemText("所持アイテム","Consumables","持有道具"),frame);
-        _consumableWindow.Closed=()=>{_consumableWindow=null;if(this){_freezeProgression=_consumablePreviousFreeze;RefreshConsumableButton();}};
-        _consumableWindow.Confirm.onClick.AddListener(UseSelectedConsumable);
-        _consumableSlot=-1;
-        RefreshConsumableInventory();
-    }
+void OpenConsumableInventory()
+{
+    if(_consumableWindow || !CanUseConsumableNow())return;
+    _consumablePreviousFreeze=_freezeProgression;
+    _freezeProgression=true;
+    Sprite frame=Resources.Load<Sprite>("Consumables/PanelFrame");
+    _consumableWindow=ConsumableWindow.Open(transform,ItemText("所持アイテム","Consumables","持有道具"),frame);
+    _consumableWindow.Detail.color=Color.white; // 説明文（Detail）を白色に
+    _consumableWindow.Closed=()=>{_consumableWindow=null;if(this){_freezeProgression=_consumablePreviousFreeze;RefreshConsumableButton();}};
+    _consumableWindow.Confirm.onClick.AddListener(UseSelectedConsumable);
+    _consumableSlot=-1;
+    RefreshConsumableInventory();
+}
     void RefreshConsumableInventory()
     {
         if(!_consumableWindow)return;
@@ -82,7 +85,9 @@ public partial class GameManager
             _consumableWindow.Status.text=ConsumableEffectsSummary(s);return;
         }
         int id=s.bag[_consumableSlot];var d=RunConsumables.Get(id);
-        _consumableWindow.Detail.text=d.Name+"\n"+d.Description;
+        GameManager.ApplyTraitSpriteAssetToTMPAnywhere(_consumableWindow.Detail);
+        _consumableWindow.Detail.richText=true;
+        _consumableWindow.Detail.text=d.Name+"\n"+GameManager.RenderConsumableDescriptionAnywhere(d.Description);
         string unavailable=ConsumableUnavailable(id,s);
         if(unavailable!=null){_consumableWindow.Status.text=unavailable;return;}
         if(id==17||id==18||id==19) BuildConsumableTargets(id);
@@ -190,11 +195,44 @@ public partial class GameManager
             if(id==19){if(!IsConsumableDiscardAvailable(_consumableDiscard))return;}
             else if(!IsConsumableOrdinaryTile(hand[_consumableHand])||string.IsNullOrEmpty(_consumableReplacement))return;
         }
+        int startPlayerHP=playerHP;
+        int startPlayerMP=_mp;
         ApplyConsumableEffect(id,s);
         s.bag.RemoveAt(_consumableSlot);s.usedThisTurn=true;RunConsumables.Save(s);
+        try { if(AudioManager.Instance) AudioManager.Instance.PlayCutin_PlayerSkill(); } catch {}
         _consumableWindow.Close();
-        selHand.Clear();selOffer.Clear();RefreshAll();UpdateHpUI();UpdateMpUI();UpdateSkillInfoUI();UpdateButtons();
-        if(enemyHP<=0){_lastPlayerWinWasYakumanOrKazoe=false;_freezeProgression=true;phase=Phase.Scoring;__ProceedAfterScoreOK_Internal(false);}
+        selHand.Clear();selOffer.Clear();RefreshAll();UpdateSkillInfoUI();UpdateButtons();
+        if(startPlayerHP!=playerHP || startPlayerMP!=_mp)
+        {
+            _consumableDealing=true;
+            StartCoroutine(PlayConsumableResourceAnimation(startPlayerHP,startPlayerMP,enemyHP<=0));
+        }
+        else
+        {
+            UpdateHpUI();UpdateMpUI();
+            if(enemyHP<=0){_lastPlayerWinWasYakumanOrKazoe=false;_freezeProgression=true;phase=Phase.Scoring;__ProceedAfterScoreOK_Internal(false);}
+            else TryAutoSaveSuspendSnapshot();
+        }
+    }
+
+    private System.Collections.IEnumerator PlayConsumableResourceAnimation(int startHP,int startMP,bool enemyDefeated)
+    {
+        int endHP=Mathf.Clamp(playerHP,0,playerMaxHP);
+        int endMP=ClampToEffectiveMaxMP(_mp);
+        bool hpDecreased=endHP<startHP;
+        bool mpDecreased=endMP<startMP;
+        try { if((hpDecreased||mpDecreased)&&AudioManager.Instance) AudioManager.Instance.PlayBattleDamageSE(); } catch {}
+        float duration=1f,t=0f;
+        while(t<duration)
+        {
+            t+=Time.deltaTime;
+            float p=Mathf.Clamp01(t/duration);
+            __UpdatePlayerHpUI_VisualOnly(Mathf.RoundToInt(Mathf.Lerp(startHP,endHP,p)));
+            __UpdatePlayerMpUI_VisualOnly(Mathf.RoundToInt(Mathf.Lerp(startMP,endMP,p)));
+            yield return null;
+        }
+        playerHP=endHP;_mp=endMP;UpdateHpUI();UpdateMpUI();_consumableDealing=false;
+        if(enemyDefeated){_lastPlayerWinWasYakumanOrKazoe=false;_freezeProgression=true;phase=Phase.Scoring;__ProceedAfterScoreOK_Internal(false);}
         else TryAutoSaveSuspendSnapshot();
     }
     void ApplyConsumableEffect(int id,RunConsumables.State s)
@@ -228,7 +266,7 @@ public partial class GameManager
     }
     void ConsumablesOnPlayerTurn()
     {
-        var s=RunConsumables.Load();s.usedThisTurn=false;s.castsBonus=0;
+        var s=RunConsumables.Load();s.usedThisTurn=false;s.castsBonus=0;_consumableBloodPactAppliedThisScoring=false;
         if(s.regeneration>0){s.regeneration--;ConsumableHeal(.08f,0);UpdateHpUI();}
         RunConsumables.Save(s);
     }
@@ -250,6 +288,7 @@ public partial class GameManager
     {
         if(!_currentScoringAttackerIsPlayer)return damage;
         var s=RunConsumables.Load();if(!s.bloodPact)return damage;
+        _consumableBloodPactAppliedThisScoring=true;
         s.bloodPact=false;RunConsumables.Save(s);return Mathf.CeilToInt(damage*1.5f);
     }
     string ConsumableEffectsSummary(RunConsumables.State s)
@@ -259,5 +298,30 @@ public partial class GameManager
         if(s.regeneration>0)list.Add(RunConsumables.Get(5).Name+" "+s.regeneration);
         foreach(var pair in new[]{(s.geki,6),(s.shun,7),(s.iyu,8),(s.freeCast,10),(s.shield,13),(s.effigy,15),(s.bloodPact,20)})if(pair.Item1)list.Add(RunConsumables.Get(pair.Item2).Name);
         return list.Count==0?"":ItemText("効果中：","Active: ","生效中：")+string.Join(" / ",list);
+    }
+
+    private void AppendConsumableScoringEffectToPanel(bool playerScoring)
+    {
+        var state=RunConsumables.Load();
+        int itemId=playerScoring?(state.bloodPact||_consumableBloodPactAppliedThisScoring?20:0):(state.shield?13:0);
+        if(scoringDefenseIcon_Player)
+        {
+            scoringDefenseIcon_Player.gameObject.SetActive(itemId!=0);
+            scoringDefenseIcon_Player.sprite=itemId==0?null:Resources.Load<Sprite>("Consumables/item_"+itemId.ToString("00"));
+            scoringDefenseIcon_Player.preserveAspect=true;
+        }
+        string effect="";
+        if(itemId!=0)
+        {
+            var def=RunConsumables.Get(itemId);
+            effect=def.Name+(playerScoring?" +50%":" -50%");
+        }
+        var target=playerScoring?scoringEnemySkillEffectValue:scoringEnemySkillEffectValue_Enemy;
+        if(target && !string.IsNullOrEmpty(effect))
+        {
+            string existing=target.text;
+            target.text=string.IsNullOrEmpty(existing)||existing=="-"?effect:existing+"\n"+effect;
+            target.gameObject.SetActive(true);
+        }
     }
 }

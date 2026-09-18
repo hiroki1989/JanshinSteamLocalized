@@ -503,8 +503,6 @@ private static string RarityToJp_Local(string rarityRaw)
         
         // Persist player's current HP so it carries into the next enemy battle
         try { var gm = GameObject.FindObjectOfType<GameManager>(); if (gm) gm.PersistRunPlayerHP(); } catch {}
-// 次の敵へ（まだ戦闘には入らない）
-        GameManager.AdvanceToNextEnemy();
         if (!string.IsNullOrEmpty(upgradeSceneName))
             SceneManager.LoadScene(upgradeSceneName);
         else

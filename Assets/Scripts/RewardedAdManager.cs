@@ -12,6 +12,7 @@ public sealed class RewardedAdManager : MonoBehaviour
     [SerializeField] string _adUnitId = "ca-app-pub-3940256099942544/1712485313";
     [SerializeField, Min(1)] int gemReward = 1;
     [SerializeField, Min(0)] int maxDailyViews = 10;
+    [SerializeField, Min(0)] int maxAutomaticRetries = 3;
     const string DateKey = "RewardedAd_Date", CountKey = "RewardedAd_Count";
     RewardedAd ad;
     bool loading, showing, earned, finishing;
@@ -31,15 +32,22 @@ public sealed class RewardedAdManager : MonoBehaviour
     }
     void Start() { if (AdsInitializer.IsSDKReady) LoadAd(); }
     public void LoadAd() {
+        failures = 0;
+        LoadAdInternal();
+    }
+    void LoadAdInternal() {
         if (!showing && ad != null && !ad.CanShowAd()) { ad.Destroy(); ad = null; }
-        if (loading || showing || ad != null || !AdsInitializer.IsSDKReady || !AdsInitializer.CanRequestAds) return;
+        if (DailyLimitReached || loading || showing || ad != null || !AdsInitializer.IsSDKReady || !AdsInitializer.CanRequestAds) return;
         if (retry != null) { StopCoroutine(retry); retry = null; }
         loading = true; int request = ++generation; StateChanged?.Invoke();
         RewardedAd.Load(_adUnitId, new AdRequest(), (loaded, error) => MobileAdsEventExecutor.ExecuteInUpdate(() => {
             if (!this || request != generation) { loaded?.Destroy(); return; }
             loading = false;
             if (error != null || loaded == null) {
-                loaded?.Destroy(); retry = StartCoroutine(Retry()); StateChanged?.Invoke(); return;
+                loaded?.Destroy();
+                if (failures < maxAutomaticRetries) retry = StartCoroutine(Retry());
+                else Debug.LogWarning("[Ads] Rewarded load retries exhausted; waiting for an explicit reload.");
+                StateChanged?.Invoke(); return;
             }
             ad = loaded; failures = 0;
             loaded.OnAdFullScreenContentClosed += () => MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this && ad == loaded && !finishing) StartCoroutine(FinishAfterClose()); });
@@ -49,7 +57,7 @@ public sealed class RewardedAdManager : MonoBehaviour
     }
     IEnumerator Retry() {
         yield return new WaitForSecondsRealtime(Mathf.Min(60, 2 << Mathf.Min(failures++, 5)));
-        retry = null; LoadAd();
+        retry = null; LoadAdInternal();
     }
     public void ShowAd(Action<bool> onResult = null) {
         if (!IsReady) { onResult?.Invoke(false); if (!showing) LoadAd(); return; }

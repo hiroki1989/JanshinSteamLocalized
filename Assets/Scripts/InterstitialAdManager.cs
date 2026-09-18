@@ -9,6 +9,7 @@ public sealed class InterstitialAdManager : MonoBehaviour
     [SerializeField] string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
     [SerializeField, Min(1)] int showEveryNth = 1;
     [SerializeField, Min(0)] float cooldownSeconds = 0;
+    [SerializeField, Min(0)] int maxAutomaticRetries = 3;
     InterstitialAd ad;
     bool loading, showing;
     int requests, failures, generation;
@@ -27,6 +28,10 @@ public sealed class InterstitialAdManager : MonoBehaviour
         if (!showing) { ad?.Destroy(); ad = null; }
     }
     public void LoadAd() {
+        failures = 0;
+        LoadAdInternal();
+    }
+    void LoadAdInternal() {
         if (!showing && ad != null && !ad.CanShowAd()) { ad.Destroy(); ad = null; }
         if (AdsInitializer.IsAdFree || !AdsInitializer.IsSDKReady || !AdsInitializer.CanRequestAds || loading || showing || ad != null) return;
         if (retry != null) { StopCoroutine(retry); retry = null; }
@@ -34,7 +39,12 @@ public sealed class InterstitialAdManager : MonoBehaviour
         InterstitialAd.Load(_adUnitId, new AdRequest(), (loaded, error) => MobileAdsEventExecutor.ExecuteInUpdate(() => {
             if (!this || request != generation || AdsInitializer.IsAdFree) { loaded?.Destroy(); return; }
             loading = false;
-            if (error != null || loaded == null) { loaded?.Destroy(); retry = StartCoroutine(Retry()); return; }
+            if (error != null || loaded == null) {
+                loaded?.Destroy();
+                if (failures < maxAutomaticRetries) retry = StartCoroutine(Retry());
+                else Debug.LogWarning("[Ads] Interstitial load retries exhausted; waiting for an explicit reload.");
+                return;
+            }
             ad = loaded; failures = 0;
             loaded.OnAdFullScreenContentClosed += () => MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this && ad == loaded) Finish(); });
             loaded.OnAdFullScreenContentFailed += _ => MobileAdsEventExecutor.ExecuteInUpdate(() => { if (this && ad == loaded) Finish(); });
@@ -42,7 +52,7 @@ public sealed class InterstitialAdManager : MonoBehaviour
     }
     IEnumerator Retry() {
         yield return new WaitForSecondsRealtime(Mathf.Min(60, 2 << Mathf.Min(failures++, 5)));
-        retry = null; LoadAd();
+        retry = null; LoadAdInternal();
     }
     public void ShowAdIfReady(Action onClosed = null) {
         // Duplicate clicks must not replace the original scene-transition callback.

@@ -54,7 +54,7 @@ public sealed partial class UpgradeSceneMenu
         consumableStore=ConsumableWindow.Open(transform,ConsumableWindow.T("アイテム購入","Buy consumables","购买消耗道具"),frame);
         var sceneImages=gameObject.scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<Image>(true));
         var background=sceneImages.Where(i=>i.sprite&& !i.transform.IsChildOf(consumableStore.transform)&&i.sprite.texture.width>=1000).OrderByDescending(i=>i.rectTransform.rect.width*i.rectTransform.rect.height).FirstOrDefault();
-        consumableStore.ConfigureStore(backFromDeckButton?backFromDeckButton.GetComponent<Image>().sprite:null,background?background.sprite:null,()=>{if(upgradeManager)upgradeManager.OnFinishUpgrade();});
+     consumableStore.ConfigureStore(backFromDeckButton?backFromDeckButton.GetComponent<Image>().sprite:null,background?background.sprite:null,()=>UpgradeNextButton.Advance());
         consumableStore.Closed=()=>consumableStore=null;
         consumableSelected=-1;
         consumableStore.Confirm.onClick.AddListener(BuyConsumable);
@@ -80,8 +80,10 @@ public sealed partial class UpgradeSceneMenu
         consumableStore.Confirm.GetComponentInChildren<TMP_Text>().text=ConsumableWindow.T("購入する","Purchase","购买");
         consumableStore.WhiteStoreText();
         if(consumableSelected<0){consumableStore.Detail.text=ConsumableWindow.T("アイテムを選ぶと説明が表示されます。各商品は1個まで購入できます。","Select an item to see its effect. Each offer can be purchased once.","选择道具查看效果。每项商品只能购买一次。");return;}
-        var d=RunConsumables.Get(consumableOffers[consumableSelected]);
-        consumableStore.Detail.text=d.Name+"\n"+d.Description;
+var d=RunConsumables.Get(consumableOffers[consumableSelected]);
+GameManager.ApplyTraitSpriteAssetToTMPAnywhere(consumableStore.Detail);
+consumableStore.Detail.richText=true;
+consumableStore.Detail.text=d.Name+"\n"+GameManager.RenderConsumableDescriptionAnywhere(d.Description);
         bool room=bag.Count<RunConsumables.Capacity, money=GameManager.RunCurrency.Get()>=d.price, sold=consumableSold.Contains(consumableSelected);
         consumableStore.Confirm.interactable=room&&money&&!sold;
         consumableStore.Status.text=sold?ConsumableWindow.T("購入済みです","Already purchased","已购买"):!room?ConsumableWindow.T("所持枠がいっぱいです","Inventory is full","持有栏已满"):!money?ConsumableWindow.T("所持金が足りません","Not enough funds","持有金额不足"):ConsumableWindow.T("購入するアイテムを確認してください","Confirm the selected item","请确认所选道具");

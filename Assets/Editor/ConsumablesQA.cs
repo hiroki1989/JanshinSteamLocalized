@@ -32,7 +32,7 @@ internal static class ConsumablesQA
         try
         {
             Check(RunConsumables.All.Length==20&&RunConsumables.All.Select(d=>d.id).Distinct().Count()==20,"20 distinct item definitions");
-            foreach(var d in RunConsumables.All){Check(new[]{300,500,700}.Contains(d.price),"Price "+d.id);Check(d.Icon,"Sprite "+d.id);}
+            foreach(var d in RunConsumables.All){Check(new[]{200,300,400}.Contains(d.price),"Price "+d.id);Check(d.Icon,"Sprite "+d.id);}
             var rng=new System.Random(9);
             for(int i=0;i<100;i++){var offers=RunConsumables.RollOffers(rng);if(offers.Length!=3||offers.Distinct().Count()!=3)throw new Exception("Duplicate offers");}
             Check(true,"100 shop entries each offer 3 different items");

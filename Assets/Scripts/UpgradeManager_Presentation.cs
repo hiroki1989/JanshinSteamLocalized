@@ -100,6 +100,14 @@ public static class UpgradePanelPresentation
         text.fontSizeMin=40;text.fontSizeMax=40;
         text.richText=true;
     }
+    public static void White40(TMP_Text text)
+    {
+        if(!text)return;
+        text.color=Color.white;text.outlineWidth=0;
+        text.enableAutoSizing=false;text.fontSize=40;
+        text.fontSizeMin=40;text.fontSizeMax=40;
+        text.richText=true;
+    }
     static readonly System.Collections.Generic.Dictionary<Color,Sprite> gradients=new System.Collections.Generic.Dictionary<Color,Sprite>();
     public static Sprite RarityGradient(Color color)
     {

@@ -2,7 +2,9 @@ using UnityEngine;
 
 public sealed class UpgradeNextButton : MonoBehaviour
 {
-    public void GoNext()
+    public void GoNext() => Advance();
+
+    public static void Advance()
     {
         var inst = ProgressionFlowController.Instance;
         if (inst == null)

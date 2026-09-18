@@ -10,6 +10,7 @@ public sealed class ConsumableWindow : MonoBehaviour
 {
     public RectTransform Card, Choices;
     public TMP_Text Detail, Status, Summary;
+    public Image DetailBackground;
     public Button Confirm;
     public bool StoreStyle;
     public TMP_Text GoldAmount;
@@ -90,8 +91,22 @@ public sealed class ConsumableWindow : MonoBehaviour
         Confirm.GetComponent<Image>().sprite=brush;Confirm.GetComponent<Image>().color=Color.white;
         Confirm.transform.localPosition=new Vector3(0,-440,0);
         Status.rectTransform.anchoredPosition=new Vector2(0,-370);
-        Detail.rectTransform.anchoredPosition=new Vector2(0,-95);Detail.rectTransform.sizeDelta=new Vector2(1480,94);
-        Choices.anchoredPosition=new Vector2(0,-250);
+        Detail.rectTransform.anchoredPosition=new Vector2(0,-95);Detail.rectTransform.sizeDelta=new Vector2(1480,125);
+        Detail.fontSize=42;Detail.fontSizeMin=34;Detail.fontSizeMax=42;Detail.enableAutoSizing=true;
+        if(!DetailBackground)
+        {
+            var rt=Rect("DescriptionBackground",Card,new Vector2(0,-95),new Vector2(1500,140));
+            DetailBackground=rt.gameObject.AddComponent<Image>();
+            DetailBackground.color=new Color(0,0,0,.55f);
+            DetailBackground.raycastTarget=false;
+            DetailBackground.transform.SetAsFirstSibling();
+        }
+        else
+        {
+            DetailBackground.rectTransform.anchoredPosition=new Vector2(0,-95);
+            DetailBackground.rectTransform.sizeDelta=new Vector2(1500,140);
+        }
+        Choices.anchoredPosition=new Vector2(0,-270);
         WhiteStoreText();
     }
     void StyleNavigation(Button button,Sprite brush,Vector2 position)

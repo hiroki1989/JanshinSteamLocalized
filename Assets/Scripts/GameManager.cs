@@ -3147,6 +3147,45 @@ private string _cachedOmamoriRightInfoRendered = null;
 [SerializeField, Range(50, 150)] private int traitIconSizePercent = 100;
 private TMP_SpriteAsset _traitSpriteAssetRuntime = null;
 private int _traitSpriteAssetRuntimeKey = 0;
+
+// ★追加：GameManagerが存在しないシーン（UpgradeSceneなど）でも同じ設定で
+// アイコン置換ができるように、Inspector設定値をstaticへキャッシュしておく
+private static bool s_traitIconCacheReady = false;
+private static bool s_replaceTraitWordsWithIcons = true;
+private static TMP_SpriteAsset s_traitIconsSpriteAssetGeki;
+private static TMP_SpriteAsset s_traitIconsSpriteAssetShun;
+private static TMP_SpriteAsset s_traitIconsSpriteAssetIyu;
+private static string s_traitWordGeki = "撃";
+private static string s_traitWordShun = "瞬";
+private static string s_traitWordIyu  = "癒";
+private static int s_traitSpriteIndexGeki;
+private static int s_traitSpriteIndexShun;
+private static int s_traitSpriteIndexIyu;
+private static Color s_traitIconColorGeki = Color.white;
+private static Color s_traitIconColorShun = Color.white;
+private static Color s_traitIconColorIyu  = Color.white;
+private static int s_traitIconSizePercent = 100;
+private static TMP_SpriteAsset s_traitSpriteAssetRuntimeStatic = null;
+private static int s_traitSpriteAssetRuntimeKeyStatic = 0;
+
+private void CacheTraitIconConfigStatic()
+{
+    s_replaceTraitWordsWithIcons = replaceTraitWordsWithIcons;
+    s_traitIconsSpriteAssetGeki = traitIconsSpriteAssetGeki;
+    s_traitIconsSpriteAssetShun = traitIconsSpriteAssetShun;
+    s_traitIconsSpriteAssetIyu  = traitIconsSpriteAssetIyu;
+    s_traitWordGeki = traitWordGeki;
+    s_traitWordShun = traitWordShun;
+    s_traitWordIyu  = traitWordIyu;
+    s_traitSpriteIndexGeki = traitSpriteIndexGeki;
+    s_traitSpriteIndexShun = traitSpriteIndexShun;
+    s_traitSpriteIndexIyu  = traitSpriteIndexIyu;
+    s_traitIconColorGeki = traitIconColorGeki;
+    s_traitIconColorShun = traitIconColorShun;
+    s_traitIconColorIyu  = traitIconColorIyu;
+    s_traitIconSizePercent = traitIconSizePercent;
+    s_traitIconCacheReady = true;
+}
 private void ApplyTraitSpriteAssetToTMP(TextMeshProUGUI tmp)
 {
     if (!tmp) return;
@@ -3198,6 +3237,50 @@ private void ApplyTraitSpriteAssetToTMP(TextMeshProUGUI tmp)
     }
 
     tmp.spriteAsset = _traitSpriteAssetRuntime;
+}
+
+public static void ApplyTraitSpriteAssetToTMPAnywhere(TMP_Text tmp)
+{
+    if (!tmp) return;
+
+    TMP_SpriteAsset primary = null;
+    if (s_traitIconsSpriteAssetGeki != null) primary = s_traitIconsSpriteAssetGeki;
+    else if (s_traitIconsSpriteAssetShun != null) primary = s_traitIconsSpriteAssetShun;
+    else if (s_traitIconsSpriteAssetIyu != null) primary = s_traitIconsSpriteAssetIyu;
+    if (primary == null) return;
+
+    int key = 0;
+    unchecked
+    {
+        key = key * 397 ^ (s_traitIconsSpriteAssetGeki ? System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(s_traitIconsSpriteAssetGeki) : 0);
+        key = key * 397 ^ (s_traitIconsSpriteAssetShun ? System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(s_traitIconsSpriteAssetShun) : 0);
+        key = key * 397 ^ (s_traitIconsSpriteAssetIyu  ? System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(s_traitIconsSpriteAssetIyu)  : 0);
+        key = key * 397 ^ (primary ? System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(primary) : 0);
+    }
+
+    if (s_traitSpriteAssetRuntimeStatic == null || s_traitSpriteAssetRuntimeKeyStatic != key)
+    {
+        s_traitSpriteAssetRuntimeKeyStatic = key;
+        s_traitSpriteAssetRuntimeStatic = Instantiate(primary);
+        s_traitSpriteAssetRuntimeStatic.name = primary.name + "_TraitRuntimeStatic";
+
+        if (s_traitSpriteAssetRuntimeStatic.fallbackSpriteAssets == null)
+            s_traitSpriteAssetRuntimeStatic.fallbackSpriteAssets = new List<TMP_SpriteAsset>();
+        else
+            s_traitSpriteAssetRuntimeStatic.fallbackSpriteAssets.Clear();
+
+        void AddFallback(TMP_SpriteAsset a)
+        {
+            if (a == null || a == primary) return;
+            if (s_traitSpriteAssetRuntimeStatic.fallbackSpriteAssets.Contains(a)) return;
+            s_traitSpriteAssetRuntimeStatic.fallbackSpriteAssets.Add(a);
+        }
+        AddFallback(s_traitIconsSpriteAssetGeki);
+        AddFallback(s_traitIconsSpriteAssetShun);
+        AddFallback(s_traitIconsSpriteAssetIyu);
+    }
+
+    tmp.spriteAsset = s_traitSpriteAssetRuntimeStatic;
 }
 private string ReplaceTraitWordsWithIcons(string src)
 {
@@ -3283,6 +3366,61 @@ private string ReplaceTraitWordsWithIcons(string src)
         sb.Append(c);
     }
 
+    return sb.ToString();
+}
+public static string RenderConsumableDescriptionAnywhere(string text)
+{
+    string src = text;
+    if (!s_traitIconCacheReady) return src;
+    if (!s_replaceTraitWordsWithIcons) return src;
+    if (string.IsNullOrEmpty(src)) return src;
+
+    bool hasAny = false;
+    for (int i = 0; i < src.Length; i++)
+    {
+        char c = src[i];
+        if (c == '撃' || c == '瞬' || c == '癒') { hasAny = true; break; }
+    }
+    if (!hasAny) return src;
+
+    string ToHex(Color c) => ColorUtility.ToHtmlStringRGBA(c);
+    string MakeTag(int spriteIndex, Color color)
+    {
+        if (spriteIndex < 0) return "";
+        string spriteTag = $"<sprite={spriteIndex} tint=1 color=#{ToHex(color)}>";
+        if (s_traitIconSizePercent != 100)
+            return $"<size={s_traitIconSizePercent}%>{spriteTag}</size>";
+        return spriteTag;
+    }
+    bool IsJapaneseChar(char ch)
+    {
+        if (ch >= '\u4E00' && ch <= '\u9FFF') return true;
+        if (ch >= '\u3040' && ch <= '\u309F') return true;
+        if (ch >= '\u30A0' && ch <= '\u30FF') return true;
+        if (ch == 'ー' || ch == '々' || ch == '〆' || ch == '〤') return true;
+        return false;
+    }
+    bool ShouldReplaceAt(int index)
+    {
+        char prev = index > 0 ? src[index - 1] : '\0';
+        bool prevIsJp = (index > 0) && IsJapaneseChar(prev);
+        char next = (index + 1 < src.Length) ? src[index + 1] : '\0';
+        bool nextIsJp = (index + 1 < src.Length) && IsJapaneseChar(next);
+        bool nextIsNo = (index + 1 < src.Length) && next == 'の';
+        if (prevIsJp) return false;
+        if (nextIsJp && !nextIsNo) return false;
+        return true;
+    }
+
+    var sb = new System.Text.StringBuilder(src.Length + 16);
+    for (int i = 0; i < src.Length; i++)
+    {
+        char c = src[i];
+        if (c == '撃' && (s_traitWordGeki == "撃") && ShouldReplaceAt(i)) { sb.Append(MakeTag(s_traitSpriteIndexGeki, s_traitIconColorGeki)); continue; }
+        if (c == '瞬' && (s_traitWordShun == "瞬") && ShouldReplaceAt(i)) { sb.Append(MakeTag(s_traitSpriteIndexShun, s_traitIconColorShun)); continue; }
+        if (c == '癒' && (s_traitWordIyu  == "癒") && ShouldReplaceAt(i)) { sb.Append(MakeTag(s_traitSpriteIndexIyu, s_traitIconColorIyu)); continue; }
+        sb.Append(c);
+    }
     return sb.ToString();
 }
 /// <summary>お守りUIの表示文を手動で上書きします（null/空なら上書き解除）。</summary>
@@ -4896,6 +5034,7 @@ private void Awake()
 {
     if (_inst != null && _inst != this) { Destroy(gameObject); return; }
     _inst = this;
+    CacheTraitIconConfigStatic(); // ★追加：他シーンから使うためのstaticキャッシュ
     ValidateBattleResume();
 
     // ★重要：中断復元がある場合、ここでお守り/Shopの上乗せを絶対にしない（復元スナップショットを優先）
@@ -20809,6 +20948,7 @@ __SetTMP(scoringGoldGainValue, (_goldGainThisWin > 0) ? _goldGainDisplayTextThis
             scoringDefenseIcon_Player.gameObject.SetActive(_enemySkillLastAppliedDefenseRate > 0f);
         if (scoringAngerIcon_Enemy)
             scoringAngerIcon_Enemy.gameObject.SetActive(false);
+        AppendConsumableScoringEffectToPanel(true);
     }
     else
     {
@@ -20891,6 +21031,7 @@ if (scoringSpecialTileDamageEffectValue_Enemy)
             scoringAngerIcon_Enemy.gameObject.SetActive(_enemySkillLastAppliedAngerMultiplier > 1f);
         if (scoringDefenseIcon_Player)
             scoringDefenseIcon_Player.gameObject.SetActive(false);
+        AppendConsumableScoringEffectToPanel(false);
     }
 
     // ★重要：TMPが非表示だと「書いてるのに見えない」ので、空でない時は必ず表示

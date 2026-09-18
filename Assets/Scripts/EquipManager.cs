@@ -342,7 +342,7 @@ private string ReplaceTraitWordsWithIcons(string src)
             equippedEffectsTMP.textWrappingMode = TMPro.TextWrappingModes.Normal;
             equippedEffectsTMP.alignment = TextAlignmentOptions.Left;
             equippedEffectsTMP.richText = true;
-            UpgradePanelPresentation.Black40(equippedEffectsTMP);
+            UpgradePanelPresentation.White40(equippedEffectsTMP);
 
             if (eq == 0)
             {
@@ -504,7 +504,7 @@ private string ReplaceTraitWordsWithIcons(string src)
     if (equippedEffectsTMP) {
         ItemArtwork.Rect(equippedEffectsTMP.rectTransform, new Vector2(.23f,0), Vector2.one, new Vector2(8,16), new Vector2(-24,-16));
         ItemArtwork.Text(equippedEffectsTMP, 30);
-        UpgradePanelPresentation.Black40(equippedEffectsTMP);
+        UpgradePanelPresentation.White40(equippedEffectsTMP);
     }
 }
     private void RefreshOwnedRowIcon(GameObject rowGo, int omamoriId)
@@ -515,7 +515,7 @@ private string ReplaceTraitWordsWithIcons(string src)
     ItemArtwork.Omamori(icon, omamoriId);
     ItemArtwork.OwnedRow(rowGo, icon, rowGo.GetComponentInChildren<TextMeshProUGUI>());
     var text=rowGo.GetComponentInChildren<TextMeshProUGUI>();
-    UpgradePanelPresentation.Black40(text);
+    UpgradePanelPresentation.White40(text);
     if(text){
         float width=Mathf.Max(220,text.rectTransform.rect.width);
         var layout=rowGo.GetComponent<LayoutElement>()??rowGo.AddComponent<LayoutElement>();

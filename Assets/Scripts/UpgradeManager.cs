@@ -946,12 +946,10 @@ private GameObject GetActiveDeckPanelGO()
 }
 
     /// <summary>強化完了（従来どおりRunSceneへは遷移しない）。</summary>
-    public void OnFinishUpgrade()
-    {
-        var next = string.IsNullOrEmpty(dialogueSceneName) ? "EnemyDialogue" : dialogueSceneName;
-        if (SceneManager.GetActiveScene().name != next)
-            SceneManager.LoadScene(next);
-    }
+public void OnFinishUpgrade()
+{
+    UpgradeNextButton.Advance();
+}
 
 private void EnsureOffers()
 {
