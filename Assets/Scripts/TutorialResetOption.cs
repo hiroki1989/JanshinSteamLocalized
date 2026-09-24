@@ -32,6 +32,7 @@ public sealed class TutorialResetOption : MonoBehaviour
     {
         PlayerPrefs.DeleteKey(string.IsNullOrWhiteSpace(completionKey) ? "FirstMatchTutorialDoneV1" : completionKey);
         PlayerPrefs.DeleteKey(MenuController.MenuTutorialDoneKey);
+        PlayerPrefs.DeleteKey(SeventeenStepsController.TutorialDoneKey);
         PlayerPrefs.Save();
         resetRequested = true;
         Refresh(LocalizationManager.Instance.CurrentLanguage);

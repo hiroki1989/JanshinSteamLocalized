@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,13 +35,20 @@ public static class YakuEvaluator
     private const string YakumanKeySuuankou = "SUUANKOU";
     private const string YakumanKeySuukantsu = "SUUKANTSU";
 
+    [ThreadStatic] private static bool namesAsKeys;
+    public static DetailedResult EvaluateDetailedKeys(IList<string> concealed, string winTile, string seatWind="South", string roundWind="East")
+    {
+        bool previous=namesAsKeys;namesAsKeys=true;
+        try{return EvaluateDetailed(concealed,new List<IList<string>>(),winTile,false,true,seatWind,roundWind);}
+        finally{namesAsKeys=previous;}
+    }
     private static string GetYakuDisplayName(string key)
     {
-        return LocalizationManager.Yaku(key);
+        return namesAsKeys?key:LocalizationManager.Yaku(key);
     }
     private static string GetYakumanDisplayName(string key)
     {
-        return LocalizationManager.Yakuman(key);
+        return namesAsKeys?key:LocalizationManager.Yakuman(key);
     }
     private static string FormatYaku(string key, int han)
     {

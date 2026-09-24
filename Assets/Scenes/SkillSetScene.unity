@@ -3955,8 +3955,8 @@ MonoBehaviour:
   calligrapherEquipButton: {fileID: 864329320}
   capitalistEquipButton: {fileID: 359515569}
   dyeMasterUnavailableIcon: {fileID: 0}
-  calligrapherUnavailableIcon: {fileID: 184956489}
-  capitalistUnavailableIcon: {fileID: 1832953513}
+  calligrapherUnavailableIcon: {fileID: 1832953513}
+  capitalistUnavailableIcon: {fileID: 184956489}
 --- !u!1 &1694369150
 GameObject:
   m_ObjectHideFlags: 0

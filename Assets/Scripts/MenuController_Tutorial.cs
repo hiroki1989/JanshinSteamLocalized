@@ -40,6 +40,7 @@ public partial class MenuController
             raycaster.enabled = false;
         }
         if (EventSystem.current) EventSystem.current.SetSelectedGameObject(null);
+        Canvas.ForceUpdateCanvases(); // Focus follows the final two-row menu button layout.
         menuTutorial.Build(BuildMenuTutorialPages(), LocalizationManager.Instance.GetBodyFont(),
             LocalizationManager.Instance.CurrentLanguage, FinishMenuTutorial);
     }

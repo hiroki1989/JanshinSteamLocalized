@@ -66,6 +66,7 @@ private void Awake()
 }
 private void Start()
 {
+    SeventeenStepsInventory.AddMenuButton(transform);
     StartCoroutine(RunMenuTutorial());
     ApplySavedDisplayMode(applyResolutionWhenWindowed: false);
 

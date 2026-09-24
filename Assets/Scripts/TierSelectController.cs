@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +23,8 @@ public class TierSelectController : MonoBehaviour
     [SerializeField] private TMP_Dropdown tierDropdown;
     [SerializeField] private TextMeshProUGUI selectedTierTMP;
     [SerializeField] private Button startButton;
+    private Button _seventeenStepsButton;
+    private GameObject _seventeenCharacterPanel;
 
     [Header("Back")]
     [SerializeField] private Button backToMenuButton;
@@ -119,6 +121,8 @@ public class TierSelectController : MonoBehaviour
             startButton.onClick.AddListener(OnClickStartNewRunWithSelectedTier);
         }
 
+        EnsureSeventeenStepsButton();
+
         RefreshSelectedTierUI();
     }
     private void BuildTierDropdownOptions(int unlockedTierMax, int initialTier)
@@ -178,47 +182,99 @@ public class TierSelectController : MonoBehaviour
     }
     private void OnClickContinueFromSuspend()
     {
-        // 「続きから」：中断データは残したまま、中断していたシーンへ直行
-        // GameManager 側で TryLoadSuspendSnapshot() が走って復帰される
         Time.timeScale = 1f;
-
-        string targetScene = "";
-        try
-        {
-            targetScene = PlayerPrefs.GetString("PF_ResumeScene", "");
-        }
-        catch
-        {
-            targetScene = "";
-        }
-
-        if (string.IsNullOrEmpty(targetScene))
-        {
-            targetScene = string.IsNullOrEmpty(battleSceneName) ? "RunScene" : battleSceneName;
-        }
-
-        // フラグを立てておく（他シーンが参照する可能性があるため）
+        string targetScene = PlayerPrefs.GetString("PF_ResumeScene", "");
+        if (string.IsNullOrEmpty(targetScene)) targetScene = string.IsNullOrEmpty(battleSceneName) ? "RunScene" : battleSceneName;
         PlayerPrefs.SetInt("PF_ResumeDirect", 1);
         PlayerPrefs.SetString("PF_ResumeScene", targetScene);
         PlayerPrefs.Save();
-
         SceneManager.LoadScene(targetScene, LoadSceneMode.Single);
     }
+
     private void OnClickRestartFromScratch()
     {
-        // 「最初から」：中断データを破棄し、次の開始は必ず新規ランとしてリセットする
         Time.timeScale = 1f;
-
         try { PlayerPrefs.DeleteKey(PF_SUSPEND_FLAG); } catch {}
         try { PlayerPrefs.DeleteKey(PF_SUSPEND_JSON); } catch {}
-
         PlayerPrefs.SetInt("PF_ResumeDirect", 0);
         PlayerPrefs.DeleteKey("PF_ResumeScene");
         PlayerPrefs.Save();
 
         try { StageClearManager.ResetEnemyProgressionNow(); } catch {}
-
         ShowTierSelectPanel();
+    }
+
+    private void EnsureSeventeenStepsButton()
+    {
+        if (_seventeenStepsButton || !startButton) return;
+        var go = new GameObject("StartSeventeenSteps", typeof(RectTransform), typeof(Image), typeof(Button));
+        go.transform.SetParent(startButton.GetComponentInParent<Canvas>().transform, false);
+        var source = startButton.GetComponent<RectTransform>();
+        var rt = (RectTransform)go.transform;
+        rt.anchorMin = rt.anchorMax = new Vector2(1f,.5f);
+        rt.pivot = new Vector2(1f,.5f);
+        rt.anchoredPosition = new Vector2(-35f,0f);
+        rt.sizeDelta = new Vector2(300f,120f);
+        var image = go.GetComponent<Image>();
+        image.color=new Color(.025f,.115f,.13f,.98f);
+        var frame=SeventeenStepsUI.Picture(go.transform,Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,rt.sizeDelta);
+        frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=5;
+        frame.color=new Color(.90f,.73f,.38f);
+        for(int side=-1;side<=1;side+=2){
+            var seal=SeventeenStepsUI.Rect("GoldSeal",go.transform,new Vector2(side*125,0),new Vector2(8,8));
+            seal.localRotation=Quaternion.Euler(0,0,45);var mark=seal.gameObject.AddComponent<Image>();mark.color=new Color(.9f,.72f,.36f);mark.raycastTarget=false;
+        }
+        _seventeenStepsButton = go.GetComponent<Button>();
+        _seventeenStepsButton.targetGraphic = image;
+        _seventeenStepsButton.onClick.AddListener(OnClickStartSeventeenSteps);
+        var labelGo = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
+        labelGo.transform.SetParent(go.transform, false);
+        var label = labelGo.GetComponent<TextMeshProUGUI>();
+        label.text = "<size=20><color=#E7BE70>特 別 対 局</color></size>\n外伝モード";
+        var sourceLabel=startButton.GetComponentInChildren<TMP_Text>();if(sourceLabel){label.font=sourceLabel.font;label.fontSharedMaterial=sourceLabel.fontSharedMaterial;}
+        label.alignment = TextAlignmentOptions.Center;
+        label.color = new Color(1f,.96f,.84f);
+        SeventeenStepsUI.BlackOutline(label);
+        label.fontSize = 30f;
+        label.enableAutoSizing = true;
+        label.fontSizeMin = 18f;
+        label.fontSizeMax = 30f;
+        var labelRt = (RectTransform)labelGo.transform;
+        labelRt.anchorMin = Vector2.zero;
+        labelRt.anchorMax = Vector2.one;
+        labelRt.offsetMin = new Vector2(12f, 6f);
+        labelRt.offsetMax = new Vector2(-12f, -6f);
+    }
+
+    private void OnClickStartSeventeenSteps()
+    {
+        if (_seventeenCharacterPanel) return;
+        var canvas=GetComponentInParent<Canvas>();
+        if(!canvas)canvas=FindFirstObjectByType<Canvas>();
+        var panel=SeventeenStepsUI.Rect("SeventeenCharacterSelect",canvas.transform,Vector2.zero,new Vector2(1760,940));
+        _seventeenCharacterPanel=panel.gameObject;
+        SeventeenStepsUI.Paper(panel,panel.sizeDelta);
+        SeventeenStepsUI.Label(panel,"外伝モード　キャラクター選択",new Vector2(0,385),new Vector2(1500,95),60).color=Color.black;
+        var choices=new[]{SeventeenStepsMode.Character.DyeMaster,SeventeenStepsMode.Character.Calligrapher,SeventeenStepsMode.Character.Capitalist};
+        var names=new[]{"染色師","書家","資産家"};
+        var portraits=new[]{"RandomMan_victory","RandomHonor_victory","Capitalist_victory"};
+        var descriptions=new[]{"指定した色の数牌へ変換\n1局に2回使用できます","ランダムな字牌へ変換\n1局に2回使用できます","各敵の開始時に\nお札を2枚選べます"};
+        for(int i=0;i<3;i++){
+            int index=i;
+            var button=SeventeenStepsUI.Button(panel,"",new Vector2((i-1)*530,5),new Vector2(485,610),()=>StartSeventeenStepsWithCharacter(choices[index]));
+            SeventeenStepsUI.Frame(button.transform,new Vector2(485,610));
+            SeventeenStepsUI.Picture(button.transform,SeventeenStepsUI.CharacterArt(choices[i]),new Vector2(0,65),new Vector2(390,365));
+            SeventeenStepsUI.Label(button.transform,names[i],new Vector2(0,-155),new Vector2(420,65),46).color=Color.black;
+            SeventeenStepsUI.Label(button.transform,descriptions[i],new Vector2(0,-238),new Vector2(425,95),28).color=Color.black;
+        }
+        SeventeenStepsUI.Navigation(panel,"戻る",new Vector2(-650,-395),new Vector2(300,85),()=>{Destroy(_seventeenCharacterPanel);_seventeenCharacterPanel=null;});
+    }
+
+    private void StartSeventeenStepsWithCharacter(SeventeenStepsMode.Character character)
+    {
+        Time.timeScale = 1f;
+        SeventeenStepsMode.StartNewRun(character);
+        SeventeenStepsController.Open();
     }
 
     private void OnClickStartNewRunWithSelectedTier()
@@ -248,6 +304,7 @@ public class TierSelectController : MonoBehaviour
         PlayerPrefs.Save();
 
         // 新規ラン開始の完全初期化
+        SeventeenStepsMode.LeaveMode();
         MissionSystem.ResetForNewRun();
         RunConsumables.ResetRun();
         MissionSystem.ClearRunSeed();
@@ -276,7 +333,6 @@ public class TierSelectController : MonoBehaviour
         {
             string startEnemyName = "";
             try { startEnemyName = ProgressionFlowController.GetCurrentEnemyName(); } catch {}
-
             PlayerPrefs.SetInt("PF_CurrentEnemyIndex", startEnemyIndex);
             PlayerPrefs.SetString("PF_CurrentEnemyName", startEnemyName ?? "");
             PlayerPrefs.SetInt("CurrentEnemyIndex", startEnemyIndex);
@@ -296,6 +352,8 @@ public class TierSelectController : MonoBehaviour
         try { PlayerPrefs.DeleteKey("EnemiesDefeated"); } catch {}
         try { PlayerPrefs.DeleteKey("RunCleared"); } catch {}
         try { PlayerPrefs.Save(); } catch {}
+
+        SeventeenStepsMode.ReserveStartingItem();
 
         // Angel会話へ
         if (!string.IsNullOrEmpty(angelDialogueScene))

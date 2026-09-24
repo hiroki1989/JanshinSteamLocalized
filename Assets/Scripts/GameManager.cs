@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5141,6 +5141,7 @@ if (!hasSuspend && PlayerPrefs.GetInt("PF_ResetRunOnLoad", 0) == 1)
 
     // ここで初めてフラグを消す（途中で消すと完全初期化が走らない）
     PlayerPrefs.DeleteKey("PF_ResetRunOnLoad");
+    SeventeenStepsMode.DeliverStartingItem();
     PlayerPrefs.Save();
 }
 }
@@ -13594,7 +13595,7 @@ private System.Collections.IEnumerator __RyukyokuCutinAndNextHand_Co()
     // 敵のテンパイ判定は「テンパイフラグ or リーチ中」をテンパイ扱いにする
     if (!_enemyHasWonThisHand)
     {
-        try { enemyTenpai = _enemyIsInTenpai || _enemyIsRiichi; } catch { enemyTenpai = false; }
+        try { enemyTenpai = _enemyIsInTenpai || _enemyIsRiichi || IsTenpai(_enemyHand); } catch { enemyTenpai = false; }
     }
 
     // ★追加：敵がリーチしていてテンパイ扱いなら、流局演出前に手牌をオープンする
@@ -13603,8 +13604,8 @@ private System.Collections.IEnumerator __RyukyokuCutinAndNextHand_Co()
         try { EnemyRevealHandNow(); } catch { }
     }
 
-    bool applyPlayerPenalty = (!_playerHasWonThisHand) && !playerTenpai;
-    bool applyEnemyPenalty  = (!_enemyHasWonThisHand)  && !enemyTenpai;
+    bool applyPlayerPenalty = (!_playerHasWonThisHand) && !playerTenpai && enemyTenpai;
+    bool applyEnemyPenalty  = (!_enemyHasWonThisHand)  && !enemyTenpai && playerTenpai;
 
 if (!applyPlayerPenalty && !applyEnemyPenalty)
 {
@@ -19304,6 +19305,13 @@ private void __ProceedAfterRyukyoku()
         ClearRunEphemeral();
 
 StartDefeatTransitionIfNeeded();
+        return;
+    }
+
+    if (enemyHP <= 0)
+    {
+        _freezeProgression = true;
+        __ProceedAfterScoreOK_Internal(false);
         return;
     }
 

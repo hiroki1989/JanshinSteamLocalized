@@ -191,6 +191,12 @@ public void PlaySE_Defeat()         => PlaySE_Internal(seDefeat);
         ApplySceneBgm(newScene.name);
     }
 
+public void PlaySeventeenBattleBgm(bool zeus)
+{
+    if(zeus && zeusBattleBgmClip) PlayBGM(zeusBattleBgmClip);
+    else if(_sceneBgmMap.TryGetValue(runSceneNameForBattleBgmOverride,out var clip) && clip) PlayBGM(clip);
+}
+
 private void ApplySceneBgm(string sceneName)
 {
     if (!_sceneBgmMap.TryGetValue(sceneName, out var clip) || clip == null)
