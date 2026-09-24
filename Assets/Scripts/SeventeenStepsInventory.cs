@@ -11,7 +11,7 @@ public sealed class SeventeenStepsInventory : MonoBehaviour
         var canvas=FindObjectsByType<Canvas>(FindObjectsSortMode.None).Where(c=>c.gameObject.scene.name=="MenuScene"&&c.isRootCanvas&&c.isActiveAndEnabled).OrderByDescending(c=>c.sortingOrder).FirstOrDefault();
         if(!canvas||canvas.transform.Find("ConsumableInventoryButton"))return;
         var source=canvas.GetComponentsInChildren<Button>(true).FirstOrDefault(x=>x.name=="Button_Equip");if(!source)return;
-        var b=SeventeenStepsUI.Navigation(canvas.transform,"消費アイテム",Vector2.zero,new Vector2(340,100),Open);b.name="ConsumableInventoryButton";
+        var b=SeventeenStepsUI.Navigation(canvas.transform,"遺物",Vector2.zero,new Vector2(340,100),Open);b.name="ConsumableInventoryButton";
         b.onClick.RemoveAllListeners();b.onClick.AddListener(()=>{AudioManager.Instance?.PlayClickSE();Open();});
         var src=source.GetComponent<Image>();if(src){var im=b.GetComponent<Image>();im.sprite=src.sprite;im.type=src.type;im.color=src.color;im.material=src.material;im.preserveAspect=src.preserveAspect;}
         b.transition=source.transition;b.colors=source.colors;b.spriteState=source.spriteState;
@@ -29,10 +29,10 @@ public sealed class SeventeenStepsInventory : MonoBehaviour
         new GameObject("ConsumableInventory").AddComponent<SeventeenStepsInventory>().Build();SceneManager.UnloadSceneAsync(old);
     }
     void Build(){
-        root=SeventeenStepsUI.CreateCanvas(transform,"消費アイテム");
+        root=SeventeenStepsUI.CreateCanvas(transform,"遺物");
         SeventeenStepsUI.InfoBacking(root,new Vector2(-320,390),new Vector2(1170,70));SeventeenStepsUI.InfoBacking(root,new Vector2(675,390),new Vector2(490,70));
-        SeventeenStepsUI.Label(root,"所持アイテム",new Vector2(-320,390),new Vector2(1000,65),36);
-        SeventeenStepsUI.Label(root,"装備アイテム　1枠",new Vector2(675,390),new Vector2(490,65),36);
+        SeventeenStepsUI.Label(root,"所持遺物",new Vector2(-320,390),new Vector2(1000,65),36);
+        SeventeenStepsUI.Label(root,"装備遺物　1枠",new Vector2(675,390),new Vector2(490,65),36);
         var viewport=SeventeenStepsUI.Rect("OwnedItems",root,new Vector2(-320,-15),new Vector2(1170,710));
         viewport.gameObject.AddComponent<Image>().color=new Color(.97f,.96f,.87f,.95f);viewport.gameObject.AddComponent<RectMask2D>();
         var scroll=viewport.gameObject.AddComponent<ScrollRect>();scroll.viewport=viewport;scroll.horizontal=false;scroll.movementType=ScrollRect.MovementType.Clamped;
@@ -63,15 +63,15 @@ public sealed class SeventeenStepsInventory : MonoBehaviour
             var effect=SeventeenStepsUI.Label(b.transform,d.Description,new Vector2(48,-48),new Vector2(220,100),20);effect.color=Color.black;
             SeventeenStepsUI.Picture(b.transform,d.Icon,new Vector2(-112,0),new Vector2(115,150));
         }
-        if(groups.Length==0)SeventeenStepsUI.Label(viewportForEmpty(),"所持アイテムなし\n外伝モードで敵を倒すと獲得",new Vector2(0,0),new Vector2(1040,180),34).color=Color.black;
+        if(groups.Length==0)SeventeenStepsUI.Label(viewportForEmpty(),"所持遺物なし\n外伝モードで敵を倒すと獲得",new Vector2(0,0),new Vector2(1040,180),34).color=Color.black;
         var equipped=RunConsumables.Get(s.equipped);var chosen=RunConsumables.Get(selected);
         SeventeenStepsUI.Clear(equipment);SeventeenStepsUI.Frame(equipment,equipment.sizeDelta);
         if(equipped!=null){
             SeventeenStepsUI.Picture(equipment,equipped.Icon,new Vector2(0,92),new Vector2(190,180));
             SeventeenStepsUI.Label(equipment,equipped.Name,new Vector2(0,-25),new Vector2(440,65),32).color=Color.black;
             SeventeenStepsUI.Label(equipment,equipped.Description,new Vector2(0,-132),new Vector2(430,140),26).color=Color.black;
-        }else SeventeenStepsUI.Label(equipment,"未装備\n持ち込むアイテムを選択",Vector2.zero,new Vector2(425,170),30).color=Color.black;
-        detail.text=chosen==null?"所持一覧からアイテムを選択":"選択中："+chosen.Name;
+        }else SeventeenStepsUI.Label(equipment,"未装備\n持ち込む遺物を選択",Vector2.zero,new Vector2(425,170),30).color=Color.black;
+        detail.text=chosen==null?"所持一覧から遺物を選択":"選択中："+chosen.Name;
         equipButton.interactable=chosen!=null&&s.items.Contains(selected)&&s.equipped!=selected;
         removeButton.interactable=equipped!=null;
     }

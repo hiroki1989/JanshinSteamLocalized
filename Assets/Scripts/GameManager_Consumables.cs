@@ -55,7 +55,7 @@ public partial class GameManager
         if(!_consumableButton)return;
         var s=RunConsumables.Load();
         foreach(var t in _consumableButton.GetComponentsInChildren<TMP_Text>(true))
-            t.text=ItemText("アイテム","Items","道具")+" "+s.bag.Count+"/"+RunConsumables.Capacity;
+            t.text=ItemText("遺物","Relics","遗物")+" "+s.bag.Count+"/"+RunConsumables.Capacity;
         _consumableButton.interactable=CanUseConsumableNow() && !_consumableWindow;
     }
 void OpenConsumableInventory()
@@ -64,7 +64,7 @@ void OpenConsumableInventory()
     _consumablePreviousFreeze=_freezeProgression;
     _freezeProgression=true;
     Sprite frame=Resources.Load<Sprite>("Consumables/PanelFrame");
-    _consumableWindow=ConsumableWindow.Open(transform,ItemText("所持アイテム","Consumables","持有道具"),frame);
+    _consumableWindow=ConsumableWindow.Open(transform,ItemText("所持遺物","Relics","持有遗物"),frame);
     _consumableWindow.Detail.color=Color.white; // 説明文（Detail）を白色に
     _consumableWindow.Closed=()=>{_consumableWindow=null;if(this){_freezeProgression=_consumablePreviousFreeze;RefreshConsumableButton();}};
     _consumableWindow.Confirm.onClick.AddListener(UseSelectedConsumable);
@@ -75,13 +75,13 @@ void OpenConsumableInventory()
     {
         if(!_consumableWindow)return;
         var s=RunConsumables.Load();
-        _consumableWindow.Summary.text=ItemText("1ターン1個まで使用可能・ターンは進みません。敗北するとすべて失います。","Use one item per turn without ending it. All items are lost on defeat.","每回合可使用1个，不推进回合。失败后失去全部道具。");
+        _consumableWindow.Summary.text=ItemText("1ターン1個まで使用可能・ターンは進みません。敗北するとすべて失います。","Use one relic per turn without ending it. All relics are lost on defeat.","每回合可使用1个，不推进回合。失败后失去全部遗物。");
         _consumableWindow.Items(s.bag,i=>{_consumableSlot=i;_consumableHand=-1;_consumableDiscard=-1;_consumableReplacement=null;RefreshConsumableInventory();},false,null,_consumableSlot);
         _consumableWindow.ClearChoices();
         _consumableWindow.Confirm.interactable=false;
         if(_consumableSlot<0 || _consumableSlot>=s.bag.Count)
         {
-            _consumableWindow.Detail.text=s.bag.Count==0?ItemText("アイテムを持っていません。強化画面でGoldを使って購入できます。","No items. Buy them with Gold on the upgrade screen.","尚未持有道具。可在强化画面消耗Gold购买。"):ItemText("使用したいアイテムを選んでください。","Select an item to use.","请选择要使用的道具。");
+            _consumableWindow.Detail.text=s.bag.Count==0?ItemText("遺物を持っていません。強化画面でGoldを使って購入できます。","No relics. Buy them with Gold on the upgrade screen.","尚未持有遗物。可在强化画面消耗Gold购买。"):ItemText("使用したい遺物を選んでください。","Select a relic to use.","请选择要使用的遗物。");
             _consumableWindow.Status.text=ConsumableEffectsSummary(s);return;
         }
         int id=s.bag[_consumableSlot];var d=RunConsumables.Get(id);
@@ -98,7 +98,7 @@ void OpenConsumableInventory()
     string ConsumableUnavailable(int id,RunConsumables.State s)
     {
         if(!CanUseConsumableNow())return ItemText("自分のツモ番で使用できます。","Use during your draw turn.","可在己方摸牌回合使用。");
-        if(s.usedThisTurn)return ItemText("このターンは使用済みです。","An item has already been used this turn.","本回合已使用过道具。");
+        if(s.usedThisTurn)return ItemText("このターンは使用済みです。","A relic has already been used this turn.","本回合已使用过遗物。");
         bool noEffect=(id==1&&playerHP>=playerMaxHP)||(id==2&&_mp>=EffectiveMaxMP())||
             (id==3&&playerHP>=playerMaxHP&&_mp>=EffectiveMaxMP())||(id==4&&_mp>=EffectiveMaxMP())||
             (id==5&&s.regeneration>0)||(id==6&&s.geki)||(id==7&&s.shun)||(id==8&&s.iyu)||

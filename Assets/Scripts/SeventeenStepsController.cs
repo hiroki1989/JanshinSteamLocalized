@@ -286,7 +286,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         yield return ShowCutin(won?"勝利":"敗北",ResultArt(won),()=>{if(won)AudioManager.Instance?.PlayBattleResultVictorySE();else AudioManager.Instance?.PlayBattleResultDefeatSE();},2.5f);
         int item=won?SeventeenStepsMode.GrantEnemyReward(random):0;
         NewModal(won?"勝利！":"挑戦終了");
-        SeventeenStepsUI.Label(modal,"プレイヤー "+SeventeenStepsMode.Current.playerScore.ToString("N0")+"点　/　敵 "+SeventeenStepsMode.Current.enemyScore.ToString("N0")+"点\n"+(won?"獲得："+RunConsumables.Get(item)?.Name+(SeventeenStepsMode.IsFinalEnemy?" ＋ 宝石2個":""):"獲得済みアイテムを持ち帰る"),new Vector2(0,125),new Vector2(1300,180),34);
+        SeventeenStepsUI.Label(modal,"プレイヤー "+SeventeenStepsMode.Current.playerScore.ToString("N0")+"点　/　敵 "+SeventeenStepsMode.Current.enemyScore.ToString("N0")+"点\n"+(won?"獲得："+RunConsumables.Get(item)?.Name+(SeventeenStepsMode.IsFinalEnemy?" ＋ 宝石2個":""):"獲得済み遺物を持ち帰る"),new Vector2(0,125),new Vector2(1300,180),34);
         if(item>0){SeventeenStepsUI.Picture(modal,RunConsumables.Get(item).Icon,new Vector2(-420,-80),new Vector2(210,210));SeventeenStepsUI.Label(modal,RunConsumables.Get(item).Description,new Vector2(150,-80),new Vector2(850,210),32);}
         SeventeenStepsUI.Button(modal,won&&!SeventeenStepsMode.IsFinalEnemy?"次の敵へ":"メニューへ",new Vector2(0,-290),new Vector2(420,70),()=>{if(won&&!SeventeenStepsMode.IsFinalEnemy){AdvanceEnemyAfterAd();}else Exit();});
     }
@@ -313,7 +313,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         SeventeenStepsUI.Label(modal,SeventeenStepsMode.Current.ofuda.Count==0?"未装備":string.Join("\n\n",SeventeenStepsMode.Current.ofuda.Select(id=>SeventeenStepsOfuda.All[id].Description)),new Vector2(0,50),new Vector2(1260,380),36);
         SeventeenStepsUI.Button(modal,"閉じる",new Vector2(0,-290),new Vector2(350,70),CloseModal);
     }
-    void ConfirmExit(){NewModal("今回の挑戦を終了？");SeventeenStepsUI.Label(modal,"獲得済みアイテムは保持。\n現在の対局は保存されない。",new Vector2(0,70),new Vector2(1100,170),36);SeventeenStepsUI.Button(modal,"戻る",new Vector2(-280,-200),new Vector2(330,70),()=>{CloseModal();if(deck==null)ShowOfudaOffers();});SeventeenStepsUI.Button(modal,"終了する",new Vector2(280,-200),new Vector2(330,70),Exit);}
+    void ConfirmExit(){NewModal("今回の挑戦を終了？");SeventeenStepsUI.Label(modal,"獲得済み遺物は保持。\n現在の対局は保存されない。",new Vector2(0,70),new Vector2(1100,170),36);SeventeenStepsUI.Button(modal,"戻る",new Vector2(-280,-200),new Vector2(330,70),()=>{CloseModal();if(deck==null)ShowOfudaOffers();});SeventeenStepsUI.Button(modal,"終了する",new Vector2(280,-200),new Vector2(330,70),Exit);}
     void Exit(){SeventeenStepsMode.LeaveMode();Time.timeScale=1;SceneManager.LoadScene("MenuScene");}
     public static string TileLabel(int t)=>t<27?(t%9+1)+new[]{"萬","筒","索"}[t/9]:new[]{"東","南","西","北","白","發","中"}[t-27];
     static Color RarityColor(int r)=>new[]{Color.gray,Color.cyan,new Color(.25f,.55f,1),new Color(.65f,.35f,.9f),new Color(1,.7f,.15f)}[r];

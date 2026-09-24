@@ -40,7 +40,7 @@ public sealed partial class UpgradeSceneMenu
     void RefreshConsumableStoreLabel()
     {
         if(consumableStoreButton)
-            foreach(var t in consumableStoreButton.GetComponentsInChildren<TMP_Text>(true)) t.text=ConsumableWindow.T("アイテム購入","Buy items","购买道具");
+            foreach(var t in consumableStoreButton.GetComponentsInChildren<TMP_Text>(true)) t.text=ConsumableWindow.T("遺物購入","Buy relics","购买遗物");
     }
     void OpenConsumableStore()
     {
@@ -51,7 +51,7 @@ public sealed partial class UpgradeSceneMenu
             var image=ofudaStoreRoot.GetComponentsInChildren<Image>(true).Where(i=>i.sprite && i.rectTransform.rect.width>600).OrderByDescending(i=>i.rectTransform.rect.width*i.rectTransform.rect.height).FirstOrDefault();
             if(image)frame=image.sprite;
         }
-        consumableStore=ConsumableWindow.Open(transform,ConsumableWindow.T("アイテム購入","Buy consumables","购买消耗道具"),frame);
+        consumableStore=ConsumableWindow.Open(transform,ConsumableWindow.T("遺物購入","Buy relics","购买遗物"),frame);
         var sceneImages=gameObject.scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<Image>(true));
         var background=sceneImages.Where(i=>i.sprite&& !i.transform.IsChildOf(consumableStore.transform)&&i.sprite.texture.width>=1000).OrderByDescending(i=>i.rectTransform.rect.width*i.rectTransform.rect.height).FirstOrDefault();
      consumableStore.ConfigureStore(backFromDeckButton?backFromDeckButton.GetComponent<Image>().sprite:null,background?background.sprite:null,()=>UpgradeNextButton.Advance());
@@ -64,10 +64,10 @@ public sealed partial class UpgradeSceneMenu
     {
         var bag=RunConsumables.Load().bag;
         consumableStore.GoldAmount.text=GameManager.RunCurrency.Get().ToString("N0");
-        consumableStore.Summary.text=ConsumableWindow.T("所持","Inventory","持有")+": "+bag.Count+" / "+RunConsumables.Capacity+"    "+ConsumableWindow.T("敗北するとすべて失います","All items are lost on defeat","失败后失去所有道具");
+        consumableStore.Summary.text=ConsumableWindow.T("所持","Inventory","持有")+": "+bag.Count+" / "+RunConsumables.Capacity+"    "+ConsumableWindow.T("敗北するとすべて失います","All relics are lost on defeat","失败后失去所有遗物");
         consumableStore.Items(consumableOffers,i=>{consumableSelected=i;RefreshConsumableOffers();},true,consumableSold,consumableSelected);
         consumableStore.ClearChoices();
-        ConsumableWindow.Label("BagHeading",consumableStore.Choices,ConsumableWindow.T("所持アイテム","Your inventory","持有道具"),new Vector2(0,78),new Vector2(1000,34),23);
+        ConsumableWindow.Label("BagHeading",consumableStore.Choices,ConsumableWindow.T("所持遺物","Your inventory","持有遗物"),new Vector2(0,78),new Vector2(1000,34),23);
         for(int i=0;i<RunConsumables.Capacity;i++)
         {
             float x=(i-1.5f)*320;
@@ -79,14 +79,14 @@ public sealed partial class UpgradeSceneMenu
         }
         consumableStore.Confirm.GetComponentInChildren<TMP_Text>().text=ConsumableWindow.T("購入する","Purchase","购买");
         consumableStore.WhiteStoreText();
-        if(consumableSelected<0){consumableStore.Detail.text=ConsumableWindow.T("アイテムを選ぶと説明が表示されます。各商品は1個まで購入できます。","Select an item to see its effect. Each offer can be purchased once.","选择道具查看效果。每项商品只能购买一次。");return;}
+        if(consumableSelected<0){consumableStore.Detail.text=ConsumableWindow.T("遺物を選ぶと説明が表示されます。各商品は1個まで購入できます。","Select a relic to see its effect. Each offer can be purchased once.","选择遗物查看效果。每项商品只能购买一次。");return;}
 var d=RunConsumables.Get(consumableOffers[consumableSelected]);
 GameManager.ApplyTraitSpriteAssetToTMPAnywhere(consumableStore.Detail);
 consumableStore.Detail.richText=true;
 consumableStore.Detail.text=d.Name+"\n"+GameManager.RenderConsumableDescriptionAnywhere(d.Description);
         bool room=bag.Count<RunConsumables.Capacity, money=GameManager.RunCurrency.Get()>=d.price, sold=consumableSold.Contains(consumableSelected);
         consumableStore.Confirm.interactable=room&&money&&!sold;
-        consumableStore.Status.text=sold?ConsumableWindow.T("購入済みです","Already purchased","已购买"):!room?ConsumableWindow.T("所持枠がいっぱいです","Inventory is full","持有栏已满"):!money?ConsumableWindow.T("所持金が足りません","Not enough funds","持有金额不足"):ConsumableWindow.T("購入するアイテムを確認してください","Confirm the selected item","请确认所选道具");
+        consumableStore.Status.text=sold?ConsumableWindow.T("購入済みです","Already purchased","已购买"):!room?ConsumableWindow.T("所持枠がいっぱいです","Inventory is full","持有栏已满"):!money?ConsumableWindow.T("所持金が足りません","Not enough funds","持有金额不足"):ConsumableWindow.T("購入する遺物を確認してください","Confirm the selected relic","请确认所选遗物");
     }
     void BuyConsumable()
     {
