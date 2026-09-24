@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -63,7 +63,7 @@ public static class SeventeenStepsOfuda
     public static readonly Definition[] All=Build();
     static Definition[] Build(){
         string[] keys={"TANYAO","PINFU","YAKUHAI","IIPEIKOU","CHIITOITSU","TOITOI","SANANKOU","SANSHOKU_DOUJUN","ITTSU","CHANTA","JUNCHAN","HONROUTOU","SHOUSANGEN","SANSHOKU_DOUKOU","HONITSU","CHINITSU","RYANPEIKOU","KOKUSHI","CHUUREN_POUTOU","DAISANGEN","DAISUUSHI","SHOUSUUSHI","TSUUIISOU","CHINROUTOU","RYUUIISOU","SUUANKOU","RIICHI","IPPATSU","HOUTEI"};
-        string[] names={"タンヤオ","平和","役牌","一盃口","七対子","対々和","三暗刻","三色同順","一気通貫","チャンタ","純チャン","混老頭","小三元","三色同刻","混一色","清一色","二盃口","国士無双","九蓮宝燈","大三元","大四喜","小四喜","字一色","清老頭","緑一色","四暗刻","立直","一発","河底撈魚"};
+        string[] names={"タンヤオ","平和","役牌","一盃口","七対子","対々和","三暗刻","三色同順","一気通貫","チャンタ","純チャン","混老頭","小三元","三色同刻","混一色","清一色","二盃口","国士無双","九蓮宝燈","大三元","大四喜","小四喜","字一色","清老頭","緑一色","四暗刻","立直","一発","ホウテイロン"};
         int[] rarity={4,4,4,3,3,3,2,2,2,2,1,1,1,1,3,1,1,0,0,0,0,0,0,0,0,0,4,3,1};
         return keys.Select((k,i)=>new Definition{id=i,key=k,name=names[i],rarity=rarity[i]}).ToArray();
     }

@@ -1,0 +1,39 @@
+﻿%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4acdcd1fa749a2aace564755fb6015, type: 3}
+  m_Name: GaidenUISettings
+  m_EditorClassIdentifier: 
+  tutorialTitle: "\u5916\u4F1D\u30E2\u30FC\u30C9\u306E\u904A\u3073\u65B9"
+  tutorialPages:
+  - "・配られた34枚から、手牌13枚を選びます。\n・残りの21枚が、捨てる牌の候補になります。\n・役のあるテンパイを作り、「リーチ」で確定します。\n・神から先に、交互に1枚ずつ捨てます。\n・自分の最初の打牌でリーチがかかります。"
+  - "・リーチと和了には、満貫以上が必要です。\n・リーチとドラを含めて判定します。裏ドラとお札の倍率は含めません。\n・高目で満貫に届けば、リーチできます。\n・満貫に届かない安目が出ると、その局は高目でも和了できなくなります。\n・神は常に親、プレイヤーは常に子です。"
+  - "・和了できる牌が出たら「ロン」を選びます。\n・「スキップ」すると、その局はロンできなくなります。\n・自分の捨て牌に待ち牌がある場合も、ロンできません。\n・17巡で流局です。一方だけリーチしていれば、その者が1000点を得ます。\n・3局の合計点で勝負します。同点はプレイヤーの敗北です。"
+  - "・2人目の神から、34枚の中に「指定牌」が示されます。\n・指定牌は、手牌13枚に入れると減点を避けられる牌です。\n・入れなかった指定牌1枚につき、和了時に1翻下がります。\n・スキルで別の牌に変えた場合も、使わなかった扱いになります。\n・指定牌は2人目で1枚、3人目以降で2枚です。"
+  - "・神との対局前に、お札を1枚選びます。資産家は2枚選べます。\n・お札は3枚まで装備でき、対応する役の点数を強化します。\n・装備中のお札は、選択画面で破棄や入れ替えができます。\n・神に勝つたび、消費アイテムを1つ獲得します。\n・途中で負けても、それまでに獲得した報酬は持ち帰れます。"
+  previousLabel: "\u524D\u3078"
+  nextLabel: "\u6B21\u3078"
+  startLabel: "\u59CB\u3081\u308B"
+  buttonSprite: {fileID: 0}
+  buttonImageType: 1
+  buttonColor: {r: 0.025, g: 0.115, b: 0.13, a: 0.98}
+  frameSprite: {fileID: 0}
+  frameColor: {r: 0.9, g: 0.73, b: 0.38, a: 1}
+  showFrame: 1
+  showSeals: 1
+  sealColor: {r: 0.9, g: 0.72, b: 0.36, a: 1}
+  labelColor: {r: 1, g: 0.96, b: 0.84, a: 1}
+  buttonLabel: "<size=20><color=#E7BE70>\u7279 \u5225 \u5BFE \u5C40</color></size>\n\u5916\u4F1D\u30E2\u30FC\u30C9"
+  buttonPosition: {x: -35, y: 0}
+  buttonSize: {x: 300, y: 120}
+  buttonFontSize: 30
+  normalStrikeSound: {fileID: 8300000, guid: dc6fd788efa05ec448f77f879d77901f, type: 3}
+  normalStrikeDuration: 1.05

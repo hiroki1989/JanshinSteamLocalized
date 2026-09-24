@@ -13,7 +13,8 @@ public sealed class SeventeenStepsInventory : MonoBehaviour
         var source=canvas.GetComponentsInChildren<Button>(true).FirstOrDefault(x=>x.name=="Button_Equip");if(!source)return;
         var b=SeventeenStepsUI.Navigation(canvas.transform,"消費アイテム",Vector2.zero,new Vector2(340,100),Open);b.name="ConsumableInventoryButton";
         b.onClick.RemoveAllListeners();b.onClick.AddListener(()=>{AudioManager.Instance?.PlayClickSE();Open();});
-        var src=source.GetComponent<Image>();if(src){var im=b.GetComponent<Image>();im.sprite=src.sprite;im.type=src.type;im.color=src.color;}
+        var src=source.GetComponent<Image>();if(src){var im=b.GetComponent<Image>();im.sprite=src.sprite;im.type=src.type;im.color=src.color;im.material=src.material;im.preserveAspect=src.preserveAspect;}
+        b.transition=source.transition;b.colors=source.colors;b.spriteState=source.spriteState;
         var srcText=source.GetComponentInChildren<TMP_Text>();if(srcText){var text=b.GetComponentInChildren<TMP_Text>();text.font=srcText.font;text.fontSharedMaterial=srcText.fontSharedMaterial;text.fontSizeMax=srcText.fontSize;text.color=srcText.color;}
         string[] names={"Button_SkillSet","Button_Play","Button_Equip","Button_Shop","Button_SpecialTile","ConsumableInventoryButton"};
         for(int i=0;i<names.Length;i++){

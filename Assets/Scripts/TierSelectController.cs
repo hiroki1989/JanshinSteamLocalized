@@ -23,6 +23,8 @@ public class TierSelectController : MonoBehaviour
     [SerializeField] private TMP_Dropdown tierDropdown;
     [SerializeField] private TextMeshProUGUI selectedTierTMP;
     [SerializeField] private Button startButton;
+    [Header("外伝モード UI設定（未指定時はResourcesの設定を使用）")]
+    [SerializeField] private GaidenUISettings gaidenUISettings;
     private Button _seventeenStepsButton;
     private GameObject _seventeenCharacterPanel;
 
@@ -207,22 +209,23 @@ public class TierSelectController : MonoBehaviour
     private void EnsureSeventeenStepsButton()
     {
         if (_seventeenStepsButton || !startButton) return;
+        var settings=gaidenUISettings?gaidenUISettings:GaidenUISettings.Current;
         var go = new GameObject("StartSeventeenSteps", typeof(RectTransform), typeof(Image), typeof(Button));
         go.transform.SetParent(startButton.GetComponentInParent<Canvas>().transform, false);
         var source = startButton.GetComponent<RectTransform>();
         var rt = (RectTransform)go.transform;
         rt.anchorMin = rt.anchorMax = new Vector2(1f,.5f);
         rt.pivot = new Vector2(1f,.5f);
-        rt.anchoredPosition = new Vector2(-35f,0f);
-        rt.sizeDelta = new Vector2(300f,120f);
+        rt.anchoredPosition = settings.buttonPosition;
+        rt.sizeDelta = settings.buttonSize;
         var image = go.GetComponent<Image>();
-        image.color=new Color(.025f,.115f,.13f,.98f);
-        var frame=SeventeenStepsUI.Picture(go.transform,Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,rt.sizeDelta);
+        image.color=settings.buttonColor;image.sprite=settings.buttonSprite;image.type=settings.buttonImageType;
+        var frame=SeventeenStepsUI.Picture(go.transform,settings.frameSprite?settings.frameSprite:Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,rt.sizeDelta);
         frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=5;
-        frame.color=new Color(.90f,.73f,.38f);
-        for(int side=-1;side<=1;side+=2){
-            var seal=SeventeenStepsUI.Rect("GoldSeal",go.transform,new Vector2(side*125,0),new Vector2(8,8));
-            seal.localRotation=Quaternion.Euler(0,0,45);var mark=seal.gameObject.AddComponent<Image>();mark.color=new Color(.9f,.72f,.36f);mark.raycastTarget=false;
+        frame.color=settings.frameColor;frame.gameObject.SetActive(settings.showFrame);
+        for(int side=-1;settings.showSeals&&side<=1;side+=2){
+            var seal=SeventeenStepsUI.Rect("GoldSeal",go.transform,new Vector2(side*(rt.sizeDelta.x*.5f-25),0),new Vector2(8,8));
+            seal.localRotation=Quaternion.Euler(0,0,45);var mark=seal.gameObject.AddComponent<Image>();mark.color=settings.sealColor;mark.raycastTarget=false;
         }
         _seventeenStepsButton = go.GetComponent<Button>();
         _seventeenStepsButton.targetGraphic = image;
@@ -230,15 +233,15 @@ public class TierSelectController : MonoBehaviour
         var labelGo = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
         labelGo.transform.SetParent(go.transform, false);
         var label = labelGo.GetComponent<TextMeshProUGUI>();
-        label.text = "<size=20><color=#E7BE70>特 別 対 局</color></size>\n外伝モード";
+        label.text = settings.buttonLabel;
         var sourceLabel=startButton.GetComponentInChildren<TMP_Text>();if(sourceLabel){label.font=sourceLabel.font;label.fontSharedMaterial=sourceLabel.fontSharedMaterial;}
         label.alignment = TextAlignmentOptions.Center;
-        label.color = new Color(1f,.96f,.84f);
+        label.color = settings.labelColor;
         SeventeenStepsUI.BlackOutline(label);
-        label.fontSize = 30f;
+        label.fontSize = settings.buttonFontSize;
         label.enableAutoSizing = true;
         label.fontSizeMin = 18f;
-        label.fontSizeMax = 30f;
+        label.fontSizeMax = settings.buttonFontSize;
         var labelRt = (RectTransform)labelGo.transform;
         labelRt.anchorMin = Vector2.zero;
         labelRt.anchorMax = Vector2.one;

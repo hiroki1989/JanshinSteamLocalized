@@ -8,6 +8,81 @@ using UnityEngine.UI;
 
 public sealed partial class SeventeenStepsController
 {
+
+    // Preview the actual scoring rules for every possible wait, before committing the hand.
+    void RenderHandPreview(List<int> hand){
+        var possible=SeventeenStepsRules.Waits(hand).OrderBy(t=>t).ToArray();
+        SeventeenStepsUI.InfoBacking(content,new Vector2(0,410),new Vector2(1250,135));
+        if(possible.Length==0){SeventeenStepsUI.Label(content,"役・翻数プレビュー　テンパイなし",new Vector2(0,410),new Vector2(1200,100),28);return;}
+        bool riichi=SeventeenStepsRules.CanDeclare(hand,doraIndicator,false,UnusedDesignated());
+        var scores=possible.Select(t=>SeventeenStepsRules.ApplyDesignatedPenalty(
+            SeventeenStepsRules.EvaluateRound(hand,t,riichi,doraIndicator,-1),UnusedDesignated())).ToArray();
+        var perWait=scores.Select(w=>System.Text.RegularExpressions.Regex.Replace(w.detail??"",@"\s*\|\s*\d+翻\s*\d+符","")
+            .Replace(" + ","\n").Replace("混全帯么九","チャンタ").Replace("純全帯么九","純チャン").Replace("断么九","タンヤオ")
+            .Split(new[]{'\n','\r'},StringSplitOptions.RemoveEmptyEntries).Select(s=>s.Trim()).Where(s=>s.Length>0).Distinct().ToArray()).ToArray();
+        var roles=perWait.SelectMany(a=>a).Distinct().ToArray();
+        int low=scores.Min(w=>w.han),high=scores.Max(w=>w.han);
+        string range=low==high?low+"翻":low+"～"+high+"翻";
+        var heading=SeventeenStepsUI.Label(content,"役・翻数　"+range+"　"+(riichi?"リーチ後想定":"リーチなし")+"・裏ドラ等を除く　<color=#FFBA66>橙：待ち次第</color>",new Vector2(0,456),new Vector2(1220,30),24);
+        heading.color=Color.white;
+        if(roles.Length==0)roles=new[]{"成立役なし"};
+        int rows=(roles.Length+2)/3;
+        for(int column=0;column<3;column++){
+            var lines=roles.Skip(column*rows).Take(rows).Select(role=>perWait.All(a=>a.Contains(role))?role:"<color=#FFBA66>"+role+"（候補）</color>");
+            var label=SeventeenStepsUI.Label(content,string.Join("\n",lines),new Vector2((column-1)*410,393),new Vector2(400,90),24);
+            label.color=Color.white;label.alignment=TextAlignmentOptions.TopLeft;
+            label.enableAutoSizing=true;label.fontSizeMin=6;label.fontSizeMax=24;
+            label.overflowMode=TextOverflowModes.Overflow;
+        }
+    }
+
+
+    IEnumerator TravelToGod(){
+        busy=true;CloseModal();
+        modal=SeventeenStepsUI.Rect("JourneyMap",root,Vector2.zero,new Vector2(1920,1080));
+        modal.gameObject.AddComponent<Image>().color=new Color(.035f,.075f,.085f,1);
+        var fade=modal.gameObject.AddComponent<CanvasGroup>();fade.alpha=0;
+        var map=SeventeenStepsUI.Rect("Map",modal,Vector2.zero,new Vector2(1740,820));
+        map.gameObject.AddComponent<Image>().color=new Color(.13f,.23f,.23f);
+        Frame(map,new Vector2(1740,820));
+        // Layered silhouettes and small trees give the route a miniature map appearance.
+        for(int i=0;i<15;i++){
+            var hill=SeventeenStepsUI.Rect("Mountain",map,new Vector2(-790+i*115,250+(i%3)*38),new Vector2(155,155));
+            hill.localRotation=Quaternion.Euler(0,0,45);hill.gameObject.AddComponent<Image>().color=new Color(.17f+i%2*.03f,.30f,.29f);
+        }
+        for(int i=0;i<28;i++){
+            float x=-780+(i*157)%1560,y=-280+(i*113)%430;
+            var tree=SeventeenStepsUI.Rect("Forest",map,new Vector2(x,y),new Vector2(19,32));tree.localRotation=Quaternion.Euler(0,0,45);
+            tree.gameObject.AddComponent<Image>().color=new Color(.08f,.17f,.16f,.75f);
+        }
+        var nodes=new[]{new Vector2(-600,-65),new Vector2(-205,95),new Vector2(205,-70),new Vector2(600,70)};
+        for(int leg=0;leg<3;leg++)for(int j=0;j<22;j++){
+            var dot=SeventeenStepsUI.Rect("Path",map,Vector2.Lerp(nodes[leg],nodes[leg+1],j/21f),new Vector2(12,8));
+            dot.localRotation=Quaternion.Euler(0,0,Mathf.Atan2(nodes[leg+1].y-nodes[leg].y,nodes[leg+1].x-nodes[leg].x)*Mathf.Rad2Deg);
+            dot.gameObject.AddComponent<Image>().color=new Color(.83f,.71f,.43f,.8f);
+        }
+        int current=SeventeenStepsMode.EnemyIndex;
+        for(int i=0;i<4;i++){
+            var shrine=SeventeenStepsUI.Rect("Shrine",map,nodes[i],new Vector2(80,36));shrine.gameObject.AddComponent<Image>().color=i<current?new Color(.52f,.46f,.28f):new Color(.78f,.70f,.50f);
+            var god=SeventeenStepsUI.Picture(map,SeventeenStepsUI.EnemyArt(i),nodes[i]+new Vector2(0,108),new Vector2(170,200));god.color=i==current?Color.white:new Color(.65f,.7f,.7f,.6f);
+            var name=SeventeenStepsUI.Label(map,SeventeenStepsMode.Enemies[i],nodes[i]+new Vector2(0,-58),new Vector2(260,48),29);SeventeenStepsUI.BlackOutline(name);
+        }
+        var heading=SeventeenStepsUI.Label(modal,"神々の道",new Vector2(0,455),new Vector2(900,70),48);SeventeenStepsUI.BlackOutline(heading);
+        var caption=SeventeenStepsUI.Label(modal,SeventeenStepsMode.Enemies[current]+"のもとへ",new Vector2(0,-455),new Vector2(1100,65),36);
+        var walker=SeventeenStepsUI.Picture(map,SeventeenStepsUI.CharacterArt(SeventeenStepsMode.SelectedCharacter),Vector2.zero,new Vector2(170,205));
+        Vector2 from=current==0?new Vector2(-810,-180):nodes[current-1];Vector2 to=nodes[current]+new Vector2(-95,0);
+        float elapsed=0;
+        while(elapsed<7.5f){
+            elapsed+=Time.unscaledDeltaTime;fade.alpha=Mathf.Min(Mathf.Clamp01(elapsed/.5f),Mathf.Clamp01((7.5f-elapsed)/.5f));
+            float t=Mathf.SmoothStep(0,1,Mathf.Clamp01((elapsed-.7f)/5.2f));
+            walker.rectTransform.anchoredPosition=Vector2.Lerp(from,to,t)+new Vector2(0,75+(t>0&&t<1?Mathf.Abs(Mathf.Sin(elapsed*9))*13:0));
+            walker.rectTransform.localRotation=Quaternion.Euler(0,0,t>0&&t<1?Mathf.Sin(elapsed*9)*3:0);
+            if(elapsed>6)caption.text=SeventeenStepsMode.Enemies[current]+"との対局";
+            yield return null;
+        }
+        CloseModal();yield return StartRound();
+    }
+
     int doraIndicator,uraIndicator;
     bool playerRiichi,enemyRiichi,missedRon,dealing;
     int ronDecision;
@@ -91,16 +166,16 @@ public sealed partial class SeventeenStepsController
         yield return new WaitForSecondsRealtime(.4f);yield return EnemyTurn();
     }
     IEnumerator RonChoice(SeventeenStepsRules.Win win,int tile){
-        busy=true;playerTurn=false;ronDecision=0;CloseModal();
+        busy=true;playerTurn=false;ronDecision=0;highlightedRonRiver=1;RenderBattle();CloseModal();
         modal=SeventeenStepsUI.Rect("RonActions",root,Vector2.zero,new Vector2(1920,1080));
         SeventeenStepsUI.Navigation(modal,"ロン",new Vector2(380,-480),new Vector2(250,70),()=>ChooseRon(true));
         SeventeenStepsUI.Navigation(modal,"スキップ",new Vector2(45,-480),new Vector2(250,70),()=>ChooseRon(false));
         while(ronDecision==0)yield return null;CloseModal();
         if(ronDecision==1){yield return FinishRound(true,win,tile);yield break;}
-        missedRon=true;playerTurn=true;busy=false;notice="ロン見送り：この局はフリテン";RenderBattle();
+        highlightedRonRiver=0;missedRon=true;playerTurn=true;busy=false;notice="ロン見送り：この局はフリテン";RenderBattle();
     }
     void ChooseRon(bool accept){if(ronDecision==0)ronDecision=accept?1:2;}
-    IEnumerator EnemyRonAfterPause(SeventeenStepsRules.Win win,int tile){RenderBattle();yield return new WaitForSecondsRealtime(.8f);yield return FinishRound(false,win,tile);}
+    IEnumerator EnemyRonAfterPause(SeventeenStepsRules.Win win,int tile){highlightedRonRiver=2;RenderBattle();yield return new WaitForSecondsRealtime(.8f);yield return FinishRound(false,win,tile);}
     void DecorateOfuda(Button button,SeventeenStepsOfuda.Definition d){
         var host=button.transform;button.GetComponent<Image>().color=new Color(.12f,.15f,.16f);
         var art=SeventeenStepsUI.Picture(host,null,new Vector2(-110,15),new Vector2(140,210));ItemArtwork.Ofuda(art,d.Rarity);

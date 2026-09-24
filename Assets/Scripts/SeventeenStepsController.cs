@@ -44,23 +44,21 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         SeventeenStepsUI.Navigation(root,"終了する",new Vector2(770,-470),new Vector2(230,58),ConfirmExit);
         string art=SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.DyeMaster?"RandomMan_victory":SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.Calligrapher?"RandomHonor_victory":"Capitalist_victory";
         playerPortrait=SeventeenStepsUI.Picture(root,SeventeenStepsUI.CharacterArt(SeventeenStepsMode.SelectedCharacter),new Vector2(800,155),new Vector2(290,350));
-        if(PlayerPrefs.GetInt(TutorialDoneKey,0)==0)Tutorial(0);else ShowOfudaOffers();
+        ShowOfudaOffers();
     }
     void OnDestroy(){if(Active==this)Active=null;}
     void NewModal(string title){CloseModal();modal=SeventeenStepsUI.Modal(root,title);}
     void CloseModal(){if(modal){modal.gameObject.SetActive(false);Destroy(modal.gameObject);modal=null;}}
     void Tutorial(int page)
     {
-        tutorialPage=page;NewModal("外伝モードの遊び方　"+(page+1)+" / 5");
-        string[] pages={
-            "同じ136枚の山から、プレイヤーと敵が34枚ずつ受け取ります。\n34枚から13枚を選び、テンパイを作りましょう。制限時間はありません。\nテンパイできなくても、そのまま対局を開始できます。\n場風は東、敵は常に親（東家）、プレイヤーは子です。自風は北家から西家、南家の順に変わります。",
-            "選ばなかった21枚が捨て牌候補です。敵から先に、交互に1枚ずつ切ります。\nロン牌が出たら「ロン／スキップ」を選べます。見逃すとこの局はフリテンです。\n自分が捨てた牌が待ちに含まれるとフリテンとなり、ロンできません。\n17巡で流局となります。片方だけがリーチしていた場合、その者が1000点を獲得します。役があり、高めが満貫に届くテンパイなら最初の打牌でリーチします。\n満貫判定にはリーチ・ドラを含め、裏ドラ・お札倍率を含めません。\n安めが満貫未満の場合はロンできず、以後は高めでもロンできません。\n得点計算では裏ドラも加算します。\nリーチ直後のロンは一発、相手の17枚目でのロンは河底撈魚です。",
-            "各敵と3局戦い、和了で獲得した合計点が多い方の勝利です。\n同点はプレイヤーの敗北です。敵はアマテラス、アヌビス、\nポセイドン、ゼウスの4人です。負けると今回の挑戦は終了します。\n2人目は1枚、3・4人目は2枚の指定牌があります。使わなかった指定牌1枚につき1翻減点です（最低1翻）。",
-            "各敵の開始時に、無料のお札3択から1枚を獲得します。資産家は2枚選べます。\n装備上限は3枚です。対応する役で和了すると点数が増えます。\n染色師は指定した色のランダムな数牌へ、書家はランダムな字牌へ変換します。\nスキルは1局2回です。リーチ後の手牌は変換できません。\nHP・MP・Goldは使いません。",
-            "敵に勝つたびに消費アイテムを1個獲得します。負けても獲得済み報酬は残ります。\nゼウス撃破で、さらに宝石2個を獲得します。\nメニューの「消費アイテム」で1個を装備すると、次の通常モードに\n持ち込めます。持ち込んだアイテムは、そのラン限りです。"};
-        SeventeenStepsUI.Label(modal,pages[page],new Vector2(0,30),new Vector2(1320,380),34);
-        if(page>0)SeventeenStepsUI.Button(modal,"前へ",new Vector2(-370,-260),new Vector2(270,70),()=>Tutorial(page-1));
-        SeventeenStepsUI.Button(modal,page==4?"始める":"次へ",new Vector2(370,-260),new Vector2(270,70),()=>{if(page<4)Tutorial(page+1);else{PlayerPrefs.SetInt(TutorialDoneKey,1);PlayerPrefs.Save();CloseModal();if(deck==null)ShowOfudaOffers();}});
+        var settings=GaidenUISettings.Current;
+        var pages=settings.tutorialPages;
+        if(pages==null||pages.Length==0){CloseModal();if(deck==null)ShowOfudaOffers();return;}
+        page=Mathf.Clamp(page,0,pages.Length-1);
+        tutorialPage=page;NewModal(settings.tutorialTitle+"　"+(page+1)+" / "+pages.Length);
+        var body=SeventeenStepsUI.Label(modal,pages[page],new Vector2(0,20),new Vector2(1320,430),42);body.alignment=TextAlignmentOptions.TopLeft;body.fontSizeMin=36;
+        if(page>0)SeventeenStepsUI.Button(modal,settings.previousLabel,new Vector2(-370,-260),new Vector2(270,70),()=>Tutorial(page-1));
+        SeventeenStepsUI.Button(modal,page==pages.Length-1?settings.startLabel:settings.nextLabel,new Vector2(370,-260),new Vector2(270,70),()=>{if(page<pages.Length-1)Tutorial(page+1);else{PlayerPrefs.SetInt(TutorialDoneKey,1);PlayerPrefs.Save();CloseModal();if(deck==null)ShowOfudaOffers();}});
     }
     void ShowOfudaOffers()
     {
@@ -81,7 +79,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
             int slot=i;var equipped=SeventeenStepsOfuda.All[SeventeenStepsMode.Current.ofuda[i]];
             SeventeenStepsUI.Button(modal,equipped.name+" ×"+equipped.Multiplier.ToString("0.0")+"　破棄",new Vector2((i-1)*440,-205),new Vector2(405,64),()=>ConfirmDiscardOfuda(slot));
         }
-        SeventeenStepsUI.Button(modal,"獲得せず進む",new Vector2(0,-290),new Vector2(330,65),()=>{CloseModal();StartCoroutine(StartRound());});
+        SeventeenStepsUI.Button(modal,"獲得せず進む",new Vector2(0,-290),new Vector2(330,65),()=>{CloseModal();StartCoroutine(TravelToGod());});
     }
     void ConfirmDiscardOfuda(int slot){
         if(slot<0||slot>=SeventeenStepsMode.Current.ofuda.Count)return;
@@ -103,7 +101,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         if(d==null||offers==null||!offers.Contains(d)||offersRemaining<=0)return;
         if(replace>=0)SeventeenStepsMode.Current.ofuda[replace]=d.id;else SeventeenStepsMode.Current.ofuda.Add(d.id);
         SeventeenStepsMode.Save();offers[Array.IndexOf(offers,d)]=null;
-        if(--offersRemaining>0){RenderOffers();return;}CloseModal();StartCoroutine(StartRound());
+        if(--offersRemaining>0){RenderOffers();return;}CloseModal();StartCoroutine(TravelToGod());
     }
     IEnumerator StartRound()
     {
@@ -118,6 +116,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         var task=Task.Run(()=>SeventeenStepsRules.SelectRank(SeventeenStepsRules.TenpaiShapes(enemyCopy).Select(shape=>SeventeenStepsRules.RankWithDora(shape,doraIndicator)),rank));
         yield return ShowCutin("東"+SeventeenStepsMode.Round+"局",null,()=>AudioManager.Instance?.PlaySE(Resources.Load<AudioClip>("Audio/バーン")),1.3f);
         yield return DealAnimation();dealing=false;RenderSelection();
+        if(PlayerPrefs.GetInt(TutorialDoneKey,0)==0){Tutorial(0);while(modal)yield return null;}
         while(!task.IsCompleted)yield return null;
         if(task.IsFaulted){Debug.LogException(task.Exception);status.text="敵の構築に失敗。終了して再試行。";yield break;}
         var best=task.Result;
@@ -136,7 +135,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         int n=0;foreach(int i in selected.OrderBy(i=>deck[i])){int idx=i;var tile=Tile(content,deck[i],new Vector2(-438+n++*73,30),new Vector2(65,92),()=>{AudioManager.Instance?.PlaySelectTileSE();target=idx;notice="";RenderSelection();},required.Contains(i));HighlightTarget(tile,target==idx);}
         var sortedDeck=Enumerable.Range(0,34).OrderBy(i=>deck[i]).ThenBy(i=>i).ToArray();
         for(int i=0;i<34;i++){int idx=sortedDeck[i];var tile=Tile(content,deck[idx],new Vector2(-560+i%17*70,-100-i/17*120),new Vector2(62,90),()=>Toggle(idx),required.Contains(idx));if(selected.Contains(idx))tile.GetComponent<Image>().color=new Color(.65f,.78f,.7f);HighlightTarget(tile,target==idx);}
-        if(selected.Count==13)RenderWaitTiles(selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList());
+        if(selected.Count==13){var hand=selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList();RenderWaitTiles(hand);RenderHandPreview(hand);}
         var confirm=SeventeenStepsUI.Navigation(content,enemyReady?"リーチ":"敵の構築中",new Vector2(-340,-480),new Vector2(350,70),ConfirmHand);bool ready=selected.Count==13&&SeventeenStepsRules.CanDeclare(selected.Select(i=>deck[i]).ToList(),doraIndicator,false,UnusedDesignated());confirm.interactable=!busy&&enemyReady&&ready;
         if(selected.Count==13&&!ready)SeventeenStepsUI.Navigation(content,"リーチせず開始",new Vector2(-340,-480),new Vector2(350,70),ConfirmHand).interactable=!busy&&enemyReady;
         var cancel=SeventeenStepsUI.Navigation(content,"選択を全解除",new Vector2(50,-480),new Vector2(300,70),()=>{if(busy||dealing)return;selected.Clear();target=-1;notice="";RenderSelection();});cancel.interactable=!busy&&!dealing;
@@ -155,9 +154,9 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         if(SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.Capitalist)return;
         bool available=!dealing&&!playerRiichi&&!busy&&!roundEnded&&skillUses>0&&(building||playerTurn);
         if(SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.DyeMaster){
-            for(int i=0;i<3;i++){int suit=i;var b=SeventeenStepsUI.Button(content,new[]{"萬","筒","索"}[i],new Vector2(725+i*65,-285),new Vector2(58,52),()=>{dyeSuit=suit;if(building)RenderSelection();else RenderBattle();});b.interactable=available;HighlightTarget(b,dyeSuit==i);}
+            for(int i=0;i<3;i++){int suit=i;var b=Tile(content,i*9,new Vector2(725+i*65,-400),new Vector2(52,72),()=>{AudioManager.Instance?.PlayClickSE();dyeSuit=suit;if(building)RenderSelection();else RenderBattle();});b.interactable=available;HighlightTarget(b,dyeSuit==i);}
         }
-        var button=SeventeenStepsUI.Navigation(content,(SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.DyeMaster?"色寄せ":"筆写")+"　"+skillUses+"/"+SkillUsesPerRound,new Vector2(780,-360),new Vector2(310,75),UseSkill);button.interactable=available&&target>=0;
+        var button=SeventeenStepsUI.Navigation(content,(SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.DyeMaster?"色寄せ":"筆写")+"　"+skillUses+"/"+SkillUsesPerRound,new Vector2(780,-320),new Vector2(310,75),UseSkill);button.interactable=available&&target>=0;
     }
     void UseSkill(){
         if(dealing||playerRiichi||busy||roundEnded||(!building&&!playerTurn)||SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.Capitalist||skillUses<=0||target<0)return;
@@ -180,9 +179,22 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         for(int i=0;i<candidates.Count;i++){int index=i;var tile=Tile(content,candidates[i],new Vector2(-500+i%11*100,-185-i/11*92),new Vector2(59,80),()=>Discard(index));tile.interactable=playerTurn&&!busy&&!roundEnded;}
         RenderWaitTiles(playerHand);SkillButton();
     }
-    void River(List<int> tiles,float y){for(int i=0;i<tiles.Count;i++)Tile(content,tiles[i],new Vector2(-560+i*70,y),new Vector2(43,60),null);}
+    RectTransform enemyRonTarget,playerRonTarget;
+    int highlightedRonRiver; // 1: enemy discard (player ron), 2: player discard (enemy ron)
+    void River(List<int> tiles,float y){
+        for(int i=0;i<tiles.Count;i++){
+            var tile=Tile(content,tiles[i],new Vector2(-560+i*70,y),new Vector2(43,60),null);
+            if(i==tiles.Count-1){if(ReferenceEquals(tiles,enemyDiscards))enemyRonTarget=(RectTransform)tile.transform;else playerRonTarget=(RectTransform)tile.transform;}
+            if(i==tiles.Count-1&&((highlightedRonRiver==1&&ReferenceEquals(tiles,enemyDiscards))||(highlightedRonRiver==2&&ReferenceEquals(tiles,playerDiscards)))){
+                var outline=tile.gameObject.AddComponent<Outline>();
+                outline.effectColor=new Color(1f,.92f,.16f,.95f);
+                outline.effectDistance=new Vector2(4f,-4f);outline.useGraphicAlpha=true;
+            }
+        }
+    }
     void RenderWinds(){
-        var roundLabel=SeventeenStepsUI.Label(content,"東"+Mathf.Clamp(SeventeenStepsMode.Round,1,SeventeenStepsMode.MaxRoundsPerEnemy)+"局",new Vector2(0,440),new Vector2(340,70),42);
+        SeventeenStepsUI.InfoBacking(content,building&&selected.Count==13?new Vector2(-460,492):new Vector2(0,440),new Vector2(250,60));
+        var roundLabel=SeventeenStepsUI.Label(content,"東"+Mathf.Clamp(SeventeenStepsMode.Round,1,SeventeenStepsMode.MaxRoundsPerEnemy)+"局",(building&&selected.Count==13?new Vector2(-460,492):new Vector2(0,440)),new Vector2(250,60),36);
         SeventeenStepsUI.BlackOutline(roundLabel);
 
         SeventeenStepsUI.InfoBacking(content,new Vector2(-800,405),new Vector2(295,95));
@@ -257,7 +269,8 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
     IEnumerator FinishRound(bool playerWon,SeventeenStepsRules.Win win,int tile)
     {
         if(roundEnded)yield break;roundEnded=true;busy=true;RenderBattle();int points=win==null?0:playerWon?SeventeenStepsOfuda.Apply(win,SeventeenStepsMode.Current.ofuda):win.points;
-        if(win!=null){yield return NormalRonCutin(playerWon);}
+        if(win!=null){var settings=GaidenUISettings.Current;yield return WinTileLightning.Play(playerWon?enemyRonTarget:playerRonTarget,transform,settings.normalStrikeDuration,settings.normalStrikeSound);yield return NormalRonCutin(playerWon);}
+        highlightedRonRiver=0;
         SeventeenStepsMode.RecordRound(win==null?(playerRiichi&&!enemyRiichi?1000:0):(playerWon?points:0),win==null?(enemyRiichi&&!playerRiichi?1000:0):(playerWon?0:points));UpdateScore();
         yield return ScorePresentation(playerWon,win,tile,points);
     }
@@ -332,6 +345,7 @@ public static class SeventeenStepsUI
         if(EventSystem.current)EventSystem.current.gameObject.SetActive(false);
         {var es=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));es.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();}
         
+        if(title=="外伝モード")InfoBacking(root,new Vector2(0,492),new Vector2(360,65));
         var header=Label(root,title,new Vector2(0,492),new Vector2(1380,65),42);if(title=="外伝モード")BlackOutline(header);return root;
     }
     public static RectTransform Rect(string name,Transform parent,Vector2 pos,Vector2 size){var r=new GameObject(name,typeof(RectTransform)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=r.anchorMax=r.pivot=new Vector2(.5f,.5f);r.anchoredPosition=pos;r.sizeDelta=size;return r;}

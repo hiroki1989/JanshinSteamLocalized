@@ -46,7 +46,7 @@ public static class SeventeenStepsRules
     public static Win Evaluate(IList<int> hand,int tile,bool rawKeys=false,bool dealer=false)
     {
         if(hand.Count!=13||!IsComplete(hand.Concat(new[]{tile})))return new Win();
-        var d=rawKeys?YakuEvaluator.EvaluateDetailedKeys(hand.Select(t=>Tiles[t]).ToList(),Tiles[tile],dealer?"East":new[]{"North","West","South","East"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4],"East"):YakuEvaluator.EvaluateDetailed(hand.Select(t=>Tiles[t]).ToList(),new List<IList<string>>(),Tiles[tile],false,true,dealer?"East":new[]{"North","West","South","East"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4],"East");
+        var d=rawKeys?YakuEvaluator.EvaluateDetailedKeys(hand.Select(t=>Tiles[t]).ToList(),Tiles[tile],dealer?new[]{"East","South","West","North"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4]:new[]{"North","West","South","East"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4],"East"):YakuEvaluator.EvaluateDetailed(hand.Select(t=>Tiles[t]).ToList(),new List<IList<string>>(),Tiles[tile],false,true,dealer?new[]{"East","South","West","North"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4]:new[]{"North","West","South","East"}[(Math.Max(1,SeventeenStepsMode.Round)-1)%4],"East");
         // Dealer scoring stays fixed; player seat wind rotates as in normal mode.
         return new Win{points=d.han>0?Scoring.TryScoreWin(d.fu,d.han,false,dealer).totalPoints:0,han=d.han,fu=d.fu,
             detail=d.breakdown,keys=(d.yakuKeys??new List<string>()).Concat(d.yakumanKeys??new List<string>()).Distinct().ToList()};
@@ -66,7 +66,7 @@ public static class SeventeenStepsRules
         if(yakuman)return win;
         if(riichi){win.han++;win.keys.Add("RIICHI");win.detail+="\nリーチ　1翻";}
         if(riichi&&ippatsu){win.han++;win.keys.Add("IPPATSU");win.detail+="\n一発　1翻";}
-        if(houtei){win.han++;win.keys.Add("HOUTEI");win.detail+="\n河底撈魚　1翻";}
+        if(houtei){win.han++;win.keys.Add("HOUTEI");win.detail+="\nホウテイロン　1翻";}
         var tiles=hand.Concat(new[]{tile}).ToList();int visible=tiles.Count(t=>t==NextDora(dora));int hidden=riichi&&ura>=0?tiles.Count(t=>t==NextDora(ura)):0;
         win.han+=visible+hidden;if(visible>0)win.detail+="\nドラ　"+visible+"翻";if(hidden>0)win.detail+="\n裏ドラ　"+hidden+"翻";
         win.points=Scoring.TryScoreWin(win.fu,win.han,false,dealer).totalPoints;return win;

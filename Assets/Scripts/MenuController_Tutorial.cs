@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,7 +22,28 @@ public partial class MenuController
         if (PlayerPrefs.GetInt(MenuTutorialDoneKey, 0) != 0) yield break;
         var prefab = Resources.Load<FirstMatchTutorialView>("Tutorial/FirstMatchTutorial");
         if (!prefab) { Debug.LogError("Menu tutorial prefab is missing."); yield break; }
-        menuTutorial = Instantiate(prefab, transform, false);
+        // A separate root Canvas cannot inherit the menu CanvasGroup's disabled raycasts.
+        menuTutorial = Instantiate(prefab);
+        var tutorialCanvas=menuTutorial.GetComponent<Canvas>();
+        tutorialCanvas.renderMode=RenderMode.ScreenSpaceOverlay;
+        tutorialCanvas.overrideSorting=true;
+        tutorialCanvas.sortingOrder=32760;
+        var tutorialRaycaster=menuTutorial.GetComponent<GraphicRaycaster>();
+        if(!tutorialRaycaster)tutorialRaycaster=menuTutorial.gameObject.AddComponent<GraphicRaycaster>();
+        tutorialRaycaster.enabled=true;
+        var group=menuTutorial.GetComponent<CanvasGroup>();
+        if(!group)group=menuTutorial.gameObject.AddComponent<CanvasGroup>();
+        group.alpha=1;group.interactable=true;group.blocksRaycasts=true;group.ignoreParentGroups=true;
+#if ENABLE_INPUT_SYSTEM
+        // iOS uses touch actions, which must be assigned even when the menu's input module was recreated.
+        if(EventSystem.current){
+            var input=EventSystem.current.GetComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if(!input)input=EventSystem.current.gameObject.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
+            if(input.actionsAsset==null)input.AssignDefaultActions();
+            var legacy=EventSystem.current.GetComponent<StandaloneInputModule>();if(legacy)legacy.enabled=false;
+            input.enabled=true;
+        }
+#endif
         menuTutorial.name = "FirstMenuTutorial";
         menuTutorialContent = Instantiate(prefab.contentAsset);
         menuTutorialContent.guideLabel = new FirstMatchTutorialContent.Localized("JANSHIN / メニューガイド", "JANSHIN / MENU GUIDE", "JANSHIN / 菜单指南");
