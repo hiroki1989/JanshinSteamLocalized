@@ -451,7 +451,8 @@ public void OnClickNext()
         string nextScene = PlayerPrefs.GetString("PF_AngelDialogueNextScene", "");
         if (!string.IsNullOrEmpty(nextScene))
         {
-            SceneManager.LoadScene(nextScene);
+            if(mode=="Start")NormalJourney.Play(NormalJourney.Leg.FirstGod,()=>SceneManager.LoadScene(nextScene));
+            else SceneManager.LoadScene(nextScene);
         }
         else
         {
@@ -491,7 +492,8 @@ public void OnClickNext()
         string nextScene = PlayerPrefs.GetString("PF_AngelDialogueNextScene", "");
         if (!string.IsNullOrEmpty(nextScene))
         {
-            SceneManager.LoadScene(nextScene);
+            if(mode=="Start")NormalJourney.Play(NormalJourney.Leg.FirstGod,()=>SceneManager.LoadScene(nextScene));
+            else SceneManager.LoadScene(nextScene);
         }
         else
         {

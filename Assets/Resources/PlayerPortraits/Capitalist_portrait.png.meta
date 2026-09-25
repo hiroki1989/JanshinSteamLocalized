@@ -155,10 +155,10 @@ TextureImporter:
       name: Capitalist_portrait_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 0
-        width: 246
-        height: 50
+        x: 343
+        y: 1300
+        width: 300
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

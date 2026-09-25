@@ -32,6 +32,7 @@ private const string SecretMode_Clear = "SecretHadesClear";
     private const string KeyAngelNextScene = "PF_AngelDialogueNextScene"; // 例："EnemyDialogue" / "StageClear"
 
     private string[] _enemyNamesCache;
+    public string[] GetJourneyEnemyNames() => GetEnemyNames();
 
     public static int CurrentEnemyIndex { get; private set; } = 0;
     public static string CurrentEnemyName { get; private set; } = "";
@@ -155,6 +156,7 @@ void OnDestroy()
 }
 public void GoFromMenuToAngelConversation()
 {
+        if(NormalJourney.IsPlaying)return;
     // ★追加：中断データ（自動セーブ含む）があるなら、会話をスキップしてRunへ直行
     try
     {
@@ -183,7 +185,7 @@ public void GoFromMenuToAngelConversation()
     PlayerPrefs.SetString(KeyAngelNextScene, enemyConversationScene);
     PlayerPrefs.Save();
 
-    LoadSceneSafe(angelConversationScene);
+    NormalJourney.Play(NormalJourney.Leg.Angel, () => LoadSceneSafe(angelConversationScene));
 }
 public void StartNewRunFromMenu()
 {
@@ -198,9 +200,10 @@ public void StartNewRunFromMenu()
 }
     public void GoFromAngelToEnemyConversation()
     {
+        if(NormalJourney.IsPlaying)return;
         EnsureEnemyNameInSync();
         TrySyncEnemyToGameManager();
-        LoadSceneSafe(enemyConversationScene);
+        NormalJourney.Play(NormalJourney.Leg.FirstGod, () => LoadSceneSafe(enemyConversationScene));
     }
 
     public void GoFromEnemyConversationToBattle()
@@ -213,15 +216,16 @@ public void StartNewRunFromMenu()
     // ★変更: 勝利→強化画面遷移時にインタースティシャル広告を挟む
     public void GoFromBattleWinToUpgrade()
     {
+        if(NormalJourney.IsPlaying)return;
         ClearFinishedBattleResume();
         var adMgr = InterstitialAdManager.Instance;
         if (adMgr != null)
         {
-            adMgr.ShowAdIfReady(() => LoadSceneSafe(upgradeScene));
+            adMgr.ShowAdIfReady(() => NormalJourney.Play(NormalJourney.Leg.Shop, () => LoadSceneSafe(upgradeScene)));
         }
         else
         {
-            LoadSceneSafe(upgradeScene);
+            NormalJourney.Play(NormalJourney.Leg.Shop, () => LoadSceneSafe(upgradeScene));
         }
     }
     public void GoFromBattleLoseToReward()
@@ -298,18 +302,20 @@ public void StartNewRunFromMenu()
 
     public void GoFromUpgradeToNextEnemyConversation()
     {
+        if(NormalJourney.IsPlaying)return;
         AdvanceToNextEnemy();
         EnsureEnemyNameInSync();
         TrySyncEnemyToGameManager();
-        LoadSceneSafe(enemyConversationScene);
+        NormalJourney.Play(NormalJourney.Leg.NextGod, () => LoadSceneSafe(enemyConversationScene));
     }
 
     public void ForceAdvanceAndGoToNextEnemyConversation()
     {
+        if(NormalJourney.IsPlaying)return;
         AdvanceToNextEnemy();
         EnsureEnemyNameInSync();
         TrySyncEnemyToGameManager();
-        LoadSceneSafe(enemyConversationScene);
+        NormalJourney.Play(NormalJourney.Leg.NextGod, () => LoadSceneSafe(enemyConversationScene));
     }
 
 public void GoToEnemyDialogueForSecretHades()

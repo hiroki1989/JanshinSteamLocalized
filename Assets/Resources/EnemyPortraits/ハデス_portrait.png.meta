@@ -142,10 +142,10 @@ TextureImporter:
       name: "\u30CF\u30C7\u30B9_portrait_0"
       rect:
         serializedVersion: 2
-        x: 3
-        y: 0
-        width: 247
-        height: 50
+        x: 403
+        y: 1174
+        width: 300
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

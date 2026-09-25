@@ -1,10 +1,15 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public sealed class UpgradeOfudaStore : MonoBehaviour
 {
+public void EnsureShopReroll(Transform panel){ShopRerollButton.Ensure(panel,new Vector2(0,265),TryRerollShop);}
+public bool TryRerollShop(){
+    if(Currency<100||_candidatePool==null||_candidatePool.Count==0)return false;
+    Currency-=100;BuildOffers();ApplyShopPresentation();return true;
+}
 public void ApplyShopPresentation()
 {
     for(int index=0;index<offerSlots.Length;index++){

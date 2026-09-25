@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,6 +74,12 @@ public partial class UpgradeManager
         }
         var cancel=modal.Find("Cancel").GetComponent<Button>(); cancel.onClick=new Button.ButtonClickedEvent(); cancel.onClick.AddListener(CloseSelectedTileShop);
         var confirm=modal.Find("Confirm").GetComponent<Button>(); confirm.onClick=new Button.ButtonClickedEvent(); confirm.onClick.AddListener(ConfirmSelectedTilePurchase);
+        var titleRect=modal.Find("Title").GetComponent<RectTransform>();titleRect.anchoredPosition=new Vector2(-160,348);titleRect.sizeDelta=new Vector2(620,48);
+        var actionLabel=confirm.GetComponentInChildren<TMP_Text>();actionLabel.rectTransform.anchoredPosition=new Vector2(-80,0);actionLabel.rectTransform.sizeDelta=new Vector2(230,50);
+        if(!confirm.transform.Find("Price"))TileShopLabel("Price",confirm.transform,new Vector2(157,0),new Vector2(110,50),28);
+        UpgradePanelPresentation.Bag(confirm.transform,new Vector2(90,0),"SelectedPriceBag");
+        UpgradePanelPresentation.Bag(modal,new Vector2(300,348),"SelectedWalletBag");
+        if(!modal.Find("WalletAmount"))TileShopLabel("WalletAmount",modal,new Vector2(400,348),new Vector2(145,45),28);
         selectedTileShopRoot.SetActive(false);
     }
 
@@ -128,9 +134,10 @@ public partial class UpgradeManager
     private void RefreshSelectedTileShop() {
         if(!selectedTileShopRoot) return;
         var card=GetSelectedTileShopCard();
+        if(card&&card.Find("WalletAmount"))card.Find("WalletAmount").GetComponent<TMP_Text>().text=CurrentGold.ToString("N0");
         if (!card) { Debug.LogError("Selected tile shop Card is missing."); return; }
         card.Find("Title").GetComponent<TMP_Text>().text=selectedTileDestroyMode ? TileShopText("指定した牌を1枚破壊","Remove one chosen tile","销毁一张指定的牌") : TileShopText("指定した牌を1枚購入","Buy one chosen tile","购买一张指定的牌");
-        card.Find("Hint").GetComponent<TMP_Text>().text=TileShopText("牌を選び、金額を確認して実行してください。","Select a tile, review the price, then confirm.","请选择牌，确认价格后执行。")+"  Gold: "+CurrentGold;
+        card.Find("Hint").GetComponent<TMP_Text>().text=TileShopText("牌を選び、金額を確認して実行してください。","Select a tile, review the price, then confirm.","请选择牌，确认价格后执行。");
         var counts=PlayerData.GetDeckCountsCopy();
         for(int i=0;i<34;i++) {
             var button=card.Find("Tile"+i).GetComponent<Button>();
@@ -141,10 +148,11 @@ public partial class UpgradeManager
         card.Find("Selection").GetComponent<TMP_Text>().text=selectedShopTile<0 ? TileShopText("牌を選択してください","Select a tile","请选择牌") : TileShopText(PlayerData.TileName(selectedShopTile), GameManager.IndexToId(selectedShopTile), PlayerData.TileName(selectedShopTile))+"  ×1";
         card.Find("Status").GetComponent<TMP_Text>().text=selectedTileDestroyMode && PlayerData.TotalDeckCount()<=Mathf.Max(1,minDeckSize) ?
             TileShopText("デッキの最低枚数に達しています。","The deck is at its minimum size.","牌组已达到最低张数。") :
-            CurrentGold<SelectedTilePrice ? TileShopText("Goldが足りません。","Not enough Gold.","Gold不足。") : "";
+            CurrentGold<SelectedTilePrice ? TileShopText("所持金が足りません。","Not enough funds.","持有金额不足。") : "";
         var confirm=card.Find("Confirm").GetComponent<Button>();
         confirm.interactable=CanPurchaseSelectedTile();
-        confirm.GetComponentInChildren<TMP_Text>().text=(selectedTileDestroyMode ? TileShopText("1枚破壊","Remove 1","销毁1张") : TileShopText("1枚購入","Buy 1","购买1张"))+"  "+SelectedTilePrice+" Gold";
+        confirm.GetComponentInChildren<TMP_Text>().text=(selectedTileDestroyMode ? TileShopText("1枚破壊","Remove 1","销毁1张") : TileShopText("1枚購入","Buy 1","购买1张"));
+        confirm.transform.Find("Price").GetComponent<TMP_Text>().text=SelectedTilePrice.ToString("N0");
         card.Find("Cancel").GetComponentInChildren<TMP_Text>().text=TileShopText("閉じる","Close","关闭");
     }
     private RectTransform TileShopRect(string name,Transform parent,Vector2 position,Vector2 size) {

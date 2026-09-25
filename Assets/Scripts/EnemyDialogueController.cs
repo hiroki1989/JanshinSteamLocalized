@@ -578,11 +578,7 @@ private void TryAutoSetPortrait(string shownName)
 {
     if (!portraitImage) return;
 
-    // 行ごとにportrait指定があればそちらを優先
-    bool anyLineHasPortrait = false;
-    if (lines != null)
-        foreach (var ln in lines) if (ln != null && ln.portrait) { anyLineHasPortrait = true; break; }
-    if (anyLineHasPortrait) return;
+    // Always resolve the current god from the shared, approved character artwork.
 
 // Excelの素の名前を最優先（無ければ従来の shownName）
 string baseName = shownName;
@@ -593,7 +589,7 @@ if (EnemyConfigExcel.TryGetForRuntimeIndex(ProgressionFlowController.GetCurrentE
 }
 
 var key = EnemyConfigExcel.SanitizeForResource(baseName);
-var sp  = Resources.Load<Sprite>($"{dialoguePortraitFolder}/{key}");
+var sp = Resources.Load<Sprite>($"EnemyCutins/{key}") ?? Resources.Load<Sprite>($"{dialoguePortraitFolder}/{key}");
 if (sp)
 {
     portraitImage.sprite = sp;
@@ -667,6 +663,7 @@ StartTypewriter(body);
         if (first != null && first.portrait)
         {
             portraitImage.sprite = first.portrait;
+            TryAutoSetPortrait("");
         }
         // 無ければ TryAutoSetPortrait で設定された画像を維持
         portraitImage.enabled = (portraitImage.sprite != null);

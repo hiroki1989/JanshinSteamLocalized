@@ -815,7 +815,10 @@ public void OnClickRewardOK()
     try { PlayerData.ResetDeckToDefault(); } catch {}
 
     if (!string.IsNullOrEmpty(menuSceneName))
+    {
+        AppReviewRequest.RewardAccepted();
         SceneManager.LoadScene(menuSceneName, LoadSceneMode.Single);
+    }
     else
         Debug.LogWarning("[StageClearManager] menuSceneName is empty.");
 }

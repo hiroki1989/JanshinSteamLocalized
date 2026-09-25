@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public partial class UpgradeManager
 {
+    public bool TryRerollTraitShop(){
+        ResolveTraitContext(out _traitHostSet,out _traitActiveSkillName);
+        if(_traitHostSet==null||string.IsNullOrEmpty(_traitActiveSkillName)||!TrySpendGold(100))return false;
+        RefreshTraitOffers();RefreshUI();ApplyShopPresentation(UpgradeSectionMode.TraitOnly);return true;
+    }
     void RefreshPresentationStatusLabels()
     {
         if(!buyHpButton || !buyHpButton.transform.Find("PresentationFrame"))return;
@@ -69,6 +74,7 @@ public partial class UpgradeManager
         if(mode==UpgradeSectionMode.TraitOnly && traitYakuShopRoot)
         {
             var root=traitYakuShopRoot.transform;
+            ShopRerollButton.Ensure(root,new Vector2(0,-360),TryRerollTraitShop);
             UpgradePanelPresentation.Header(root);
             bool both=traitUnlockButton && traitUnlockButton!=traitUpgradeButton;
             if(traitUpgradeButton)
@@ -189,7 +195,7 @@ public static class UpgradePanelPresentation
                 foreach(var text in b.GetComponentsInChildren<TMP_Text>(true)){Black40(text);}
             }
         }
-        foreach(var store in panel.scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<UpgradeOfudaStore>(true)))store.ApplyShopPresentation();
+        foreach(var store in panel.scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<UpgradeOfudaStore>(true))){store.ApplyShopPresentation();store.EnsureShopReroll(root);}
         var discard=root.Find("DiscardButton")as RectTransform;if(discard)Place(discard,root,new Vector2(0,-455),new Vector2(300,85));
         var cap=root.Find("CapacityTMP");if(cap)Place((RectTransform)cap,root,new Vector2(160,-125),new Vector2(140,45));
         var heading=root.Find("Text (TMP)");if(heading)Place((RectTransform)heading,root,new Vector2(-30,-125),new Vector2(220,45));

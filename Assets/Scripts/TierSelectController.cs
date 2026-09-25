@@ -282,6 +282,7 @@ public class TierSelectController : MonoBehaviour
 
     private void OnClickStartNewRunWithSelectedTier()
     {
+        if(NormalJourney.IsPlaying)return;
                 // ★追加：中断の有無に関係なく、「最初から開始」は必ず敗北時相当のリセットを先に実行する
         try { StageClearManager.ResetEnemyProgressionNow(); } catch {}
         try { PlayerPrefs.DeleteKey(PF_SUSPEND_FLAG); } catch {}
@@ -361,7 +362,7 @@ public class TierSelectController : MonoBehaviour
         // Angel会話へ
         if (!string.IsNullOrEmpty(angelDialogueScene))
         {
-            SceneManager.LoadScene(angelDialogueScene, LoadSceneMode.Single);
+            NormalJourney.Play(NormalJourney.Leg.Angel, () => SceneManager.LoadScene(angelDialogueScene, LoadSceneMode.Single));
             return;
         }
 

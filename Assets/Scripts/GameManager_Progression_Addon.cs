@@ -237,7 +237,7 @@ private void TryLoadEnemyRunPortraitByName(string enemyName)
 
     // Assets/Resources/EnemyPortraits/{enemyName}_portrait.png を想定
     string path = "EnemyPortraits/" + enemyName + "_portrait";
-    Sprite sp = Resources.Load<Sprite>(path);
+    Sprite sp = UnifiedCharacterPortrait.Load(enemyName, false) ?? Resources.Load<Sprite>(path);
 
     enemyPortrait.sprite = sp;
     enemyPortrait.preserveAspect = true;
@@ -278,7 +278,7 @@ private void TryLoadPlayerRunPortraitBySkillName(string skillName)
 
     // Assets/Resources/PlayerPortraits/{SkillName}_portrait.png を想定
     string path = "PlayerPortraits/" + skillName + "_portrait";
-    Sprite sp = Resources.Load<Sprite>(path);
+    Sprite sp = UnifiedCharacterPortrait.Load(skillName, true) ?? Resources.Load<Sprite>(path);
 
     playerPortrait.sprite = sp;
     playerPortrait.preserveAspect = true;

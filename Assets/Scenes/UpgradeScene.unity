@@ -11299,7 +11299,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5F37\u5316"
+  m_text: "\u30B7\u30E7\u30C3\u30D7"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2aa1190e8cfa0a4891ce9be4311bd2c, type: 2}
   m_sharedMaterial: {fileID: -8794626093291834874, guid: f2aa1190e8cfa0a4891ce9be4311bd2c, type: 2}
@@ -11393,9 +11393,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: Upgrade
+    text: Shop
   chineseSimplified:
-    text: "\u5F3A\u5316"
+    text: "\u5546\u5E97"
 --- !u!1 &607565983
 GameObject:
   m_ObjectHideFlags: 0
@@ -14477,7 +14477,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7058614317041918344, guid: 340dba5827ca3cc4ab9f3df5f74d3a59, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57b83b476874464198a1df7fddd41b3a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17956,7 +17956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5F37\u5316"
+  m_text: "\u30B7\u30E7\u30C3\u30D7"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2aa1190e8cfa0a4891ce9be4311bd2c, type: 2}
   m_sharedMaterial: {fileID: -8794626093291834874, guid: f2aa1190e8cfa0a4891ce9be4311bd2c, type: 2}
@@ -18050,9 +18050,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LocalizedTextUI
   fallbackToJapaneseIfEmpty: 1
   english:
-    text: Upgrade
+    text: Shop
   chineseSimplified:
-    text: "\u5F3A\u5316"
+    text: "\u5546\u5E97"
 --- !u!1 &914407617
 GameObject:
   m_ObjectHideFlags: 0

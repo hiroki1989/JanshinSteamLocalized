@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -288,7 +288,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         NewModal(won?"勝利！":"挑戦終了");
         SeventeenStepsUI.Label(modal,"プレイヤー "+SeventeenStepsMode.Current.playerScore.ToString("N0")+"点　/　敵 "+SeventeenStepsMode.Current.enemyScore.ToString("N0")+"点\n"+(won?"獲得："+RunConsumables.Get(item)?.Name+(SeventeenStepsMode.IsFinalEnemy?" ＋ 宝石2個":""):"獲得済み遺物を持ち帰る"),new Vector2(0,125),new Vector2(1300,180),34);
         if(item>0){SeventeenStepsUI.Picture(modal,RunConsumables.Get(item).Icon,new Vector2(-420,-80),new Vector2(210,210));SeventeenStepsUI.Label(modal,RunConsumables.Get(item).Description,new Vector2(150,-80),new Vector2(850,210),32);}
-        SeventeenStepsUI.Button(modal,won&&!SeventeenStepsMode.IsFinalEnemy?"次の敵へ":"メニューへ",new Vector2(0,-290),new Vector2(420,70),()=>{if(won&&!SeventeenStepsMode.IsFinalEnemy){AdvanceEnemyAfterAd();}else Exit();});
+        SeventeenStepsUI.Button(modal,won&&!SeventeenStepsMode.IsFinalEnemy?"次の敵へ":"メニューへ",new Vector2(0,-290),new Vector2(420,70),()=>{if(won&&!SeventeenStepsMode.IsFinalEnemy){AdvanceEnemyAfterAd();}else { AppReviewRequest.RewardAccepted(); Exit(); }});
     }
     bool advancingAfterAd;
     void AdvanceEnemyAfterAd(){

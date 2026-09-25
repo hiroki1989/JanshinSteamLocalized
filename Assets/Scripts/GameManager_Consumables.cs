@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -81,7 +81,7 @@ void OpenConsumableInventory()
         _consumableWindow.Confirm.interactable=false;
         if(_consumableSlot<0 || _consumableSlot>=s.bag.Count)
         {
-            _consumableWindow.Detail.text=s.bag.Count==0?ItemText("遺物を持っていません。強化画面でGoldを使って購入できます。","No relics. Buy them with Gold on the upgrade screen.","尚未持有遗物。可在强化画面消耗Gold购买。"):ItemText("使用したい遺物を選んでください。","Select a relic to use.","请选择要使用的遗物。");
+            _consumableWindow.Detail.text=s.bag.Count==0?ItemText("遺物を持っていません。ショップでGoldを使って購入できます。","No relics. Buy them with Gold at the shop.","尚未持有遗物。可在商店消耗Gold购买。"):ItemText("使用したい遺物を選んでください。","Select a relic to use.","请选择要使用的遗物。");
             _consumableWindow.Status.text=ConsumableEffectsSummary(s);return;
         }
         int id=s.bag[_consumableSlot];var d=RunConsumables.Get(id);

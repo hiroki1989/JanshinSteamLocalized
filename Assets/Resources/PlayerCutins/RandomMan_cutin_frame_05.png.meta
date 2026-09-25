@@ -51,7 +51,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -145,12 +145,12 @@ TextureImporter:
       name: RandomMan_cutin_frame_05_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 216
-        width: 1408
-        height: 388
+        x: 314
+        y: 1346
+        width: 300
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -167,12 +167,12 @@ TextureImporter:
       name: RandomMan_cutin_frame_05_1
       rect:
         serializedVersion: 2
-        x: 786
-        y: 163
-        width: 63
-        height: 19
+        x: 314
+        y: 1346
+        width: 300
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

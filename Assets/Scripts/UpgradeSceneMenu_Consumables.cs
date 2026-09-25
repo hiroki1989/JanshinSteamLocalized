@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,7 +54,7 @@ public sealed partial class UpgradeSceneMenu
         consumableStore=ConsumableWindow.Open(transform,ConsumableWindow.T("遺物購入","Buy relics","购买遗物"),frame);
         var sceneImages=gameObject.scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<Image>(true));
         var background=sceneImages.Where(i=>i.sprite&& !i.transform.IsChildOf(consumableStore.transform)&&i.sprite.texture.width>=1000).OrderByDescending(i=>i.rectTransform.rect.width*i.rectTransform.rect.height).FirstOrDefault();
-     consumableStore.ConfigureStore(backFromDeckButton?backFromDeckButton.GetComponent<Image>().sprite:null,background?background.sprite:null,()=>UpgradeNextButton.Advance());
+     consumableStore.ConfigureStore(backFromDeckButton?backFromDeckButton.GetComponent<Image>().sprite:null,Resources.Load<Sprite>("Journey/ShopBackground") ?? (background?background.sprite:null),()=>UpgradeNextButton.Advance());
         consumableStore.Closed=()=>consumableStore=null;
         consumableSelected=-1;
         consumableStore.Confirm.onClick.AddListener(BuyConsumable);

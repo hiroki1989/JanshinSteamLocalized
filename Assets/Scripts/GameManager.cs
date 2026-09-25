@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5032,6 +5032,23 @@ private int _suspendLockedEffectiveMaxMP = -1;
 
 private void Awake()
 {
+    foreach (var panel in new[]{scoringPanelPlayer,scoringPanelEnemy})
+    {
+        if(!panel)continue;
+        bool player=panel==scoringPanelPlayer;
+        var art=panel.GetComponent<NormalScoringPortrait>() ?? panel.AddComponent<NormalScoringPortrait>();
+        art.resolve=()=>{
+            var skill=GetEquippedSkill();
+            string key=skill==ActiveSkill.Capitalist?"Capitalist":(skill==ActiveSkill.RandomHonor||skill==ActiveSkill.EnhanceHand)?"RandomHonor":"RandomMan";
+            return Resources.Load<Sprite>(player?"PlayerCutins/"+key+"_victory":"EnemyCutins/"+EnemyConfigExcel.SanitizeForResource(GetCurrentEnemyBaseNameForResources() ?? ""));
+        };
+    }
+    foreach(var eye in new[]{winCutinPortrait,playerRiichiImage,enemyRiichiImage,enemySkillCutinImage,playerSkillCutinImage})
+        if(eye&&!eye.GetComponent<NormalEyeCutin>())eye.gameObject.AddComponent<NormalEyeCutin>();
+    if(enemyWinOverlayManualRoot)
+        foreach(var eye in enemyWinOverlayManualRoot.GetComponentsInChildren<Image>(true))
+            if(eye.name=="EnemyPortrait"&&!eye.GetComponent<NormalEyeCutin>())eye.gameObject.AddComponent<NormalEyeCutin>();
+
     if (_inst != null && _inst != this) { Destroy(gameObject); return; }
     _inst = this;
     CacheTraitIconConfigStatic(); // ★追加：他シーンから使うためのstaticキャッシュ
@@ -21179,6 +21196,7 @@ public void TryLoadEnemyBattlePortraitByName(string enemyName)
              if (imageComponent != null)
              {
                  imageComponent.sprite = enemyCutinSprite; // スプライトを設定
+                 if(!imageComponent.GetComponent<NormalEyeCutin>())imageComponent.gameObject.AddComponent<NormalEyeCutin>();
                  enemyPortrait.SetActive(true); // カットインを表示準備
              }
 

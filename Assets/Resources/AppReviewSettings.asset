@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089f83bc2b524b0db3b17da7b15b3321, type: 3}
+  m_Name: AppReviewSettings
+  m_EditorClassIdentifier: 
+  enabled: 1
+  minimumCompletedRuns: 2
+  probability: 0.25
+  cooldownDays: 90
+  delaySeconds: 4
+  appStoreUrl: https://apps.apple.com/app/id6809131087
