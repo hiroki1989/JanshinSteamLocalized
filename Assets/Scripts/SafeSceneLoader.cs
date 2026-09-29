@@ -1,4 +1,4 @@
-// SafeSceneLoader.cs
+﻿// SafeSceneLoader.cs
 // ── 全てのシーン遷移を非同期ロードに置き換えるユーティリティ ──
 //
 // 【なぜ必要か】
@@ -23,6 +23,7 @@ using UnityEngine.SceneManagement;
 public static class SafeSceneLoader
 {
     private static bool _loading = false;
+    public static bool IsLoading => _loading;
 
     /// <summary>
     /// シーンを非同期で安全にロードする。
@@ -63,6 +64,19 @@ public static class SafeSceneLoader
     {
         public void Run(string sceneName)
         {
+            // Create an opaque persistent cover before the first yield. The previous
+            // dialogue/map must not become visible while the next scene loads.
+            var canvas=gameObject.AddComponent<Canvas>();
+            canvas.renderMode=RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder=32767;
+            gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+            var cover=new GameObject("SceneTransitionCover",typeof(RectTransform),typeof(UnityEngine.UI.Image));
+            cover.transform.SetParent(transform,false);
+            var rect=(RectTransform)cover.transform;
+            rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;
+            rect.offsetMin=rect.offsetMax=Vector2.zero;
+            var image=cover.GetComponent<UnityEngine.UI.Image>();
+            image.color=Color.black;image.raycastTarget=true;
             StartCoroutine(LoadCo(sceneName));
         }
 
@@ -113,6 +127,11 @@ public static class SafeSceneLoader
             while (!op.isDone)
                 yield return null;
 
+            // Scene activation precedes Start and the first UI layout rebuild.
+            // Keep the cover through those frames, even if timeScale is zero.
+            yield return null;
+            yield return null;
+            Canvas.ForceUpdateCanvases();
             // 一時オブジェクトを破棄
             SafeSceneLoader._loading = false;
             Destroy(gameObject);

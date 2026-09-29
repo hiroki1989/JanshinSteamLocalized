@@ -83,6 +83,11 @@ public class SpecialTileSceneController : MonoBehaviour
     [SerializeField] private string ownedRowBackgroundChildName = "Background"; // 行プレハブ内の背景Image(任意)
     [SerializeField] private string ownedRowEquippedMarkChildName = "EquippedMark"; // 装備中アイコンImage(任意)
 
+    [Header("Special Tile Description Layout")]
+    [SerializeField, Range(18f, 36f)] private float descriptionMaxFontSize = 30f;
+    [SerializeField, Range(14f, 28f)] private float descriptionMinFontSize = 20f;
+    [SerializeField, Range(100f, 180f)] private float ownedRowMinHeight = 126f;
+
     [Header("Resources Path (no extension)")]
     [SerializeField] private string tileSpriteResourcesPath = "Tiles/"; // Resources/Tiles/Pin5_sp_common.png 等
 
@@ -240,6 +245,88 @@ private static string GetSpecialTileRarityLabel_Local(SpecialTileSystem.Rarity r
         if (t) return t.GetComponent<TextMeshProUGUI>();
         return row.GetComponentInChildren<TextMeshProUGUI>(true);
     }
+
+    // 牌画像の右だけを説明欄にし、端末幅に合わせて本文を自動縮小する。
+    // レア度の色はリッチテキストのまま保持する。
+    private void ConfigureDescriptionText(TextMeshProUGUI text)
+    {
+        if (!text) return;
+
+        text.enableAutoSizing = true;
+        text.fontSize = descriptionMaxFontSize;
+        text.fontSizeMax = descriptionMaxFontSize;
+        text.fontSizeMin = descriptionMinFontSize;
+        text.textWrappingMode = TextWrappingModes.Normal;
+        text.overflowMode = TextOverflowModes.Overflow;
+        text.alignment = TextAlignmentOptions.TopLeft;
+        text.margin = Vector4.zero;
+    }
+
+    private void ConfigureOwnedScrollLayout()
+    {
+        if (!ownedListParent) return;
+
+        var layout = ownedListParent.GetComponent<VerticalLayoutGroup>();
+        if (!layout) return;
+
+        layout.padding = new RectOffset(8, 8, 8, 8);
+        layout.spacing = 10f;
+        layout.childControlWidth = true;
+        layout.childControlHeight = true;
+        layout.childForceExpandWidth = true;
+        layout.childForceExpandHeight = false;
+    }
+
+    private void LayoutOwnedRow(GameObject row, Image icon, TextMeshProUGUI info)
+    {
+        if (!row) return;
+
+        var layout = row.GetComponent<LayoutElement>() ?? row.AddComponent<LayoutElement>();
+        layout.minHeight = ownedRowMinHeight;
+        layout.preferredHeight = ownedRowMinHeight;
+        layout.flexibleHeight = 0f;
+
+        var background = FindOwnedRowBackgroundImage(row);
+        if (background && background.transform != row.transform)
+        {
+            var rect = background.rectTransform;
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+        }
+
+        if (icon)
+        {
+            var rect = icon.rectTransform;
+            rect.anchorMin = new Vector2(0f, 0.5f);
+            rect.anchorMax = new Vector2(0f, 0.5f);
+            rect.pivot = new Vector2(0f, 0.5f);
+            rect.anchoredPosition = new Vector2(14f, 0f);
+            rect.sizeDelta = new Vector2(74f, 102f);
+            icon.preserveAspect = true;
+        }
+
+        if (info)
+        {
+            var rect = info.rectTransform;
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = new Vector2(100f, 10f);
+            rect.offsetMax = new Vector2(-12f, -10f);
+            ConfigureDescriptionText(info);
+        }
+
+        var equippedMark = FindOwnedRowEquippedMarkImage(row);
+        if (equippedMark)
+        {
+            var rect = equippedMark.rectTransform;
+            rect.anchorMin = Vector2.one;
+            rect.anchorMax = Vector2.one;
+            rect.pivot = Vector2.one;
+            rect.anchoredPosition = new Vector2(-12f, -10f);
+        }
+    }
     private void OnClickOwnedRow(SpecialTileSystem.Entry entry)
     {
         _selectedOwnedEntry = entry;
@@ -340,6 +427,8 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
 
         if (!ownedListParent || !ownedItemPrefab) return;
 
+        ConfigureOwnedScrollLayout();
+
         var equipped = SpecialTileSystem.GetEquipped();
 
         for (int i = 0; i < _ownedCache.Count; i++)
@@ -358,12 +447,8 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
                 icon.sprite = sp;
                 icon.enabled = (sp != null);
             }
-            if (fxTMP) {
-                fxTMP.text = BuildEntryText(e); UpgradePanelPresentation.White40(fxTMP);
-                var layout=row.GetComponent<LayoutElement>()??row.AddComponent<LayoutElement>();
-                float width=Mathf.Max(220,fxTMP.rectTransform.rect.width);
-                layout.minHeight=layout.preferredHeight=Mathf.Max(((RectTransform)row.transform).rect.height,fxTMP.GetPreferredValues(fxTMP.text,width,Mathf.Infinity).y+32);
-            }
+            if (fxTMP) fxTMP.text = BuildEntryText(e);
+            LayoutOwnedRow(row, icon, fxTMP);
 
             var btn = row.GetComponent<Button>();
             if (btn)
@@ -391,6 +476,10 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
                 if (eqMark.gameObject.activeSelf != show) eqMark.gameObject.SetActive(show);
             }
         }
+
+        Canvas.ForceUpdateCanvases();
+        var content = ownedListParent as RectTransform;
+        if (content) LayoutRebuilder.ForceRebuildLayoutImmediate(content);
     }
     private Image FindOwnedRowBackgroundImage(GameObject rowGo)
     {
@@ -520,13 +609,22 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
 
         var owned = SpecialTileSystem.GetOwned();
         _ownedCache = (owned != null) ? new List<SpecialTileSystem.Entry>(owned) : new List<SpecialTileSystem.Entry>();
-        if (ownedTMP) { ownedTMP.text = BuildOwnedText(owned); UpgradePanelPresentation.White40(ownedTMP); }
+        // 旧来の一覧テキストはスクロール行と重なるため使用しない。
+        if (ownedTMP)
+        {
+            ownedTMP.text = "";
+            ownedTMP.gameObject.SetActive(false);
+        }
 
         int ownedCount = (owned != null) ? owned.Count : 0;
         if (ownedCountTMP) ownedCountTMP.text = $"{ownedCount}/{OwnedMax}";
 
         var eq = SpecialTileSystem.GetEquipped();
-        if (equippedTMP) { equippedTMP.text = BuildEquippedText(eq); UpgradePanelPresentation.White40(equippedTMP); }
+        if (equippedTMP)
+        {
+            equippedTMP.text = "";
+            equippedTMP.gameObject.SetActive(false);
+        }
         UpgradePanelPresentation.White40(resultTMP);
 
         int slots = SpecialTileSystem.GetEquipSlotsUnlocked();
@@ -668,7 +766,7 @@ RefreshAll();
             var img = equippedSlotImages[i];
             var info = (equippedSlotInfoTMPs != null && i < equippedSlotInfoTMPs.Length) ? equippedSlotInfoTMPs[i] : null;
 
-            UpgradePanelPresentation.White40(info);
+            ConfigureDescriptionText(info);
             if (!img) continue;
             bool hasEntry = (i < slots && i < eq.Count);
 

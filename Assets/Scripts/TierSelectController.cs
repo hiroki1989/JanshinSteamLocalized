@@ -362,7 +362,7 @@ public class TierSelectController : MonoBehaviour
         // Angel会話へ
         if (!string.IsNullOrEmpty(angelDialogueScene))
         {
-            NormalJourney.Play(NormalJourney.Leg.Angel, () => SceneManager.LoadScene(angelDialogueScene, LoadSceneMode.Single));
+            NormalJourney.Play(NormalJourney.Leg.Angel, () => SafeSceneLoader.Load(angelDialogueScene));
             return;
         }
 

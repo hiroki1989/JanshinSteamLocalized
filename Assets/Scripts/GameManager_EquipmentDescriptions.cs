@@ -19,6 +19,9 @@ public partial class GameManager
         BindDescription(_skillTraitShunTMP ? _skillTraitShunTMP.transform : null, ShowPassiveDescription);
         BindDescription(_skillTraitIyuTMP ? _skillTraitIyuTMP.transform : null, ShowPassiveDescription);
         BindDescription(_omamoriInfoTMP ? _omamoriInfoTMP.transform.parent : null, ShowOmamoriDescription);
+        if (authoredBattleHUD)
+            foreach (var text in authoredBattleHUD.charmDescriptions)
+                if (text) BindDescription(text.transform.parent, ShowOmamoriDescription);
         BindDescription(ofudaPanel, ShowOfudaDescription);
         foreach (var text in _ofudaInfoTMPs ?? new TMPro.TextMeshProUGUI[0])
             if (text) BindDescription(text.transform, ShowOfudaDescription);
@@ -66,7 +69,7 @@ public partial class GameManager
 
     public void ShowOmamoriDescription()
     {
-        string body = PlayerData.EquippedOmamori > 0 ? PlayerData.GetOmamoriDesc_Localized(PlayerData.EquippedOmamori) : "";
+        string body = string.Join("\n\n", PlayerData.EquippedOmamoriIds.Where(id => id > 0).Take(3).Select(PlayerData.GetOmamoriDesc_Localized));
         ShowEquipmentDescription(EquipmentText("装備お守り", "Equipped charm", "装备的护身符"),
             string.IsNullOrWhiteSpace(body) ? EquipmentText("お守りを装備していません。", "No charm equipped.", "未装备护身符。") : body);
     }

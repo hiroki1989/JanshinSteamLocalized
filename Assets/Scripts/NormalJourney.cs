@@ -56,6 +56,14 @@ public sealed class NormalJourney : MonoBehaviour
         float elapsed=0;
         while(elapsed<6.8f){elapsed+=Time.unscaledDeltaTime;float t=Mathf.SmoothStep(0,1,Mathf.Clamp01((elapsed-.6f)/5.2f));walker.rectTransform.anchoredPosition=Vector2.Lerp(from,to,t)+new Vector2(0,112+(t>0&&t<1?Mathf.Sin(elapsed*5)*1.5f:0));yield return null;}
         // Keep the opaque screen until the synchronous scene load has completed.
-        try {IsPlaying=false;arrive?.Invoke();} finally {Destroy(gameObject);}
+        try
+        {
+            arrive?.Invoke();
+            // The cover is created synchronously by Load; hide the map now so it cannot flash when the cover is released.
+            root.gameObject.SetActive(false);
+            // SafeSceneLoader owns the opaque cover until the new scene is ready.
+            while(SafeSceneLoader.IsLoading)yield return null;
+        }
+        finally {IsPlaying=false;Destroy(gameObject);}
     }
 }

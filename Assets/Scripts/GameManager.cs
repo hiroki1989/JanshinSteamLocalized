@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -667,6 +667,11 @@ private System.Collections.IEnumerator __ShowPlayerSkillCutin(string skillDispla
     var cg = playerSkillCutinRoot.GetComponent<CanvasGroup>();
     if (cg != null) cg.alpha = 1f;
 
+    if (playerSkillCutinImage)
+    {
+        var presentation=playerSkillCutinImage.GetComponent<NormalEyeCutin>() ?? playerSkillCutinImage.gameObject.AddComponent<NormalEyeCutin>();
+        presentation.Configure(playerSkillCutinTextTMP, NormalEyeCutin.EventKind.Skill);
+    }
     playerSkillCutinRoot.SetActive(true);
 
     PlayPlayerCutinAnimation(playerSkillCutinAnimator, "Skill", playerSkillCutinImage);
@@ -2398,6 +2403,7 @@ private ActiveSkill GetEquippedSkill()
 }
 private void UpdatePlayerHandAreaPositionByMeldState()
 {
+    if (authoredBattleHUD && authoredBattleHUD.handRow) return;
     if (handArea == null) return;
 
     bool hasOpenMeld =
@@ -2559,6 +2565,11 @@ private void UpdateRightInfoUI_Manual()
         out string legacySkillText);
 
     string skillActionNameText = BuildSkillActionNameText();
+    if (authoredBattleHUD && authoredBattleHUD.skillButtonLabel)
+    {
+        TryGetActiveSkillMpCost(active, out int baseCost);
+        authoredBattleHUD.skillButtonLabel.text=skillActionNameText+"\n<size=65%>MP "+ComputeFinalSkillMpCost(baseCost)+"</size>";
+    }
 
     skillNameText = BuildSkillInfoText();
     skillDescText = BuildSkillDescText();
@@ -2613,6 +2624,7 @@ private static string ExtractFirstToken(string s)
 }
 private void UpdateOmamoriIconUI_Manual()
 {
+    if (authoredBattleHUD) { authoredBattleHUD.RefreshCharms(); return; }
     ItemArtwork.Omamori(_omamoriIconImage, PlayerData.EquippedOmamori);
     if (_omamoriIconImage) {
         ItemArtwork.Rect(_omamoriIconImage.rectTransform, new Vector2(0,0), new Vector2(.27f,1), new Vector2(4,18), new Vector2(-2,-48));
@@ -2634,7 +2646,7 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
         {
             for (int i = 0; i < 3; i++)
             {
-                ofudaTexts[i] = GetGameFixedText_Local("placeholder_dash");
+                ofudaTexts[i] = authoredBattleHUD ? "ー" : GetGameFixedText_Local("placeholder_dash");
                 rarityTags[i] = "";
             }
             return;
@@ -2646,7 +2658,7 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
         {
             for (int i = 0; i < 3; i++)
             {
-                ofudaTexts[i] = GetGameFixedText_Local("placeholder_dash");
+                ofudaTexts[i] = authoredBattleHUD ? "ー" : GetGameFixedText_Local("placeholder_dash");
                 rarityTags[i] = "";
             }
             return;
@@ -2658,7 +2670,7 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
         {
             if (slot >= ids.Count)
             {
-                ofudaTexts[slot] = GetGameFixedText_Local("placeholder_dash");
+                ofudaTexts[slot] = authoredBattleHUD ? "ー" : GetGameFixedText_Local("placeholder_dash");
                 rarityTags[slot] = "";
                 continue;
             }
@@ -2666,7 +2678,7 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
             var id = ids[slot];
             if (!map.TryGetValue(id, out var def) || def == null)
             {
-                ofudaTexts[slot] = GetGameFixedText_Local("placeholder_dash");
+                ofudaTexts[slot] = authoredBattleHUD ? "ー" : GetGameFixedText_Local("placeholder_dash");
                 rarityTags[slot] = "";
                 continue;
             }
@@ -2684,7 +2696,7 @@ private void BuildOfudaInfoText_Manual_Split(out string[] ofudaTexts, out string
     {
         for (int i = 0; i < 3; i++)
         {
-            ofudaTexts[i] = GetGameFixedText_Local("placeholder_dash");
+            ofudaTexts[i] = authoredBattleHUD ? "ー" : GetGameFixedText_Local("placeholder_dash");
             rarityTags[i] = "";
         }
     }
@@ -2697,6 +2709,7 @@ private void UpdateOfudaIconsUI_Manual(string[] rarityTags)
         string rarity = rarityTags != null && i < rarityTags.Length ? rarityTags[i] : null;
         ItemArtwork.Ofuda(icon, rarity);
         if (!icon) continue;
+        if (authoredBattleHUD) continue;
         float top = 1f - (i * .29f + .13f), bottom = top - .27f;
         ItemArtwork.Rect(icon.rectTransform, new Vector2(0,bottom), new Vector2(.25f,top), new Vector2(4,4), new Vector2(-2,-4));
         if (_ofudaInfoTMPs != null && i < _ofudaInfoTMPs.Length && _ofudaInfoTMPs[i]) {
@@ -5045,9 +5058,12 @@ private void Awake()
     }
     foreach(var eye in new[]{winCutinPortrait,playerRiichiImage,enemyRiichiImage,enemySkillCutinImage,playerSkillCutinImage})
         if(eye&&!eye.GetComponent<NormalEyeCutin>())eye.gameObject.AddComponent<NormalEyeCutin>();
+    if (winCutinPortrait) winCutinPortrait.GetComponent<NormalEyeCutin>().Configure(winCutinTMP, NormalEyeCutin.EventKind.Ron);
+    if (playerRiichiImage) playerRiichiImage.GetComponent<NormalEyeCutin>().Configure(playerRiichiTextTMP, NormalEyeCutin.EventKind.Riichi);
+    if (enemyRiichiImage) enemyRiichiImage.GetComponent<NormalEyeCutin>().Configure(enemyRiichiTextTMP, NormalEyeCutin.EventKind.Riichi);
     if(enemyWinOverlayManualRoot)
         foreach(var eye in enemyWinOverlayManualRoot.GetComponentsInChildren<Image>(true))
-            if(eye.name=="EnemyPortrait"&&!eye.GetComponent<NormalEyeCutin>())eye.gameObject.AddComponent<NormalEyeCutin>();
+            if(eye.name=="EnemyPortrait") { var ink=eye.GetComponent<NormalEyeCutin>() ?? eye.gameObject.AddComponent<NormalEyeCutin>(); ink.Configure(enemyWinTitleManual, NormalEyeCutin.EventKind.Ron); ink.resolveKind=()=>_enemyLastWinWasTsumo ? NormalEyeCutin.EventKind.Tsumo : NormalEyeCutin.EventKind.Ron; }
 
     if (_inst != null && _inst != this) { Destroy(gameObject); return; }
     _inst = this;
@@ -6298,7 +6314,8 @@ catch
     }
 runGold = GameManager.RunCurrency.Get();
 if (scoreTMP)
-    scoreTMP.text = $"{GetGameFixedText_Local("score_label")}  {runScore:N0}          {runGold:N0}";
+    scoreTMP.text = authoredBattleHUD ? $"{GetGameFixedText_Local("score_label")}  {runScore:N0}" : $"{GetGameFixedText_Local("score_label")}  {runScore:N0}          {runGold:N0}";
+if (authoredBattleHUD && authoredBattleHUD.goldAmount) authoredBattleHUD.goldAmount.text = runGold.ToString("N0");
 
     // Keep HP UI always visible during match
     if (playerHPTMP && !playerHPTMP.gameObject.activeSelf) playerHPTMP.gameObject.SetActive(true);
@@ -6484,7 +6501,7 @@ private void RefreshOfferUI()
             var hlg = offerArea.GetComponent<UnityEngine.UI.HorizontalLayoutGroup>();
             if (hlg != null)
             {
-                hlg.childAlignment = TextAnchor.MiddleLeft;
+                hlg.childAlignment = authoredBattleHUD ? TextAnchor.MiddleCenter : TextAnchor.MiddleLeft;
 
                 // ★重要：左右反転（見た目だけ順番が逆になる）を必ず解除する
                 // これが true のままだと、offers[i] と offerArea.GetChild(i) が一致せず、黄色ハイライトがズレる
@@ -6822,6 +6839,7 @@ private void ApplyPlayerTenpaiWaitTileSizeIfNeeded(GameObject tileGo)
     var rt = tileGo.GetComponent<RectTransform>();
     if (rt != null)
     {
+        if (authoredBattleHUD) { rt.anchorMin=rt.anchorMax=rt.pivot=new Vector2(.5f,.5f); rt.anchoredPosition=Vector2.zero; rt.localScale=Vector3.one; }
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, playerTenpaiWaitTileSize.x);
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, playerTenpaiWaitTileSize.y);
     }
@@ -16788,6 +16806,11 @@ private IEnumerator __EnemySkills_ShowCutin_Co(string enemyName, string skillDis
         }
     }
 
+    if (enemySkillCutinImage)
+    {
+        var presentation=enemySkillCutinImage.GetComponent<NormalEyeCutin>() ?? enemySkillCutinImage.gameObject.AddComponent<NormalEyeCutin>();
+        presentation.Configure(enemySkillCutinTextTMP ? enemySkillCutinTextTMP : enemySkillCutinLabelTMP, NormalEyeCutin.EventKind.Skill);
+    }
     // ===== テキスト設定 =====
     // 旧 UI(enemySkillCutinTextTMP) / 新 UI(enemySkillCutinLabelTMP) の両方に入れておく
     if (enemySkillCutinTextTMP != null)
@@ -19245,6 +19268,7 @@ if (winCutinTMP)
     {
         bool isTsumo = __IsTsumoKind(baseWinKind) || __IsTsumoKind(label);
         bool isRon = __IsRonKind(baseWinKind) || __IsRonKind(label);
+        if (winCutinPortrait) winCutinPortrait.GetComponent<NormalEyeCutin>().Configure(winCutinTMP, isTsumo ? NormalEyeCutin.EventKind.Tsumo : NormalEyeCutin.EventKind.Ron);
 
         if (!isTsumo && !isRon)
             isRon = true;

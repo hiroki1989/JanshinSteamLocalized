@@ -3573,6 +3573,11 @@ if (enemyRiichiTextTMP)
     }
     catch { }
 
+    if (enemyRiichiImage)
+    {
+        var presentation=enemyRiichiImage.GetComponent<NormalEyeCutin>() ?? enemyRiichiImage.gameObject.AddComponent<NormalEyeCutin>();
+        presentation.Configure(enemyRiichiTextTMP, NormalEyeCutin.EventKind.Riichi);
+    }
     enemyRiichiCutinRoot.SetActive(true);
 // ★カットインが「表示された瞬間」にSE（AudioManagerへ集約）
 if (AudioManager.Instance)

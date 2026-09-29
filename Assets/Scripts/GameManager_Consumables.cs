@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -19,6 +19,11 @@ public partial class GameManager
     void EnsureConsumableButton()
     {
         if (_consumableButton || !btnMenu) return;
+        if (authoredBattleHUD && authoredBattleHUD.relicButton) {
+            _consumableButton = authoredBattleHUD.relicButton;
+            _consumableButton.onClick.AddListener(OpenConsumableInventory);
+            RefreshConsumableButton(); return;
+        }
         _consumableButton=Instantiate(btnMenu,btnMenu.transform.parent,false);
         _consumableButton.name="Button_ConsumableInventory";
         _consumableButton.onClick=new Button.ButtonClickedEvent();
