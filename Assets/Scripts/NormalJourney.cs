@@ -19,7 +19,7 @@ public sealed class NormalJourney : MonoBehaviour
     }
     void OnDestroy(){if(activeJourney==this){IsPlaying=false;activeJourney=null;}}
     static string Text(string ja,string en,string zh)=>ConsumableWindow.T(ja,en,zh);
-    static Sprite Art(string name)=>Resources.Load<Sprite>("EnemyCutins/"+name);
+    static Sprite Art(string name)=>Resources.Load<Sprite>(name=="天使"?"Sprites/Enemies/Dialogue/天使":"EnemyCutins/"+name);
     IEnumerator Travel(Leg leg,Action arrive){
         Time.timeScale=1;
         var root=SeventeenStepsUI.Rect("PilgrimageCanvas",transform,Vector2.zero,new Vector2(1920,1080));

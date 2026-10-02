@@ -211,11 +211,11 @@ public class TierSelectController : MonoBehaviour
         if (_seventeenStepsButton || !startButton) return;
         var settings=gaidenUISettings?gaidenUISettings:GaidenUISettings.Current;
         var go = new GameObject("StartSeventeenSteps", typeof(RectTransform), typeof(Image), typeof(Button));
-        go.transform.SetParent(startButton.GetComponentInParent<Canvas>().transform, false);
+        go.transform.SetParent(startButton.transform.parent, false);
         var source = startButton.GetComponent<RectTransform>();
         var rt = (RectTransform)go.transform;
-        rt.anchorMin = rt.anchorMax = new Vector2(1f,.5f);
-        rt.pivot = new Vector2(1f,.5f);
+        rt.anchorMin = rt.anchorMax = new Vector2(.5f,.5f);
+        rt.pivot = new Vector2(.5f,.5f);
         rt.anchoredPosition = settings.buttonPosition;
         rt.sizeDelta = settings.buttonSize;
         var image = go.GetComponent<Image>();
@@ -229,6 +229,9 @@ public class TierSelectController : MonoBehaviour
         }
         _seventeenStepsButton = go.GetComponent<Button>();
         _seventeenStepsButton.targetGraphic = image;
+        JanshinPanelTheme.Button(_seventeenStepsButton);
+        var visual=go.GetComponent<JanshinPanelTheme>();visual.preserveRarityGradient=true;
+        image.sprite=settings.buttonSprite?settings.buttonSprite:JanshinPanelTheme.Fill;image.color=new Color(.48f,.82f,.92f,1);
         _seventeenStepsButton.onClick.AddListener(OnClickStartSeventeenSteps);
         var labelGo = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
         labelGo.transform.SetParent(go.transform, false);

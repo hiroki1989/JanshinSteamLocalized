@@ -130,6 +130,8 @@ public string EnemySkills_GetDisplayName(string rawSkillId)
     if (string.IsNullOrEmpty(rawSkillId)) return string.Empty;
 
     string raw = rawSkillId.Trim();
+    if(EnemySkillNamesSO.TryName(raw,out var masterName))return masterName;
+
 
     if (EnemyDialogueController.TryResolveSharedEnemySkillDisplayName(raw, out var sharedDisplayName))
     {
@@ -579,6 +581,7 @@ private static string NormalizeEnemySkillKey_Local(string rawSkillId)
     if (string.IsNullOrEmpty(rawSkillId)) return "";
 
     string raw = rawSkillId.Trim();
+
     string lower = raw.ToLowerInvariant();
 
     if (lower == "anger" || raw == "怒り") return "anger";

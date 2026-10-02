@@ -11,7 +11,7 @@ public sealed class ShopRerollButton : MonoBehaviour {
         label.text=ConsumableWindow.T("リロール","Reroll","刷新");label.color=Color.black;
         UpgradePanelPresentation.Bag(button.transform,new Vector2(62,0));
         var price=SeventeenStepsUI.Label(button.transform,"100",new Vector2(123,0),new Vector2(78,58),30);price.color=Color.black;
-        var script=button.gameObject.AddComponent<ShopRerollButton>();script.button=button;script.reroll=action;
+        var script=button.gameObject.AddComponent<ShopRerollButton>();script.button=button;script.reroll=action;JanshinPanelTheme.Button(button);
         button.onClick.AddListener(()=>{if(script.reroll())AudioManager.Instance?.PlayClickSE();});
     }
     void Update(){button.GetComponentInChildren<TMP_Text>().text=ConsumableWindow.T("リロール","Reroll","刷新");button.interactable=GameManager.RunCurrency.Get()>=100;}

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -171,6 +171,7 @@ private void RefreshEnemySkillDisplayNameCache()
 public static bool TryResolveSharedEnemySkillDisplayName(string rawSkillId, out string displayName)
 {
     displayName = string.Empty;
+    if(EnemySkillNamesSO.TryName(rawSkillId,out displayName))return true;
 
     if (string.IsNullOrEmpty(rawSkillId))
         return false;

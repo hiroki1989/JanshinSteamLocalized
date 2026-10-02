@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -29,6 +29,7 @@ public void ApplyShopPresentation()
         face.color=Color.white;face.type=Image.Type.Simple;
         face.preserveAspect=false;face.enabled=true;face.raycastTarget=true;
         slot.button.targetGraphic=face;
+        JanshinPanelTheme.Apply(face,true);
         foreach(var image in host.GetComponentsInChildren<Image>(true))if(image.sprite&&image.sprite.name=="T_5_coin_bag2_")UpgradePanelPresentation.Place(image.rectTransform,host,new Vector2(-45,-116),new Vector2(36,36));
         if(slot.iconImage)slot.iconImage.transform.SetParent(host,false);
         if(slot.nameTMP)slot.nameTMP.transform.SetParent(host,false);
@@ -98,11 +99,14 @@ void Awake()
 private void OnEnable()
 {
     LocalizationManager.LanguageChanged += OnLanguageChanged;
+    GameManager.RunCurrency.Changed += RefreshCurrencyUI;
+    RefreshCurrencyUI();
 }
 
 private void OnDisable()
 {
     LocalizationManager.LanguageChanged -= OnLanguageChanged;
+    GameManager.RunCurrency.Changed -= RefreshCurrencyUI;
 }
 
 private void OnLanguageChanged(LocalizationManager.Language language)
@@ -264,6 +268,10 @@ private void RefreshOfferSlotsUI()
         RefreshEquippedOfudaUI();
         RefreshCurrencyUI();
 RefreshOfferSlotsUI();
+        if(LegendaryAcquisition.IsLegendary(o.rarity) && index<offerSlots.Length && offerSlots[index].button){
+            LegendaryAcquisition.Play(offerSlots[index].button.transform as RectTransform);
+            AudioManager.Instance?.PlayOmamoriRevealSE_ByRarity("Legendary");
+        }
     }
 private void SavePurchasedOfuda(OfudaDef def)
 {

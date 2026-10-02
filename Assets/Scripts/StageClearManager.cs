@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -769,36 +769,11 @@ private void ApplyRarityVisual(string rarity)
     // Legendary 演出（④）
     private void PlayLegendaryEffect()
     {
-        if (!useLegendaryAnimation)
-            return;
-
-        try
-        {
-            // 1) Animator が指定されていればトリガーを叩く
-            if (legendaryAnimator)
-            {
-                string trig = string.IsNullOrEmpty(legendaryTriggerName) ? "Play" : legendaryTriggerName;
-                legendaryAnimator.SetTrigger(trig);
-                return;
-            }
-
-            // 2) Resources からプレハブをロードして再生
-            if (!string.IsNullOrEmpty(legendaryPrefabPath))
-            {
-                var prefab = Resources.Load<GameObject>(legendaryPrefabPath);
-                if (prefab)
-                {
-                    Transform parent = legendaryEffectParent
-                        ? legendaryEffectParent
-                        : (omamoriDetailCanvasGroup ? omamoriDetailCanvasGroup.transform : this.transform);
-
-                    var inst = GameObject.Instantiate(prefab, parent, false);
-                    if (legendaryEffectLifetime > 0f)
-                        GameObject.Destroy(inst, legendaryEffectLifetime);
-                }
-            }
-        }
-        catch { }
+        if (!useLegendaryAnimation) return;
+        // The old animator/burst is intentionally not triggered alongside the new reveal.
+        var target = omamoriIconImage ? omamoriIconImage.rectTransform
+            : omamoriDetailCanvasGroup ? omamoriDetailCanvasGroup.transform as RectTransform : null;
+        LegendaryAcquisition.Play(target);
     }
 
 public void OnClickRewardOK()

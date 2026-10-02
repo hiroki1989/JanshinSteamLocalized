@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16857cec710b48e2a2d966dd073c0304, type: 3}
+  m_Name: EnemySkillNames
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySkillNamesSO
+  entries:
+  - id: disturb
+    japanese: "\u9B54\u5C01\u3058"
+    english: Mana Drain
+    chineseSimplified: "\u5438\u9B54"
+  - id: attack
+    japanese: "\u9244\u69CC"
+    english: Judgment Hammer
+    chineseSimplified: "\u88C1\u51B3\u4E4B\u9524"
+  - id: paralysis
+    japanese: "\u96F7\u9CF4"
+    english: Thunderstrike
+    chineseSimplified: "\u96F7\u9706"
+  - id: trick
+    japanese: "\u5E7B\u60D1"
+    english: Bewitch
+    chineseSimplified: "\u8FF7\u5FC3"
+  - id: defense
+    japanese: "\u8B77\u58C1"
+    english: Aegis
+    chineseSimplified: "\u5723\u969C"
+  - id: anger
+    japanese: "\u61A4\u6012"
+    english: Wrath
+    chineseSimplified: "\u72C2\u6012"
+  - id: poison
+    japanese: "\u546A\u3044"
+    english: Hex
+    chineseSimplified: "\u5492\u8680"

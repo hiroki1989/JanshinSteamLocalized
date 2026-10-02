@@ -13920,6 +13920,7 @@ catch
     }
     catch { }
 
+scoringPassiveHits.Clear();
 float totalGekiPct = SumTraitPctByYaku(yakuNames, SkillSetAsset.Trait.Geki, (baseGekiMul - 1f));
 float totalShunPct = SumTraitPctByYaku(yakuNames, SkillSetAsset.Trait.Shun, baseShunRate);
 float totalIyuPct  = SumTraitPctByYaku(yakuNames, SkillSetAsset.Trait.Iyu,  baseIyuRate);
@@ -15022,6 +15023,7 @@ float SumTraitPctByYaku(List<string> yakuNames, SkillSetAsset.Trait trait, float
             add += deltaPerLevel * deltaLv;
         }
 
+        RecordScoringPassive(traitNorm, trait, add);
         total += Mathf.Max(0f, add);
         countedTraitNormSet.Add(traitNorm);
     }
@@ -18447,6 +18449,7 @@ private int _dbgLastPickedHandIndex = -1;
 public static class RunCurrency
 {
     private const string Key = "RunGold";
+    public static event System.Action Changed;
 
     public static int Get()
         => UnityEngine.PlayerPrefs.GetInt(Key, 0);
@@ -18456,6 +18459,7 @@ public static class RunCurrency
         int v = Mathf.Max(0, value);
         UnityEngine.PlayerPrefs.SetInt(Key, v);
         UnityEngine.PlayerPrefs.Save();
+        Changed?.Invoke();
     }
 
     public static bool Spend(int cost)
@@ -20915,6 +20919,7 @@ private void __ApplyScoringManualUI(
     string rolesDispRaw = isPlayer ? (roles ?? "") : __NormalizeYakuDisplayText(roles ?? "");
     string rolesDisp = __LocalizeSpecialYakumanToken_Local(rolesDispRaw);
 __SetTMP(scoringRoleValue, rolesDisp);
+DecorateScoringPassives(rolesDisp, isPlayer, traitGekiPct, traitShunPct, traitIyuPct);
 __SetTMP(scoringFuHanValue, fuHan ?? "");
 
 // ★仕様変更：ツモ和了ダメージ減少時のラベルを基礎点に表示（プレイヤー25%減／敵50%減）
@@ -20939,6 +20944,7 @@ __SetTMP(scoringBasePointValue, (basePt > 0) ? $"{basePt}{_tsumoBaseLabel}" : ""
 if (!isPlayer)
 {
     __SetTMP(scoringRoleValue_Enemy, rolesDisp);
+    YakumanTextPresentation.Apply(scoringRoleValue_Enemy);
     __SetTMP(scoringFuHanValue_Enemy, fuHan ?? "");
     __SetTMP(scoringBasePointValue_Enemy, (basePt > 0) ? $"{basePt}{_tsumoBaseLabel}" : "");
 }
@@ -21275,7 +21281,7 @@ private void UpdateScoringPanelUI()
 {
 // 敵：役
 if (scoringRoleValue_Enemy)
-    scoringRoleValue_Enemy.text = __LocalizeSpecialYakumanToken_Local(__NormalizeYakuDisplayText(EnemyAddon_LastYakuText ?? ""));
+    { scoringRoleValue_Enemy.text = __LocalizeSpecialYakumanToken_Local(__NormalizeYakuDisplayText(EnemyAddon_LastYakuText ?? "")); YakumanTextPresentation.Apply(scoringRoleValue_Enemy); }
 // 敵：符・翻
 if (scoringFuHanValue_Enemy)
 {

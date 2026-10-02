@@ -524,7 +524,7 @@ StartTypewriter(body);
     if (portraitImage)
     {
         var portrait = (firstLine != null) ? firstLine.portrait : null;
-        portraitImage.sprite = portrait;
+        portraitImage.sprite = portrait ? portrait : Resources.Load<Sprite>("Sprites/Enemies/Dialogue/天使");
         portraitImage.enabled = (portraitImage.sprite != null);
         portraitImage.preserveAspect = true;
     }

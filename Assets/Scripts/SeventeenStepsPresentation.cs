@@ -204,7 +204,7 @@ public sealed partial class SeventeenStepsController
             string[] lines=summary.Split(new[]{'\n'},StringSplitOptions.RemoveEmptyEntries).OrderBy(line=>line.StartsWith("リーチ")||line.StartsWith("立直")?0:line.StartsWith("一発")?1:line.StartsWith("ドラ")?3:line.StartsWith("裏ドラ")?4:line.StartsWith("指定牌")?5:2).ToArray();
             var yaku=SeventeenStepsUI.Label(modal,"",new Vector2(-40,10),new Vector2(590,290),27);yaku.alignment=TextAlignmentOptions.TopLeft;yaku.fontSizeMin=16;
             // Reveal each yaku before the hand total, then talismans and final points.
-            foreach(var line in lines){yield return new WaitForSecondsRealtime(1f);yaku.text+=line+"\n";ScoreSound(win.points);}
+            foreach(var line in lines){yield return new WaitForSecondsRealtime(1f);yaku.text+=line+"\n";YakumanTextPresentation.Apply(yaku,false);ScoreSound(win.points);}
             yield return new WaitForSecondsRealtime(1f);
             SeventeenStepsUI.Label(modal,win.han+"翻　"+win.fu+"符\n基本点　"+win.points.ToString("N0"),new Vector2(420,65),new Vector2(400,130),34);ScoreSound(win.points);
             yield return new WaitForSecondsRealtime(1f);

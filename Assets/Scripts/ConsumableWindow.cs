@@ -31,8 +31,9 @@ public sealed class ConsumableWindow : MonoBehaviour
         var dim=Rect("Dim",go.transform,Vector2.zero,new Vector2(10000,10000)).gameObject.AddComponent<Image>(); dim.color=new Color(0,0,0,.8f);
         w.Card=Rect("ItemPurchasePanel",go.transform,Vector2.zero,new Vector2(1660,960));
         var bg=w.Card.gameObject.AddComponent<Image>(); bg.color=new Color(.96f,.95f,.85f);
+        JanshinPanelTheme.Apply(bg);w.Card.gameObject.AddComponent<JanshinThemeTextScope>();
         var border=Rect("OrnateFrame",w.Card,Vector2.zero,w.Card.sizeDelta).gameObject.AddComponent<Image>();
-        border.sprite=Resources.Load<Sprite>("Consumables/PanelFrame");border.type=Image.Type.Sliced;border.raycastTarget=false;
+        border.sprite=JanshinPanelTheme.Frame;border.type=Image.Type.Sliced;border.raycastTarget=false;
         Label("Title",w.Card,title,new Vector2(0,410),new Vector2(1450,70),40);
         w.Summary=Label("Summary",w.Card,"",new Vector2(0,345),new Vector2(1470,50),23);
         w.Detail=Label("Description",w.Card,"",new Vector2(0,-15),new Vector2(1480,105),28);
@@ -66,7 +67,7 @@ public sealed class ConsumableWindow : MonoBehaviour
             label.text=d.Name+(prices&&!StoreStyle?"\n"+d.price+" Gold":"");
             if(StoreStyle){
                 label.rectTransform.anchoredPosition=new Vector2(0,-62);label.rectTransform.sizeDelta=new Vector2(width-20,44);
-                var frame=Rect("Frame",b.transform,Vector2.zero,new Vector2(width,270)).gameObject.AddComponent<Image>();frame.sprite=Resources.Load<Sprite>("Consumables/PanelFrame");frame.type=Image.Type.Sliced;frame.pixelsPerUnitMultiplier=8;frame.raycastTarget=false;frame.transform.SetAsFirstSibling();
+                var frame=Rect("Frame",b.transform,Vector2.zero,new Vector2(width,270)).gameObject.AddComponent<Image>();frame.sprite=JanshinPanelTheme.Frame;frame.type=Image.Type.Sliced;frame.pixelsPerUnitMultiplier=8;frame.raycastTarget=false;frame.transform.SetAsFirstSibling();
                 Currency(b.transform,new Vector2(0,-108),d.price.ToString(),32);
             }
             if(sold!=null && sold.Contains(i)){b.interactable=false;label.text+="\n"+T("購入済み","Sold","已售出");}
@@ -80,6 +81,7 @@ public sealed class ConsumableWindow : MonoBehaviour
         var dr=dim.rectTransform;dr.sizeDelta=new Vector2(1920,1080);
         Card.sizeDelta=new Vector2(1920,1080);Card.GetComponent<Image>().enabled=false;
         Card.Find("OrnateFrame").gameObject.SetActive(false);
+        var storeBorder=Card.Find("UnifiedGoldBorder");if(storeBorder)storeBorder.gameObject.SetActive(false);
         var title=Card.Find("Title").GetComponent<TMP_Text>();title.rectTransform.anchoredPosition=new Vector2(0,385);title.fontSizeMax=80;title.fontSizeMin=56;title.rectTransform.sizeDelta=new Vector2(1100,110);
         Summary.rectTransform.anchoredPosition=new Vector2(0,275);
         var back=Card.Find("Close").GetComponent<Button>();StyleNavigation(back,brush,new Vector2(-740,290));
@@ -163,7 +165,7 @@ public sealed class ConsumableWindow : MonoBehaviour
         var b=rt.gameObject.AddComponent<Button>();b.targetGraphic=image;
         Label("Label",rt,title,Vector2.zero,size-new Vector2(16,8),28);
         b.onClick.AddListener(()=>{if(Application.isPlaying&&AudioManager.Instance)AudioManager.Instance.PlayClickSE();});
-        if(click!=null)b.onClick.AddListener(()=>click());return b;
+        if(click!=null)b.onClick.AddListener(()=>click());JanshinPanelTheme.Button(b);return b;
     }
     static void Dispose(GameObject go){if(Application.isPlaying)Destroy(go);else DestroyImmediate(go);}
     public void Close(){Restore();Dispose(gameObject);}

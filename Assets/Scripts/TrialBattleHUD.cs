@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,7 +69,10 @@ public sealed class TrialBattleHUD : MonoBehaviour
             int id = ids != null && i < ids.Count ? ids[i] : 0;
             if(charmDescriptions[i])
             {
-                string value = id > 0 ? PlayerData.GetOmamoriDesc_Localized(id) : EmptySlotText();
+                string value = id > 0 ? PlayerData.GetOmamoriText_EquipUI_Localized(id, true) : EmptySlotText();
+                GameManager.ApplyTraitSpriteAssetToTMPAnywhere(charmDescriptions[i]);
+                charmDescriptions[i].richText = true;
+                value = GameManager.RenderConsumableDescriptionAnywhere(value);
                 if(charmDescriptions[i].text != value) charmDescriptions[i].text = value;
             }
             if(i < charmIcons.Length && charmIcons[i]) ItemArtwork.Omamori(charmIcons[i], id);

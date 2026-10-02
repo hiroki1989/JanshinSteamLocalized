@@ -117,10 +117,10 @@ public static class UpgradePanelPresentation
     static readonly System.Collections.Generic.Dictionary<Color,Sprite> gradients=new System.Collections.Generic.Dictionary<Color,Sprite>();
     public static Sprite RarityGradient(Color color)
     {
-        color=Color.Lerp(color,new Color(1f,.99f,.93f),.55f);color.a=1;
+        color=Color.Lerp(new Color(.035f,.047f,.055f),color,.22f);color.a=1;
         if(gradients.TryGetValue(color,out var sprite))return sprite;
         var texture=new Texture2D(2,2,TextureFormat.RGBA32,false);texture.wrapMode=TextureWrapMode.Clamp;
-        texture.SetPixels(new[]{color,color,new Color(1f,.99f,.88f),new Color(1f,.99f,.88f)});texture.Apply();
+        texture.SetPixels(new[]{color,color,new Color(.055f,.067f,.08f),new Color(.055f,.067f,.08f)});texture.Apply();
         sprite=Sprite.Create(texture,new Rect(0,0,2,2),Vector2.one*.5f,1);gradients[color]=sprite;return sprite;
     }
 
@@ -131,7 +131,7 @@ public static class UpgradePanelPresentation
     }
     public static void MoveText(TMP_Text t,Transform parent,Vector2 pos,Vector2 size,float font)
     {
-        Place(t.rectTransform,parent,pos,size);t.color=Color.white;t.outlineColor=Color.black;t.outlineWidth=.22f;
+        Place(t.rectTransform,parent,pos,size);t.color=JanshinPanelTheme.Ivory;if(t.isActiveAndEnabled&&t.fontSharedMaterial){t.outlineColor=Color.black;t.outlineWidth=.22f;}
         t.fontSizeMax=font;t.fontSizeMin=20;t.enableAutoSizing=true;t.alignment=TextAlignmentOptions.Center;t.margin=Vector4.zero;
         var button=t.GetComponentInParent<Button>();
         if(button && button.transform.Find("PresentationFrame"))Black40(t);
@@ -166,12 +166,13 @@ public static class UpgradePanelPresentation
     public static void Card(Button button,Transform root,Vector2 pos,Vector2 size)
     {
         if(!button)return;
+        JanshinPanelTheme.Button(button);
         Place((RectTransform)button.transform,root,pos,size);
         var oldGradient=button.GetComponent<UIGradient>();if(oldGradient)oldGradient.enabled=false;
         var img=button.GetComponent<Image>();if(img){img.sprite=null;img.color=new Color(.95f,.95f,.89f);button.targetGraphic=img;}
         foreach(var image in button.GetComponentsInChildren<Image>(true))if(image.transform!=button.transform&&!image.name.StartsWith("Presentation"))image.enabled=false;
         var border=button.transform.Find("PresentationFrame")as RectTransform;
-        if(!border){border=ConsumableWindow.Rect("PresentationFrame",button.transform,Vector2.zero,size);var im=border.gameObject.AddComponent<Image>();im.sprite=Resources.Load<Sprite>("Consumables/PanelFrame");im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=8;im.raycastTarget=false;}
+        if(!border){border=ConsumableWindow.Rect("PresentationFrame",button.transform,Vector2.zero,size);var im=border.gameObject.AddComponent<Image>();im.sprite=JanshinPanelTheme.Frame;im.type=Image.Type.Sliced;im.pixelsPerUnitMultiplier=8;im.raycastTarget=false;}
         Place(border,button.transform,Vector2.zero,size);border.SetAsFirstSibling();
         var label=button.GetComponentsInChildren<TMP_Text>(true).FirstOrDefault();
         if(label)MoveText(label,button.transform,new Vector2(0,size.y>180?85:0),new Vector2(size.x-40,size.y>180?70:size.y-20),36);
@@ -190,7 +191,7 @@ public static class UpgradePanelPresentation
                 Place((RectTransform)b.transform,row,new Vector2((i++-1)*490,0),new Vector2(450,name=="SlotsRow"?220:300));
                 // Keep the rarity gradient and item-art layout supplied by the store.
                 var frame=b.transform.Find("PresentationFrame")as RectTransform;
-                if(!frame){frame=ConsumableWindow.Rect("PresentationFrame",b.transform,Vector2.zero,((RectTransform)b.transform).sizeDelta);var image=frame.gameObject.AddComponent<Image>();image.sprite=Resources.Load<Sprite>("Consumables/PanelFrame");image.type=Image.Type.Sliced;image.pixelsPerUnitMultiplier=8;image.raycastTarget=false;}
+                if(!frame){frame=ConsumableWindow.Rect("PresentationFrame",b.transform,Vector2.zero,((RectTransform)b.transform).sizeDelta);var image=frame.gameObject.AddComponent<Image>();image.sprite=JanshinPanelTheme.Frame;image.type=Image.Type.Sliced;image.pixelsPerUnitMultiplier=8;image.raycastTarget=false;}
                 frame.sizeDelta=((RectTransform)b.transform).sizeDelta;frame.SetAsLastSibling();
                 foreach(var text in b.GetComponentsInChildren<TMP_Text>(true)){Black40(text);}
             }

@@ -844,11 +844,14 @@ RefreshCurrentHpMpText();
 private void OnEnable()
 {
     LocalizationManager.LanguageChanged += OnLanguageChanged_Local;
+    GameManager.RunCurrency.Changed += RefreshGoldText;
+    RefreshGoldText();
 }
 
 private void OnDisable()
 {
     LocalizationManager.LanguageChanged -= OnLanguageChanged_Local;
+    GameManager.RunCurrency.Changed -= RefreshGoldText;
     CloseSelectedTileShop();
 }
 
@@ -933,6 +936,9 @@ public void OnClickToggleDeckPanel()
     panel.SetActive(next);
     if (next)
     {
+        // ★追加：最前面に表示させる
+        panel.transform.SetAsLastSibling();
+
         RefreshDeckCountLabels();
         RefreshDeckIconRows();
         ReflowDeckLayout(); // AUTO時だけ効く（MANUAL時は中でreturn）

@@ -313,7 +313,7 @@ private static string GetSpecialTileRarityLabel_Local(SpecialTileSystem.Rarity r
             rect.anchorMin = Vector2.zero;
             rect.anchorMax = Vector2.one;
             rect.offsetMin = new Vector2(100f, 10f);
-            rect.offsetMax = new Vector2(-12f, -10f);
+            rect.offsetMax = new Vector2(-60f, -12f);
             ConfigureDescriptionText(info);
         }
 
@@ -732,6 +732,8 @@ RefreshAll();
             }
             resultGroup.alpha = 1f;
         }
+        if(e.rarity==SpecialTileSystem.Rarity.Legendary)
+            LegendaryAcquisition.Play(resultTileImage ? resultTileImage.rectTransform : resultTMP ? resultTMP.rectTransform : null);
     }
 
     private void OnClickExpandSlot()

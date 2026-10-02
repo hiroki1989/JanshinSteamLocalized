@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +101,14 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         if(d==null||offers==null||!offers.Contains(d)||offersRemaining<=0)return;
         if(replace>=0)SeventeenStepsMode.Current.ofuda[replace]=d.id;else SeventeenStepsMode.Current.ofuda.Add(d.id);
         SeventeenStepsMode.Save();offers[Array.IndexOf(offers,d)]=null;
-        if(--offersRemaining>0){RenderOffers();return;}CloseModal();StartCoroutine(TravelToGod());
+        bool legendary=LegendaryAcquisition.IsLegendary(d.Rarity);
+        if(--offersRemaining>0){RenderOffers();if(legendary){LegendaryAcquisition.Play(root);AudioManager.Instance?.PlayOmamoriRevealSE_ByRarity("Legendary");}return;}
+        if(legendary)StartCoroutine(LegendaryOfudaDeparture());else{CloseModal();StartCoroutine(TravelToGod());}
+    }
+    IEnumerator LegendaryOfudaDeparture(){
+        busy=true;LegendaryAcquisition.Play(root);AudioManager.Instance?.PlayOmamoriRevealSE_ByRarity("Legendary");
+        yield return new WaitForSecondsRealtime(1.6f);
+        yield return TravelToGod();
     }
     IEnumerator StartRound()
     {
