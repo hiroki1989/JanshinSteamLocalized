@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,8 @@ public sealed partial class SeventeenStepsController
     // Preview the actual scoring rules for every possible wait, before committing the hand.
     void RenderHandPreview(List<int> hand){
         var possible=SeventeenStepsRules.Waits(hand).OrderBy(t=>t).ToArray();
-        SeventeenStepsUI.InfoBacking(content,new Vector2(0,410),new Vector2(1250,135));
-        if(possible.Length==0){SeventeenStepsUI.Label(content,"役・翻数プレビュー　テンパイなし",new Vector2(0,410),new Vector2(1200,100),28);return;}
+        SeventeenStepsUI.TablePanel(content,new Vector2(0,-350),new Vector2(1250,135));
+        if(possible.Length==0){SeventeenStepsUI.Label(content,"役・翻数プレビュー　テンパイなし",new Vector2(0,-350),new Vector2(1200,100),28);return;}
         bool riichi=SeventeenStepsRules.CanDeclare(hand,doraIndicator,false,UnusedDesignated());
         var scores=possible.Select(t=>SeventeenStepsRules.ApplyDesignatedPenalty(
             SeventeenStepsRules.EvaluateRound(hand,t,riichi,doraIndicator,-1),UnusedDesignated())).ToArray();
@@ -23,13 +23,13 @@ public sealed partial class SeventeenStepsController
         var roles=perWait.SelectMany(a=>a).Distinct().ToArray();
         int low=scores.Min(w=>w.han),high=scores.Max(w=>w.han);
         string range=low==high?low+"翻":low+"～"+high+"翻";
-        var heading=SeventeenStepsUI.Label(content,"役・翻数　"+range+"　"+(riichi?"リーチ後想定":"リーチなし")+"・裏ドラ等を除く　<color=#FFBA66>橙：待ち次第</color>",new Vector2(0,456),new Vector2(1220,30),24);
+        var heading=SeventeenStepsUI.Label(content,"役・翻数　"+range+"　"+(riichi?"リーチ後想定":"リーチなし")+"・裏ドラ等を除く　<color=#FFBA66>橙：待ち次第</color>",new Vector2(0,-300),new Vector2(1220,30),24);
         heading.color=Color.white;
         if(roles.Length==0)roles=new[]{"成立役なし"};
         int rows=(roles.Length+2)/3;
         for(int column=0;column<3;column++){
             var lines=roles.Skip(column*rows).Take(rows).Select(role=>perWait.All(a=>a.Contains(role))?role:"<color=#FFBA66>"+role+"（候補）</color>");
-            var label=SeventeenStepsUI.Label(content,string.Join("\n",lines),new Vector2((column-1)*410,393),new Vector2(400,90),24);
+            var label=SeventeenStepsUI.Label(content,string.Join("\n",lines),new Vector2((column-1)*410,-362),new Vector2(400,90),24);
             label.color=Color.white;label.alignment=TextAlignmentOptions.TopLeft;
             label.enableAutoSizing=true;label.fontSizeMin=6;label.fontSizeMax=24;
             label.overflowMode=TextOverflowModes.Overflow;
@@ -120,13 +120,13 @@ public sealed partial class SeventeenStepsController
             SeventeenStepsUI.TablePanel(content,new Vector2(0,-160),new Vector2(1250,250));
             RenderWinds();
             for(int i=0;i<dealt;i++){
-                Tile(content,deck[i],DealPosition(i,false),new Vector2(63,86),null);
-                SeventeenStepsUI.Picture(content,BackSprite,DealPosition(i,true),new Vector2(55,72));
+                Tile(content,deck[i],DealPosition(i,false),new Vector2(62,86),null);
+                SeventeenStepsUI.Picture(content,BackSprite,DealPosition(i,true),new Vector2(62,86));
             }
-            for(int i=0;i<12;i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-360+i*42,65),new Vector2(40,56));
+            for(int i=0;i<12;i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-220+i*40,65),new Vector2(40,56));
             var flying=new List<RectTransform>();var destinations=new List<Vector2>();
             for(int side=0;side<2;side++)for(int j=0;j<count;j++){
-                var img=SeventeenStepsUI.Picture(content,side==0?Resources.Load<Sprite>("Sprites/Tiles/"+SeventeenStepsRules.Tiles[deck[dealt+j]]):BackSprite,new Vector2(-140,65),new Vector2(63,86));
+                var img=SeventeenStepsUI.Picture(content,side==0?Resources.Load<Sprite>("Sprites/Tiles/"+SeventeenStepsRules.Tiles[deck[dealt+j]]):BackSprite,new Vector2(-140,65),new Vector2(62,86));
                 flying.Add(img.rectTransform);destinations.Add(DealPosition(dealt+j,side==1));
             }
             AudioManager.Instance?.PlayOpeningHandDealGroupSE();float start=Time.realtimeSinceStartup;
@@ -134,20 +134,20 @@ public sealed partial class SeventeenStepsController
         }
         yield return new WaitForSecondsRealtime(.35f);
     }
-    Vector2 DealPosition(int i,bool enemy)=>new Vector2(-560+i%17*70,enemy?220-i/17*76:-100-i/17*120);
+    Vector2 DealPosition(int i,bool enemy)=>new Vector2(-496+i%17*62,enemy?220-i/17*76:-100-i/17*120);
     void RenderOpponent(bool construction){
         SeventeenStepsUI.TablePanel(content,new Vector2(0,300),new Vector2(1250,76),true);
         SeventeenStepsUI.TablePanel(content,new Vector2(0,188),new Vector2(1250,143),true);
-        for(int i=0;i<(construction&&!enemyReady?0:13);i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-336+i*56,300),new Vector2(48,65));
+        for(int i=0;i<(construction&&!enemyReady?0:13);i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-288+i*48,300),new Vector2(48,65));
         int count=construction?(enemyReady?21:34):(enemyCandidates?.Count??21);
-        for(int i=0;i<count;i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-560+i%17*70,220-i/17*67),new Vector2(44,58));
+        for(int i=0;i<count;i++)SeventeenStepsUI.Picture(content,BackSprite,new Vector2(-352+i%17*44,220-i/17*67),new Vector2(44,60));
     }
     void RenderIndicators(Transform host,bool revealUra=false){
         SeventeenStepsUI.InfoBacking(host,new Vector2(800,-150),new Vector2(280,45));
         SeventeenStepsUI.Label(host,"ドラ表示牌",new Vector2(800,-150),new Vector2(270,40),23);
-        Tile(host,doraIndicator,new Vector2(755,-212),new Vector2(52,72),null);
-        if(revealUra)Tile(host,uraIndicator,new Vector2(835,-212),new Vector2(52,72),null);
-        else SeventeenStepsUI.Picture(host,BackSprite,new Vector2(835,-212),new Vector2(52,72));
+        Tile(host,doraIndicator,new Vector2(774,-212),new Vector2(52,72),null);
+        if(revealUra)Tile(host,uraIndicator,new Vector2(826,-212),new Vector2(52,72),null);
+        else SeventeenStepsUI.Picture(host,BackSprite,new Vector2(826,-212),new Vector2(52,72));
     }
     IEnumerator NormalRonCutin(bool player){
         CloseModal();modal=SeventeenStepsUI.Rect("RonCutinOnce",root,Vector2.zero,new Vector2(10000,10000));modal.gameObject.AddComponent<Image>().color=new Color(0,0,0,.65f);
@@ -184,16 +184,18 @@ public sealed partial class SeventeenStepsController
         SeventeenStepsUI.Label(host,d.name+"のお札",new Vector2(70,45),new Vector2(220,90),29);
         SeventeenStepsUI.Label(host,d.Description,new Vector2(70,-72),new Vector2(220,120),25);
     }
-    static void Frame(Transform host,Vector2 size){var frame=SeventeenStepsUI.Picture(host,Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,size);frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=5;}
+    static void Frame(Transform host,Vector2 size){if(host.Find("UnifiedGoldBorder"))return;var frame=SeventeenStepsUI.Picture(host,JanshinPanelTheme.Frame,Vector2.zero,size);frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=5;}
     IEnumerator ScorePresentation(bool playerWon,SeventeenStepsRules.Win win,int tile,int points){
         NewModal(win==null?"流局":playerWon?"和了・点数計算":"敵の和了・点数計算");
+        SeventeenStepsUI.TablePanel(modal,new Vector2(-75,5),new Vector2(640,340));
+        SeventeenStepsUI.TablePanel(modal,new Vector2(365,5),new Vector2(300,340));
         if(win!=null){
-            var winner=SeventeenStepsUI.Picture(modal,CutinArt(playerWon),new Vector2(590,-105),new Vector2(210,200));
+            var winner=SeventeenStepsUI.Picture(modal,CutinArt(playerWon),new Vector2(625,15),new Vector2(210,330));
             winner.name="WinningCharacter";winner.raycastTarget=false;
         }
         var shownHand=win!=null&&playerWon?playerHand:enemyHand;
-        for(int i=0;i<shownHand.Count;i++)Tile(modal,shownHand[i],new Vector2(-560+i*77,210),new Vector2(66,90),null);
-        if(tile>=0)Tile(modal,tile,new Vector2(540,210),new Vector2(66,90),null,true);
+        for(int i=0;i<shownHand.Count;i++)Tile(modal,shownHand[i],new Vector2(-429+i*66,210),new Vector2(66,90),null);
+        if(tile>=0)Tile(modal,tile,new Vector2(-429+shownHand.Count*66,210),new Vector2(66,90),null,true);
         if(win==null){SeventeenStepsUI.Label(modal,(playerRiichi!=enemyRiichi?(playerRiichi?"プレイヤー　+1,000点":"敵　+1,000点"):"両者　0点"),new Vector2(0,15),new Vector2(1180,160),35);}
         else{
             SeventeenStepsUI.Label(modal,"ドラ表示牌",new Vector2(-500,110),new Vector2(260,45),25);Tile(modal,doraIndicator,new Vector2(-520,28),new Vector2(62,84),null);
@@ -202,18 +204,27 @@ public sealed partial class SeventeenStepsController
             string summary=System.Text.RegularExpressions.Regex.Replace(win.detail??"",@"\s*\|\s*\d+翻\s*\d+符","").Replace(" + ","\n");
             summary=summary.Replace("混全帯么九","チャンタ").Replace("純全帯么九","純チャン").Replace("断么九","タンヤオ");
             string[] lines=summary.Split(new[]{'\n'},StringSplitOptions.RemoveEmptyEntries).OrderBy(line=>line.StartsWith("リーチ")||line.StartsWith("立直")?0:line.StartsWith("一発")?1:line.StartsWith("ドラ")?3:line.StartsWith("裏ドラ")?4:line.StartsWith("指定牌")?5:2).ToArray();
-            var yaku=SeventeenStepsUI.Label(modal,"",new Vector2(-40,10),new Vector2(590,290),27);yaku.alignment=TextAlignmentOptions.TopLeft;yaku.fontSizeMin=16;
+            var yaku=SeventeenStepsUI.Label(modal,"",new Vector2(-65,5),new Vector2(590,300),27);yaku.alignment=TextAlignmentOptions.TopLeft;yaku.fontSizeMin=16;
             // Reveal each yaku before the hand total, then talismans and final points.
             foreach(var line in lines){yield return new WaitForSecondsRealtime(1f);yaku.text+=line+"\n";YakumanTextPresentation.Apply(yaku,false);ScoreSound(win.points);}
             yield return new WaitForSecondsRealtime(1f);
-            SeventeenStepsUI.Label(modal,win.han+"翻　"+win.fu+"符\n基本点　"+win.points.ToString("N0"),new Vector2(420,65),new Vector2(400,130),34);ScoreSound(win.points);
+            SeventeenStepsUI.Label(modal,win.han+"翻"+(win.points>=(playerWon?8000:12000)?"":"　"+win.fu+"符")+"\n"+ScoreLimitLabel(win,playerWon)+"　"+win.points.ToString("N0"),new Vector2(365,70),new Vector2(280,130),34);ScoreSound(win.points);
             yield return new WaitForSecondsRealtime(1f);
             var triggered=playerWon?SeventeenStepsMode.Current.ofuda.Select(id=>SeventeenStepsOfuda.All[id]).Where(d=>win.keys.Contains(d.key)).ToArray():Array.Empty<SeventeenStepsOfuda.Definition>();
-            SeventeenStepsUI.Label(modal,triggered.Length==0?"お札加点　なし":string.Join("\n",triggered.Select(d=>d.name+" ×"+d.Multiplier.ToString("0.0"))),new Vector2(280,-75),new Vector2(270,160),28);ScoreSound(win.points);
+            for(int i=0;i<triggered.Length;i++){
+                var d=triggered[i];float y=-40-i*54;
+                var icon=SeventeenStepsUI.Picture(modal,null,new Vector2(253,y),new Vector2(48,48));ItemArtwork.Ofuda(icon,d.Rarity);
+                SeventeenStepsUI.Label(modal,d.name+" ×"+d.Multiplier.ToString("0.0"),new Vector2(385,y),new Vector2(220,50),26);
+            }
+            if(triggered.Length>0)ScoreSound(win.points);
             yield return new WaitForSecondsRealtime(1f);ScoreSound(points);
             SeventeenStepsUI.Label(modal,"獲得点数　"+points.ToString("N0")+"点",new Vector2(0,-250),new Vector2(1200,75),42);
         }
         SeventeenStepsUI.Button(modal,SeventeenStepsMode.EnemyMatchFinished?"対局結果":"次の局へ",new Vector2(0,-325),new Vector2(430,65),()=>{AudioManager.Instance?.PlayScoringPanelOkSE();Continue();});
+    }
+    static string ScoreLimitLabel(SeventeenStepsRules.Win win,bool player){
+        int child=player?win.points:Mathf.RoundToInt(win.points/1.5f);
+        return child>=32000?"役満":child>=24000?"三倍満":child>=16000?"倍満":child>=12000?"跳満":child>=8000?"満貫":"基本点";
     }
     void ScoreSound(int points){if(points>=32000)AudioManager.Instance?.PlayScoringStepYakumanOrAboveSE();else if(points>=8000)AudioManager.Instance?.PlayScoringStepManganToYakumanSE();else AudioManager.Instance?.PlayScoringStepUnderManganSE();}
 }

@@ -19,6 +19,10 @@ public partial class GameManager : MonoBehaviour
     // Attach watchers on enable so tiles get drag components whenever UI is rebuilt.
     private void OnEnable()
     {
+        SpecialTileSystem.EquipmentChanged-=SpecialTilePassives_Refresh;
+        SpecialTileSystem.EquipmentChanged+=SpecialTilePassives_Refresh;
+        LocalizationManager.LanguageChanged-=SpecialTilePassives_OnLanguageChanged;
+        LocalizationManager.LanguageChanged+=SpecialTilePassives_OnLanguageChanged;
         TryAttachAreaWatcher(handArea, SwapArea.Hand);
         TryAttachAreaWatcher(offerArea, SwapArea.Offer);
         // Initial attach (in case children already exist)

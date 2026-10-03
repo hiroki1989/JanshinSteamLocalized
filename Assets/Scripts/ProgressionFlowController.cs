@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -216,6 +216,7 @@ public void StartNewRunFromMenu()
     // ★変更: 勝利→強化画面遷移時にインタースティシャル広告を挟む
     public void GoFromBattleWinToUpgrade()
     {
+        PlayerPrefs.SetInt(MissionRewardSettlement.WonKey,1);PlayerPrefs.Save();
         if(NormalJourney.IsPlaying)return;
         ClearFinishedBattleResume();
         var adMgr = InterstitialAdManager.Instance;
@@ -230,6 +231,7 @@ public void StartNewRunFromMenu()
     }
     public void GoFromBattleLoseToReward()
     {
+        PlayerPrefs.SetInt(MissionRewardSettlement.WonKey,0);PlayerPrefs.Save();
         ClearFinishedBattleResume();
         // 「敗北」会話：会話後は 報酬(StageClear) へ
         PlayerPrefs.SetString(KeyAngelMode, "Defeat");
@@ -240,6 +242,7 @@ public void StartNewRunFromMenu()
     }
     public void GoFromBattleClearToRewardViaAngel()
     {
+        PlayerPrefs.SetInt(MissionRewardSettlement.WonKey,1);PlayerPrefs.Save();
         // 「クリア」会話：会話後は 報酬(StageClear) へ
         PlayerPrefs.SetString(KeyAngelMode, "Clear");
         PlayerPrefs.SetString(KeyAngelNextScene, rewardScene);
@@ -255,6 +258,7 @@ public void StartNewRunFromMenu()
     // ===== 裏ボス（ハーデス）導線：ゼウス役満撃破→天使導入会話 =====
     public void GoFromZeusClearToSecretAngelIntro()
     {
+        MissionRewardSettlement.DeferCurrent();
         PlayerPrefs.SetString(KeyAngelMode, "SecretHadesIntro");
         PlayerPrefs.SetString(KeyAngelNextScene, enemyConversationScene);
         PlayerPrefs.Save();
@@ -293,6 +297,7 @@ public void StartNewRunFromMenu()
     // ===== 裏ボス（ハーデス）導線：ハーデス撃破→天使クリア会話 =====
     public void GoFromSecretHadesClearToSecretAngelClear()
     {
+        PlayerPrefs.SetInt(MissionRewardSettlement.WonKey,1);PlayerPrefs.Save();
         PlayerPrefs.SetString(KeyAngelMode, "SecretHadesClear");
         PlayerPrefs.SetString(KeyAngelNextScene, rewardScene);
         PlayerPrefs.Save();

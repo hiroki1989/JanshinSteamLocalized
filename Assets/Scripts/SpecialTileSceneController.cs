@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -414,7 +414,7 @@ private void PlayBuySE_ByRarity(SpecialTileSystem.Rarity rarity)
 
     if (clip != null)
     {
-        try { buySESource.PlayOneShot(clip); } catch { }
+        try { AudioManager.NotifyUserSound(); buySESource.PlayOneShot(clip); } catch { }
     }
 }
     private void RefreshOwnedScrollList()

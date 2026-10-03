@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -258,9 +258,9 @@ private void ApplyOmamoriEffectScalesToPlayerData()
 
     PlayerData.SetRuntimeEffectScales(rows);
 }
-private void Start()
+private System.Collections.IEnumerator Start()
 {
-    if (!isRewardScene) return;
+    if (!isRewardScene) yield break;
 
     WireOwnedPanelUI();
     PopulateRewardUI();
@@ -268,9 +268,11 @@ private void Start()
     RefreshOwnedCountUI();
     UpdateRewardOkLock();
 
+    yield return MissionRewardView.Present(PlayerPrefs.GetInt(MissionRewardSettlement.WonKey,0)!=0);
+
     // ★追加：ハーデス撃破の追加神器があるなら、シーン到達直後に結果パネルを出す
     if (TryShowBonusUniqueOmamoriPanel_OnRewardScene())
-        return;
+        yield break;
 
     // ★追加：ゼウス撃破後は報酬画面で宝石獲得結果パネルを表示（確定1個）
     TryProcessPendingGemReward_OnRewardScene();
@@ -783,6 +785,9 @@ public void OnClickRewardOK()
     {
         RefreshOwnedCountUI();
         UpdateRewardOkLock();
+        var language=LocalizationManager.Instance?LocalizationManager.Instance.CurrentLanguage:LocalizationManager.Language.Japanese;
+        string message=language==LocalizationManager.Language.English?"You have too many Omamori. Please discard an Omamori before returning to the menu.":language==LocalizationManager.Language.ChineseSimplified?"御守持有数量已超过上限。请丢弃御守。":"お守りの所持数が超過しています。お守りを破棄してください。";
+        SkillDescriptionPopup.Show(transform,language==LocalizationManager.Language.English?"Inventory full":language==LocalizationManager.Language.ChineseSimplified?"持有数量超限":"所持数の上限",message,null);
         return;
     }
 
@@ -835,7 +840,7 @@ private void UpdateRewardOkLock()
     bool over = PlayerData.OwnedOmamori.Count > PlayerData.MaxOwnedOmamori;
 
     if (rewardOkButton)
-        rewardOkButton.interactable = !over;
+        rewardOkButton.interactable = true; // Click explains the capacity limit; handler still blocks leaving.
 
     if (overCapHintTMP)
         overCapHintTMP.text = over ? GetStageClearFixedText_Local("over_cap_hint") : "";
@@ -1168,6 +1173,7 @@ private void ResetEnemyProgressionSafe()
 }
 public static void ResetEnemyProgressionNow()
 {
+    DevilContracts.EndRun();
     try {
         // 直接 PlayerPrefs と常駐進行を初期化
         PlayerPrefs.SetInt   ("CurrentEnemyIndex", 0);
@@ -1350,7 +1356,7 @@ private void PlayRewardSE(AudioClip clip)
 {
     if (rewardSESource != null && clip != null)
     {
-        try { rewardSESource.PlayOneShot(clip); } catch { }
+        try { AudioManager.NotifyUserSound(); rewardSESource.PlayOneShot(clip); } catch { }
     }
 }
 

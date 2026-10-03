@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -248,79 +248,14 @@ private IEnumerator __ShowDemoEndCutinThen(System.Action next)
     }
 }
 private int GetTraitEffectiveLevelForScoring(
-    SkillSetAsset hostSet,
-    string activeSkillName,
-    SkillSetAsset.Trait trait,
-    string yakuName)
+    SkillSetAsset hostSet,string activeSkillName,SkillSetAsset.Trait trait,string yakuName)
 {
-    int baseLv = 0;
-
-    try
-    {
-        if (hostSet != null && !string.IsNullOrEmpty(activeSkillName) && !string.IsNullOrEmpty(yakuName))
-        {
-            baseLv = Mathf.Max(0, hostSet.GetTraitYakuLevel(activeSkillName, trait, yakuName));
-            if (baseLv > 0) baseLv += RunConsumables.TraitBonus(trait);
-        }
-    }
-    catch
-    {
-        baseLv = 0;
-    }
-
-    int specialBonus = 0;
-
-    try
-    {
-        string target = NormalizeTraitJudgeYakuName_Local(yakuName);
-
-        if (!string.IsNullOrEmpty(target))
-        {
-            if (_specialTileTraitLvBonusThisScoring != null)
-            {
-                foreach (var kv in _specialTileTraitLvBonusThisScoring)
-                {
-                    string k = NormalizeTraitJudgeYakuName_Local(kv.Key);
-                    if (string.IsNullOrEmpty(k)) continue;
-                    if (!string.Equals(k, target, StringComparison.OrdinalIgnoreCase)) continue;
-
-                    specialBonus += Mathf.Max(0, kv.Value);
-                }
-            }
-
-            if (specialBonus <= 0)
-            {
-                Dictionary<string, int> equippedMap = null;
-
-                try
-                {
-                    equippedMap = SpecialTileSystem.GetEquippedTraitBonusMap();
-                }
-                catch
-                {
-                    equippedMap = null;
-                }
-
-                if (equippedMap != null)
-                {
-                    foreach (var kv in equippedMap)
-                    {
-                        string k = NormalizeTraitJudgeYakuName_Local(kv.Key);
-                        if (string.IsNullOrEmpty(k)) continue;
-                        if (!string.Equals(k, target, StringComparison.OrdinalIgnoreCase)) continue;
-
-                        specialBonus += Mathf.Max(0, kv.Value);
-                    }
-                }
-            }
-        }
-    }
-    catch
-    {
-        specialBonus = 0;
-    }
-
-    return Mathf.Max(0, baseLv + specialBonus);
+    int level=hostSet!=null&&!string.IsNullOrEmpty(activeSkillName)&&!string.IsNullOrEmpty(yakuName)
+        ?hostSet.GetTraitYakuLevel(activeSkillName,trait,yakuName):0;
+    level=UnityEngine.Mathf.Max(0,ContractsTraitLevel(level,activeSkillName,trait,yakuName));
+    if(level>0)level+=RunConsumables.TraitBonus(trait);
+    // Always use the equipped loadout, never the previous win's scoring cache.
+    return level+SpecialTileSystem.GetEquippedTraitBonusLv(yakuName);
 }
 private void AddSpecialTileTraitBonusPacked_Local(string packed)
 {
@@ -470,6 +405,7 @@ private bool IsCapitalistEquippedForHadesRelic_Local()
 
 private static string NormalizeTraitJudgeYakuName_Local(string rawYakuName)
 {
+    rawYakuName=SpecialTilePassiveBonuses.Normalize(rawYakuName);
     if (string.IsNullOrEmpty(rawYakuName))
         return "";
 
@@ -756,6 +692,8 @@ private IEnumerator WaitPlayerCutinAnimationOrSeconds(CutinSpriteAnimator animat
 }
 private void OnDisable()
 {
+    SpecialTileSystem.EquipmentChanged-=SpecialTilePassives_Refresh;
+    LocalizationManager.LanguageChanged-=SpecialTilePassives_OnLanguageChanged;
     if (_consumableWindow) _consumableWindow.Close();
     __CleanupFirstMatchTutorial();
     if (_preparedForSceneUnload)
@@ -891,7 +829,7 @@ private void __StartScoringStepReveal(bool attackerIsPlayer)
     __StopScoringStepReveal();
 
     // ステップ対象が無ければ何もしない（デグレ防止）
-    var roots = attackerIsPlayer ? scoringStepRoots_Player : scoringStepRoots_Enemy;
+    var roots = AppliedScoringStepRoots(attackerIsPlayer);
     if (roots == null || roots.Count == 0)
     {
         return;
@@ -920,7 +858,7 @@ private void __StartScoringStepReveal(bool attackerIsPlayer)
 }
 private IEnumerator __ScoringStepReveal_Co(bool attackerIsPlayer, Button advanceButton)
 {
-    var roots = attackerIsPlayer ? scoringStepRoots_Player : scoringStepRoots_Enemy;
+    var roots = AppliedScoringStepRoots(attackerIsPlayer);
 
     // すべて非表示で開始（パネル表示直後の“最初から見える”を防ぐ）
     for (int i = 0; i < roots.Count; i++)
@@ -1022,7 +960,7 @@ private IEnumerator __ScoringStepReveal_Co(bool attackerIsPlayer, Button advance
             // フォールバック（AudioManager未配置のシーンでも落とさない）
             if (scoringStepSESource && scoringStepSEClip)
             {
-                try { scoringStepSESource.PlayOneShot(scoringStepSEClip); } catch { }
+                try { AudioManager.NotifyUserSound(); scoringStepSESource.PlayOneShot(scoringStepSEClip); } catch { }
             }
         }
 
@@ -2495,7 +2433,7 @@ private void PlayCutinSE(AudioClip clip)
 {
     if (cutinSESource != null && clip != null)
     {
-        try { cutinSESource.PlayOneShot(clip); } catch { }
+        try { AudioManager.NotifyUserSound(); cutinSESource.PlayOneShot(clip); } catch { }
     }
 }
     // ★追加: 勝利カットイン用スプライト (Resources/PlayerCutins/<Skill>_defeat) を取得
@@ -2787,6 +2725,7 @@ legacySkillText = GetGameFixedText_Local("rightinfo_no_skill_equipped");
          if (hostSet != null)
          {
              hostSet.EnsureInitialTraitUnlocks(skillName);
+             __EnsureInitialTraitFirstYakuIsLv1(hostSet,skillName);
 
              var yakuTuple = hostSet.GetTraitYakuFor(skillName);
 
@@ -2920,7 +2859,7 @@ catch
                     t != null &&
                     t.trait == trait &&
                     !string.IsNullOrEmpty(t.yakuName) &&
-                    string.Equals(t.yakuName.Trim(), yakuKey, StringComparison.Ordinal));
+                    string.Equals(NormalizeTraitJudgeYakuName_Local(t.yakuName), NormalizeTraitJudgeYakuName_Local(yakuKey), StringComparison.OrdinalIgnoreCase));
 
                 if (entry != null)
                     di = Mathf.Clamp((int)entry.difficulty, 0, table.Length - 1);
@@ -2962,7 +2901,7 @@ catch
         try
         {
             // 想定：未解放 = -1
-            baseLv = hostSet.GetTraitYakuLevel(skillName, trait, yaku);
+            baseLv = ContractsTraitLevel(hostSet.GetTraitYakuLevel(skillName, trait, yaku),skillName,trait,yaku);
             if (baseLv > 0) baseLv += RunConsumables.TraitBonus(trait);
         }
         catch
@@ -2981,8 +2920,8 @@ catch
             bonusLv = 0;
         }
 
-        // ★仕様：未解放(-1) + 特別牌(+1) => Lv0（未解放扱い）
-        int effectiveLv = baseLv + Mathf.Max(0, bonusLv);
+        // The panel uses the same effective level as scoring, including special tiles.
+        int effectiveLv = GetTraitEffectiveLevelForScoring(hostSet,skillName,trait,yaku);
 
         // 表示条件：
         // - 解放済み（baseLv >= 0）なら表示
@@ -5175,6 +5114,7 @@ if (!hasSuspend && PlayerPrefs.GetInt("PF_ResetRunOnLoad", 0) == 1)
     // ここで初めてフラグを消す（途中で消すと完全初期化が走らない）
     PlayerPrefs.DeleteKey("PF_ResetRunOnLoad");
     SeventeenStepsMode.DeliverStartingItem();
+    DevilContracts.DeliverStarterRelic();
     PlayerPrefs.Save();
 }
 }
@@ -7287,7 +7227,7 @@ canUseSkill = phaseAllowsSkill && underTurnLimit && hasMp && hasTargetSelection;
             // 表示／非表示
             btnSkill.gameObject.SetActive(canShowSkillButton);
             // 押せるかどうか（グレーバック制御）
-            btnSkill.interactable = canUseSkill;
+            btnSkill.interactable = canUseSkill && playerHP > ContractsSkillHpCost();
 
 if (skillTMP) skillTMP.text = GetGameFixedText_Local("button_skill");
         }
@@ -13706,7 +13646,7 @@ try
 catch { }
     if (dmgToPlayer > 0 && enemyWinDamageSESource != null && enemySkillDamageSEClip != null)
     {
-        try { enemyWinDamageSESource.PlayOneShot(enemySkillDamageSEClip); } catch {}
+        try { AudioManager.NotifyUserSound(); enemyWinDamageSESource.PlayOneShot(enemySkillDamageSEClip); } catch {}
     }
 
     float durEnemyHp  = (dmgToEnemy  > 0) ? Mathf.Max(0f, playerWinDamageAnimSeconds) : 0f;
@@ -14066,6 +14006,7 @@ private void ShowScoring(
 {
     // ★追加：この呼び出しは流局ではなく「誰かの和了」である
     _lastHandWasRyukyoku = false;
+    contractWinEffects.Clear();
 
     // 安全ガード（手動UIを使わない場合のみ必須）
     bool useManual = __UseManualScoringUI();
@@ -14125,8 +14066,9 @@ int finalDamageForApply = Mathf.Max(0, totalPoints);
 // 実ダメージは別経路で半減されているが、UI表示が totalPoints のままになっていたためここで補正する
 if (!_currentScoringAttackerIsPlayer)
 {
+    RecordContractDelta("被ダメージ", "Incoming damage", "所受伤害", finalDamageForApply, DevilContracts.Incoming(finalDamageForApply,false));
     finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
-    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), finalDamageForApply, playerHP, true);
+    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), DevilContracts.Incoming(finalDamageForApply,false), playerHP, true);
 }
 
 int traitMpHeal = Mathf.Max(0, mpRecovered);
@@ -14185,6 +14127,12 @@ catch { }
 finalDamageForApply = ConsumablesModifyOutgoingWin(finalDamageForApply);
 int finalMpHeal = Mathf.Max(0, traitMpHeal + ofudaMpHealAbs);
 int finalHpHeal = Mathf.Max(0, traitHpHeal + ofudaHpHealAbs);
+int goldDamageBaseForContract = finalDamageForApply;
+if (_currentScoringAttackerIsPlayer) {
+    _pendingContractTraitHp=traitHpHeal;_pendingContractTraitMp=traitMpHeal;
+    ContractsModifyScoring(ref finalDamageForApply,ref finalHpHeal,ref finalMpHeal,yakuNames,traitGekiMultiplier,traitShunRate,traitIyuRate);
+    if (!string.IsNullOrEmpty(contractScoringText)) sb.AppendLine(contractScoringText);
+}
 
 // 表示
 sb.AppendLine($"撃：x{Mathf.Max(0f, traitGekiMultiplier):0.###}");
@@ -14244,7 +14192,7 @@ if (finalDamageForApply > 0)
 
         // レジェンダリー②（直後の敵和了ダメージ半減）が有効な場合、表示値だけ半減後にする（ここでは消費しない）
         finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
-    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), finalDamageForApply, playerHP, true);
+    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), DevilContracts.Incoming(finalDamageForApply,false), playerHP, true);
 
 // 敵側ではダメージ適用はしない（スコアOK直後に演出付きで適用する）
 // ここは UI 表示のための値だけ整える
@@ -14261,8 +14209,8 @@ finalHpHeal         = 0;
     // ランスコアはプレイヤー和了時のみ加算する
     if (_currentScoringAttackerIsPlayer)
     {
-        AddScore(finalDamageForApply);
-        scoreThisEnemy += finalDamageForApply;
+        AddScore(goldDamageBaseForContract);
+        scoreThisEnemy += goldDamageBaseForContract;
     }
     UpdateHpUI();
 }
@@ -14302,7 +14250,7 @@ _goldGainDisplayTextThisWin = "-";
 if (_currentScoringAttackerIsPlayer)
 {
     float r = UnityEngine.Random.Range(0.01f, 0.0400001f); // [0.05, 0.08]
-    int goldBase = finalDamageForApply;
+    int goldBase = goldDamageBaseForContract;
 
     int goldGainBase = Mathf.RoundToInt(goldBase * r);
     if (goldGainBase < 1) goldGainBase = finalDamageForApply > 0 ? 1 : 0;
@@ -14353,6 +14301,9 @@ if (_currentScoringAttackerIsPlayer)
         mulTexts.Add("2");
     }
 
+    int goldBeforeContract = goldGain;
+    goldGain = DevilContracts.Gold(goldGain);
+    RecordContractDelta("獲得Gold", "Gold gained", "获得Gold", goldBeforeContract, goldGain);
     _goldGainThisWin = goldGain;
 
     if (mulTexts.Count > 0)
@@ -14363,15 +14314,6 @@ if (_currentScoringAttackerIsPlayer)
     runGold += goldGain;
     SaveRunGold();
 
-    // Mission Gold is a fixed bonus, paid with this win, once per enemy.
-    int missionGold = MissionSystem.ClaimReward();
-    if (missionGold > 0)
-    {
-        runGold = RunCurrency.Get();
-        _goldGainThisWin += missionGold;
-        string missionLabel = MonetizationText.Get("ミッション", "Mission", "任务");
-        _goldGainDisplayTextThisWin += $" ＋ {missionLabel} {missionGold:#,0} ＝ {_goldGainThisWin:#,0}";
-    }
     RefreshMissionDisplayText();
 
     sb.AppendLine();
@@ -14475,6 +14417,7 @@ else
         scoringTMP.text = sb.ToString();
     }
 }
+ContractsAppendScoring(_currentScoringAttackerIsPlayer);
 if (_currentScoringAttackerIsPlayer)
 {
     __SetTMP(scoringGoldGainValue, (_goldGainThisWin > 0) ? _goldGainDisplayTextThisWin : "-");
@@ -15260,12 +15203,14 @@ if (playerWinDamageAnimSeconds <= 0f)
 
     if (_pendingPlayerWinHpHeal && _pendingPlayerWinHpHealAbs > 0)
     {
+        ContractsRecordHpRecovery(_pendingPlayerWinHpHealAbs);
         playerHP = Mathf.Min(playerHP + Mathf.Max(0, _pendingPlayerWinHpHealAbs), playerMaxHP);
     }
 
     // ★追加：MPも即時反映
     if (_pendingPlayerWinMpHeal && _pendingPlayerWinMpHealAbs > 0)
     {
+        ContractsRecordMpRecovery(_pendingPlayerWinMpHealAbs);
         _mp = ClampToEffectiveMaxMP(_mp + Mathf.Max(0, _pendingPlayerWinMpHealAbs));
     }
 
@@ -16187,7 +16132,7 @@ try
 }
 catch { }
 
-if (isGroupEnd && !isLast)
+if (isGroupEnd || isLast)
 {
     yield return new WaitForSecondsRealtime(0.5f);
 }
@@ -16200,6 +16145,8 @@ if (isGroupEnd && !isLast)
 
     // 敵手牌は内部的には保持するが、表示は（表/裏設定に従って）固定リビルド
     RefreshEnemyHandUI_FullRebuild();
+
+    yield return ContractsBeginRound();
 
     // 配牌完了後、1秒待ってからツモ牌4枚を表示
     yield return new WaitForSecondsRealtime(1f);
@@ -16289,6 +16236,7 @@ void StartNextStage()
 }
 
 private void UpdateHpUI() {
+    ContractsCheckLowHp();
         // ★追加：Excel未適用なら1回だけここで適用（Inspectorの値に戻るのを防ぐ）
         try {
             bool resuming = false;
@@ -16581,7 +16529,7 @@ private void __ApplyRunBonusesAndRefreshUI()
     {
         _basePlayerMaxHP_ForRunBonuses = playerMaxHP;
     }
-    playerMaxHP = Mathf.Max(1, _basePlayerMaxHP_ForRunBonuses + totalHpBonus);
+    playerMaxHP = ContractsMaxHp(Mathf.Max(1, _basePlayerMaxHP_ForRunBonuses + totalHpBonus));
 
     if (shouldFullHeal)
     {
@@ -17993,6 +17941,7 @@ private void SaveRunGold()
 }
 private void ClearRunEphemeral()
 {
+    DevilContracts.EndRun();
     RunConsumables.ResetRun();
     try
     {
@@ -18462,12 +18411,13 @@ public static class RunCurrency
         Changed?.Invoke();
     }
 
-    public static bool Spend(int cost)
+    public static bool Spend(int cost, bool reroll = false)
     {
         if (cost <= 0) return true;
         int g = Get();
         if (g < cost) return false;
         Set(g - cost);
+        DevilContracts.Spent(cost,reroll);
         return true;
     }
 
@@ -19978,6 +19928,7 @@ private void OnClickMenuOption()
 private class SuspendSnapshot
 {
     public RunConsumables.State consumables;
+    public DevilContracts.RunState devilContract;
     public int roundNumber;
 
     // ===== HP/MP（現在値と最大値を必ず保存）=====
@@ -20108,6 +20059,7 @@ private void SaveSuspendSnapshot(bool markAsSuspend)
     if (_defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
     var ss = new SuspendSnapshot();
     ss.consumables = RunConsumables.Load();
+    ss.devilContract = DevilContracts.Run();
 
     ss.roundNumber = roundNumber;
 
@@ -20277,6 +20229,7 @@ private bool TryLoadSuspendSnapshot()
         // ===== このセッションは「中断復元」扱い。以後の上乗せ処理を絶対に止める =====
         _suspendRestoredThisSession = true;
         if (ss.consumables != null) RunConsumables.Save(ss.consumables);
+        if (ss.devilContract != null) DevilContracts.SaveRun(ss.devilContract);
 
         // ===== 装備（スキル）を PlayerPrefs に先に戻す（SkillMP_Addon.Start() がこれを読む）=====
         try { PlayerPrefs.SetString("EquippedSkillSetId", ss.equippedSkillSetId ?? ""); } catch {}
@@ -21527,11 +21480,13 @@ private System.Collections.IEnumerator __PlayerWin_ApplyPendingDamageToEnemy_The
 
     int startPlayerHP = Mathf.Max(0, playerHP);
     int healToPlayer  = (_pendingPlayerWinHpHeal) ? Mathf.Max(0, _pendingPlayerWinHpHealAbs) : 0;
+    ContractsRecordHpRecovery(healToPlayer);
     int endPlayerHP   = Mathf.Clamp(startPlayerHP + healToPlayer, 0, playerMaxHP);
 
     // ★追加：MP回復（瞬/お札）も同じタイミングでアニメ
     int startPlayerMP = Mathf.Max(0, _mp);
     int healToMP      = (_pendingPlayerWinMpHeal) ? Mathf.Max(0, _pendingPlayerWinMpHealAbs) : 0;
+    ContractsRecordMpRecovery(healToMP);
     int endPlayerMP   = ClampToEffectiveMaxMP(startPlayerMP + healToMP);
 
 try

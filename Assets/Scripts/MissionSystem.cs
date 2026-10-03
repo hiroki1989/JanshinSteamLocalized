@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,6 +69,18 @@ public static class MissionSystem
 
     private static string PrefKey_Claimed(int excelKey) => $"Mission_Run_{PlayerPrefs.GetInt("Mission_RunGeneration", 0)}_Claimed_{excelKey}";
 
+    public static string CurrentClaimKey => PrefKey_Claimed(s_currentEnemyKey);
+    public static void ConfirmSettlement(){s_completed=true;PlayerPrefs.DeleteKey(PendingKey);Save();}
+    public const string PendingKey="Mission_PendingCompletion_V2";
+    public const string PendingDevilKey="Mission_PendingDevil_V2";
+    public static bool HasPendingCompletion => PlayerPrefs.GetInt(PendingKey,0)!=0;
+    private static void RecordPendingCompletion()
+    {
+        PlayerPrefs.SetInt(PendingKey,1);
+        PlayerPrefs.SetInt(PendingDevilKey,ProgressionFlowController.GetCurrentEnemyIndex());
+        PlayerPrefs.Save();
+    }
+
     // ===== 公開プロパティ =====
     public static bool HasActiveMission => !string.IsNullOrEmpty(s_cachedYakuKey);
     public static string CurrentYakuKey => s_cachedYakuKey;
@@ -80,6 +92,11 @@ public static class MissionSystem
     // ===== 初期化・ロード =====
     public static void ResetForNewRun()
     {
+        PlayerPrefs.DeleteKey(PendingKey);
+        PlayerPrefs.DeleteKey(PendingDevilKey);
+        PlayerPrefs.DeleteKey(MissionRewardSettlement.NoticeKey);
+        PlayerPrefs.DeleteKey(MissionRewardSettlement.QueueKey);
+        PlayerPrefs.DeleteKey(MissionRewardSettlement.WonKey);
         PlayerPrefs.SetInt("Mission_RunGeneration", PlayerPrefs.GetInt("Mission_RunGeneration", 0) + 1);
         s_currentPoolIndex = -1;
         s_currentEnemyKey = -1;
@@ -124,6 +141,7 @@ public static class MissionSystem
     /// </summary>
     public static void AssignForEnemy(int excelKey, List<MissionYakuEntry> pool)
     {
+        if(s_currentEnemyKey!=excelKey){PlayerPrefs.DeleteKey(PendingKey);PlayerPrefs.DeleteKey(PendingDevilKey);}
         s_currentEnemyKey = excelKey;
         s_completed = IsAlreadyClaimed(excelKey);
 
@@ -192,7 +210,7 @@ public static class MissionSystem
     public static bool CheckCompletion(List<string> playerYakuList)
     {
         if (!HasActiveMission) return false;
-        if (s_completed) return false;
+        if (s_completed || HasPendingCompletion || SeventeenStepsMode.IsActive) return false;
 
         if (playerYakuList == null || playerYakuList.Count == 0) return false;
 
@@ -215,16 +233,14 @@ public static class MissionSystem
             // displayName（ローカライズ名）で照合（メイン）
             if (hasDisp && (norm.Contains(targetDispNorm) || targetDispNorm.Contains(norm)))
             {
-                s_completed = true;
-                Save();
+                RecordPendingCompletion();
                 return true;
             }
 
             // yakuKey（英語キー）で照合（フォールバック）
             if (hasKey && (norm.Contains(targetKeyNorm) || targetKeyNorm.Contains(norm)))
             {
-                s_completed = true;
-                Save();
+                RecordPendingCompletion();
                 return true;
             }
         }
@@ -238,7 +254,10 @@ public static class MissionSystem
     public static int ClaimReward()
     {
         if (!HasActiveMission) return 0;
-        if (!s_completed) return 0;
+        if (!s_completed && !HasPendingCompletion) return 0;
+        s_completed=true;
+        PlayerPrefs.DeleteKey(PendingKey);
+        Save();
         if (IsAlreadyClaimed(s_currentEnemyKey)) return 0;
 
         int reward = s_cachedGold;

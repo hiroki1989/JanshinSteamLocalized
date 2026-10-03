@@ -1,0 +1,4470 @@
+{
+  "contracts": [
+    {
+      "id": 0,
+      "devil": {
+        "ja": "アマツミカボシ",
+        "en": "Amatsu-Mikaboshi",
+        "zh": "天津瓮星"
+      },
+      "god": {
+        "ja": "アマテラス",
+        "en": "Amaterasu",
+        "zh": "天照"
+      },
+      "title": {
+        "ja": "光を拒む星",
+        "en": "Star that Rejects the Light",
+        "zh": "拒绝光明之星"
+      },
+      "benefit": {
+        "ja": "和了ダメージ＋5％",
+        "en": "Win damage +5%.",
+        "zh": "和牌伤害+5%。"
+      },
+      "drawback": {
+        "ja": "最大HP－10％",
+        "en": "Maximum HP −10%.",
+        "zh": "最大HP−10%。"
+      },
+      "synergy": {
+        "ja": "HP強化・回復・お札",
+        "en": "HP upgrades / healing / ofuda",
+        "zh": "HP强化／恢复／符咒"
+      },
+      "emblem": "✦",
+      "accent": {
+        "r": 0.63,
+        "g": 0.48,
+        "b": 0.85,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "最大HP減少 9.4%",
+            "en": "Maximum HP penalty 9.4%",
+            "zh": "最大HP减幅 9.4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "最大HP減少 8.8%",
+            "en": "Maximum HP penalty 8.8%",
+            "zh": "最大HP减幅 8.8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "最大HP減少 8.2%",
+            "en": "Maximum HP penalty 8.2%",
+            "zh": "最大HP减幅 8.2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "最大HP減少 7.6%",
+            "en": "Maximum HP penalty 7.6%",
+            "zh": "最大HP减幅 7.6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "最大HP減少 7%",
+            "en": "Maximum HP penalty 7%",
+            "zh": "最大HP减幅 7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "最大HP減少 6.4%",
+            "en": "Maximum HP penalty 6.4%",
+            "zh": "最大HP减幅 6.4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "最大HP減少 5.8%\n各対局の最初の被和了ダメージ－15％",
+            "en": "Maximum HP penalty 5.8%\nFirst incoming win damage per opponent −15%.",
+            "zh": "最大HP减幅 5.8%\n每次对战首次受到的和牌伤害−15%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "最大HP減少 5.2%\n各対局の最初の被和了ダメージ－15％",
+            "en": "Maximum HP penalty 5.2%\nFirst incoming win damage per opponent −15%.",
+            "zh": "最大HP减幅 5.2%\n每次对战首次受到的和牌伤害−15%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "最大HP減少 4.6%\n各対局の最初の被和了ダメージ－15％",
+            "en": "Maximum HP penalty 4.6%\nFirst incoming win damage per opponent −15%.",
+            "zh": "最大HP减幅 4.6%\n每次对战首次受到的和牌伤害−15%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "最大HP減少 4%\n各対局の最初の被和了ダメージ－15％\n最大HP減少：7％→4％",
+            "en": "Maximum HP penalty 4%\nFirst incoming win damage per opponent −15%.\nMaximum HP penalty: 7% → 4%.",
+            "zh": "最大HP减幅 4%\n每次对战首次受到的和牌伤害−15%。\n最大HP减幅：7%→4%。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "和了ダメージ +6%",
+            "en": "Win damage +6%",
+            "zh": "和牌伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "和了ダメージ +7%",
+            "en": "Win damage +7%",
+            "zh": "和牌伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "和了ダメージ +8%",
+            "en": "Win damage +8%",
+            "zh": "和牌伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "和了ダメージ +12%",
+            "en": "Win damage +12%",
+            "zh": "和牌伤害 +12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "和了ダメージ +13.33%",
+            "en": "Win damage +13.33%",
+            "zh": "和牌伤害 +13.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "和了ダメージ +14.67%",
+            "en": "Win damage +14.67%",
+            "zh": "和牌伤害 +14.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "和了ダメージ +16%\nお札の対象役成立時、さらにダメージ＋8％。重複しない",
+            "en": "Win damage +16%\nMatching an ofuda adds +8% win damage, once.",
+            "zh": "和牌伤害 +16%\n满足符咒条件时伤害额外+8%，不重复。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "和了ダメージ +17.33%\nお札の対象役成立時、さらにダメージ＋8.67％。重複しない",
+            "en": "Win damage +17.33%\nMatching an ofuda adds +8.67% win damage, once.",
+            "zh": "和牌伤害 +17.33%\n满足符咒条件时伤害额外+8.67%，不重复。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "和了ダメージ +18.67%\nお札の対象役成立時、さらにダメージ＋9.33％。重複しない",
+            "en": "Win damage +18.67%\nMatching an ofuda adds +9.33% win damage, once.",
+            "zh": "和牌伤害 +18.67%\n满足符咒条件时伤害额外+9.33%，不重复。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "和了ダメージ +30%\nお札の対象役成立時、さらにダメージ＋10％。重複しない\n基本の和了ダメージ＋30％。最大HPがさらに5％減少",
+            "en": "Win damage +30%\nMatching an ofuda adds +10% win damage, once.\nBase win damage +30%; maximum HP loses another 5%.",
+            "zh": "和牌伤害 +30%\n满足符咒条件时伤害额外+10%，不重复。\n基础和牌伤害+30%；最大HP再减少5%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "devil": {
+        "ja": "ヤマタノオロチ",
+        "en": "Yamata-no-Orochi",
+        "zh": "八岐大蛇"
+      },
+      "god": {
+        "ja": "スサノオ",
+        "en": "Susanoo",
+        "zh": "须佐之男"
+      },
+      "title": {
+        "ja": "八岐の血潮",
+        "en": "Blood of the Eightfold Serpent",
+        "zh": "八岐血潮"
+      },
+      "benefit": {
+        "ja": "混一色・清一色の和了ダメージ＋10％",
+        "en": "Half/Full Flush win damage +10%.",
+        "zh": "混一色／清一色和牌伤害+10%。"
+      },
+      "drawback": {
+        "ja": "配牌13枚に3色の数牌が含まれると最大MPの10％を失う",
+        "en": "Opening hand contains all three suits: lose 10% of max MP.",
+        "zh": "起手13张含三种数牌时，失去最大MP的10%。"
+      },
+      "synergy": {
+        "ja": "染色師・一色構築・牌破壊",
+        "en": "Dyer / flush builds / tile removal",
+        "zh": "染色师／一色构筑／销毁牌"
+      },
+      "emblem": "蛇",
+      "accent": {
+        "r": 0.45,
+        "g": 0.72,
+        "b": 0.44,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 9%",
+            "en": "MP lost when dealt all 3 suits: 9%",
+            "zh": "配牌含3种花色时MP减少 9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 8%",
+            "en": "MP lost when dealt all 3 suits: 8%",
+            "zh": "配牌含3种花色时MP减少 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 7%",
+            "en": "MP lost when dealt all 3 suits: 7%",
+            "zh": "配牌含3种花色时MP减少 7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 6%",
+            "en": "MP lost when dealt all 3 suits: 6%",
+            "zh": "配牌含3种花色时MP减少 6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 5%",
+            "en": "MP lost when dealt all 3 suits: 5%",
+            "zh": "配牌含3种花色时MP减少 5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 4%",
+            "en": "MP lost when dealt all 3 suits: 4%",
+            "zh": "配牌含3种花色时MP减少 4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 3%\n混一色・清一色でHPを最大HPの5%回復",
+            "en": "MP lost when dealt all 3 suits: 3%\nHalf/full flush heals 5% max HP",
+            "zh": "配牌含3种花色时MP减少 3%\n混一色／清一色恢复最大HP的5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 2%\n混一色・清一色でHPを最大HPの5%回復",
+            "en": "MP lost when dealt all 3 suits: 2%\nHalf/full flush heals 5% max HP",
+            "zh": "配牌含3种花色时MP减少 2%\n混一色／清一色恢复最大HP的5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 1%\n混一色・清一色でHPを最大HPの5%回復",
+            "en": "MP lost when dealt all 3 suits: 1%\nHalf/full flush heals 5% max HP",
+            "zh": "配牌含3种花色时MP减少 1%\n混一色／清一色恢复最大HP的5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "配牌に3色がある局のMP減少 0%\n混一色・清一色でHPを最大HPの5%回復",
+            "en": "MP lost when dealt all 3 suits: 0%\nHalf/full flush heals 5% max HP",
+            "zh": "配牌含3种花色时MP减少 0%\n混一色／清一色恢复最大HP的5%"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +12%",
+            "en": "Half/full flush damage +12%",
+            "zh": "混一色／清一色和牌伤害 +12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +14%",
+            "en": "Half/full flush damage +14%",
+            "zh": "混一色／清一色和牌伤害 +14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +16%",
+            "en": "Half/full flush damage +16%",
+            "zh": "混一色／清一色和牌伤害 +16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +24%",
+            "en": "Half/full flush damage +24%",
+            "zh": "混一色／清一色和牌伤害 +24%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +26.67%",
+            "en": "Half/full flush damage +26.67%",
+            "zh": "混一色／清一色和牌伤害 +26.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +29.33%",
+            "en": "Half/full flush damage +29.33%",
+            "zh": "混一色／清一色和牌伤害 +29.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +32%\nスキル使用局の混一色・清一色は、さらにダメージ＋12％",
+            "en": "Half/full flush damage +32%\nUsing a skill adds +12% damage to a flush win that hand.",
+            "zh": "混一色／清一色和牌伤害 +32%\n使用技能的该局，混一色／清一色伤害额外+12%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +34.67%\nスキル使用局の混一色・清一色は、さらにダメージ＋13％",
+            "en": "Half/full flush damage +34.67%\nUsing a skill adds +13% damage to a flush win that hand.",
+            "zh": "混一色／清一色和牌伤害 +34.67%\n使用技能的该局，混一色／清一色伤害额外+13%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +37.33%\nスキル使用局の混一色・清一色は、さらにダメージ＋14％",
+            "en": "Half/full flush damage +37.33%\nUsing a skill adds +14% damage to a flush win that hand.",
+            "zh": "混一色／清一色和牌伤害 +37.33%\n使用技能的该局，混一色／清一色伤害额外+14%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "混一色・清一色の和了ダメージ +60%\nスキル使用局の混一色・清一色は、さらにダメージ＋15％\n対象役のダメージ＋60％。それ以外の和了ダメージ－20％",
+            "en": "Half/full flush damage +60%\nUsing a skill adds +15% damage to a flush win that hand.\nFlush wins +60% damage; other wins −20%.",
+            "zh": "混一色／清一色和牌伤害 +60%\n使用技能的该局，混一色／清一色伤害额外+15%。\n对应役伤害+60%；其他和牌伤害−20%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "devil": {
+        "ja": "アポピス",
+        "en": "Apophis",
+        "zh": "阿波菲斯"
+      },
+      "god": {
+        "ja": "バステト",
+        "en": "Bastet",
+        "zh": "巴斯特"
+      },
+      "title": {
+        "ja": "太陽を喰らう蛇",
+        "en": "Serpent that Devours the Sun",
+        "zh": "吞日之蛇"
+      },
+      "benefit": {
+        "ja": "スキル未使用の局で和了するとダメージ＋8.33％",
+        "en": "Win without using an active skill: damage +8.33%.",
+        "zh": "未使用主动技能的局，和牌伤害+8.33%。"
+      },
+      "drawback": {
+        "ja": "アクティブスキル消費MP＋20％",
+        "en": "Active skill MP cost +20%.",
+        "zh": "主动技能MP消耗+20%。"
+      },
+      "synergy": {
+        "ja": "パッシブスキル・特別牌・スキル温存",
+        "en": "Passives / special tiles / saving skills",
+        "zh": "被动技能／特殊牌／保留技能"
+      },
+      "emblem": "日",
+      "accent": {
+        "r": 0.73,
+        "g": 0.41,
+        "b": 0.29,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 18%",
+            "en": "Skill MP cost increase 18%",
+            "zh": "技能MP消耗增幅 18%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 16%",
+            "en": "Skill MP cost increase 16%",
+            "zh": "技能MP消耗增幅 16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 14%",
+            "en": "Skill MP cost increase 14%",
+            "zh": "技能MP消耗增幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 12%",
+            "en": "Skill MP cost increase 12%",
+            "zh": "技能MP消耗增幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 10%",
+            "en": "Skill MP cost increase 10%",
+            "zh": "技能MP消耗增幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 8%",
+            "en": "Skill MP cost increase 8%",
+            "zh": "技能MP消耗增幅 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 6%\nスキル未使用で和了すると最大MPの10％回復",
+            "en": "Skill MP cost increase 6%\nA skill-free win restores 10% of max MP.",
+            "zh": "技能MP消耗增幅 6%\n未使用技能和牌，恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 4%\nスキル未使用で和了すると最大MPの10％回復",
+            "en": "Skill MP cost increase 4%\nA skill-free win restores 10% of max MP.",
+            "zh": "技能MP消耗增幅 4%\n未使用技能和牌，恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 2%\nスキル未使用で和了すると最大MPの10％回復",
+            "en": "Skill MP cost increase 2%\nA skill-free win restores 10% of max MP.",
+            "zh": "技能MP消耗增幅 2%\n未使用技能和牌，恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "スキルMP消費増加 0%\nスキル未使用で和了すると最大MPの10％回復\n消費MP増加をなくす",
+            "en": "Skill MP cost increase 0%\nA skill-free win restores 10% of max MP.\nRemove the extra MP cost.",
+            "zh": "技能MP消耗增幅 0%\n未使用技能和牌，恢复最大MP的10%。\n取消MP消耗增幅。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +10%",
+            "en": "Win without using skills: damage +10%",
+            "zh": "未使用技能和牌：伤害 +10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +11.67%",
+            "en": "Win without using skills: damage +11.67%",
+            "zh": "未使用技能和牌：伤害 +11.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +13.33%",
+            "en": "Win without using skills: damage +13.33%",
+            "zh": "未使用技能和牌：伤害 +13.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +21%",
+            "en": "Win without using skills: damage +21%",
+            "zh": "未使用技能和牌：伤害 +21%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +23.33%",
+            "en": "Win without using skills: damage +23.33%",
+            "zh": "未使用技能和牌：伤害 +23.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +25.67%",
+            "en": "Win without using skills: damage +25.67%",
+            "zh": "未使用技能和牌：伤害 +25.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +28%\nスキル未使用かつロンで、さらにダメージ＋12％",
+            "en": "Win without using skills: damage +28%\nA skill-free Ron adds another +12% damage.",
+            "zh": "未使用技能和牌：伤害 +28%\n未使用技能且荣和，伤害再+12%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +30.33%\nスキル未使用かつロンで、さらにダメージ＋13％",
+            "en": "Win without using skills: damage +30.33%\nA skill-free Ron adds another +13% damage.",
+            "zh": "未使用技能和牌：伤害 +30.33%\n未使用技能且荣和，伤害再+13%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +32.67%\nスキル未使用かつロンで、さらにダメージ＋14％",
+            "en": "Win without using skills: damage +32.67%\nA skill-free Ron adds another +14% damage.",
+            "zh": "未使用技能和牌：伤害 +32.67%\n未使用技能且荣和，伤害再+14%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "スキル未使用で和了ダメージ +55%\nスキル未使用かつロンで、さらにダメージ＋15％\n未使用時のダメージ＋55％。スキル使用局はダメージ－15％",
+            "en": "Win without using skills: damage +55%\nA skill-free Ron adds another +15% damage.\nSkill-free wins +55%; hands using skills −15% damage.",
+            "zh": "未使用技能和牌：伤害 +55%\n未使用技能且荣和，伤害再+15%。\n未使用技能伤害+55%；使用技能的局伤害−15%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "devil": {
+        "ja": "アンダカ",
+        "en": "Andhaka",
+        "zh": "安陀迦"
+      },
+      "god": {
+        "ja": "シヴァ",
+        "en": "Shiva",
+        "zh": "湿婆"
+      },
+      "title": {
+        "ja": "破壊の供物",
+        "en": "Offering of Destruction",
+        "zh": "毁灭的供品"
+      },
+      "benefit": {
+        "ja": "ショップで牌を1枚破壊するたび和了ダメージ＋1.33％。ラン中上限＋8％",
+        "en": "Each shop tile removal adds +1.33% win damage this run, up to +8%.",
+        "zh": "商店每销毁1张牌，本次挑战和牌伤害+1.33%，上限+8%。"
+      },
+      "drawback": {
+        "ja": "牌購入価格＋20％",
+        "en": "Tile purchase prices +20%.",
+        "zh": "牌购买价格+20%。"
+      },
+      "synergy": {
+        "ja": "指定牌破壊・デッキ圧縮",
+        "en": "Chosen tile removal / deck thinning",
+        "zh": "指定牌销毁／精简牌组"
+      },
+      "emblem": "灰",
+      "accent": {
+        "r": 0.83,
+        "g": 0.42,
+        "b": 0.25,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 18%",
+            "en": "Tile price increase 18%",
+            "zh": "牌购买价格增幅 18%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 16%",
+            "en": "Tile price increase 16%",
+            "zh": "牌购买价格增幅 16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 14%",
+            "en": "Tile price increase 14%",
+            "zh": "牌购买价格增幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 12%",
+            "en": "Tile price increase 12%",
+            "zh": "牌购买价格增幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 10%",
+            "en": "Tile price increase 10%",
+            "zh": "牌购买价格增幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 8%",
+            "en": "Tile price increase 8%",
+            "zh": "牌购买价格增幅 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 6%\n各ショップで最初の牌破壊時、50Gold獲得",
+            "en": "Tile price increase 6%\nFirst tile removal each shop grants 50 Gold.",
+            "zh": "牌购买价格增幅 6%\n每个商店首次销毁牌获得50Gold。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 4%\n各ショップで最初の牌破壊時、50Gold獲得",
+            "en": "Tile price increase 4%\nFirst tile removal each shop grants 50 Gold.",
+            "zh": "牌购买价格增幅 4%\n每个商店首次销毁牌获得50Gold。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 2%\n各ショップで最初の牌破壊時、50Gold獲得",
+            "en": "Tile price increase 2%\nFirst tile removal each shop grants 50 Gold.",
+            "zh": "牌购买价格增幅 2%\n每个商店首次销毁牌获得50Gold。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "牌の購入価格増加 0%\n各ショップで最初の牌破壊時、50Gold獲得\n牌購入価格の増加をなくす",
+            "en": "Tile price increase 0%\nFirst tile removal each shop grants 50 Gold.\nRemove the tile price surcharge.",
+            "zh": "牌购买价格增幅 0%\n每个商店首次销毁牌获得50Gold。\n取消牌价增幅。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +1.6% / 9.6% まで",
+            "en": "Per destroyed tile: damage +1.6% / 9.6% cap",
+            "zh": "每破坏1张牌：伤害 +1.6% / 9.6% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +1.87% / 11.2% まで",
+            "en": "Per destroyed tile: damage +1.87% / 11.2% cap",
+            "zh": "每破坏1张牌：伤害 +1.87% / 11.2% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +2.13% / 12.8% まで",
+            "en": "Per destroyed tile: damage +2.13% / 12.8% cap",
+            "zh": "每破坏1张牌：伤害 +2.13% / 12.8% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +3% / 18% まで",
+            "en": "Per destroyed tile: damage +3% / 18% cap",
+            "zh": "每破坏1张牌：伤害 +3% / 18% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +3.33% / 20% まで",
+            "en": "Per destroyed tile: damage +3.33% / 20% cap",
+            "zh": "每破坏1张牌：伤害 +3.33% / 20% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +3.67% / 22% まで",
+            "en": "Per destroyed tile: damage +3.67% / 22% cap",
+            "zh": "每破坏1张牌：伤害 +3.67% / 22% 上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +4% / 24% まで\n牌を破壊するたび、1枚につき最大HPの3％回復",
+            "en": "Per destroyed tile: damage +4% / 24% cap\nEach removed tile heals 3% of max HP for the next battle.",
+            "zh": "每破坏1张牌：伤害 +4% / 24% 上限\n每销毁1张牌，为下次对战恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +4.33% / 26% まで\n牌を破壊するたび、1枚につき最大HPの3％回復",
+            "en": "Per destroyed tile: damage +4.33% / 26% cap\nEach removed tile heals 3% of max HP for the next battle.",
+            "zh": "每破坏1张牌：伤害 +4.33% / 26% 上限\n每销毁1张牌，为下次对战恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +4.67% / 28% まで\n牌を破壊するたび、1枚につき最大HPの3％回復",
+            "en": "Per destroyed tile: damage +4.67% / 28% cap\nEach removed tile heals 3% of max HP for the next battle.",
+            "zh": "每破坏1张牌：伤害 +4.67% / 28% 上限\n每销毁1张牌，为下次对战恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "牌を1枚破壊するごとにダメージ +7% / 42% まで\n牌を破壊するたび、1枚につき最大HPの3％回復\n1枚ごと＋7％、上限＋42％。最大HP－10％",
+            "en": "Per destroyed tile: damage +7% / 42% cap\nEach removed tile heals 3% of max HP for the next battle.\nEach removal +7%, cap +42%; maximum HP −10%.",
+            "zh": "每破坏1张牌：伤害 +7% / 42% 上限\n每销毁1张牌，为下次对战恢复最大HP的3%。\n每张+7%，上限+42%；最大HP−10%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "devil": {
+        "ja": "アメミット",
+        "en": "Ammit",
+        "zh": "阿米特"
+      },
+      "god": {
+        "ja": "アヌビス",
+        "en": "Anubis",
+        "zh": "阿努比斯"
+      },
+      "title": {
+        "ja": "魂の秤",
+        "en": "Scales of the Soul",
+        "zh": "灵魂天平"
+      },
+      "benefit": {
+        "ja": "対局中に回復したHPの10％を次の和了に加算。蓄積上限は最大HPの5％",
+        "en": "Store 10% of actual HP healed for the next win. Cap: 5% of max HP.",
+        "zh": "对战中实际恢复HP的10%转为下次和牌伤害，上限为最大HP的5%。"
+      },
+      "drawback": {
+        "ja": "対局中のHP回復量－20％",
+        "en": "HP healing during battle −20%.",
+        "zh": "对战中HP恢复量−20%。"
+      },
+      "synergy": {
+        "ja": "HP回復パッシブ・回復お守り・回復遺物",
+        "en": "Healing passives / charms / relics",
+        "zh": "HP恢复被动／护身符／恢复遗物"
+      },
+      "emblem": "秤",
+      "accent": {
+        "r": 0.64,
+        "g": 0.58,
+        "b": 0.35,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "HP回復減少 18%",
+            "en": "HP recovery penalty 18%",
+            "zh": "HP恢复减幅 18%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "HP回復減少 16%",
+            "en": "HP recovery penalty 16%",
+            "zh": "HP恢复减幅 16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "HP回復減少 14%",
+            "en": "HP recovery penalty 14%",
+            "zh": "HP恢复减幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "HP回復減少 12%",
+            "en": "HP recovery penalty 12%",
+            "zh": "HP恢复减幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "HP回復減少 10%",
+            "en": "HP recovery penalty 10%",
+            "zh": "HP恢复减幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "HP回復減少 8%",
+            "en": "HP recovery penalty 8%",
+            "zh": "HP恢复减幅 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "HP回復減少 6%\n各対局の最初のHP回復遺物は回復量が減らない",
+            "en": "HP recovery penalty 6%\nFirst HP healing relic per opponent ignores the penalty.",
+            "zh": "HP恢复减幅 6%\n每次对战首次HP恢复遗物不受减幅影响。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "HP回復減少 4%\n各対局の最初のHP回復遺物は回復量が減らない",
+            "en": "HP recovery penalty 4%\nFirst HP healing relic per opponent ignores the penalty.",
+            "zh": "HP恢复减幅 4%\n每次对战首次HP恢复遗物不受减幅影响。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "HP回復減少 2%\n各対局の最初のHP回復遺物は回復量が減らない",
+            "en": "HP recovery penalty 2%\nFirst HP healing relic per opponent ignores the penalty.",
+            "zh": "HP恢复减幅 2%\n每次对战首次HP恢复遗物不受减幅影响。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "HP回復減少 0%\n各対局の最初のHP回復遺物は回復量が減らない\nHP回復量の減少をなくす",
+            "en": "HP recovery penalty 0%\nFirst HP healing relic per opponent ignores the penalty.\nRemove the HP healing penalty.",
+            "zh": "HP恢复减幅 0%\n每次对战首次HP恢复遗物不受减幅影响。\n取消HP恢复减幅。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "HP回復量の12%を次の和了ダメージに蓄積 / 6% 最大HPまで",
+            "en": "Store 12% of HP recovered for next win damage / 6% max HP cap",
+            "zh": "将HP恢复量的12%积蓄为下次和牌伤害 / 6% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "HP回復量の14%を次の和了ダメージに蓄積 / 7% 最大HPまで",
+            "en": "Store 14% of HP recovered for next win damage / 7% max HP cap",
+            "zh": "将HP恢复量的14%积蓄为下次和牌伤害 / 7% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "HP回復量の16%を次の和了ダメージに蓄積 / 8% 最大HPまで",
+            "en": "Store 16% of HP recovered for next win damage / 8% max HP cap",
+            "zh": "将HP恢复量的16%积蓄为下次和牌伤害 / 8% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "HP回復量の27%を次の和了ダメージに蓄積 / 9% 最大HPまで",
+            "en": "Store 27% of HP recovered for next win damage / 9% max HP cap",
+            "zh": "将HP恢复量的27%积蓄为下次和牌伤害 / 9% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "HP回復量の30%を次の和了ダメージに蓄積 / 10% 最大HPまで",
+            "en": "Store 30% of HP recovered for next win damage / 10% max HP cap",
+            "zh": "将HP恢复量的30%积蓄为下次和牌伤害 / 10% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "HP回復量の33%を次の和了ダメージに蓄積 / 11% 最大HPまで",
+            "en": "Store 33% of HP recovered for next win damage / 11% max HP cap",
+            "zh": "将HP恢复量的33%积蓄为下次和牌伤害 / 11% 最大HP上限"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "HP回復量の36%を次の和了ダメージに蓄積 / 12% 最大HPまで\n最大HPを超えた回復量も、半分を蓄積計算に含める",
+            "en": "Store 36% of HP recovered for next win damage / 12% max HP cap\nCount half of excess healing toward stored damage.",
+            "zh": "将HP恢复量的36%积蓄为下次和牌伤害 / 12% 最大HP上限\n溢出HP恢复量的一半也计入蓄积。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "HP回復量の39%を次の和了ダメージに蓄積 / 13% 最大HPまで\n最大HPを超えた回復量も、半分を蓄積計算に含める",
+            "en": "Store 39% of HP recovered for next win damage / 13% max HP cap\nCount half of excess healing toward stored damage.",
+            "zh": "将HP恢复量的39%积蓄为下次和牌伤害 / 13% 最大HP上限\n溢出HP恢复量的一半也计入蓄积。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "HP回復量の42%を次の和了ダメージに蓄積 / 14% 最大HPまで\n最大HPを超えた回復量も、半分を蓄積計算に含める",
+            "en": "Store 42% of HP recovered for next win damage / 14% max HP cap\nCount half of excess healing toward stored damage.",
+            "zh": "将HP恢复量的42%积蓄为下次和牌伤害 / 14% 最大HP上限\n溢出HP恢复量的一半也计入蓄积。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "HP回復量の60%を次の和了ダメージに蓄積 / 25% 最大HPまで\n最大HPを超えた回復量も、半分を蓄積計算に含める\n変換率60％、蓄積上限は最大HPの25％。被和了ダメージ＋10％",
+            "en": "Store 60% of HP recovered for next win damage / 25% max HP cap\nCount half of excess healing toward stored damage.\nConversion 60%, cap 25% of max HP; incoming win damage +10%.",
+            "zh": "将HP恢复量的60%积蓄为下次和牌伤害 / 25% 最大HP上限\n溢出HP恢复量的一半也计入蓄积。\n转换率60%，上限为最大HP的25%；受到和牌伤害+10%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "devil": {
+        "ja": "ロキ",
+        "en": "Loki",
+        "zh": "洛基"
+      },
+      "god": {
+        "ja": "フレイヤ",
+        "en": "Freyja",
+        "zh": "芙蕾雅"
+      },
+      "title": {
+        "ja": "黄金の偽り",
+        "en": "Golden Deceit",
+        "zh": "黄金的诡计"
+      },
+      "benefit": {
+        "ja": "ショップ支出300Goldごと和了ダメージ＋1.67％。ラン中上限＋8.33％",
+        "en": "Every 300 Gold spent in shops adds +1.67% win damage, cap +8.33%.",
+        "zh": "商店每消费300Gold，和牌伤害+1.67%，上限+8.33%。"
+      },
+      "drawback": {
+        "ja": "和了の獲得Gold－15％。ミッション報酬は対象外",
+        "en": "Gold from wins −15%; mission rewards unchanged.",
+        "zh": "和牌Gold−15%；任务奖励不变。"
+      },
+      "synergy": {
+        "ja": "Gold獲得装備・リロール・ショップ購入",
+        "en": "Gold equipment / rerolls / shopping",
+        "zh": "Gold装备／重选／商店购买"
+      },
+      "emblem": "金",
+      "accent": {
+        "r": 0.78,
+        "g": 0.66,
+        "b": 0.3,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "獲得Gold減少 14%",
+            "en": "Gold income penalty 14%",
+            "zh": "Gold收入减幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "獲得Gold減少 13%",
+            "en": "Gold income penalty 13%",
+            "zh": "Gold收入减幅 13%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "獲得Gold減少 12%",
+            "en": "Gold income penalty 12%",
+            "zh": "Gold收入减幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "獲得Gold減少 11%",
+            "en": "Gold income penalty 11%",
+            "zh": "Gold收入减幅 11%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "獲得Gold減少 10%",
+            "en": "Gold income penalty 10%",
+            "zh": "Gold收入减幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "獲得Gold減少 9%",
+            "en": "Gold income penalty 9%",
+            "zh": "Gold收入减幅 9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "獲得Gold減少 8%\n各ショップの最初の購入・強化後、50Gold獲得。リロール対象外",
+            "en": "Gold income penalty 8%\nFirst purchase/upgrade each shop refunds 50 Gold; excludes rerolls.",
+            "zh": "Gold收入减幅 8%\n每个商店首次购买／强化后获得50Gold，重选除外。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "獲得Gold減少 7%\n各ショップの最初の購入・強化後、50Gold獲得。リロール対象外",
+            "en": "Gold income penalty 7%\nFirst purchase/upgrade each shop refunds 50 Gold; excludes rerolls.",
+            "zh": "Gold收入减幅 7%\n每个商店首次购买／强化后获得50Gold，重选除外。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "獲得Gold減少 6%\n各ショップの最初の購入・強化後、50Gold獲得。リロール対象外",
+            "en": "Gold income penalty 6%\nFirst purchase/upgrade each shop refunds 50 Gold; excludes rerolls.",
+            "zh": "Gold收入减幅 6%\n每个商店首次购买／强化后获得50Gold，重选除外。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "獲得Gold減少 5%\n各ショップの最初の購入・強化後、50Gold獲得。リロール対象外\n和了Gold減少：10％→5％",
+            "en": "Gold income penalty 5%\nFirst purchase/upgrade each shop refunds 50 Gold; excludes rerolls.\nWin Gold penalty: 10% → 5%.",
+            "zh": "Gold收入减幅 5%\n每个商店首次购买／强化后获得50Gold，重选除外。\n和牌Gold减幅：10%→5%。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "ショップで300支払うごとにダメージ +2%",
+            "en": "Per 300 spent in shop: damage +2%",
+            "zh": "商店每消费300：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "ショップで300支払うごとにダメージ +2.33%",
+            "en": "Per 300 spent in shop: damage +2.33%",
+            "zh": "商店每消费300：伤害 +2.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "ショップで300支払うごとにダメージ +2.67%",
+            "en": "Per 300 spent in shop: damage +2.67%",
+            "zh": "商店每消费300：伤害 +2.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +3%",
+            "en": "Per 250 spent in shop: damage +3%",
+            "zh": "商店每消费250：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +3.33%",
+            "en": "Per 250 spent in shop: damage +3.33%",
+            "zh": "商店每消费250：伤害 +3.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +3.67%",
+            "en": "Per 250 spent in shop: damage +3.67%",
+            "zh": "商店每消费250：伤害 +3.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +4%\n各ショップ最初の有料リロールで、次の対局開始時に最大MPの10％回復",
+            "en": "Per 250 spent in shop: damage +4%\nFirst paid reroll each shop restores 10% max MP at the next battle.",
+            "zh": "商店每消费250：伤害 +4%\n每个商店首次付费重选，下次对战开始恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +4.33%\n各ショップ最初の有料リロールで、次の対局開始時に最大MPの10％回復",
+            "en": "Per 250 spent in shop: damage +4.33%\nFirst paid reroll each shop restores 10% max MP at the next battle.",
+            "zh": "商店每消费250：伤害 +4.33%\n每个商店首次付费重选，下次对战开始恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +4.67%\n各ショップ最初の有料リロールで、次の対局開始時に最大MPの10％回復",
+            "en": "Per 250 spent in shop: damage +4.67%\nFirst paid reroll each shop restores 10% max MP at the next battle.",
+            "zh": "商店每消费250：伤害 +4.67%\n每个商店首次付费重选，下次对战开始恢复最大MP的10%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "ショップで250支払うごとにダメージ +7%\n各ショップ最初の有料リロールで、次の対局開始時に最大MPの10％回復\n250Goldごと＋7％、上限＋35％。和了Goldがさらに10％減少",
+            "en": "Per 250 spent in shop: damage +7%\nFirst paid reroll each shop restores 10% max MP at the next battle.\nEvery 250 Gold +7%, cap +35%; win Gold loses another 10%.",
+            "zh": "商店每消费250：伤害 +7%\n每个商店首次付费重选，下次对战开始恢复最大MP的10%。\n每250Gold+7%，上限+35%；和牌Gold再减少10%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "devil": {
+        "ja": "カリュブディス",
+        "en": "Charybdis",
+        "zh": "卡律布狄斯"
+      },
+      "god": {
+        "ja": "ポセイドン",
+        "en": "Poseidon",
+        "zh": "波塞冬"
+      },
+      "title": {
+        "ja": "渦潮の飢え",
+        "en": "Hunger of the Maelstrom",
+        "zh": "漩涡之饥"
+      },
+      "benefit": {
+        "ja": "遺物使用で次の和了ダメージ＋6.67％。2回まで蓄積、最大＋13.33％",
+        "en": "Using a relic adds +6.67% to your next win. Two stacks, max +13.33%.",
+        "zh": "使用遗物使下次和牌伤害+6.67%，最多2层、+13.33%。"
+      },
+      "drawback": {
+        "ja": "遺物購入価格＋20％",
+        "en": "Relic purchase prices +20%.",
+        "zh": "遗物购买价格+20%。"
+      },
+      "synergy": {
+        "ja": "回復遺物・攻撃遺物",
+        "en": "Healing relics / attack relics",
+        "zh": "恢复遗物／攻击遗物"
+      },
+      "emblem": "渦",
+      "accent": {
+        "r": 0.28,
+        "g": 0.65,
+        "b": 0.73,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 18%",
+            "en": "Relic price increase 18%",
+            "zh": "遗物购买价格增幅 18%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 16%",
+            "en": "Relic price increase 16%",
+            "zh": "遗物购买价格增幅 16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 14%",
+            "en": "Relic price increase 14%",
+            "zh": "遗物购买价格增幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 12%",
+            "en": "Relic price increase 12%",
+            "zh": "遗物购买价格增幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 10%",
+            "en": "Relic price increase 10%",
+            "zh": "遗物购买价格增幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 8%",
+            "en": "Relic price increase 8%",
+            "zh": "遗物购买价格增幅 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 6%\nラン開始時、300Gold帯の遺物をランダムで1個獲得。所持枠に空きが必要",
+            "en": "Relic price increase 6%\nStart each run with a random 300-Gold relic if inventory has room.",
+            "zh": "遗物购买价格增幅 6%\n挑战开始随机获得1件300Gold遗物，需有空位。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 4%\nラン開始時、300Gold帯の遺物をランダムで1個獲得。所持枠に空きが必要",
+            "en": "Relic price increase 4%\nStart each run with a random 300-Gold relic if inventory has room.",
+            "zh": "遗物购买价格增幅 4%\n挑战开始随机获得1件300Gold遗物，需有空位。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 2%\nラン開始時、300Gold帯の遺物をランダムで1個獲得。所持枠に空きが必要",
+            "en": "Relic price increase 2%\nStart each run with a random 300-Gold relic if inventory has room.",
+            "zh": "遗物购买价格增幅 2%\n挑战开始随机获得1件300Gold遗物，需有空位。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "遺物購入価格増加 0%\nラン開始時、300Gold帯の遺物をランダムで1個獲得。所持枠に空きが必要\n遺物価格の増加をなくす",
+            "en": "Relic price increase 0%\nStart each run with a random 300-Gold relic if inventory has room.\nRemove the relic price surcharge.",
+            "zh": "遗物购买价格增幅 0%\n挑战开始随机获得1件300Gold遗物，需有空位。\n取消遗物价格增幅。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +8%",
+            "en": "Per relic used: next win damage +8%",
+            "zh": "每使用遗物：下次和牌伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +9.33%",
+            "en": "Per relic used: next win damage +9.33%",
+            "zh": "每使用遗物：下次和牌伤害 +9.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +10.67%",
+            "en": "Per relic used: next win damage +10.67%",
+            "zh": "每使用遗物：下次和牌伤害 +10.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +15%",
+            "en": "Per relic used: next win damage +15%",
+            "zh": "每使用遗物：下次和牌伤害 +15%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +16.67%",
+            "en": "Per relic used: next win damage +16.67%",
+            "zh": "每使用遗物：下次和牌伤害 +16.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +18.33%",
+            "en": "Per relic used: next win damage +18.33%",
+            "zh": "每使用遗物：下次和牌伤害 +18.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +20%\n遺物使用ごと、最大HPの3％回復",
+            "en": "Per relic used: next win damage +20%\nEach relic use heals 3% of max HP.",
+            "zh": "每使用遗物：下次和牌伤害 +20%\n每次使用遗物恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +21.67%\n遺物使用ごと、最大HPの3％回復",
+            "en": "Per relic used: next win damage +21.67%\nEach relic use heals 3% of max HP.",
+            "zh": "每使用遗物：下次和牌伤害 +21.67%\n每次使用遗物恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +23.33%\n遺物使用ごと、最大HPの3％回復",
+            "en": "Per relic used: next win damage +23.33%\nEach relic use heals 3% of max HP.",
+            "zh": "每使用遗物：下次和牌伤害 +23.33%\n每次使用遗物恢复最大HP的3%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "遺物を使うごとに次の和了ダメージ +25%\n遺物使用ごと、最大HPの3％回復\n3回まで蓄積、最大＋75％。最大MP－15％",
+            "en": "Per relic used: next win damage +25%\nEach relic use heals 3% of max HP.\nThree stacks, max +75%; maximum MP −15%.",
+            "zh": "每使用遗物：下次和牌伤害 +25%\n每次使用遗物恢复最大HP的3%。\n最多3层、+75%；最大MP−15%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "devil": {
+        "ja": "フェンリル",
+        "en": "Fenrir",
+        "zh": "芬里尔"
+      },
+      "god": {
+        "ja": "オーディン",
+        "en": "Odin",
+        "zh": "奥丁"
+      },
+      "title": {
+        "ja": "鎖を断つ牙",
+        "en": "Fangs that Break the Chain",
+        "zh": "断锁之牙"
+      },
+      "benefit": {
+        "ja": "HP16.67％以下のとき和了ダメージ＋13.33％",
+        "en": "At 16.67% HP or less, win damage +13.33%.",
+        "zh": "HP不超过16.67%时，和牌伤害+13.33%。"
+      },
+      "drawback": {
+        "ja": "被和了ダメージ＋15％",
+        "en": "Incoming win damage +15%.",
+        "zh": "受到和牌伤害+15%。"
+      },
+      "synergy": {
+        "ja": "被ダメージ軽減・玄武の護鱗・高火力の役",
+        "en": "Damage reduction / protective relics / powerful yaku",
+        "zh": "减伤／护盾遗物／高伤害役"
+      },
+      "emblem": "牙",
+      "accent": {
+        "r": 0.68,
+        "g": 0.27,
+        "b": 0.28,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "被ダメージ増加 14%",
+            "en": "Incoming damage increase 14%",
+            "zh": "所受伤害增幅 14%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "被ダメージ増加 13%",
+            "en": "Incoming damage increase 13%",
+            "zh": "所受伤害增幅 13%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "被ダメージ増加 12%",
+            "en": "Incoming damage increase 12%",
+            "zh": "所受伤害增幅 12%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "被ダメージ増加 11%",
+            "en": "Incoming damage increase 11%",
+            "zh": "所受伤害增幅 11%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "被ダメージ増加 10%",
+            "en": "Incoming damage increase 10%",
+            "zh": "所受伤害增幅 10%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "被ダメージ増加 9%",
+            "en": "Incoming damage increase 9%",
+            "zh": "所受伤害增幅 9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "被ダメージ増加 8%\n各対局で初めてHP25％以下になったとき、次の被和了ダメージ－30％",
+            "en": "Incoming damage increase 8%\nFirst drop to 25% HP per opponent: next incoming win damage −30%.",
+            "zh": "所受伤害增幅 8%\n每次对战首次HP不超过25%时，下次受到和牌伤害−30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "被ダメージ増加 7%\n各対局で初めてHP25％以下になったとき、次の被和了ダメージ－30％",
+            "en": "Incoming damage increase 7%\nFirst drop to 25% HP per opponent: next incoming win damage −30%.",
+            "zh": "所受伤害增幅 7%\n每次对战首次HP不超过25%时，下次受到和牌伤害−30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "被ダメージ増加 6%\n各対局で初めてHP25％以下になったとき、次の被和了ダメージ－30％",
+            "en": "Incoming damage increase 6%\nFirst drop to 25% HP per opponent: next incoming win damage −30%.",
+            "zh": "所受伤害增幅 6%\n每次对战首次HP不超过25%时，下次受到和牌伤害−30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "被ダメージ増加 5%\n各対局で初めてHP25％以下になったとき、次の被和了ダメージ－30％\n被和了ダメージ増加：10％→5％",
+            "en": "Incoming damage increase 5%\nFirst drop to 25% HP per opponent: next incoming win damage −30%.\nIncoming win damage surcharge: 10% → 5%.",
+            "zh": "所受伤害增幅 5%\n每次对战首次HP不超过25%时，下次受到和牌伤害−30%。\n受到和牌伤害增幅：10%→5%。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "HP50%以下でダメージ +16%",
+            "en": "At HP ≤50%: damage +16%",
+            "zh": "HP≤50%：伤害 +16%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "HP50%以下でダメージ +18.67%",
+            "en": "At HP ≤50%: damage +18.67%",
+            "zh": "HP≤50%：伤害 +18.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "HP50%以下でダメージ +21.33%",
+            "en": "At HP ≤50%: damage +21.33%",
+            "zh": "HP≤50%：伤害 +21.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +24%",
+            "en": "At HP ≤60%: damage +24%",
+            "zh": "HP≤60%：伤害 +24%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +26.67%",
+            "en": "At HP ≤60%: damage +26.67%",
+            "zh": "HP≤60%：伤害 +26.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +29.33%",
+            "en": "At HP ≤60%: damage +29.33%",
+            "zh": "HP≤60%：伤害 +29.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +32%\nHP条件を満たして和了すると最大HPの5％回復",
+            "en": "At HP ≤60%: damage +32%\nWinning under the HP condition heals 5% of max HP.",
+            "zh": "HP≤60%：伤害 +32%\n满足HP条件和牌时恢复最大HP的5%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +34.67%\nHP条件を満たして和了すると最大HPの5％回復",
+            "en": "At HP ≤60%: damage +34.67%\nWinning under the HP condition heals 5% of max HP.",
+            "zh": "HP≤60%：伤害 +34.67%\n满足HP条件和牌时恢复最大HP的5%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +37.33%\nHP条件を満たして和了すると最大HPの5％回復",
+            "en": "At HP ≤60%: damage +37.33%\nWinning under the HP condition heals 5% of max HP.",
+            "zh": "HP≤60%：伤害 +37.33%\n满足HP条件和牌时恢复最大HP的5%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "HP60%以下でダメージ +70%\nHP条件を満たして和了すると最大HPの5％回復\nHP条件成立時のダメージ＋70％。被和了ダメージがさらに10％増加",
+            "en": "At HP ≤60%: damage +70%\nWinning under the HP condition heals 5% of max HP.\nLow-HP win damage +70%; incoming win damage another +10%.",
+            "zh": "HP≤60%：伤害 +70%\n满足HP条件和牌时恢复最大HP的5%。\n满足条件伤害+70%；受到和牌伤害再增加10%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "devil": {
+        "ja": "ラミア",
+        "en": "Lamia",
+        "zh": "拉弥亚"
+      },
+      "god": {
+        "ja": "ルーナ",
+        "en": "Luna",
+        "zh": "露娜"
+      },
+      "title": {
+        "ja": "月下の魔力",
+        "en": "Magic beneath the Moon",
+        "zh": "月下魔力"
+      },
+      "benefit": {
+        "ja": "対局中のMP回復量＋10％",
+        "en": "MP recovery during battle +10%.",
+        "zh": "对战中MP恢复量+10%。"
+      },
+      "drawback": {
+        "ja": "スキル使用ごと最大HPの3％を支払う。HPが0になる場合は使用不可",
+        "en": "Each skill also costs 3% of max HP. Cannot use if HP would reach 0.",
+        "zh": "每次技能支付最大HP的3%；若HP会归零则无法使用。"
+      },
+      "synergy": {
+        "ja": "MP回復・スキル回数強化",
+        "en": "MP recovery / extra skill uses",
+        "zh": "MP恢复／技能次数强化"
+      },
+      "emblem": "月",
+      "accent": {
+        "r": 0.53,
+        "g": 0.45,
+        "b": 0.77,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 2.8%",
+            "en": "Skill HP cost 2.8%",
+            "zh": "使用技能HP消耗 2.8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 2.6%",
+            "en": "Skill HP cost 2.6%",
+            "zh": "使用技能HP消耗 2.6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 2.4%",
+            "en": "Skill HP cost 2.4%",
+            "zh": "使用技能HP消耗 2.4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 2.2%",
+            "en": "Skill HP cost 2.2%",
+            "zh": "使用技能HP消耗 2.2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 2%",
+            "en": "Skill HP cost 2%",
+            "zh": "使用技能HP消耗 2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 1.8%",
+            "en": "Skill HP cost 1.8%",
+            "zh": "使用技能HP消耗 1.8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 1.6%\n各局最初のスキルはHPを消費しない",
+            "en": "Skill HP cost 1.6%\nFirst skill each hand has no HP cost.",
+            "zh": "使用技能HP消耗 1.6%\n每局首次技能不消耗HP。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 1.4%\n各局最初のスキルはHPを消費しない",
+            "en": "Skill HP cost 1.4%\nFirst skill each hand has no HP cost.",
+            "zh": "使用技能HP消耗 1.4%\n每局首次技能不消耗HP。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 1.2%\n各局最初のスキルはHPを消費しない",
+            "en": "Skill HP cost 1.2%\nFirst skill each hand has no HP cost.",
+            "zh": "使用技能HP消耗 1.2%\n每局首次技能不消耗HP。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "スキル使用時のHP消費 1%\n各局最初のスキルはHPを消費しない\nスキルのHP消費：2％→1％",
+            "en": "Skill HP cost 1%\nFirst skill each hand has no HP cost.\nSkill HP cost: 2% → 1%.",
+            "zh": "使用技能HP消耗 1%\n每局首次技能不消耗HP。\n技能HP消耗：2%→1%。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "MP回復 +12%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +12%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +12%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "MP回復 +14%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +14%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +14%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "MP回復 +16%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +16%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +16%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "MP回復 +30%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +30%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +30%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "MP回復 +33.33%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +33.33%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +33.33%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "MP回復 +36.67%\nMP超過回復のダメージ蓄積を段階7で解放",
+            "en": "MP recovery +36.67%\nMP overheal damage storage unlocks at rank 7",
+            "zh": "MP恢复 +36.67%\n阶段7解锁MP溢出恢复伤害积蓄"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "MP回復 +40%\n超過MP1につき最大HPの0.16%をダメージ蓄積。最大HPの8%まで",
+            "en": "MP recovery +40%\nStore 0.16% max HP damage per overhealed MP; cap 8% max HP",
+            "zh": "MP恢复 +40%\n每溢出恢复1MP积蓄最大HP的0.16%为伤害；上限为最大HP的8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "MP回復 +43.33%\n超過MP1につき最大HPの0.173%をダメージ蓄積。最大HPの8.67%まで",
+            "en": "MP recovery +43.33%\nStore 0.173% max HP damage per overhealed MP; cap 8.67% max HP",
+            "zh": "MP恢复 +43.33%\n每溢出恢复1MP积蓄最大HP的0.173%为伤害；上限为最大HP的8.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "MP回復 +46.67%\n超過MP1につき最大HPの0.187%をダメージ蓄積。最大HPの9.33%まで",
+            "en": "MP recovery +46.67%\nStore 0.187% max HP damage per overhealed MP; cap 9.33% max HP",
+            "zh": "MP恢复 +46.67%\n每溢出恢复1MP积蓄最大HP的0.187%为伤害；上限为最大HP的9.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "MP回復 +50%\n超過MP1につき最大HPの0.2%をダメージ蓄積。最大HPの10%まで\n最大MP -20%",
+            "en": "MP recovery +50%\nStore 0.2% max HP damage per overhealed MP; cap 10% max HP\nMaximum MP -20%",
+            "zh": "MP恢复 +50%\n每溢出恢复1MP积蓄最大HP的0.2%为伤害；上限为最大HP的10%\n最大MP -20%"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "devil": {
+        "ja": "テュポーン",
+        "en": "Typhon",
+        "zh": "堤丰"
+      },
+      "god": {
+        "ja": "ゼウス",
+        "en": "Zeus",
+        "zh": "宙斯"
+      },
+      "title": {
+        "ja": "神王への反逆",
+        "en": "Rebellion against the God-King",
+        "zh": "反叛神王"
+      },
+      "benefit": {
+        "ja": "お札の対象役2種類以上成立で和了ダメージ＋16.67％。同じ条件は1種類",
+        "en": "Match at least two distinct ofuda conditions: win damage +16.67%.",
+        "zh": "满足至少2种不同符咒条件，和牌伤害+16.67%。"
+      },
+      "drawback": {
+        "ja": "お札の対象役が0種類だと和了ダメージ－25％",
+        "en": "No matching ofuda: win damage −25%.",
+        "zh": "未满足符咒条件时，和牌伤害−25%。"
+      },
+      "synergy": {
+        "ja": "複数役のお札・特別牌・役強化",
+        "en": "Multiple ofuda / special tiles / yaku upgrades",
+        "zh": "多役符咒／特殊牌／役强化"
+      },
+      "emblem": "嵐",
+      "accent": {
+        "r": 0.45,
+        "g": 0.64,
+        "b": 0.83,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 23%",
+            "en": "Damage penalty without ofuda 23%",
+            "zh": "未发动符咒的伤害减幅 23%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 21%",
+            "en": "Damage penalty without ofuda 21%",
+            "zh": "未发动符咒的伤害减幅 21%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 19%",
+            "en": "Damage penalty without ofuda 19%",
+            "zh": "未发动符咒的伤害减幅 19%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 17%",
+            "en": "Damage penalty without ofuda 17%",
+            "zh": "未发动符咒的伤害减幅 17%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 15%",
+            "en": "Damage penalty without ofuda 15%",
+            "zh": "未发动符咒的伤害减幅 15%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 13%",
+            "en": "Damage penalty without ofuda 13%",
+            "zh": "未发动符咒的伤害减幅 13%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 11%\n各ショップ最初のお札リロールが無料",
+            "en": "Damage penalty without ofuda 11%\nFirst ofuda reroll each shop is free.",
+            "zh": "未发动符咒的伤害减幅 11%\n每个商店首次符咒重选免费。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 9%\n各ショップ最初のお札リロールが無料",
+            "en": "Damage penalty without ofuda 9%\nFirst ofuda reroll each shop is free.",
+            "zh": "未发动符咒的伤害减幅 9%\n每个商店首次符咒重选免费。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 7%\n各ショップ最初のお札リロールが無料",
+            "en": "Damage penalty without ofuda 7%\nFirst ofuda reroll each shop is free.",
+            "zh": "未发动符咒的伤害减幅 7%\n每个商店首次符咒重选免费。"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "お札未発動時のダメージ減少 5%\n各ショップ最初のお札リロールが無料\n条件未達のダメージ減少：15％→5％",
+            "en": "Damage penalty without ofuda 5%\nFirst ofuda reroll each shop is free.\nNo-match damage penalty: 15% → 5%.",
+            "zh": "未发动符咒的伤害减幅 5%\n每个商店首次符咒重选免费。\n未满足条件减伤：15%→5%。"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +20%",
+            "en": "Match 2 ofuda conditions: damage +20%",
+            "zh": "满足2种符咒条件：伤害 +20%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +23.33%",
+            "en": "Match 2 ofuda conditions: damage +23.33%",
+            "zh": "满足2种符咒条件：伤害 +23.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +26.67%",
+            "en": "Match 2 ofuda conditions: damage +26.67%",
+            "zh": "满足2种符咒条件：伤害 +26.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +39%",
+            "en": "Match 2 ofuda conditions: damage +39%",
+            "zh": "满足2种符咒条件：伤害 +39%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +43.33%",
+            "en": "Match 2 ofuda conditions: damage +43.33%",
+            "zh": "满足2种符咒条件：伤害 +43.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +47.67%",
+            "en": "Match 2 ofuda conditions: damage +47.67%",
+            "zh": "满足2种符咒条件：伤害 +47.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +52%\n対象役3種類以上なら、さらにダメージ＋20％",
+            "en": "Match 2 ofuda conditions: damage +52%\nThree matching conditions add another +20% damage.",
+            "zh": "满足2种符咒条件：伤害 +52%\n满足3种条件时，伤害再+20%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +56.33%\n対象役3種類以上なら、さらにダメージ＋21.67％",
+            "en": "Match 2 ofuda conditions: damage +56.33%\nThree matching conditions add another +21.67% damage.",
+            "zh": "满足2种符咒条件：伤害 +56.33%\n满足3种条件时，伤害再+21.67%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +60.67%\n対象役3種類以上なら、さらにダメージ＋23.33％",
+            "en": "Match 2 ofuda conditions: damage +60.67%\nThree matching conditions add another +23.33% damage.",
+            "zh": "满足2种符咒条件：伤害 +60.67%\n满足3种条件时，伤害再+23.33%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "お札2種類の条件成立でダメージ +65%\n対象役3種類以上なら、さらにダメージ＋25％\n2種類以上成立時、お札のダメージ増加部分を20％強化。最大HP－15％",
+            "en": "Match 2 ofuda conditions: damage +65%\nThree matching conditions add another +25% damage.\nWith two matches, ofuda damage bonus portion +20%; maximum HP −15%.",
+            "zh": "满足2种符咒条件：伤害 +65%\n满足3种条件时，伤害再+25%。\n满足2种条件时，符咒伤害增加部分强化20%；最大HP−15%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "devil": {
+        "ja": "ケルベロス",
+        "en": "Cerberus",
+        "zh": "刻耳柏洛斯"
+      },
+      "god": {
+        "ja": "ハデス",
+        "en": "Hades",
+        "zh": "哈迪斯"
+      },
+      "title": {
+        "ja": "冥府の三つの誓い",
+        "en": "Three Oaths of the Underworld",
+        "zh": "冥府三誓"
+      },
+      "benefit": {
+        "ja": "パッシブ効果2系統以上で和了ダメージ＋16.67％。各局開始時に未解放パッシブ1つをランダムで一時解放",
+        "en": "Two passive effect types: win damage +16.67%. Each hand temporarily unlocks one random locked passive.",
+        "zh": "触发2种被动效果，和牌伤害+16.67%。每局开始随机临时解锁1个未解锁被动。"
+      },
+      "drawback": {
+        "ja": "パッシブ効果0～1系統の和了ダメージ－20％",
+        "en": "Zero or one passive effect type: win damage −20%.",
+        "zh": "仅0～1种被动效果的和牌伤害−20%。"
+      },
+      "synergy": {
+        "ja": "ダメージ強化・HP回復・MP回復の共鳴",
+        "en": "Damage / HP recovery / MP recovery synergy",
+        "zh": "伤害强化／HP恢复／MP恢复共鸣"
+      },
+      "emblem": "門",
+      "accent": {
+        "r": 0.7,
+        "g": 0.39,
+        "b": 0.69,
+        "a": 1
+      },
+      "mercy": [
+        {
+          "name": {
+            "ja": "代償軽減 1",
+            "en": "Restraint 1",
+            "zh": "减轻代价 1"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 18%\n局開始時のMP減少 9%",
+            "en": "Damage penalty below 2 passive types 18%\nMP lost at hand start: 9%",
+            "zh": "少于2种被动的伤害减幅 18%\n每局开始时MP减少 9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 2",
+            "en": "Restraint 2",
+            "zh": "减轻代价 2"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 16%\n局開始時のMP減少 8%",
+            "en": "Damage penalty below 2 passive types 16%\nMP lost at hand start: 8%",
+            "zh": "少于2种被动的伤害减幅 16%\n每局开始时MP减少 8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 3",
+            "en": "Restraint 3",
+            "zh": "减轻代价 3"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 14%\n局開始時のMP減少 7%",
+            "en": "Damage penalty below 2 passive types 14%\nMP lost at hand start: 7%",
+            "zh": "少于2种被动的伤害减幅 14%\n每局开始时MP减少 7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 4",
+            "en": "Restraint 4",
+            "zh": "减轻代价 4"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 12%\n局開始時のMP減少 6%",
+            "en": "Damage penalty below 2 passive types 12%\nMP lost at hand start: 6%",
+            "zh": "少于2种被动的伤害减幅 12%\n每局开始时MP减少 6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 5",
+            "en": "Restraint 5",
+            "zh": "减轻代价 5"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 10%\n局開始時のMP減少 5%",
+            "en": "Damage penalty below 2 passive types 10%\nMP lost at hand start: 5%",
+            "zh": "少于2种被动的伤害减幅 10%\n每局开始时MP减少 5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 6",
+            "en": "Restraint 6",
+            "zh": "减轻代价 6"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 8%\n局開始時のMP減少 4%",
+            "en": "Damage penalty below 2 passive types 8%\nMP lost at hand start: 4%",
+            "zh": "少于2种被动的伤害减幅 8%\n每局开始时MP减少 4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 7",
+            "en": "Restraint 7",
+            "zh": "减轻代价 7"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 6%\n各対局の最初の和了は、条件未達でもダメージが減らない\n局開始時のMP減少 3%",
+            "en": "Damage penalty below 2 passive types 6%\nFirst win per opponent ignores the penalty.\nMP lost at hand start: 3%",
+            "zh": "少于2种被动的伤害减幅 6%\n每次对战首次和牌不受条件未达减伤影响。\n每局开始时MP减少 3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 8",
+            "en": "Restraint 8",
+            "zh": "减轻代价 8"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 4%\n各対局の最初の和了は、条件未達でもダメージが減らない\n局開始時のMP減少 2%",
+            "en": "Damage penalty below 2 passive types 4%\nFirst win per opponent ignores the penalty.\nMP lost at hand start: 2%",
+            "zh": "少于2种被动的伤害减幅 4%\n每次对战首次和牌不受条件未达减伤影响。\n每局开始时MP减少 2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 9",
+            "en": "Restraint 9",
+            "zh": "减轻代价 9"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 2%\n各対局の最初の和了は、条件未達でもダメージが減らない\n局開始時のMP減少 1%",
+            "en": "Damage penalty below 2 passive types 2%\nFirst win per opponent ignores the penalty.\nMP lost at hand start: 1%",
+            "zh": "少于2种被动的伤害减幅 2%\n每次对战首次和牌不受条件未达减伤影响。\n每局开始时MP减少 1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "代償軽減 10",
+            "en": "Restraint 10",
+            "zh": "减轻代价 10"
+          },
+          "description": {
+            "ja": "パッシブ2種類未満のダメージ減少 0%\n各対局の最初の和了は、条件未達でもダメージが減らない\n条件未達のダメージ減少をなくす\n局開始時のMP減少 0%",
+            "en": "Damage penalty below 2 passive types 0%\nFirst win per opponent ignores the penalty.\nRemove the unmet-condition damage penalty.\nMP lost at hand start: 0%",
+            "zh": "少于2种被动的伤害减幅 0%\n每次对战首次和牌不受条件未达减伤影响。\n取消未满足条件的减伤。\n每局开始时MP减少 0%"
+          }
+        }
+      ],
+      "power": [
+        {
+          "name": {
+            "ja": "恩恵強化 1",
+            "en": "Power 1",
+            "zh": "强化恩惠 1"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +20%",
+            "en": "Trigger 2 passive types: damage +20%",
+            "zh": "发动2种被动：伤害 +20%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 2",
+            "en": "Power 2",
+            "zh": "强化恩惠 2"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +23.33%",
+            "en": "Trigger 2 passive types: damage +23.33%",
+            "zh": "发动2种被动：伤害 +23.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 3",
+            "en": "Power 3",
+            "zh": "强化恩惠 3"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +26.67%",
+            "en": "Trigger 2 passive types: damage +26.67%",
+            "zh": "发动2种被动：伤害 +26.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 4",
+            "en": "Power 4",
+            "zh": "强化恩惠 4"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +39%",
+            "en": "Trigger 2 passive types: damage +39%",
+            "zh": "发动2种被动：伤害 +39%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 5",
+            "en": "Power 5",
+            "zh": "强化恩惠 5"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +43.33%",
+            "en": "Trigger 2 passive types: damage +43.33%",
+            "zh": "发动2种被动：伤害 +43.33%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 6",
+            "en": "Power 6",
+            "zh": "强化恩惠 6"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +47.67%",
+            "en": "Trigger 2 passive types: damage +47.67%",
+            "zh": "发动2种被动：伤害 +47.67%"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 7",
+            "en": "Power 7",
+            "zh": "强化恩惠 7"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +52%\n3系統すべて発動時、パッシブによるHP・MP回復量＋30％",
+            "en": "Trigger 2 passive types: damage +52%\nAll three types: passive HP and MP healing +30%.",
+            "zh": "发动2种被动：伤害 +52%\n触发全部3种效果时，被动HP／MP恢复量+30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 8",
+            "en": "Power 8",
+            "zh": "强化恩惠 8"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +56.33%\n3系統すべて発動時、パッシブによるHP・MP回復量＋30％",
+            "en": "Trigger 2 passive types: damage +56.33%\nAll three types: passive HP and MP healing +30%.",
+            "zh": "发动2种被动：伤害 +56.33%\n触发全部3种效果时，被动HP／MP恢复量+30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 9",
+            "en": "Power 9",
+            "zh": "强化恩惠 9"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +60.67%\n3系統すべて発動時、パッシブによるHP・MP回復量＋30％",
+            "en": "Trigger 2 passive types: damage +60.67%\nAll three types: passive HP and MP healing +30%.",
+            "zh": "发动2种被动：伤害 +60.67%\n触发全部3种效果时，被动HP／MP恢复量+30%。"
+          }
+        },
+        {
+          "name": {
+            "ja": "恩恵強化 10",
+            "en": "Power 10",
+            "zh": "强化恩惠 10"
+          },
+          "description": {
+            "ja": "パッシブ2種類発動でダメージ +65%\n3系統すべて発動時、パッシブによるHP・MP回復量＋30％\n3系統発動時、契約のダメージ強化が合計＋100％。最大HP・MP－10％",
+            "en": "Trigger 2 passive types: damage +65%\nAll three types: passive HP and MP healing +30%.\nAll three types: contract damage bonus totals +100%; max HP/MP −10%.",
+            "zh": "发动2种被动：伤害 +65%\n触发全部3种效果时，被动HP／MP恢复量+30%。\n触发3种效果时契约伤害加成共+100%；最大HP／MP−10%。"
+          }
+        }
+      ],
+      "resonance": [
+        {
+          "name": {
+            "ja": "共鳴 1",
+            "en": "Resonance 1",
+            "zh": "共鸣 1"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +1%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +1%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +1%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 2",
+            "en": "Resonance 2",
+            "zh": "共鸣 2"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +2%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +2%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +2%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 3",
+            "en": "Resonance 3",
+            "zh": "共鸣 3"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +3%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +3%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +3%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 4",
+            "en": "Resonance 4",
+            "zh": "共鸣 4"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +4%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +4%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +4%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 5",
+            "en": "Resonance 5",
+            "zh": "共鸣 5"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +5%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +5%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +5%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 6",
+            "en": "Resonance 6",
+            "zh": "共鸣 6"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +6%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +6%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +6%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 7",
+            "en": "Resonance 7",
+            "zh": "共鸣 7"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +7%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +7%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +7%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 8",
+            "en": "Resonance 8",
+            "zh": "共鸣 8"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +8%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +8%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +8%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 9",
+            "en": "Resonance 9",
+            "zh": "共鸣 9"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +9%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +9%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +9%"
+          }
+        },
+        {
+          "name": {
+            "ja": "共鳴 10",
+            "en": "Resonance 10",
+            "zh": "共鸣 10"
+          },
+          "description": {
+            "ja": "お札2種類またはパッシブ2種類が発動した和了：ダメージ +10%",
+            "en": "Win with 2 ofuda conditions or 2 passive types: damage +10%",
+            "zh": "和牌时满足2种符咒条件或发动2种被动：伤害 +10%"
+          }
+        }
+      ]
+    }
+  ]
+}

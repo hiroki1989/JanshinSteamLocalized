@@ -49,7 +49,9 @@ public sealed class SkillDescriptionPopup : MonoBehaviour
     static TextMeshProUGUI Label(Transform parent,string name,string value,float size)
     {
         var go = new GameObject(name,typeof(RectTransform),typeof(TextMeshProUGUI)); go.transform.SetParent(parent,false);
-        var tmp = go.GetComponent<TextMeshProUGUI>(); tmp.font = TMP_Settings.defaultFontAsset; tmp.text = value;
+        var tmp = go.GetComponent<TextMeshProUGUI>(); tmp.font = LocalizationManager.Instance.GetBodyFont() ?? TMP_Settings.defaultFontAsset;
+        if(LocalizationManager.Instance.CurrentLanguage==LocalizationManager.Language.ChineseSimplified && !tmp.font.HasCharacter('恶',true,true))
+            tmp.font=Resources.Load<TMP_FontAsset>("Tutorial/Fonts/ChineseSimplified")??tmp.font; tmp.text = value;
         tmp.color = new Color(.96f,.94f,.87f); tmp.raycastTarget = false; ItemArtwork.Text(tmp,size); return tmp;
     }
     void Update() { if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame) Close(); }

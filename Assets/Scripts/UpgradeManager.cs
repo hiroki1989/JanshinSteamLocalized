@@ -512,7 +512,7 @@ private void PlayUpgradeResultSE(AudioClip clip)
 {
     if (upgradeResultSESource != null && clip != null)
     {
-        try { upgradeResultSESource.PlayOneShot(clip); } catch { }
+        try { AudioManager.NotifyUserSound(); upgradeResultSESource.PlayOneShot(clip); } catch { }
     }
 }
 private const string PrefKey_TraitBonusPairs = "PF_LastSpecialTileTraitBonusPairs";
@@ -642,43 +642,7 @@ private void RefreshCurrentHpMpText()
 }
 private int __GetLastSpecialTileTraitBonusForYaku(string yakuName)
 {
-    if (string.IsNullOrEmpty(yakuName)) return 0;
-
-    try
-    {
-        string target = NormalizeUpgradeYakuKey_Local(yakuName);
-        if (string.IsNullOrEmpty(target)) return 0;
-
-        int bonus = 0;
-        Dictionary<string, int> map = null;
-
-        try
-        {
-            map = SpecialTileSystem.GetEquippedTraitBonusMap();
-        }
-        catch
-        {
-            map = null;
-        }
-
-        if (map == null || map.Count <= 0)
-            return 0;
-
-        foreach (var kv in map)
-        {
-            string k = NormalizeUpgradeYakuKey_Local(kv.Key);
-            if (string.IsNullOrEmpty(k)) continue;
-            if (!string.Equals(k, target, StringComparison.OrdinalIgnoreCase)) continue;
-
-            bonus += Mathf.Max(0, kv.Value);
-        }
-
-        return Mathf.Max(0, bonus);
-    }
-    catch
-    {
-        return 0;
-    }
+    return SpecialTileSystem.GetEquippedTraitBonusLv(yakuName);
 }
 private int GetScaledCost(int baseCost, int increasePerPurchase, string countKey)
 {
@@ -707,7 +671,7 @@ private int GetScaledCost(int baseCost, int increasePerPurchase, string countKey
 
     if (scaled < 0) scaled = 0;
     if (scaled > int.MaxValue) scaled = int.MaxValue;
-    return (int)scaled;
+    return countKey==PrefKey_CostCount_Buy ? DevilContracts.TilePrice((int)scaled) : (int)scaled;
 }
 
 private void IncrementPurchaseCount(string countKey)
@@ -845,6 +809,7 @@ private void OnEnable()
 {
     LocalizationManager.LanguageChanged += OnLanguageChanged_Local;
     GameManager.RunCurrency.Changed += RefreshGoldText;
+    SpecialTileSystem.EquipmentChanged += RefreshTraitOfferPresentation;
     RefreshGoldText();
 }
 
@@ -852,6 +817,7 @@ private void OnDisable()
 {
     LocalizationManager.LanguageChanged -= OnLanguageChanged_Local;
     GameManager.RunCurrency.Changed -= RefreshGoldText;
+    SpecialTileSystem.EquipmentChanged -= RefreshTraitOfferPresentation;
     CloseSelectedTileShop();
 }
 
@@ -882,7 +848,7 @@ if (!TrySpendGold(costNow)) return; // 残高チェック＋減算 + 共通SE
 public void OnClickRerollBuy()
 {
     int costNow = GetScaledCost(rerollBuyCost, rerollBuyCostIncrease, PrefKey_CostCount_RerollBuy);
-if (!TrySpendGold(costNow)) return;
+if (!TrySpendGold(costNow,true)) return;
 
     IncrementPurchaseCount(PrefKey_CostCount_RerollBuy);
 
@@ -910,6 +876,7 @@ if (!TrySpendGold(costNow)) return; // 残高チェック＋減算 + 共通SE
     IncrementPurchaseCount(PrefKey_CostCount_Destroy);
 
     foreach (var idx in offerDestroyGroup) PlayerData.AddToDeck(idx, -1);
+    DevilContracts.Destroyed(offerDestroyGroup.Count);
 
     // 次の破壊オファー（必ず破壊可能なもの）
     offerDestroyGroup = MakeRandomDestroyableGroup();
@@ -918,7 +885,7 @@ if (!TrySpendGold(costNow)) return; // 残高チェック＋減算 + 共通SE
 public void OnClickRerollDestroy()
 {
     int costNow = GetScaledCost(rerollDestroyCost, rerollDestroyCostIncrease, PrefKey_CostCount_RerollDestroy);
-if (!TrySpendGold(costNow)) return;
+if (!TrySpendGold(costNow,true)) return;
 
     IncrementPurchaseCount(PrefKey_CostCount_RerollDestroy);
 
@@ -2073,7 +2040,11 @@ private void RefreshTraitOffers()
 
     // ★仕様変更：解放購入は廃止し「強化（レベルアップ）のみ」
     PickRandomFromAll(all, out _upgradeOfferTrait, out _upgradeOfferYakuName);
-
+    RefreshTraitOfferPresentation();
+}
+private void RefreshTraitOfferPresentation()
+{
+    if(_traitHostSet==null||string.IsNullOrEmpty(_traitActiveSkillName))return;
     if (traitUpgradeOfferTMP)
     {
         if (string.IsNullOrEmpty(_upgradeOfferYakuName))
@@ -2393,14 +2364,14 @@ private void __EnsureInitialTraitFirstYakuIsLv1(SkillSetAsset hostSet, string ac
     }
     catch { }
 }
-private bool TrySpendGold(int amount)
+private bool TrySpendGold(int amount, bool reroll = false)
 {
     EnsureWalletLoaded(); // 既存：RunCurrency.Get() を一度呼ぶ安全策 :contentReference[oaicite:4]{index=4}
     amount = Mathf.Max(0, amount);
     if (amount <= 0) return true;
 
     // 既存の購入処理と同じ通貨系を使用（RunCurrency.Spend）
-    bool ok = GameManager.RunCurrency.Spend(amount);
+    bool ok = GameManager.RunCurrency.Spend(amount,reroll);
     if (ok)
     {
         RefreshGoldText(); // UI 反映（既存）:contentReference[oaicite:5]{index=5}

@@ -5,10 +5,11 @@ using TMPro;
 
 public sealed class UpgradeOfudaStore : MonoBehaviour
 {
-public void EnsureShopReroll(Transform panel){ShopRerollButton.Ensure(panel,new Vector2(0,265),TryRerollShop);}
+public void EnsureShopReroll(Transform panel){ShopRerollButton.Ensure(panel,new Vector2(0,265),TryRerollShop,()=>DevilContracts.FreeOfudaReroll(false));}
 public bool TryRerollShop(){
-    if(Currency<100||_candidatePool==null||_candidatePool.Count==0)return false;
-    Currency-=100;BuildOffers();ApplyShopPresentation();return true;
+    if(_candidatePool==null||_candidatePool.Count==0)return false;
+    if(!DevilContracts.FreeOfudaReroll(true) && !GameManager.RunCurrency.Spend(100,true))return false;
+    BuildOffers();ApplyShopPresentation();return true;
 }
 public void ApplyShopPresentation()
 {
@@ -257,7 +258,7 @@ private void RefreshOfferSlotsUI()
 
         if (!OfudaRunInventory.TryAdd(o.id)) return;
 
-        Currency -= o.price;
+        GameManager.RunCurrency.Spend(o.price);
         _purchasedSlots[index] = true;
 
         PlayerPrefs.SetString("RunOfuda_LastJSON", JsonUtility.ToJson(o));

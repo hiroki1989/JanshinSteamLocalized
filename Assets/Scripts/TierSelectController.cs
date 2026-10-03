@@ -255,12 +255,20 @@ public class TierSelectController : MonoBehaviour
     private void OnClickStartSeventeenSteps()
     {
         if (_seventeenCharacterPanel) return;
+        if(SeventeenStepsController.HasSuspendedRound){
+            var host=GetComponentInParent<Canvas>();if(!host)host=FindFirstObjectByType<Canvas>();
+            var resume=SeventeenStepsUI.Modal(host.transform,"外伝モード・中断データ");_seventeenCharacterPanel=resume.gameObject;
+            SeventeenStepsUI.Label(resume,"中断した局の途中から再開",new Vector2(0,120),new Vector2(1200,90),38);
+            SeventeenStepsUI.Button(resume,"続きから",new Vector2(0,0),new Vector2(540,85),SeventeenStepsController.ResumeSavedRound);
+            SeventeenStepsUI.Button(resume,"新しく始める",new Vector2(0,-110),new Vector2(540,85),()=>{SeventeenStepsController.ClearSuspendedRound();Destroy(_seventeenCharacterPanel);_seventeenCharacterPanel=null;OnClickStartSeventeenSteps();});
+            SeventeenStepsUI.Button(resume,"戻る",new Vector2(0,-240),new Vector2(400,70),()=>{Destroy(_seventeenCharacterPanel);_seventeenCharacterPanel=null;});return;
+        }
         var canvas=GetComponentInParent<Canvas>();
         if(!canvas)canvas=FindFirstObjectByType<Canvas>();
         var panel=SeventeenStepsUI.Rect("SeventeenCharacterSelect",canvas.transform,Vector2.zero,new Vector2(1760,940));
         _seventeenCharacterPanel=panel.gameObject;
         SeventeenStepsUI.Paper(panel,panel.sizeDelta);
-        SeventeenStepsUI.Label(panel,"外伝モード　キャラクター選択",new Vector2(0,385),new Vector2(1500,95),60).color=Color.black;
+        SeventeenStepsUI.Label(panel,"外伝モード　キャラクター選択",new Vector2(0,385),new Vector2(1500,95),60).color=JanshinPanelTheme.Ivory;
         var choices=new[]{SeventeenStepsMode.Character.DyeMaster,SeventeenStepsMode.Character.Calligrapher,SeventeenStepsMode.Character.Capitalist};
         var names=new[]{"染色師","書家","資産家"};
         var portraits=new[]{"RandomMan_victory","RandomHonor_victory","Capitalist_victory"};
@@ -270,8 +278,8 @@ public class TierSelectController : MonoBehaviour
             var button=SeventeenStepsUI.Button(panel,"",new Vector2((i-1)*530,5),new Vector2(485,610),()=>StartSeventeenStepsWithCharacter(choices[index]));
             SeventeenStepsUI.Frame(button.transform,new Vector2(485,610));
             SeventeenStepsUI.Picture(button.transform,SeventeenStepsUI.CharacterArt(choices[i]),new Vector2(0,65),new Vector2(390,365));
-            SeventeenStepsUI.Label(button.transform,names[i],new Vector2(0,-155),new Vector2(420,65),46).color=Color.black;
-            SeventeenStepsUI.Label(button.transform,descriptions[i],new Vector2(0,-238),new Vector2(425,95),28).color=Color.black;
+            SeventeenStepsUI.Label(button.transform,names[i],new Vector2(0,-155),new Vector2(420,65),46).color=JanshinPanelTheme.Ivory;
+            SeventeenStepsUI.Label(button.transform,descriptions[i],new Vector2(0,-238),new Vector2(425,95),28).color=JanshinPanelTheme.Ivory;
         }
         SeventeenStepsUI.Navigation(panel,"戻る",new Vector2(-650,-395),new Vector2(300,85),()=>{Destroy(_seventeenCharacterPanel);_seventeenCharacterPanel=null;});
     }
@@ -314,6 +322,7 @@ public class TierSelectController : MonoBehaviour
         SeventeenStepsMode.LeaveMode();
         MissionSystem.ResetForNewRun();
         RunConsumables.ResetRun();
+        DevilContracts.BeginRun();
         MissionSystem.ClearRunSeed();
         PlayerPrefs.SetInt("PF_ResumeDirect", 0);
         PlayerPrefs.DeleteKey("PF_ResumeScene");

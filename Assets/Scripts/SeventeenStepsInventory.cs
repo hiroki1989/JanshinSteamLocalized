@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,52 +28,80 @@ public sealed class SeventeenStepsInventory : MonoBehaviour
         var old=SceneManager.GetActiveScene();var scene=SceneManager.CreateScene("ConsumableInventoryScene");SceneManager.SetActiveScene(scene);
         new GameObject("ConsumableInventory").AddComponent<SeventeenStepsInventory>().Build();SceneManager.UnloadSceneAsync(old);
     }
+    static void ClearContents(Transform parent){
+        for(int i=parent.childCount-1;i>=0;i--){
+            var child=parent.GetChild(i);if(child.name=="UnifiedGoldBorder")continue;
+            child.gameObject.SetActive(false);
+            if(Application.isPlaying)Destroy(child.gameObject);else DestroyImmediate(child.gameObject);
+        }
+    }
+    static RectTransform Panel(string name,Transform parent,Vector2 position,Vector2 size){
+        var panel=SeventeenStepsUI.Rect(name,parent,position,size);
+        JanshinPanelTheme.Apply(panel.gameObject.AddComponent<Image>());
+        return panel;
+    }
+    static TextMeshProUGUI Text(Transform parent,string value,Vector2 position,Vector2 size,float font){
+        var label=SeventeenStepsUI.Label(parent,value,position,size,font);
+        label.color=JanshinPanelTheme.Ivory;label.margin=new Vector4(10,5,10,5);
+        return label;
+    }
     void Build(){
         root=SeventeenStepsUI.CreateCanvas(transform,"遺物");
-        SeventeenStepsUI.InfoBacking(root,new Vector2(-320,390),new Vector2(1170,70));SeventeenStepsUI.InfoBacking(root,new Vector2(675,390),new Vector2(490,70));
-        SeventeenStepsUI.Label(root,"所持遺物",new Vector2(-320,390),new Vector2(1000,65),36);
-        SeventeenStepsUI.Label(root,"装備遺物　1枠",new Vector2(675,390),new Vector2(490,65),36);
-        var viewport=SeventeenStepsUI.Rect("OwnedItems",root,new Vector2(-320,-15),new Vector2(1170,710));
-        viewport.gameObject.AddComponent<Image>().color=new Color(.97f,.96f,.87f,.95f);viewport.gameObject.AddComponent<RectMask2D>();
+        root.gameObject.AddComponent<JanshinThemeTextScope>();
+        var shade=SeventeenStepsUI.Rect("InventoryBackdropShade",root,Vector2.zero,new Vector2(1920,1080)).gameObject.AddComponent<Image>();
+        shade.color=new Color(0,0,0,.45f);shade.raycastTarget=false;
+        shade.rectTransform.anchorMin=Vector2.zero;shade.rectTransform.anchorMax=Vector2.one;shade.rectTransform.offsetMin=shade.rectTransform.offsetMax=Vector2.zero;
+        shade.transform.SetSiblingIndex(2);
+        var title=root.GetComponentsInChildren<TextMeshProUGUI>().First();
+        title.rectTransform.anchoredPosition=new Vector2(0,455);title.rectTransform.sizeDelta=new Vector2(1200,80);
+        title.font=LocalizationManager.Instance.GetTitleFont()??title.font;title.fontSharedMaterial=title.font.material;
+        title.fontSizeMax=100;title.fontSizeMin=72;title.color=JanshinPanelTheme.Ivory;SeventeenStepsUI.BlackOutline(title);
+        var owned=Panel("OwnedRelicsPanel",root,new Vector2(-310,-10),new Vector2(1180,790));
+        var equippedPanel=Panel("EquippedRelicsPanel",root,new Vector2(620,-10),new Vector2(550,790));
+        Text(owned,"所持遺物",new Vector2(0,344),new Vector2(1060,68),38).color=JanshinPanelTheme.Gold;
+        Text(equippedPanel,"装備遺物　1枠",new Vector2(0,344),new Vector2(490,68),38).color=JanshinPanelTheme.Gold;
+        var viewport=SeventeenStepsUI.Rect("OwnedItems",owned,new Vector2(0,-47),new Vector2(1124,670));
+        viewport.gameObject.AddComponent<Image>().color=Color.clear;viewport.gameObject.AddComponent<RectMask2D>();
         var scroll=viewport.gameObject.AddComponent<ScrollRect>();scroll.viewport=viewport;scroll.horizontal=false;scroll.movementType=ScrollRect.MovementType.Clamped;
-        rows=SeventeenStepsUI.Rect("Rows",viewport,Vector2.zero,new Vector2(1150,710));rows.anchorMin=new Vector2(.5f,1);rows.anchorMax=new Vector2(.5f,1);rows.pivot=new Vector2(.5f,1);rows.anchoredPosition=Vector2.zero;scroll.content=rows;scroll.scrollSensitivity=45;
-        var track=SeventeenStepsUI.Rect("ScrollBar",root,new Vector2(278,-15),new Vector2(18,710));track.gameObject.AddComponent<Image>().color=new Color(0,0,0,.5f);
-        var handle=SeventeenStepsUI.Rect("Handle",track,Vector2.zero,new Vector2(18,80));var hi=handle.gameObject.AddComponent<Image>();hi.color=new Color(.8f,.7f,.45f);
-        handle.sizeDelta=Vector2.zero;
+        rows=SeventeenStepsUI.Rect("Rows",viewport,Vector2.zero,new Vector2(1110,670));rows.anchorMin=rows.anchorMax=rows.pivot=new Vector2(.5f,1);rows.anchoredPosition=Vector2.zero;
+        scroll.content=rows;scroll.scrollSensitivity=45;
+        var track=SeventeenStepsUI.Rect("ScrollBar",owned,new Vector2(568,-47),new Vector2(14,642));track.gameObject.AddComponent<Image>().color=new Color(.02f,.02f,.025f,.8f);
+        var handle=SeventeenStepsUI.Rect("Handle",track,Vector2.zero,new Vector2(14,80));var hi=handle.gameObject.AddComponent<Image>();hi.color=JanshinPanelTheme.Gold;handle.sizeDelta=Vector2.zero;
         var bar=track.gameObject.AddComponent<Scrollbar>();bar.direction=Scrollbar.Direction.BottomToTop;bar.handleRect=handle;bar.targetGraphic=hi;
+        var colors=bar.colors;colors.normalColor=Color.white;colors.highlightedColor=new Color(1.15f,1.1f,.95f);colors.pressedColor=new Color(.8f,.7f,.5f);bar.colors=colors;
         scroll.verticalScrollbar=bar;scroll.verticalScrollbarVisibility=ScrollRect.ScrollbarVisibility.AutoHide;
-        equipment=SeventeenStepsUI.Rect("EquippedItem",root,new Vector2(670,145),new Vector2(490,460));SeventeenStepsUI.Paper(equipment,equipment.sizeDelta);
-        SeventeenStepsUI.InfoBacking(root,new Vector2(670,-145),new Vector2(490,110));
-        detail=SeventeenStepsUI.Label(root,"",new Vector2(670,-145),new Vector2(490,105),25);
-        equipButton=SeventeenStepsUI.Navigation(root,"装備する",new Vector2(670,-255),new Vector2(370,70),()=>{SeventeenStepsMode.Equip(selected);Refresh();});
-        removeButton=SeventeenStepsUI.Navigation(root,"装備を外す",new Vector2(670,-345),new Vector2(370,70),()=>{SeventeenStepsMode.Equip(0);Refresh();});
-        SeventeenStepsUI.InfoBacking(root,new Vector2(-240,-430),new Vector2(1330,68));
-        SeventeenStepsUI.Label(root,"装備した1個を次の通常ランに持ち込み。そのラン限り有効。",new Vector2(-240,-430),new Vector2(1330,60),26);
-        SeventeenStepsUI.Navigation(root,"メニューへ",new Vector2(680,-465),new Vector2(370,70),()=>SceneManager.LoadScene("MenuScene"));Refresh();
+        equipment=Panel("EquippedItem",equippedPanel,new Vector2(0,100),new Vector2(500,380));
+        detail=Text(equippedPanel,"",new Vector2(0,-145),new Vector2(490,80),28);
+        equipButton=SeventeenStepsUI.Navigation(equippedPanel,"装備する",new Vector2(0,-245),new Vector2(420,76),()=>{SeventeenStepsMode.Equip(selected);Refresh();});
+        removeButton=SeventeenStepsUI.Navigation(equippedPanel,"装備を外す",new Vector2(0,-335),new Vector2(420,76),()=>{SeventeenStepsMode.Equip(0);Refresh();});
+        var note=Panel("CarryInNote",root,new Vector2(-280,-460),new Vector2(1230,78));
+        Text(note,"装備した1個を次の通常ランに持ち込み。そのラン限り有効。",Vector2.zero,new Vector2(1190,65),26);
+        SeventeenStepsUI.Navigation(root,"メニューへ",new Vector2(620,-460),new Vector2(420,78),()=>SceneManager.LoadScene("MenuScene"));Refresh();
     }
     void Refresh(){
-        SeventeenStepsUI.Clear(rows);var s=SeventeenStepsMode.LoadStock();var groups=s.items.GroupBy(id=>id).OrderBy(g=>g.Key).ToArray();
-        rows.sizeDelta=new Vector2(1150,Mathf.Max(710,Mathf.CeilToInt(groups.Length/3f)*220));
+        ClearContents(rows);var s=SeventeenStepsMode.LoadStock();var groups=s.items.GroupBy(id=>id).OrderBy(g=>g.Key).ToArray();
+        rows.sizeDelta=new Vector2(1110,Mathf.Max(670,Mathf.CeilToInt(groups.Length/3f)*264+18));
         for(int i=0;i<groups.Length;i++){
             int id=groups[i].Key;var d=RunConsumables.Get(id);if(d==null)continue;
-            var b=SeventeenStepsUI.Button(rows,d.Name+"\n×"+groups[i].Count()+(id==s.equipped?"　装備中":""),new Vector2((i%3-1)*375,-115-(i/3)*220),new Vector2(350,205),()=>{selected=id;Refresh();});
-            var rowRect=(RectTransform)b.transform;rowRect.anchorMin=rowRect.anchorMax=new Vector2(.5f,1);rowRect.anchoredPosition=new Vector2((i%3-1)*375,-115-(i/3)*220);
-            SeventeenStepsUI.Frame(b.transform,new Vector2(350,205));
-            var label=b.GetComponentInChildren<TMP_Text>();label.rectTransform.anchoredPosition=new Vector2(53,45);label.rectTransform.sizeDelta=new Vector2(215,85);label.fontSizeMax=25;label.fontSizeMin=21;
-            var effect=SeventeenStepsUI.Label(b.transform,d.Description,new Vector2(48,-48),new Vector2(220,100),20);effect.color=Color.black;
-            SeventeenStepsUI.Picture(b.transform,d.Icon,new Vector2(-112,0),new Vector2(115,150));
+            var b=SeventeenStepsUI.Button(rows,d.Name+"\n×"+groups[i].Count()+(id==s.equipped?"　装備中":""),new Vector2((i%3-1)*368,-135-(i/3)*264),new Vector2(346,250),()=>{selected=id;Refresh();});
+            b.name="Relic_"+id;
+            var rowRect=(RectTransform)b.transform;rowRect.anchorMin=rowRect.anchorMax=new Vector2(.5f,1);rowRect.anchoredPosition=new Vector2((i%3-1)*368,-135-(i/3)*264);
+            b.GetComponent<Image>().color=id==selected?new Color(1.18f,1.05f,.78f):Color.white;
+            var label=b.GetComponentInChildren<TMP_Text>();label.rectTransform.anchoredPosition=new Vector2(57,55);label.rectTransform.sizeDelta=new Vector2(212,85);
+            label.fontSizeMax=28;label.fontSizeMin=22;label.margin=new Vector4(4,2,4,2);label.color=JanshinPanelTheme.Ivory;
+            var effect=Text(b.transform,d.Description,new Vector2(0,-62),new Vector2(315,100),22);effect.margin=new Vector4(4,3,4,3);
+            SeventeenStepsUI.Picture(b.transform,d.Icon,new Vector2(-111,53),new Vector2(106,110));
         }
-        if(groups.Length==0)SeventeenStepsUI.Label(viewportForEmpty(),"所持遺物なし\n外伝モードで敵を倒すと獲得",new Vector2(0,0),new Vector2(1040,180),34).color=Color.black;
+        if(groups.Length==0)Text(rows,"所持遺物なし\n外伝モードで神を倒すと獲得",Vector2.zero,new Vector2(1040,180),34);
         var equipped=RunConsumables.Get(s.equipped);var chosen=RunConsumables.Get(selected);
-        SeventeenStepsUI.Clear(equipment);SeventeenStepsUI.Frame(equipment,equipment.sizeDelta);
+        ClearContents(equipment);JanshinPanelTheme.Apply(equipment.GetComponent<Image>());
         if(equipped!=null){
-            SeventeenStepsUI.Picture(equipment,equipped.Icon,new Vector2(0,92),new Vector2(190,180));
-            SeventeenStepsUI.Label(equipment,equipped.Name,new Vector2(0,-25),new Vector2(440,65),32).color=Color.black;
-            SeventeenStepsUI.Label(equipment,equipped.Description,new Vector2(0,-132),new Vector2(430,140),26).color=Color.black;
-        }else SeventeenStepsUI.Label(equipment,"未装備\n持ち込む遺物を選択",Vector2.zero,new Vector2(425,170),30).color=Color.black;
+            SeventeenStepsUI.Picture(equipment,equipped.Icon,new Vector2(0,95),new Vector2(210,170));
+            Text(equipment,equipped.Name,new Vector2(0,-33),new Vector2(450,54),34);
+            Text(equipment,equipped.Description,new Vector2(0,-114),new Vector2(450,100),28);
+        }else Text(equipment,"未装備\n持ち込む遺物を選択",Vector2.zero,new Vector2(450,170),32);
         detail.text=chosen==null?"所持一覧から遺物を選択":"選択中："+chosen.Name;
         equipButton.interactable=chosen!=null&&s.items.Contains(selected)&&s.equipped!=selected;
         removeButton.interactable=equipped!=null;
     }
-    Transform viewportForEmpty()=>rows.parent;
 }

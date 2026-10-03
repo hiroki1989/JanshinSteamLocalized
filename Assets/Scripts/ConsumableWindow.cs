@@ -68,7 +68,7 @@ public sealed class ConsumableWindow : MonoBehaviour
             if(StoreStyle){
                 label.rectTransform.anchoredPosition=new Vector2(0,-62);label.rectTransform.sizeDelta=new Vector2(width-20,44);
                 var frame=Rect("Frame",b.transform,Vector2.zero,new Vector2(width,270)).gameObject.AddComponent<Image>();frame.sprite=JanshinPanelTheme.Frame;frame.type=Image.Type.Sliced;frame.pixelsPerUnitMultiplier=8;frame.raycastTarget=false;frame.transform.SetAsFirstSibling();
-                Currency(b.transform,new Vector2(0,-108),d.price.ToString(),32);
+                Currency(b.transform,new Vector2(0,-108),DevilContracts.RelicPrice(d.price).ToString(),32);
             }
             if(sold!=null && sold.Contains(i)){b.interactable=false;label.text+="\n"+T("購入済み","Sold","已售出");}
         }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,8 +6,8 @@ using TMPro;
 /// <summary>
 /// GameManager 用ミッション拡張（partial）。
 /// ・RunScene 上にミッションテキストを常時表示
-/// ・プレイヤー和了時にミッション達成判定＋達成パネル表示
-/// ・達成した和了のGoldに報酬を加算（パネルを閉じる操作では付与しない）
+/// ・プレイヤー和了時に達成条件を記録
+/// ・達成確定・報酬・契約書の表示はショップ入場時
 ///
 /// ★役プール（難易度設定）は MissionPoolSO（ScriptableObject）に集約。
 ///   Assets/Resources/MissionPoolSO.asset を作成し、そこで全役の難易度を設定する。
@@ -51,6 +51,7 @@ public partial class GameManager : MonoBehaviour
 
     // 内部状態
     private bool _missionJustCompleted = false;
+    private string _missionContractAcquired = "";
 
     // ===============================
     //  Pool 解決
@@ -136,76 +137,14 @@ public partial class GameManager : MonoBehaviour
     // ===============================
     public void CheckMissionOnPlayerWin(List<string> yakuNames)
     {
-        try
-        {
-            _missionJustCompleted = false;
-
-            if (yakuNames == null || yakuNames.Count == 0) return;
-            if (!MissionSystem.HasActiveMission) return;
-            if (MissionSystem.IsCompleted) return;
-            if (MissionSystem.IsAlreadyClaimed(MissionSystem.CurrentEnemyKey)) return;
-
-            bool completed = MissionSystem.CheckCompletion(yakuNames);
-            if (completed)
-            {
-                _missionJustCompleted = true;
-                RefreshMissionDisplayText();
-                Debug.Log($"[Mission] ミッション達成！ 報酬={MissionSystem.CurrentGold}");
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogWarning("[Mission] CheckMissionOnPlayerWin error: " + e.Message);
-        }
+        // Record eligibility only. Completion, Gold and acquisition notices belong to shop entry.
+        MissionSystem.CheckCompletion(yakuNames);
     }
 
-    // ===============================
-    //  達成パネル表示
-    // ===============================
-    public void TryShowMissionCompletePanel()
-    {
-        if (!_missionJustCompleted) return;
-        if (!missionCompletePanel || !missionCompleteCloseButton) { _missionJustCompleted = false; return; }
+    public void TryShowMissionCompletePanel() { }
 
-        __SetScoringOkButtonsInteractable(false);
-
-        if (missionCompletePanel)
-        {
-            missionCompletePanel.SetActive(true);
-            missionCompletePanel.transform.SetAsLastSibling();
-        }
-
-        if (missionCompleteTMP)
-        {
-            missionCompleteTMP.text = MissionSystem.GetMissionCompleteText();
-        }
-
-        if (missionCompleteSEClip && missionCompleteSESource)
-        {
-            try { missionCompleteSESource.PlayOneShot(missionCompleteSEClip); } catch { }
-        }
-    }
-
-    // ===============================
-    //  閉じるボタン
-    // ===============================
     private void OnClickMissionCompleteClose()
     {
-        try
-        {
-            _missionJustCompleted = false;
-
-            if (missionCompletePanel)
-                missionCompletePanel.SetActive(false);
-
-            __SetScoringOkButtonsInteractable(true);
-            RefreshMissionDisplayText();
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogWarning("[Mission] OnClickMissionCompleteClose error: " + e.Message);
-            if (missionCompletePanel) missionCompletePanel.SetActive(false);
-            try { __SetScoringOkButtonsInteractable(true); } catch { }
-        }
+        if (missionCompletePanel) missionCompletePanel.SetActive(false);
     }
 }

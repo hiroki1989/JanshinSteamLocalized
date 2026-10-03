@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -84,7 +84,7 @@ var d=RunConsumables.Get(consumableOffers[consumableSelected]);
 GameManager.ApplyTraitSpriteAssetToTMPAnywhere(consumableStore.Detail);
 consumableStore.Detail.richText=true;
 consumableStore.Detail.text=d.Name+"\n"+GameManager.RenderConsumableDescriptionAnywhere(d.Description);
-        bool room=bag.Count<RunConsumables.Capacity, money=GameManager.RunCurrency.Get()>=d.price, sold=consumableSold.Contains(consumableSelected);
+        bool room=bag.Count<RunConsumables.Capacity, money=GameManager.RunCurrency.Get()>=DevilContracts.RelicPrice(d.price), sold=consumableSold.Contains(consumableSelected);
         consumableStore.Confirm.interactable=room&&money&&!sold;
         consumableStore.Status.text=sold?ConsumableWindow.T("購入済みです","Already purchased","已购买"):!room?ConsumableWindow.T("所持枠がいっぱいです","Inventory is full","持有栏已满"):!money?ConsumableWindow.T("所持金が足りません","Not enough funds","持有金额不足"):ConsumableWindow.T("購入する遺物を確認してください","Confirm the selected relic","请确认所选遗物");
     }
@@ -92,7 +92,7 @@ consumableStore.Detail.text=d.Name+"\n"+GameManager.RenderConsumableDescriptionA
     {
         if(consumableSelected<0||consumableSold.Contains(consumableSelected))return;
         var s=RunConsumables.Load();var d=RunConsumables.Get(consumableOffers[consumableSelected]);
-        if(s.bag.Count>=RunConsumables.Capacity||!GameManager.RunCurrency.Spend(d.price)){RefreshConsumableOffers();return;}
+        if(s.bag.Count>=RunConsumables.Capacity||!GameManager.RunCurrency.Spend(DevilContracts.RelicPrice(d.price))){RefreshConsumableOffers();return;}
         s.bag.Add(d.id);RunConsumables.Save(s);consumableSold.Add(consumableSelected);RefreshConsumableOffers();
     }
     void OnDestroy(){LocalizationManager.LanguageChanged-=ConsumableLanguageChanged;}

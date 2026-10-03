@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -122,6 +122,7 @@ public partial class UpgradeManager
         int tile=selectedShopTile, price=SelectedTilePrice;
         if(!TrySpendGold(price)) { RefreshSelectedTileShop(); return; }
         PlayerData.AddToDeck(tile,selectedTileDestroyMode ? -1 : 1);
+        if(selectedTileDestroyMode)DevilContracts.Destroyed(1);
         IncrementPurchaseCount(selectedTileDestroyMode ? PrefKey_CostCount_Destroy : PrefKey_CostCount_Buy);
         selectedShopTile=-1;
         RefreshUI(); RefreshSelectedTileShop();

@@ -7,7 +7,7 @@ public partial class UpgradeManager
 {
     public bool TryRerollTraitShop(){
         ResolveTraitContext(out _traitHostSet,out _traitActiveSkillName);
-        if(_traitHostSet==null||string.IsNullOrEmpty(_traitActiveSkillName)||!TrySpendGold(100))return false;
+        if(_traitHostSet==null||string.IsNullOrEmpty(_traitActiveSkillName)||!TrySpendGold(100,true))return false;
         RefreshTraitOffers();RefreshUI();ApplyShopPresentation(UpgradeSectionMode.TraitOnly);return true;
     }
     void RefreshPresentationStatusLabels()

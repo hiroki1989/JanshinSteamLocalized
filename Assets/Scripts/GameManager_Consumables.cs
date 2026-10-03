@@ -126,7 +126,7 @@ void OpenConsumableInventory()
         if(!host)return false;
         var all=host.GetTraitYakuFor(name);
         var yaku=trait==SkillSetAsset.Trait.Geki?all.ge:trait==SkillSetAsset.Trait.Shun?all.sh:all.iy;
-        return yaku!=null&&yaku.Any(y=>host.GetTraitYakuLevel(name,trait,y)>0);
+        return yaku!=null&&yaku.Any(y=>ContractsTraitLevel(host.GetTraitYakuLevel(name,trait,y),name,trait,y)>0);
     }
     bool IsConsumableOrdinaryTile(string tile)
     {
@@ -203,6 +203,7 @@ void OpenConsumableInventory()
         int startPlayerHP=playerHP;
         int startPlayerMP=_mp;
         ApplyConsumableEffect(id,s);
+        ContractsRelicUsed(id);
         s.bag.RemoveAt(_consumableSlot);s.usedThisTurn=true;RunConsumables.Save(s);
         try { if(AudioManager.Instance) AudioManager.Instance.PlayCutin_PlayerSkill(); } catch {}
         _consumableWindow.Close();
@@ -266,8 +267,8 @@ void OpenConsumableInventory()
     }
     void ConsumableHeal(float hp,float mp)
     {
-        playerHP=Mathf.Min(playerMaxHP,playerHP+Mathf.CeilToInt(playerMaxHP*hp));
-        _mp=ClampToEffectiveMaxMP(_mp+Mathf.CeilToInt(EffectiveMaxMP()*mp));
+        ContractsRecoverHp(Mathf.CeilToInt(playerMaxHP*hp),ContractsFreeHpRelic(hp));
+        ContractsRecoverMp(Mathf.CeilToInt(EffectiveMaxMP()*mp));
     }
     void ConsumablesOnPlayerTurn()
     {
@@ -282,6 +283,7 @@ void OpenConsumableInventory()
     }
     int ConsumablesModifyIncoming(int damage,bool enemyWin)
     {
+        if(enemyWin)damage=DevilContracts.Incoming(damage,true);
         var s=RunConsumables.Load();int result=RunConsumables.IncomingDamage(s,damage,playerHP,enemyWin);
         RunConsumables.Save(s);return result;
     }

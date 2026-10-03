@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,7 +19,7 @@ public static class SeventeenStepsRules
     public static void Deal(Random random,out List<int> player,out List<int> enemy,out int doraIndicator,out int uraIndicator)
     {
         var wall=Enumerable.Range(0,136).Select(n=>n/4).ToList();Shuffle(wall,random);
-        player=wall.Take(34).OrderBy(t=>t).ToList();enemy=wall.Skip(34).Take(34).OrderBy(t=>t).ToList();doraIndicator=wall[68];uraIndicator=wall[69];
+        player=wall.Take(34).ToList();enemy=wall.Skip(34).Take(34).ToList();doraIndicator=wall[68];uraIndicator=wall[69];
     }
     public static bool IsComplete(IEnumerable<int> tiles)
     {
@@ -74,7 +74,7 @@ public static class SeventeenStepsRules
     public static Win ApplyDesignatedPenalty(Win win,int unused,bool dealer=false){
         if(win.points<=0||unused<=0)return win;
         win.han=Math.Max(1,win.han-unused);win.points=Scoring.TryScoreWin(win.fu,win.han,false,dealer).totalPoints;
-        win.detail+="\n指定牌未使用　−"+unused+"翻（最低1翻）";return win;
+        win.detail+="\n指定牌未使用　-"+unused+"翻";return win;
     }
     public static int SafeDiscard(IList<int> candidates,IList<int> ownDeck,IList<int> ownDiscards,IList<int> opponentDiscards,Random random)
     {

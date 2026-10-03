@@ -1,0 +1,3169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bf523362e27524297d3fe8d3116c87, type: 3}
+  m_Name: Catalog
+  m_EditorClassIdentifier: Assembly-CSharp::DevilContractCatalog
+  contracts:
+  - id: 0
+    devil:
+      ja: "\u30A2\u30DE\u30C4\u30DF\u30AB\u30DC\u30B7"
+      en: Amatsu-Mikaboshi
+      zh: "\u5929\u6D25\u74EE\u661F"
+    god:
+      ja: "\u30A2\u30DE\u30C6\u30E9\u30B9"
+      en: Amaterasu
+      zh: "\u5929\u7167"
+    title:
+      ja: "\u5149\u3092\u62D2\u3080\u661F"
+      en: Star that Rejects the Light
+      zh: "\u62D2\u7EDD\u5149\u660E\u4E4B\u661F"
+    benefit:
+      ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B5\uFF05"
+      en: Win damage +5%.
+      zh: "\u548C\u724C\u4F24\u5BB3+5%\u3002"
+    drawback:
+      ja: "\u6700\u5927HP\uFF0D10\uFF05"
+      en: "Maximum HP \u221210%."
+      zh: "\u6700\u5927HP\u221210%\u3002"
+    synergy:
+      ja: "HP\u5F37\u5316\u30FB\u56DE\u5FA9\u30FB\u304A\u672D"
+      en: HP upgrades / healing / ofuda
+      zh: "HP\u5F3A\u5316\uFF0F\u6062\u590D\uFF0F\u7B26\u5492"
+    emblem: "\u2726"
+    accent: {r: 0.63, g: 0.48, b: 0.85, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 9.4%"
+        en: Maximum HP penalty 9.4%
+        zh: "\u6700\u5927HP\u51CF\u5E45 9.4%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 8.8%"
+        en: Maximum HP penalty 8.8%
+        zh: "\u6700\u5927HP\u51CF\u5E45 8.8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 8.2%"
+        en: Maximum HP penalty 8.2%
+        zh: "\u6700\u5927HP\u51CF\u5E45 8.2%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 7.6%"
+        en: Maximum HP penalty 7.6%
+        zh: "\u6700\u5927HP\u51CF\u5E45 7.6%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 7%"
+        en: Maximum HP penalty 7%
+        zh: "\u6700\u5927HP\u51CF\u5E45 7%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 6.4%"
+        en: Maximum HP penalty 6.4%
+        zh: "\u6700\u5927HP\u51CF\u5E45 6.4%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 5.8%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D15\uFF05"
+        en: "Maximum HP penalty 5.8%\nFirst incoming win damage per opponent \u221215%."
+        zh: "\u6700\u5927HP\u51CF\u5E45 5.8%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u53D7\u5230\u7684\u548C\u724C\u4F24\u5BB3\u221215%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 5.2%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D15\uFF05"
+        en: "Maximum HP penalty 5.2%\nFirst incoming win damage per opponent \u221215%."
+        zh: "\u6700\u5927HP\u51CF\u5E45 5.2%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u53D7\u5230\u7684\u548C\u724C\u4F24\u5BB3\u221215%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 4.6%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D15\uFF05"
+        en: "Maximum HP penalty 4.6%\nFirst incoming win damage per opponent \u221215%."
+        zh: "\u6700\u5927HP\u51CF\u5E45 4.6%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u53D7\u5230\u7684\u548C\u724C\u4F24\u5BB3\u221215%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u6700\u5927HP\u6E1B\u5C11 4%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D15\uFF05\n\u6700\u5927HP\u6E1B\u5C11\uFF1A7\uFF05\u21924\uFF05"
+        en: "Maximum HP penalty 4%\nFirst incoming win damage per opponent \u221215%.\nMaximum HP penalty: 7% \u2192 4%."
+        zh: "\u6700\u5927HP\u51CF\u5E45 4%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u53D7\u5230\u7684\u548C\u724C\u4F24\u5BB3\u221215%\u3002\n\u6700\u5927HP\u51CF\u5E45\uFF1A7%\u21924%\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: Win damage +6%
+        zh: "\u548C\u724C\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: Win damage +7%
+        zh: "\u548C\u724C\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: Win damage +8%
+        zh: "\u548C\u724C\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +12%"
+        en: Win damage +12%
+        zh: "\u548C\u724C\u4F24\u5BB3 +12%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +13.33%"
+        en: Win damage +13.33%
+        zh: "\u548C\u724C\u4F24\u5BB3 +13.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +14.67%"
+        en: Win damage +14.67%
+        zh: "\u548C\u724C\u4F24\u5BB3 +14.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +16%\n\u304A\u672D\u306E\u5BFE\u8C61\u5F79\u6210\u7ACB\u6642\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B8\uFF05\u3002\u91CD\u8907\u3057\u306A\u3044"
+        en: 'Win damage +16%
+
+          Matching an ofuda adds +8% win damage, once.'
+        zh: "\u548C\u724C\u4F24\u5BB3 +16%\n\u6EE1\u8DB3\u7B26\u5492\u6761\u4EF6\u65F6\u4F24\u5BB3\u989D\u5916+8%\uFF0C\u4E0D\u91CD\u590D\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +17.33%\n\u304A\u672D\u306E\u5BFE\u8C61\u5F79\u6210\u7ACB\u6642\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B8.67\uFF05\u3002\u91CD\u8907\u3057\u306A\u3044"
+        en: 'Win damage +17.33%
+
+          Matching an ofuda adds +8.67% win damage, once.'
+        zh: "\u548C\u724C\u4F24\u5BB3 +17.33%\n\u6EE1\u8DB3\u7B26\u5492\u6761\u4EF6\u65F6\u4F24\u5BB3\u989D\u5916+8.67%\uFF0C\u4E0D\u91CD\u590D\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +18.67%\n\u304A\u672D\u306E\u5BFE\u8C61\u5F79\u6210\u7ACB\u6642\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B9.33\uFF05\u3002\u91CD\u8907\u3057\u306A\u3044"
+        en: 'Win damage +18.67%
+
+          Matching an ofuda adds +9.33% win damage, once.'
+        zh: "\u548C\u724C\u4F24\u5BB3 +18.67%\n\u6EE1\u8DB3\u7B26\u5492\u6761\u4EF6\u65F6\u4F24\u5BB3\u989D\u5916+9.33%\uFF0C\u4E0D\u91CD\u590D\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +30%\n\u304A\u672D\u306E\u5BFE\u8C61\u5F79\u6210\u7ACB\u6642\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B10\uFF05\u3002\u91CD\u8907\u3057\u306A\u3044\n\u57FA\u672C\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B30\uFF05\u3002\u6700\u5927HP\u304C\u3055\u3089\u306B5\uFF05\u6E1B\u5C11"
+        en: 'Win damage +30%
+
+          Matching an ofuda adds +10% win damage, once.
+
+          Base win damage +30%; maximum HP loses another 5%.'
+        zh: "\u548C\u724C\u4F24\u5BB3 +30%\n\u6EE1\u8DB3\u7B26\u5492\u6761\u4EF6\u65F6\u4F24\u5BB3\u989D\u5916+10%\uFF0C\u4E0D\u91CD\u590D\u3002\n\u57FA\u7840\u548C\u724C\u4F24\u5BB3+30%\uFF1B\u6700\u5927HP\u518D\u51CF\u5C115%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 1
+    devil:
+      ja: "\u30E4\u30DE\u30BF\u30CE\u30AA\u30ED\u30C1"
+      en: Yamata-no-Orochi
+      zh: "\u516B\u5C90\u5927\u86C7"
+    god:
+      ja: "\u30B9\u30B5\u30CE\u30AA"
+      en: Susanoo
+      zh: "\u987B\u4F50\u4E4B\u7537"
+    title:
+      ja: "\u516B\u5C90\u306E\u8840\u6F6E"
+      en: Blood of the Eightfold Serpent
+      zh: "\u516B\u5C90\u8840\u6F6E"
+    benefit:
+      ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B10\uFF05"
+      en: Half/Full Flush win damage +10%.
+      zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3+10%\u3002"
+    drawback:
+      ja: "\u914D\u724C13\u679A\u306B3\u8272\u306E\u6570\u724C\u304C\u542B\u307E\u308C\u308B\u3068\u6700\u5927MP\u306E10\uFF05\u3092\u5931\u3046"
+      en: 'Opening hand contains all three suits: lose 10% of max MP.'
+      zh: "\u8D77\u624B13\u5F20\u542B\u4E09\u79CD\u6570\u724C\u65F6\uFF0C\u5931\u53BB\u6700\u5927MP\u768410%\u3002"
+    synergy:
+      ja: "\u67D3\u8272\u5E2B\u30FB\u4E00\u8272\u69CB\u7BC9\u30FB\u724C\u7834\u58CA"
+      en: Dyer / flush builds / tile removal
+      zh: "\u67D3\u8272\u5E08\uFF0F\u4E00\u8272\u6784\u7B51\uFF0F\u9500\u6BC1\u724C"
+    emblem: "\u86C7"
+    accent: {r: 0.45, g: 0.72, b: 0.44, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 9%"
+        en: 'MP lost when dealt all 3 suits: 9%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 9%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 8%"
+        en: 'MP lost when dealt all 3 suits: 8%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 7%"
+        en: 'MP lost when dealt all 3 suits: 7%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 7%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 6%"
+        en: 'MP lost when dealt all 3 suits: 6%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 6%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 5%"
+        en: 'MP lost when dealt all 3 suits: 5%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 5%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 4%"
+        en: 'MP lost when dealt all 3 suits: 4%'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 4%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 3%\n\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u3067HP\u3092\u6700\u5927HP\u306E5%\u56DE\u5FA9"
+        en: 'MP lost when dealt all 3 suits: 3%
+
+          Half/full flush heals 5% max HP'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 3%\n\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u6062\u590D\u6700\u5927HP\u76845%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 2%\n\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u3067HP\u3092\u6700\u5927HP\u306E5%\u56DE\u5FA9"
+        en: 'MP lost when dealt all 3 suits: 2%
+
+          Half/full flush heals 5% max HP'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 2%\n\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u6062\u590D\u6700\u5927HP\u76845%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 1%\n\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u3067HP\u3092\u6700\u5927HP\u306E5%\u56DE\u5FA9"
+        en: 'MP lost when dealt all 3 suits: 1%
+
+          Half/full flush heals 5% max HP'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 1%\n\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u6062\u590D\u6700\u5927HP\u76845%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u914D\u724C\u306B3\u8272\u304C\u3042\u308B\u5C40\u306EMP\u6E1B\u5C11 0%\n\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u3067HP\u3092\u6700\u5927HP\u306E5%\u56DE\u5FA9"
+        en: 'MP lost when dealt all 3 suits: 0%
+
+          Half/full flush heals 5% max HP'
+        zh: "\u914D\u724C\u542B3\u79CD\u82B1\u8272\u65F6MP\u51CF\u5C11 0%\n\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u6062\u590D\u6700\u5927HP\u76845%"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +12%"
+        en: Half/full flush damage +12%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +12%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +14%"
+        en: Half/full flush damage +14%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +14%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +16%"
+        en: Half/full flush damage +16%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +16%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +24%"
+        en: Half/full flush damage +24%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +24%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +26.67%"
+        en: Half/full flush damage +26.67%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +26.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +29.33%"
+        en: Half/full flush damage +29.33%
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +29.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +32%\n\u30B9\u30AD\u30EB\u4F7F\u7528\u5C40\u306E\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306F\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B12\uFF05"
+        en: 'Half/full flush damage +32%
+
+          Using a skill adds +12% damage to a flush win that hand.'
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +32%\n\u4F7F\u7528\u6280\u80FD\u7684\u8BE5\u5C40\uFF0C\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u4F24\u5BB3\u989D\u5916+12%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +34.67%\n\u30B9\u30AD\u30EB\u4F7F\u7528\u5C40\u306E\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306F\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B13\uFF05"
+        en: 'Half/full flush damage +34.67%
+
+          Using a skill adds +13% damage to a flush win that hand.'
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +34.67%\n\u4F7F\u7528\u6280\u80FD\u7684\u8BE5\u5C40\uFF0C\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u4F24\u5BB3\u989D\u5916+13%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +37.33%\n\u30B9\u30AD\u30EB\u4F7F\u7528\u5C40\u306E\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306F\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B14\uFF05"
+        en: 'Half/full flush damage +37.33%
+
+          Using a skill adds +14% damage to a flush win that hand.'
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +37.33%\n\u4F7F\u7528\u6280\u80FD\u7684\u8BE5\u5C40\uFF0C\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u4F24\u5BB3\u989D\u5916+14%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +60%\n\u30B9\u30AD\u30EB\u4F7F\u7528\u5C40\u306E\u6DF7\u4E00\u8272\u30FB\u6E05\u4E00\u8272\u306F\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B15\uFF05\n\u5BFE\u8C61\u5F79\u306E\u30C0\u30E1\u30FC\u30B8\uFF0B60\uFF05\u3002\u305D\u308C\u4EE5\u5916\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D20\uFF05"
+        en: "Half/full flush damage +60%\nUsing a skill adds +15% damage to a flush win that hand.\nFlush wins +60% damage; other wins \u221220%."
+        zh: "\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u548C\u724C\u4F24\u5BB3 +60%\n\u4F7F\u7528\u6280\u80FD\u7684\u8BE5\u5C40\uFF0C\u6DF7\u4E00\u8272\uFF0F\u6E05\u4E00\u8272\u4F24\u5BB3\u989D\u5916+15%\u3002\n\u5BF9\u5E94\u5F79\u4F24\u5BB3+60%\uFF1B\u5176\u4ED6\u548C\u724C\u4F24\u5BB3\u221220%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 2
+    devil:
+      ja: "\u30A2\u30DD\u30D4\u30B9"
+      en: Apophis
+      zh: "\u963F\u6CE2\u83F2\u65AF"
+    god:
+      ja: "\u30D0\u30B9\u30C6\u30C8"
+      en: Bastet
+      zh: "\u5DF4\u65AF\u7279"
+    title:
+      ja: "\u592A\u967D\u3092\u55B0\u3089\u3046\u86C7"
+      en: Serpent that Devours the Sun
+      zh: "\u541E\u65E5\u4E4B\u86C7"
+    benefit:
+      ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u306E\u5C40\u3067\u548C\u4E86\u3059\u308B\u3068\u30C0\u30E1\u30FC\u30B8\uFF0B8.33\uFF05"
+      en: 'Win without using an active skill: damage +8.33%.'
+      zh: "\u672A\u4F7F\u7528\u4E3B\u52A8\u6280\u80FD\u7684\u5C40\uFF0C\u548C\u724C\u4F24\u5BB3+8.33%\u3002"
+    drawback:
+      ja: "\u30A2\u30AF\u30C6\u30A3\u30D6\u30B9\u30AD\u30EB\u6D88\u8CBBMP\uFF0B20\uFF05"
+      en: Active skill MP cost +20%.
+      zh: "\u4E3B\u52A8\u6280\u80FDMP\u6D88\u8017+20%\u3002"
+    synergy:
+      ja: "\u30D1\u30C3\u30B7\u30D6\u30B9\u30AD\u30EB\u30FB\u7279\u5225\u724C\u30FB\u30B9\u30AD\u30EB\u6E29\u5B58"
+      en: Passives / special tiles / saving skills
+      zh: "\u88AB\u52A8\u6280\u80FD\uFF0F\u7279\u6B8A\u724C\uFF0F\u4FDD\u7559\u6280\u80FD"
+    emblem: "\u65E5"
+    accent: {r: 0.73, g: 0.41, b: 0.29, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 18%"
+        en: Skill MP cost increase 18%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 18%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 16%"
+        en: Skill MP cost increase 16%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 16%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 14%"
+        en: Skill MP cost increase 14%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 12%"
+        en: Skill MP cost increase 12%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 10%"
+        en: Skill MP cost increase 10%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 8%"
+        en: Skill MP cost increase 8%
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 6%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u3059\u308B\u3068\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Skill MP cost increase 6%
+
+          A skill-free win restores 10% of max MP.'
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 6%\n\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF0C\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 4%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u3059\u308B\u3068\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Skill MP cost increase 4%
+
+          A skill-free win restores 10% of max MP.'
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 4%\n\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF0C\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 2%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u3059\u308B\u3068\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Skill MP cost increase 2%
+
+          A skill-free win restores 10% of max MP.'
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 2%\n\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF0C\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u30B9\u30AD\u30EBMP\u6D88\u8CBB\u5897\u52A0 0%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u3059\u308B\u3068\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9\n\u6D88\u8CBBMP\u5897\u52A0\u3092\u306A\u304F\u3059"
+        en: 'Skill MP cost increase 0%
+
+          A skill-free win restores 10% of max MP.
+
+          Remove the extra MP cost.'
+        zh: "\u6280\u80FDMP\u6D88\u8017\u589E\u5E45 0%\n\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF0C\u6062\u590D\u6700\u5927MP\u768410%\u3002\n\u53D6\u6D88MP\u6D88\u8017\u589E\u5E45\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win without using skills: damage +10%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +10%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +11.67%"
+        en: 'Win without using skills: damage +11.67%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +11.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +13.33%"
+        en: 'Win without using skills: damage +13.33%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +13.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +21%"
+        en: 'Win without using skills: damage +21%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +21%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +23.33%"
+        en: 'Win without using skills: damage +23.33%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +23.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +25.67%"
+        en: 'Win without using skills: damage +25.67%'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +25.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +28%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u304B\u3064\u30ED\u30F3\u3067\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B12\uFF05"
+        en: 'Win without using skills: damage +28%
+
+          A skill-free Ron adds another +12% damage.'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +28%\n\u672A\u4F7F\u7528\u6280\u80FD\u4E14\u8363\u548C\uFF0C\u4F24\u5BB3\u518D+12%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +30.33%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u304B\u3064\u30ED\u30F3\u3067\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B13\uFF05"
+        en: 'Win without using skills: damage +30.33%
+
+          A skill-free Ron adds another +13% damage.'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +30.33%\n\u672A\u4F7F\u7528\u6280\u80FD\u4E14\u8363\u548C\uFF0C\u4F24\u5BB3\u518D+13%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +32.67%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u304B\u3064\u30ED\u30F3\u3067\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B14\uFF05"
+        en: 'Win without using skills: damage +32.67%
+
+          A skill-free Ron adds another +14% damage.'
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +32.67%\n\u672A\u4F7F\u7528\u6280\u80FD\u4E14\u8363\u548C\uFF0C\u4F24\u5BB3\u518D+14%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +55%\n\u30B9\u30AD\u30EB\u672A\u4F7F\u7528\u304B\u3064\u30ED\u30F3\u3067\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B15\uFF05\n\u672A\u4F7F\u7528\u6642\u306E\u30C0\u30E1\u30FC\u30B8\uFF0B55\uFF05\u3002\u30B9\u30AD\u30EB\u4F7F\u7528\u5C40\u306F\u30C0\u30E1\u30FC\u30B8\uFF0D15\uFF05"
+        en: "Win without using skills: damage +55%\nA skill-free Ron adds another +15% damage.\nSkill-free wins +55%; hands using skills \u221215% damage."
+        zh: "\u672A\u4F7F\u7528\u6280\u80FD\u548C\u724C\uFF1A\u4F24\u5BB3 +55%\n\u672A\u4F7F\u7528\u6280\u80FD\u4E14\u8363\u548C\uFF0C\u4F24\u5BB3\u518D+15%\u3002\n\u672A\u4F7F\u7528\u6280\u80FD\u4F24\u5BB3+55%\uFF1B\u4F7F\u7528\u6280\u80FD\u7684\u5C40\u4F24\u5BB3\u221215%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 3
+    devil:
+      ja: "\u30A2\u30F3\u30C0\u30AB"
+      en: Andhaka
+      zh: "\u5B89\u9640\u8FE6"
+    god:
+      ja: "\u30B7\u30F4\u30A1"
+      en: Shiva
+      zh: "\u6E7F\u5A46"
+    title:
+      ja: "\u7834\u58CA\u306E\u4F9B\u7269"
+      en: Offering of Destruction
+      zh: "\u6BC1\u706D\u7684\u4F9B\u54C1"
+    benefit:
+      ja: "\u30B7\u30E7\u30C3\u30D7\u3067\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u305F\u3073\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B1.33\uFF05\u3002\u30E9\u30F3\u4E2D\u4E0A\u9650\uFF0B8\uFF05"
+      en: Each shop tile removal adds +1.33% win damage this run, up to +8%.
+      zh: "\u5546\u5E97\u6BCF\u9500\u6BC11\u5F20\u724C\uFF0C\u672C\u6B21\u6311\u6218\u548C\u724C\u4F24\u5BB3+1.33%\uFF0C\u4E0A\u9650+8%\u3002"
+    drawback:
+      ja: "\u724C\u8CFC\u5165\u4FA1\u683C\uFF0B20\uFF05"
+      en: Tile purchase prices +20%.
+      zh: "\u724C\u8D2D\u4E70\u4EF7\u683C+20%\u3002"
+    synergy:
+      ja: "\u6307\u5B9A\u724C\u7834\u58CA\u30FB\u30C7\u30C3\u30AD\u5727\u7E2E"
+      en: Chosen tile removal / deck thinning
+      zh: "\u6307\u5B9A\u724C\u9500\u6BC1\uFF0F\u7CBE\u7B80\u724C\u7EC4"
+    emblem: "\u7070"
+    accent: {r: 0.83, g: 0.42, b: 0.25, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 18%"
+        en: Tile price increase 18%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 18%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 16%"
+        en: Tile price increase 16%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 16%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 14%"
+        en: Tile price increase 14%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 12%"
+        en: Tile price increase 12%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 10%"
+        en: Tile price increase 10%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 8%"
+        en: Tile price increase 8%
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 6%\n\u5404\u30B7\u30E7\u30C3\u30D7\u3067\u6700\u521D\u306E\u724C\u7834\u58CA\u6642\u300150Gold\u7372\u5F97"
+        en: 'Tile price increase 6%
+
+          First tile removal each shop grants 50 Gold.'
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 6%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u9500\u6BC1\u724C\u83B7\u5F9750Gold\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 4%\n\u5404\u30B7\u30E7\u30C3\u30D7\u3067\u6700\u521D\u306E\u724C\u7834\u58CA\u6642\u300150Gold\u7372\u5F97"
+        en: 'Tile price increase 4%
+
+          First tile removal each shop grants 50 Gold.'
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 4%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u9500\u6BC1\u724C\u83B7\u5F9750Gold\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 2%\n\u5404\u30B7\u30E7\u30C3\u30D7\u3067\u6700\u521D\u306E\u724C\u7834\u58CA\u6642\u300150Gold\u7372\u5F97"
+        en: 'Tile price increase 2%
+
+          First tile removal each shop grants 50 Gold.'
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 2%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u9500\u6BC1\u724C\u83B7\u5F9750Gold\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u724C\u306E\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 0%\n\u5404\u30B7\u30E7\u30C3\u30D7\u3067\u6700\u521D\u306E\u724C\u7834\u58CA\u6642\u300150Gold\u7372\u5F97\n\u724C\u8CFC\u5165\u4FA1\u683C\u306E\u5897\u52A0\u3092\u306A\u304F\u3059"
+        en: 'Tile price increase 0%
+
+          First tile removal each shop grants 50 Gold.
+
+          Remove the tile price surcharge.'
+        zh: "\u724C\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 0%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u9500\u6BC1\u724C\u83B7\u5F9750Gold\u3002\n\u53D6\u6D88\u724C\u4EF7\u589E\u5E45\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +1.6% / 9.6% \u307E\u3067"
+        en: 'Per destroyed tile: damage +1.6% / 9.6% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +1.6% / 9.6% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +1.87% / 11.2% \u307E\u3067"
+        en: 'Per destroyed tile: damage +1.87% / 11.2% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +1.87% / 11.2% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +2.13% / 12.8% \u307E\u3067"
+        en: 'Per destroyed tile: damage +2.13% / 12.8% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +2.13% / 12.8% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3% / 18% \u307E\u3067"
+        en: 'Per destroyed tile: damage +3% / 18% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +3% / 18% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3.33% / 20% \u307E\u3067"
+        en: 'Per destroyed tile: damage +3.33% / 20% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +3.33% / 20% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3.67% / 22% \u307E\u3067"
+        en: 'Per destroyed tile: damage +3.67% / 22% cap'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +3.67% / 22% \u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4% / 24% \u307E\u3067\n\u724C\u3092\u7834\u58CA\u3059\u308B\u305F\u3073\u30011\u679A\u306B\u3064\u304D\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per destroyed tile: damage +4% / 24% cap
+
+          Each removed tile heals 3% of max HP for the next battle.'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +4% / 24% \u4E0A\u9650\n\u6BCF\u9500\u6BC11\u5F20\u724C\uFF0C\u4E3A\u4E0B\u6B21\u5BF9\u6218\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4.33% / 26% \u307E\u3067\n\u724C\u3092\u7834\u58CA\u3059\u308B\u305F\u3073\u30011\u679A\u306B\u3064\u304D\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per destroyed tile: damage +4.33% / 26% cap
+
+          Each removed tile heals 3% of max HP for the next battle.'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +4.33% / 26% \u4E0A\u9650\n\u6BCF\u9500\u6BC11\u5F20\u724C\uFF0C\u4E3A\u4E0B\u6B21\u5BF9\u6218\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4.67% / 28% \u307E\u3067\n\u724C\u3092\u7834\u58CA\u3059\u308B\u305F\u3073\u30011\u679A\u306B\u3064\u304D\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per destroyed tile: damage +4.67% / 28% cap
+
+          Each removed tile heals 3% of max HP for the next battle.'
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +4.67% / 28% \u4E0A\u9650\n\u6BCF\u9500\u6BC11\u5F20\u724C\uFF0C\u4E3A\u4E0B\u6B21\u5BF9\u6218\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u724C\u30921\u679A\u7834\u58CA\u3059\u308B\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +7% / 42% \u307E\u3067\n\u724C\u3092\u7834\u58CA\u3059\u308B\u305F\u3073\u30011\u679A\u306B\u3064\u304D\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9\n1\u679A\u3054\u3068\uFF0B7\uFF05\u3001\u4E0A\u9650\uFF0B42\uFF05\u3002\u6700\u5927HP\uFF0D10\uFF05"
+        en: "Per destroyed tile: damage +7% / 42% cap\nEach removed tile heals 3% of max HP for the next battle.\nEach removal +7%, cap +42%; maximum HP \u221210%."
+        zh: "\u6BCF\u7834\u574F1\u5F20\u724C\uFF1A\u4F24\u5BB3 +7% / 42% \u4E0A\u9650\n\u6BCF\u9500\u6BC11\u5F20\u724C\uFF0C\u4E3A\u4E0B\u6B21\u5BF9\u6218\u6062\u590D\u6700\u5927HP\u76843%\u3002\n\u6BCF\u5F20+7%\uFF0C\u4E0A\u9650+42%\uFF1B\u6700\u5927HP\u221210%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 4
+    devil:
+      ja: "\u30A2\u30E1\u30DF\u30C3\u30C8"
+      en: Ammit
+      zh: "\u963F\u7C73\u7279"
+    god:
+      ja: "\u30A2\u30CC\u30D3\u30B9"
+      en: Anubis
+      zh: "\u963F\u52AA\u6BD4\u65AF"
+    title:
+      ja: "\u9B42\u306E\u79E4"
+      en: Scales of the Soul
+      zh: "\u7075\u9B42\u5929\u5E73"
+    benefit:
+      ja: "\u5BFE\u5C40\u4E2D\u306B\u56DE\u5FA9\u3057\u305FHP\u306E10\uFF05\u3092\u6B21\u306E\u548C\u4E86\u306B\u52A0\u7B97\u3002\u84C4\u7A4D\u4E0A\u9650\u306F\u6700\u5927HP\u306E5\uFF05"
+      en: 'Store 10% of actual HP healed for the next win. Cap: 5% of max HP.'
+      zh: "\u5BF9\u6218\u4E2D\u5B9E\u9645\u6062\u590DHP\u768410%\u8F6C\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3\uFF0C\u4E0A\u9650\u4E3A\u6700\u5927HP\u76845%\u3002"
+    drawback:
+      ja: "\u5BFE\u5C40\u4E2D\u306EHP\u56DE\u5FA9\u91CF\uFF0D20\uFF05"
+      en: "HP healing during battle \u221220%."
+      zh: "\u5BF9\u6218\u4E2DHP\u6062\u590D\u91CF\u221220%\u3002"
+    synergy:
+      ja: "HP\u56DE\u5FA9\u30D1\u30C3\u30B7\u30D6\u30FB\u56DE\u5FA9\u304A\u5B88\u308A\u30FB\u56DE\u5FA9\u907A\u7269"
+      en: Healing passives / charms / relics
+      zh: "HP\u6062\u590D\u88AB\u52A8\uFF0F\u62A4\u8EAB\u7B26\uFF0F\u6062\u590D\u9057\u7269"
+    emblem: "\u79E4"
+    accent: {r: 0.64, g: 0.58, b: 0.35, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 18%"
+        en: HP recovery penalty 18%
+        zh: "HP\u6062\u590D\u51CF\u5E45 18%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 16%"
+        en: HP recovery penalty 16%
+        zh: "HP\u6062\u590D\u51CF\u5E45 16%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 14%"
+        en: HP recovery penalty 14%
+        zh: "HP\u6062\u590D\u51CF\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 12%"
+        en: HP recovery penalty 12%
+        zh: "HP\u6062\u590D\u51CF\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 10%"
+        en: HP recovery penalty 10%
+        zh: "HP\u6062\u590D\u51CF\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 8%"
+        en: HP recovery penalty 8%
+        zh: "HP\u6062\u590D\u51CF\u5E45 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 6%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306EHP\u56DE\u5FA9\u907A\u7269\u306F\u56DE\u5FA9\u91CF\u304C\u6E1B\u3089\u306A\u3044"
+        en: 'HP recovery penalty 6%
+
+          First HP healing relic per opponent ignores the penalty.'
+        zh: "HP\u6062\u590D\u51CF\u5E45 6%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u6062\u590D\u9057\u7269\u4E0D\u53D7\u51CF\u5E45\u5F71\u54CD\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 4%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306EHP\u56DE\u5FA9\u907A\u7269\u306F\u56DE\u5FA9\u91CF\u304C\u6E1B\u3089\u306A\u3044"
+        en: 'HP recovery penalty 4%
+
+          First HP healing relic per opponent ignores the penalty.'
+        zh: "HP\u6062\u590D\u51CF\u5E45 4%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u6062\u590D\u9057\u7269\u4E0D\u53D7\u51CF\u5E45\u5F71\u54CD\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 2%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306EHP\u56DE\u5FA9\u907A\u7269\u306F\u56DE\u5FA9\u91CF\u304C\u6E1B\u3089\u306A\u3044"
+        en: 'HP recovery penalty 2%
+
+          First HP healing relic per opponent ignores the penalty.'
+        zh: "HP\u6062\u590D\u51CF\u5E45 2%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u6062\u590D\u9057\u7269\u4E0D\u53D7\u51CF\u5E45\u5F71\u54CD\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "HP\u56DE\u5FA9\u6E1B\u5C11 0%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306EHP\u56DE\u5FA9\u907A\u7269\u306F\u56DE\u5FA9\u91CF\u304C\u6E1B\u3089\u306A\u3044\nHP\u56DE\u5FA9\u91CF\u306E\u6E1B\u5C11\u3092\u306A\u304F\u3059"
+        en: 'HP recovery penalty 0%
+
+          First HP healing relic per opponent ignores the penalty.
+
+          Remove the HP healing penalty.'
+        zh: "HP\u6062\u590D\u51CF\u5E45 0%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u6062\u590D\u9057\u7269\u4E0D\u53D7\u51CF\u5E45\u5F71\u54CD\u3002\n\u53D6\u6D88HP\u6062\u590D\u51CF\u5E45\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E12%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 6% \u6700\u5927HP\u307E\u3067"
+        en: Store 12% of HP recovered for next win damage / 6% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768412%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 6% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E14%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 7% \u6700\u5927HP\u307E\u3067"
+        en: Store 14% of HP recovered for next win damage / 7% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768414%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 7% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E16%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 8% \u6700\u5927HP\u307E\u3067"
+        en: Store 16% of HP recovered for next win damage / 8% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768416%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 8% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E27%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 9% \u6700\u5927HP\u307E\u3067"
+        en: Store 27% of HP recovered for next win damage / 9% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768427%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 9% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E30%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 10% \u6700\u5927HP\u307E\u3067"
+        en: Store 30% of HP recovered for next win damage / 10% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768430%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 10% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E33%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 11% \u6700\u5927HP\u307E\u3067"
+        en: Store 33% of HP recovered for next win damage / 11% max HP cap
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768433%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 11% \u6700\u5927HP\u4E0A\u9650"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E36%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 12% \u6700\u5927HP\u307E\u3067\n\u6700\u5927HP\u3092\u8D85\u3048\u305F\u56DE\u5FA9\u91CF\u3082\u3001\u534A\u5206\u3092\u84C4\u7A4D\u8A08\u7B97\u306B\u542B\u3081\u308B"
+        en: 'Store 36% of HP recovered for next win damage / 12% max HP cap
+
+          Count half of excess healing toward stored damage.'
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768436%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 12% \u6700\u5927HP\u4E0A\u9650\n\u6EA2\u51FAHP\u6062\u590D\u91CF\u7684\u4E00\u534A\u4E5F\u8BA1\u5165\u84C4\u79EF\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E39%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 13% \u6700\u5927HP\u307E\u3067\n\u6700\u5927HP\u3092\u8D85\u3048\u305F\u56DE\u5FA9\u91CF\u3082\u3001\u534A\u5206\u3092\u84C4\u7A4D\u8A08\u7B97\u306B\u542B\u3081\u308B"
+        en: 'Store 39% of HP recovered for next win damage / 13% max HP cap
+
+          Count half of excess healing toward stored damage.'
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768439%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 13% \u6700\u5927HP\u4E0A\u9650\n\u6EA2\u51FAHP\u6062\u590D\u91CF\u7684\u4E00\u534A\u4E5F\u8BA1\u5165\u84C4\u79EF\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E42%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 14% \u6700\u5927HP\u307E\u3067\n\u6700\u5927HP\u3092\u8D85\u3048\u305F\u56DE\u5FA9\u91CF\u3082\u3001\u534A\u5206\u3092\u84C4\u7A4D\u8A08\u7B97\u306B\u542B\u3081\u308B"
+        en: 'Store 42% of HP recovered for next win damage / 14% max HP cap
+
+          Count half of excess healing toward stored damage.'
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768442%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 14% \u6700\u5927HP\u4E0A\u9650\n\u6EA2\u51FAHP\u6062\u590D\u91CF\u7684\u4E00\u534A\u4E5F\u8BA1\u5165\u84C4\u79EF\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "HP\u56DE\u5FA9\u91CF\u306E60%\u3092\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u306B\u84C4\u7A4D / 25% \u6700\u5927HP\u307E\u3067\n\u6700\u5927HP\u3092\u8D85\u3048\u305F\u56DE\u5FA9\u91CF\u3082\u3001\u534A\u5206\u3092\u84C4\u7A4D\u8A08\u7B97\u306B\u542B\u3081\u308B\n\u5909\u63DB\u738760\uFF05\u3001\u84C4\u7A4D\u4E0A\u9650\u306F\u6700\u5927HP\u306E25\uFF05\u3002\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B10\uFF05"
+        en: 'Store 60% of HP recovered for next win damage / 25% max HP cap
+
+          Count half of excess healing toward stored damage.
+
+          Conversion 60%, cap 25% of max HP; incoming win damage +10%.'
+        zh: "\u5C06HP\u6062\u590D\u91CF\u768460%\u79EF\u84C4\u4E3A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 / 25% \u6700\u5927HP\u4E0A\u9650\n\u6EA2\u51FAHP\u6062\u590D\u91CF\u7684\u4E00\u534A\u4E5F\u8BA1\u5165\u84C4\u79EF\u3002\n\u8F6C\u6362\u738760%\uFF0C\u4E0A\u9650\u4E3A\u6700\u5927HP\u768425%\uFF1B\u53D7\u5230\u548C\u724C\u4F24\u5BB3+10%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 5
+    devil:
+      ja: "\u30ED\u30AD"
+      en: Loki
+      zh: "\u6D1B\u57FA"
+    god:
+      ja: "\u30D5\u30EC\u30A4\u30E4"
+      en: Freyja
+      zh: "\u8299\u857E\u96C5"
+    title:
+      ja: "\u9EC4\u91D1\u306E\u507D\u308A"
+      en: Golden Deceit
+      zh: "\u9EC4\u91D1\u7684\u8BE1\u8BA1"
+    benefit:
+      ja: "\u30B7\u30E7\u30C3\u30D7\u652F\u51FA300Gold\u3054\u3068\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B1.67\uFF05\u3002\u30E9\u30F3\u4E2D\u4E0A\u9650\uFF0B8.33\uFF05"
+      en: Every 300 Gold spent in shops adds +1.67% win damage, cap +8.33%.
+      zh: "\u5546\u5E97\u6BCF\u6D88\u8D39300Gold\uFF0C\u548C\u724C\u4F24\u5BB3+1.67%\uFF0C\u4E0A\u9650+8.33%\u3002"
+    drawback:
+      ja: "\u548C\u4E86\u306E\u7372\u5F97Gold\uFF0D15\uFF05\u3002\u30DF\u30C3\u30B7\u30E7\u30F3\u5831\u916C\u306F\u5BFE\u8C61\u5916"
+      en: "Gold from wins \u221215%; mission rewards unchanged."
+      zh: "\u548C\u724CGold\u221215%\uFF1B\u4EFB\u52A1\u5956\u52B1\u4E0D\u53D8\u3002"
+    synergy:
+      ja: "Gold\u7372\u5F97\u88C5\u5099\u30FB\u30EA\u30ED\u30FC\u30EB\u30FB\u30B7\u30E7\u30C3\u30D7\u8CFC\u5165"
+      en: Gold equipment / rerolls / shopping
+      zh: "Gold\u88C5\u5907\uFF0F\u91CD\u9009\uFF0F\u5546\u5E97\u8D2D\u4E70"
+    emblem: "\u91D1"
+    accent: {r: 0.78, g: 0.66, b: 0.3, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 14%"
+        en: Gold income penalty 14%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 13%"
+        en: Gold income penalty 13%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 13%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 12%"
+        en: Gold income penalty 12%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 11%"
+        en: Gold income penalty 11%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 11%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 10%"
+        en: Gold income penalty 10%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 9%"
+        en: Gold income penalty 9%
+        zh: "Gold\u6536\u5165\u51CF\u5E45 9%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 8%\n\u5404\u30B7\u30E7\u30C3\u30D7\u306E\u6700\u521D\u306E\u8CFC\u5165\u30FB\u5F37\u5316\u5F8C\u300150Gold\u7372\u5F97\u3002\u30EA\u30ED\u30FC\u30EB\u5BFE\u8C61\u5916"
+        en: 'Gold income penalty 8%
+
+          First purchase/upgrade each shop refunds 50 Gold; excludes rerolls.'
+        zh: "Gold\u6536\u5165\u51CF\u5E45 8%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u8D2D\u4E70\uFF0F\u5F3A\u5316\u540E\u83B7\u5F9750Gold\uFF0C\u91CD\u9009\u9664\u5916\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 7%\n\u5404\u30B7\u30E7\u30C3\u30D7\u306E\u6700\u521D\u306E\u8CFC\u5165\u30FB\u5F37\u5316\u5F8C\u300150Gold\u7372\u5F97\u3002\u30EA\u30ED\u30FC\u30EB\u5BFE\u8C61\u5916"
+        en: 'Gold income penalty 7%
+
+          First purchase/upgrade each shop refunds 50 Gold; excludes rerolls.'
+        zh: "Gold\u6536\u5165\u51CF\u5E45 7%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u8D2D\u4E70\uFF0F\u5F3A\u5316\u540E\u83B7\u5F9750Gold\uFF0C\u91CD\u9009\u9664\u5916\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 6%\n\u5404\u30B7\u30E7\u30C3\u30D7\u306E\u6700\u521D\u306E\u8CFC\u5165\u30FB\u5F37\u5316\u5F8C\u300150Gold\u7372\u5F97\u3002\u30EA\u30ED\u30FC\u30EB\u5BFE\u8C61\u5916"
+        en: 'Gold income penalty 6%
+
+          First purchase/upgrade each shop refunds 50 Gold; excludes rerolls.'
+        zh: "Gold\u6536\u5165\u51CF\u5E45 6%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u8D2D\u4E70\uFF0F\u5F3A\u5316\u540E\u83B7\u5F9750Gold\uFF0C\u91CD\u9009\u9664\u5916\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u7372\u5F97Gold\u6E1B\u5C11 5%\n\u5404\u30B7\u30E7\u30C3\u30D7\u306E\u6700\u521D\u306E\u8CFC\u5165\u30FB\u5F37\u5316\u5F8C\u300150Gold\u7372\u5F97\u3002\u30EA\u30ED\u30FC\u30EB\u5BFE\u8C61\u5916\n\u548C\u4E86Gold\u6E1B\u5C11\uFF1A10\uFF05\u21925\uFF05"
+        en: "Gold income penalty 5%\nFirst purchase/upgrade each shop refunds 50 Gold; excludes rerolls.\nWin Gold penalty: 10% \u2192 5%."
+        zh: "Gold\u6536\u5165\u51CF\u5E45 5%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u8D2D\u4E70\uFF0F\u5F3A\u5316\u540E\u83B7\u5F9750Gold\uFF0C\u91CD\u9009\u9664\u5916\u3002\n\u548C\u724CGold\u51CF\u5E45\uFF1A10%\u21925%\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067300\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Per 300 spent in shop: damage +2%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39300\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067300\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +2.33%"
+        en: 'Per 300 spent in shop: damage +2.33%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39300\uFF1A\u4F24\u5BB3 +2.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067300\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +2.67%"
+        en: 'Per 300 spent in shop: damage +2.67%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39300\uFF1A\u4F24\u5BB3 +2.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Per 250 spent in shop: damage +3%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3.33%"
+        en: 'Per 250 spent in shop: damage +3.33%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +3.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +3.67%"
+        en: 'Per 250 spent in shop: damage +3.67%'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +3.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u6709\u6599\u30EA\u30ED\u30FC\u30EB\u3067\u3001\u6B21\u306E\u5BFE\u5C40\u958B\u59CB\u6642\u306B\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Per 250 spent in shop: damage +4%
+
+          First paid reroll each shop restores 10% max MP at the next battle.'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +4%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u4ED8\u8D39\u91CD\u9009\uFF0C\u4E0B\u6B21\u5BF9\u6218\u5F00\u59CB\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4.33%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u6709\u6599\u30EA\u30ED\u30FC\u30EB\u3067\u3001\u6B21\u306E\u5BFE\u5C40\u958B\u59CB\u6642\u306B\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Per 250 spent in shop: damage +4.33%
+
+          First paid reroll each shop restores 10% max MP at the next battle.'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +4.33%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u4ED8\u8D39\u91CD\u9009\uFF0C\u4E0B\u6B21\u5BF9\u6218\u5F00\u59CB\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +4.67%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u6709\u6599\u30EA\u30ED\u30FC\u30EB\u3067\u3001\u6B21\u306E\u5BFE\u5C40\u958B\u59CB\u6642\u306B\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9"
+        en: 'Per 250 spent in shop: damage +4.67%
+
+          First paid reroll each shop restores 10% max MP at the next battle.'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +4.67%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u4ED8\u8D39\u91CD\u9009\uFF0C\u4E0B\u6B21\u5BF9\u6218\u5F00\u59CB\u6062\u590D\u6700\u5927MP\u768410%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u30B7\u30E7\u30C3\u30D7\u3067250\u652F\u6255\u3046\u3054\u3068\u306B\u30C0\u30E1\u30FC\u30B8 +7%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u6709\u6599\u30EA\u30ED\u30FC\u30EB\u3067\u3001\u6B21\u306E\u5BFE\u5C40\u958B\u59CB\u6642\u306B\u6700\u5927MP\u306E10\uFF05\u56DE\u5FA9\n250Gold\u3054\u3068\uFF0B7\uFF05\u3001\u4E0A\u9650\uFF0B35\uFF05\u3002\u548C\u4E86Gold\u304C\u3055\u3089\u306B10\uFF05\u6E1B\u5C11"
+        en: 'Per 250 spent in shop: damage +7%
+
+          First paid reroll each shop restores 10% max MP at the next battle.
+
+          Every 250 Gold +7%, cap +35%; win Gold loses another 10%.'
+        zh: "\u5546\u5E97\u6BCF\u6D88\u8D39250\uFF1A\u4F24\u5BB3 +7%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u4ED8\u8D39\u91CD\u9009\uFF0C\u4E0B\u6B21\u5BF9\u6218\u5F00\u59CB\u6062\u590D\u6700\u5927MP\u768410%\u3002\n\u6BCF250Gold+7%\uFF0C\u4E0A\u9650+35%\uFF1B\u548C\u724CGold\u518D\u51CF\u5C1110%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 6
+    devil:
+      ja: "\u30AB\u30EA\u30E5\u30D6\u30C7\u30A3\u30B9"
+      en: Charybdis
+      zh: "\u5361\u5F8B\u5E03\u72C4\u65AF"
+    god:
+      ja: "\u30DD\u30BB\u30A4\u30C9\u30F3"
+      en: Poseidon
+      zh: "\u6CE2\u585E\u51AC"
+    title:
+      ja: "\u6E26\u6F6E\u306E\u98E2\u3048"
+      en: Hunger of the Maelstrom
+      zh: "\u6F29\u6DA1\u4E4B\u9965"
+    benefit:
+      ja: "\u907A\u7269\u4F7F\u7528\u3067\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B6.67\uFF05\u30022\u56DE\u307E\u3067\u84C4\u7A4D\u3001\u6700\u5927\uFF0B13.33\uFF05"
+      en: Using a relic adds +6.67% to your next win. Two stacks, max +13.33%.
+      zh: "\u4F7F\u7528\u9057\u7269\u4F7F\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3+6.67%\uFF0C\u6700\u591A2\u5C42\u3001+13.33%\u3002"
+    drawback:
+      ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\uFF0B20\uFF05"
+      en: Relic purchase prices +20%.
+      zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C+20%\u3002"
+    synergy:
+      ja: "\u56DE\u5FA9\u907A\u7269\u30FB\u653B\u6483\u907A\u7269"
+      en: Healing relics / attack relics
+      zh: "\u6062\u590D\u9057\u7269\uFF0F\u653B\u51FB\u9057\u7269"
+    emblem: "\u6E26"
+    accent: {r: 0.28, g: 0.65, b: 0.73, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 18%"
+        en: Relic price increase 18%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 18%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 16%"
+        en: Relic price increase 16%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 16%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 14%"
+        en: Relic price increase 14%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 12%"
+        en: Relic price increase 12%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 10%"
+        en: Relic price increase 10%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 8%"
+        en: Relic price increase 8%
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 6%\n\u30E9\u30F3\u958B\u59CB\u6642\u3001300Gold\u5E2F\u306E\u907A\u7269\u3092\u30E9\u30F3\u30C0\u30E0\u30671\u500B\u7372\u5F97\u3002\u6240\u6301\u67A0\u306B\u7A7A\u304D\u304C\u5FC5\u8981"
+        en: 'Relic price increase 6%
+
+          Start each run with a random 300-Gold relic if inventory has room.'
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 6%\n\u6311\u6218\u5F00\u59CB\u968F\u673A\u83B7\u5F971\u4EF6300Gold\u9057\u7269\uFF0C\u9700\u6709\u7A7A\u4F4D\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 4%\n\u30E9\u30F3\u958B\u59CB\u6642\u3001300Gold\u5E2F\u306E\u907A\u7269\u3092\u30E9\u30F3\u30C0\u30E0\u30671\u500B\u7372\u5F97\u3002\u6240\u6301\u67A0\u306B\u7A7A\u304D\u304C\u5FC5\u8981"
+        en: 'Relic price increase 4%
+
+          Start each run with a random 300-Gold relic if inventory has room.'
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 4%\n\u6311\u6218\u5F00\u59CB\u968F\u673A\u83B7\u5F971\u4EF6300Gold\u9057\u7269\uFF0C\u9700\u6709\u7A7A\u4F4D\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 2%\n\u30E9\u30F3\u958B\u59CB\u6642\u3001300Gold\u5E2F\u306E\u907A\u7269\u3092\u30E9\u30F3\u30C0\u30E0\u30671\u500B\u7372\u5F97\u3002\u6240\u6301\u67A0\u306B\u7A7A\u304D\u304C\u5FC5\u8981"
+        en: 'Relic price increase 2%
+
+          Start each run with a random 300-Gold relic if inventory has room.'
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 2%\n\u6311\u6218\u5F00\u59CB\u968F\u673A\u83B7\u5F971\u4EF6300Gold\u9057\u7269\uFF0C\u9700\u6709\u7A7A\u4F4D\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u907A\u7269\u8CFC\u5165\u4FA1\u683C\u5897\u52A0 0%\n\u30E9\u30F3\u958B\u59CB\u6642\u3001300Gold\u5E2F\u306E\u907A\u7269\u3092\u30E9\u30F3\u30C0\u30E0\u30671\u500B\u7372\u5F97\u3002\u6240\u6301\u67A0\u306B\u7A7A\u304D\u304C\u5FC5\u8981\n\u907A\u7269\u4FA1\u683C\u306E\u5897\u52A0\u3092\u306A\u304F\u3059"
+        en: 'Relic price increase 0%
+
+          Start each run with a random 300-Gold relic if inventory has room.
+
+          Remove the relic price surcharge.'
+        zh: "\u9057\u7269\u8D2D\u4E70\u4EF7\u683C\u589E\u5E45 0%\n\u6311\u6218\u5F00\u59CB\u968F\u673A\u83B7\u5F971\u4EF6300Gold\u9057\u7269\uFF0C\u9700\u6709\u7A7A\u4F4D\u3002\n\u53D6\u6D88\u9057\u7269\u4EF7\u683C\u589E\u5E45\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Per relic used: next win damage +8%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +9.33%"
+        en: 'Per relic used: next win damage +9.33%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +9.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +10.67%"
+        en: 'Per relic used: next win damage +10.67%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +10.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +15%"
+        en: 'Per relic used: next win damage +15%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +15%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +16.67%"
+        en: 'Per relic used: next win damage +16.67%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +16.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +18.33%"
+        en: 'Per relic used: next win damage +18.33%'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +18.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +20%\n\u907A\u7269\u4F7F\u7528\u3054\u3068\u3001\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per relic used: next win damage +20%
+
+          Each relic use heals 3% of max HP.'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +20%\n\u6BCF\u6B21\u4F7F\u7528\u9057\u7269\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +21.67%\n\u907A\u7269\u4F7F\u7528\u3054\u3068\u3001\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per relic used: next win damage +21.67%
+
+          Each relic use heals 3% of max HP.'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +21.67%\n\u6BCF\u6B21\u4F7F\u7528\u9057\u7269\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +23.33%\n\u907A\u7269\u4F7F\u7528\u3054\u3068\u3001\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9"
+        en: 'Per relic used: next win damage +23.33%
+
+          Each relic use heals 3% of max HP.'
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +23.33%\n\u6BCF\u6B21\u4F7F\u7528\u9057\u7269\u6062\u590D\u6700\u5927HP\u76843%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u907A\u7269\u3092\u4F7F\u3046\u3054\u3068\u306B\u6B21\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8 +25%\n\u907A\u7269\u4F7F\u7528\u3054\u3068\u3001\u6700\u5927HP\u306E3\uFF05\u56DE\u5FA9\n3\u56DE\u307E\u3067\u84C4\u7A4D\u3001\u6700\u5927\uFF0B75\uFF05\u3002\u6700\u5927MP\uFF0D15\uFF05"
+        en: "Per relic used: next win damage +25%\nEach relic use heals 3% of max HP.\nThree stacks, max +75%; maximum MP \u221215%."
+        zh: "\u6BCF\u4F7F\u7528\u9057\u7269\uFF1A\u4E0B\u6B21\u548C\u724C\u4F24\u5BB3 +25%\n\u6BCF\u6B21\u4F7F\u7528\u9057\u7269\u6062\u590D\u6700\u5927HP\u76843%\u3002\n\u6700\u591A3\u5C42\u3001+75%\uFF1B\u6700\u5927MP\u221215%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 7
+    devil:
+      ja: "\u30D5\u30A7\u30F3\u30EA\u30EB"
+      en: Fenrir
+      zh: "\u82AC\u91CC\u5C14"
+    god:
+      ja: "\u30AA\u30FC\u30C7\u30A3\u30F3"
+      en: Odin
+      zh: "\u5965\u4E01"
+    title:
+      ja: "\u9396\u3092\u65AD\u3064\u7259"
+      en: Fangs that Break the Chain
+      zh: "\u65AD\u9501\u4E4B\u7259"
+    benefit:
+      ja: "HP16.67\uFF05\u4EE5\u4E0B\u306E\u3068\u304D\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B13.33\uFF05"
+      en: At 16.67% HP or less, win damage +13.33%.
+      zh: "HP\u4E0D\u8D85\u8FC716.67%\u65F6\uFF0C\u548C\u724C\u4F24\u5BB3+13.33%\u3002"
+    drawback:
+      ja: "\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B15\uFF05"
+      en: Incoming win damage +15%.
+      zh: "\u53D7\u5230\u548C\u724C\u4F24\u5BB3+15%\u3002"
+    synergy:
+      ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u8EFD\u6E1B\u30FB\u7384\u6B66\u306E\u8B77\u9C57\u30FB\u9AD8\u706B\u529B\u306E\u5F79"
+      en: Damage reduction / protective relics / powerful yaku
+      zh: "\u51CF\u4F24\uFF0F\u62A4\u76FE\u9057\u7269\uFF0F\u9AD8\u4F24\u5BB3\u5F79"
+    emblem: "\u7259"
+    accent: {r: 0.68, g: 0.27, b: 0.28, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 14%"
+        en: Incoming damage increase 14%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 14%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 13%"
+        en: Incoming damage increase 13%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 13%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 12%"
+        en: Incoming damage increase 12%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 12%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 11%"
+        en: Incoming damage increase 11%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 11%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 10%"
+        en: Incoming damage increase 10%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 10%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 9%"
+        en: Incoming damage increase 9%
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 9%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 8%\n\u5404\u5BFE\u5C40\u3067\u521D\u3081\u3066HP25\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u6B21\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D30\uFF05"
+        en: "Incoming damage increase 8%\nFirst drop to 25% HP per opponent: next incoming win damage \u221230%."
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 8%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u4E0D\u8D85\u8FC725%\u65F6\uFF0C\u4E0B\u6B21\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u221230%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 7%\n\u5404\u5BFE\u5C40\u3067\u521D\u3081\u3066HP25\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u6B21\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D30\uFF05"
+        en: "Incoming damage increase 7%\nFirst drop to 25% HP per opponent: next incoming win damage \u221230%."
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 7%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u4E0D\u8D85\u8FC725%\u65F6\uFF0C\u4E0B\u6B21\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u221230%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 6%\n\u5404\u5BFE\u5C40\u3067\u521D\u3081\u3066HP25\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u6B21\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D30\uFF05"
+        en: "Incoming damage increase 6%\nFirst drop to 25% HP per opponent: next incoming win damage \u221230%."
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 6%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u4E0D\u8D85\u8FC725%\u65F6\uFF0C\u4E0B\u6B21\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u221230%\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u88AB\u30C0\u30E1\u30FC\u30B8\u5897\u52A0 5%\n\u5404\u5BFE\u5C40\u3067\u521D\u3081\u3066HP25\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u6B21\u306E\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D30\uFF05\n\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u5897\u52A0\uFF1A10\uFF05\u21925\uFF05"
+        en: "Incoming damage increase 5%\nFirst drop to 25% HP per opponent: next incoming win damage \u221230%.\nIncoming win damage surcharge: 10% \u2192 5%."
+        zh: "\u6240\u53D7\u4F24\u5BB3\u589E\u5E45 5%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21HP\u4E0D\u8D85\u8FC725%\u65F6\uFF0C\u4E0B\u6B21\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u221230%\u3002\n\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u589E\u5E45\uFF1A10%\u21925%\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "HP50%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +16%"
+        en: "At HP \u226450%: damage +16%"
+        zh: "HP\u226450%\uFF1A\u4F24\u5BB3 +16%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "HP50%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +18.67%"
+        en: "At HP \u226450%: damage +18.67%"
+        zh: "HP\u226450%\uFF1A\u4F24\u5BB3 +18.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "HP50%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +21.33%"
+        en: "At HP \u226450%: damage +21.33%"
+        zh: "HP\u226450%\uFF1A\u4F24\u5BB3 +21.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +24%"
+        en: "At HP \u226460%: damage +24%"
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +24%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +26.67%"
+        en: "At HP \u226460%: damage +26.67%"
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +26.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +29.33%"
+        en: "At HP \u226460%: damage +29.33%"
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +29.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +32%\nHP\u6761\u4EF6\u3092\u6E80\u305F\u3057\u3066\u548C\u4E86\u3059\u308B\u3068\u6700\u5927HP\u306E5\uFF05\u56DE\u5FA9"
+        en: "At HP \u226460%: damage +32%\nWinning under the HP condition heals 5% of max HP."
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +32%\n\u6EE1\u8DB3HP\u6761\u4EF6\u548C\u724C\u65F6\u6062\u590D\u6700\u5927HP\u76845%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +34.67%\nHP\u6761\u4EF6\u3092\u6E80\u305F\u3057\u3066\u548C\u4E86\u3059\u308B\u3068\u6700\u5927HP\u306E5\uFF05\u56DE\u5FA9"
+        en: "At HP \u226460%: damage +34.67%\nWinning under the HP condition heals 5% of max HP."
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +34.67%\n\u6EE1\u8DB3HP\u6761\u4EF6\u548C\u724C\u65F6\u6062\u590D\u6700\u5927HP\u76845%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +37.33%\nHP\u6761\u4EF6\u3092\u6E80\u305F\u3057\u3066\u548C\u4E86\u3059\u308B\u3068\u6700\u5927HP\u306E5\uFF05\u56DE\u5FA9"
+        en: "At HP \u226460%: damage +37.33%\nWinning under the HP condition heals 5% of max HP."
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +37.33%\n\u6EE1\u8DB3HP\u6761\u4EF6\u548C\u724C\u65F6\u6062\u590D\u6700\u5927HP\u76845%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "HP60%\u4EE5\u4E0B\u3067\u30C0\u30E1\u30FC\u30B8 +70%\nHP\u6761\u4EF6\u3092\u6E80\u305F\u3057\u3066\u548C\u4E86\u3059\u308B\u3068\u6700\u5927HP\u306E5\uFF05\u56DE\u5FA9\nHP\u6761\u4EF6\u6210\u7ACB\u6642\u306E\u30C0\u30E1\u30FC\u30B8\uFF0B70\uFF05\u3002\u88AB\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\u304C\u3055\u3089\u306B10\uFF05\u5897\u52A0"
+        en: "At HP \u226460%: damage +70%\nWinning under the HP condition heals 5% of max HP.\nLow-HP win damage +70%; incoming win damage another +10%."
+        zh: "HP\u226460%\uFF1A\u4F24\u5BB3 +70%\n\u6EE1\u8DB3HP\u6761\u4EF6\u548C\u724C\u65F6\u6062\u590D\u6700\u5927HP\u76845%\u3002\n\u6EE1\u8DB3\u6761\u4EF6\u4F24\u5BB3+70%\uFF1B\u53D7\u5230\u548C\u724C\u4F24\u5BB3\u518D\u589E\u52A010%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 8
+    devil:
+      ja: "\u30E9\u30DF\u30A2"
+      en: Lamia
+      zh: "\u62C9\u5F25\u4E9A"
+    god:
+      ja: "\u30EB\u30FC\u30CA"
+      en: Luna
+      zh: "\u9732\u5A1C"
+    title:
+      ja: "\u6708\u4E0B\u306E\u9B54\u529B"
+      en: Magic beneath the Moon
+      zh: "\u6708\u4E0B\u9B54\u529B"
+    benefit:
+      ja: "\u5BFE\u5C40\u4E2D\u306EMP\u56DE\u5FA9\u91CF\uFF0B10\uFF05"
+      en: MP recovery during battle +10%.
+      zh: "\u5BF9\u6218\u4E2DMP\u6062\u590D\u91CF+10%\u3002"
+    drawback:
+      ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u3054\u3068\u6700\u5927HP\u306E3\uFF05\u3092\u652F\u6255\u3046\u3002HP\u304C0\u306B\u306A\u308B\u5834\u5408\u306F\u4F7F\u7528\u4E0D\u53EF"
+      en: Each skill also costs 3% of max HP. Cannot use if HP would reach 0.
+      zh: "\u6BCF\u6B21\u6280\u80FD\u652F\u4ED8\u6700\u5927HP\u76843%\uFF1B\u82E5HP\u4F1A\u5F52\u96F6\u5219\u65E0\u6CD5\u4F7F\u7528\u3002"
+    synergy:
+      ja: "MP\u56DE\u5FA9\u30FB\u30B9\u30AD\u30EB\u56DE\u6570\u5F37\u5316"
+      en: MP recovery / extra skill uses
+      zh: "MP\u6062\u590D\uFF0F\u6280\u80FD\u6B21\u6570\u5F3A\u5316"
+    emblem: "\u6708"
+    accent: {r: 0.53, g: 0.45, b: 0.77, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 2.8%"
+        en: Skill HP cost 2.8%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 2.8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 2.6%"
+        en: Skill HP cost 2.6%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 2.6%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 2.4%"
+        en: Skill HP cost 2.4%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 2.4%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 2.2%"
+        en: Skill HP cost 2.2%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 2.2%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 2%"
+        en: Skill HP cost 2%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 2%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 1.8%"
+        en: Skill HP cost 1.8%
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 1.8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 1.6%\n\u5404\u5C40\u6700\u521D\u306E\u30B9\u30AD\u30EB\u306FHP\u3092\u6D88\u8CBB\u3057\u306A\u3044"
+        en: 'Skill HP cost 1.6%
+
+          First skill each hand has no HP cost.'
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 1.6%\n\u6BCF\u5C40\u9996\u6B21\u6280\u80FD\u4E0D\u6D88\u8017HP\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 1.4%\n\u5404\u5C40\u6700\u521D\u306E\u30B9\u30AD\u30EB\u306FHP\u3092\u6D88\u8CBB\u3057\u306A\u3044"
+        en: 'Skill HP cost 1.4%
+
+          First skill each hand has no HP cost.'
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 1.4%\n\u6BCF\u5C40\u9996\u6B21\u6280\u80FD\u4E0D\u6D88\u8017HP\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 1.2%\n\u5404\u5C40\u6700\u521D\u306E\u30B9\u30AD\u30EB\u306FHP\u3092\u6D88\u8CBB\u3057\u306A\u3044"
+        en: 'Skill HP cost 1.2%
+
+          First skill each hand has no HP cost.'
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 1.2%\n\u6BCF\u5C40\u9996\u6B21\u6280\u80FD\u4E0D\u6D88\u8017HP\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u30B9\u30AD\u30EB\u4F7F\u7528\u6642\u306EHP\u6D88\u8CBB 1%\n\u5404\u5C40\u6700\u521D\u306E\u30B9\u30AD\u30EB\u306FHP\u3092\u6D88\u8CBB\u3057\u306A\u3044\n\u30B9\u30AD\u30EB\u306EHP\u6D88\u8CBB\uFF1A2\uFF05\u21921\uFF05"
+        en: "Skill HP cost 1%\nFirst skill each hand has no HP cost.\nSkill HP cost: 2% \u2192 1%."
+        zh: "\u4F7F\u7528\u6280\u80FDHP\u6D88\u8017 1%\n\u6BCF\u5C40\u9996\u6B21\u6280\u80FD\u4E0D\u6D88\u8017HP\u3002\n\u6280\u80FDHP\u6D88\u8017\uFF1A2%\u21921%\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "MP\u56DE\u5FA9 +12%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +12%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +12%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "MP\u56DE\u5FA9 +14%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +14%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +14%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "MP\u56DE\u5FA9 +16%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +16%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +16%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "MP\u56DE\u5FA9 +30%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +30%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +30%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "MP\u56DE\u5FA9 +33.33%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +33.33%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +33.33%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "MP\u56DE\u5FA9 +36.67%\nMP\u8D85\u904E\u56DE\u5FA9\u306E\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3092\u6BB5\u968E7\u3067\u89E3\u653E"
+        en: 'MP recovery +36.67%
+
+          MP overheal damage storage unlocks at rank 7'
+        zh: "MP\u6062\u590D +36.67%\n\u9636\u6BB57\u89E3\u9501MP\u6EA2\u51FA\u6062\u590D\u4F24\u5BB3\u79EF\u84C4"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "MP\u56DE\u5FA9 +40%\n\u8D85\u904EMP1\u306B\u3064\u304D\u6700\u5927HP\u306E0.16%\u3092\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3002\u6700\u5927HP\u306E8%\u307E\u3067"
+        en: 'MP recovery +40%
+
+          Store 0.16% max HP damage per overhealed MP; cap 8% max HP'
+        zh: "MP\u6062\u590D +40%\n\u6BCF\u6EA2\u51FA\u6062\u590D1MP\u79EF\u84C4\u6700\u5927HP\u76840.16%\u4E3A\u4F24\u5BB3\uFF1B\u4E0A\u9650\u4E3A\u6700\u5927HP\u76848%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "MP\u56DE\u5FA9 +43.33%\n\u8D85\u904EMP1\u306B\u3064\u304D\u6700\u5927HP\u306E0.173%\u3092\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3002\u6700\u5927HP\u306E8.67%\u307E\u3067"
+        en: 'MP recovery +43.33%
+
+          Store 0.173% max HP damage per overhealed MP; cap 8.67% max HP'
+        zh: "MP\u6062\u590D +43.33%\n\u6BCF\u6EA2\u51FA\u6062\u590D1MP\u79EF\u84C4\u6700\u5927HP\u76840.173%\u4E3A\u4F24\u5BB3\uFF1B\u4E0A\u9650\u4E3A\u6700\u5927HP\u76848.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "MP\u56DE\u5FA9 +46.67%\n\u8D85\u904EMP1\u306B\u3064\u304D\u6700\u5927HP\u306E0.187%\u3092\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3002\u6700\u5927HP\u306E9.33%\u307E\u3067"
+        en: 'MP recovery +46.67%
+
+          Store 0.187% max HP damage per overhealed MP; cap 9.33% max HP'
+        zh: "MP\u6062\u590D +46.67%\n\u6BCF\u6EA2\u51FA\u6062\u590D1MP\u79EF\u84C4\u6700\u5927HP\u76840.187%\u4E3A\u4F24\u5BB3\uFF1B\u4E0A\u9650\u4E3A\u6700\u5927HP\u76849.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "MP\u56DE\u5FA9 +50%\n\u8D85\u904EMP1\u306B\u3064\u304D\u6700\u5927HP\u306E0.2%\u3092\u30C0\u30E1\u30FC\u30B8\u84C4\u7A4D\u3002\u6700\u5927HP\u306E10%\u307E\u3067\n\u6700\u5927MP -20%"
+        en: 'MP recovery +50%
+
+          Store 0.2% max HP damage per overhealed MP; cap 10% max HP
+
+          Maximum MP -20%'
+        zh: "MP\u6062\u590D +50%\n\u6BCF\u6EA2\u51FA\u6062\u590D1MP\u79EF\u84C4\u6700\u5927HP\u76840.2%\u4E3A\u4F24\u5BB3\uFF1B\u4E0A\u9650\u4E3A\u6700\u5927HP\u768410%\n\u6700\u5927MP -20%"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 9
+    devil:
+      ja: "\u30C6\u30E5\u30DD\u30FC\u30F3"
+      en: Typhon
+      zh: "\u5824\u4E30"
+    god:
+      ja: "\u30BC\u30A6\u30B9"
+      en: Zeus
+      zh: "\u5B99\u65AF"
+    title:
+      ja: "\u795E\u738B\u3078\u306E\u53CD\u9006"
+      en: Rebellion against the God-King
+      zh: "\u53CD\u53DB\u795E\u738B"
+    benefit:
+      ja: "\u304A\u672D\u306E\u5BFE\u8C61\u5F792\u7A2E\u985E\u4EE5\u4E0A\u6210\u7ACB\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B16.67\uFF05\u3002\u540C\u3058\u6761\u4EF6\u306F1\u7A2E\u985E"
+      en: 'Match at least two distinct ofuda conditions: win damage +16.67%.'
+      zh: "\u6EE1\u8DB3\u81F3\u5C112\u79CD\u4E0D\u540C\u7B26\u5492\u6761\u4EF6\uFF0C\u548C\u724C\u4F24\u5BB3+16.67%\u3002"
+    drawback:
+      ja: "\u304A\u672D\u306E\u5BFE\u8C61\u5F79\u304C0\u7A2E\u985E\u3060\u3068\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D25\uFF05"
+      en: "No matching ofuda: win damage \u221225%."
+      zh: "\u672A\u6EE1\u8DB3\u7B26\u5492\u6761\u4EF6\u65F6\uFF0C\u548C\u724C\u4F24\u5BB3\u221225%\u3002"
+    synergy:
+      ja: "\u8907\u6570\u5F79\u306E\u304A\u672D\u30FB\u7279\u5225\u724C\u30FB\u5F79\u5F37\u5316"
+      en: Multiple ofuda / special tiles / yaku upgrades
+      zh: "\u591A\u5F79\u7B26\u5492\uFF0F\u7279\u6B8A\u724C\uFF0F\u5F79\u5F3A\u5316"
+    emblem: "\u5D50"
+    accent: {r: 0.45, g: 0.64, b: 0.83, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 23%"
+        en: Damage penalty without ofuda 23%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 23%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 21%"
+        en: Damage penalty without ofuda 21%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 21%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 19%"
+        en: Damage penalty without ofuda 19%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 19%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 17%"
+        en: Damage penalty without ofuda 17%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 17%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 15%"
+        en: Damage penalty without ofuda 15%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 15%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 13%"
+        en: Damage penalty without ofuda 13%
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 13%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 11%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u304A\u672D\u30EA\u30ED\u30FC\u30EB\u304C\u7121\u6599"
+        en: 'Damage penalty without ofuda 11%
+
+          First ofuda reroll each shop is free.'
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 11%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u7B26\u5492\u91CD\u9009\u514D\u8D39\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 9%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u304A\u672D\u30EA\u30ED\u30FC\u30EB\u304C\u7121\u6599"
+        en: 'Damage penalty without ofuda 9%
+
+          First ofuda reroll each shop is free.'
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 9%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u7B26\u5492\u91CD\u9009\u514D\u8D39\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 7%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u304A\u672D\u30EA\u30ED\u30FC\u30EB\u304C\u7121\u6599"
+        en: 'Damage penalty without ofuda 7%
+
+          First ofuda reroll each shop is free.'
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 7%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u7B26\u5492\u91CD\u9009\u514D\u8D39\u3002"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u304A\u672D\u672A\u767A\u52D5\u6642\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 5%\n\u5404\u30B7\u30E7\u30C3\u30D7\u6700\u521D\u306E\u304A\u672D\u30EA\u30ED\u30FC\u30EB\u304C\u7121\u6599\n\u6761\u4EF6\u672A\u9054\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11\uFF1A15\uFF05\u21925\uFF05"
+        en: "Damage penalty without ofuda 5%\nFirst ofuda reroll each shop is free.\nNo-match damage penalty: 15% \u2192 5%."
+        zh: "\u672A\u53D1\u52A8\u7B26\u5492\u7684\u4F24\u5BB3\u51CF\u5E45 5%\n\u6BCF\u4E2A\u5546\u5E97\u9996\u6B21\u7B26\u5492\u91CD\u9009\u514D\u8D39\u3002\n\u672A\u6EE1\u8DB3\u6761\u4EF6\u51CF\u4F24\uFF1A15%\u21925%\u3002"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +20%"
+        en: 'Match 2 ofuda conditions: damage +20%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +20%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +23.33%"
+        en: 'Match 2 ofuda conditions: damage +23.33%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +23.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +26.67%"
+        en: 'Match 2 ofuda conditions: damage +26.67%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +26.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +39%"
+        en: 'Match 2 ofuda conditions: damage +39%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +39%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +43.33%"
+        en: 'Match 2 ofuda conditions: damage +43.33%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +43.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +47.67%"
+        en: 'Match 2 ofuda conditions: damage +47.67%'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +47.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +52%\n\u5BFE\u8C61\u5F793\u7A2E\u985E\u4EE5\u4E0A\u306A\u3089\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B20\uFF05"
+        en: 'Match 2 ofuda conditions: damage +52%
+
+          Three matching conditions add another +20% damage.'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +52%\n\u6EE1\u8DB33\u79CD\u6761\u4EF6\u65F6\uFF0C\u4F24\u5BB3\u518D+20%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +56.33%\n\u5BFE\u8C61\u5F793\u7A2E\u985E\u4EE5\u4E0A\u306A\u3089\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B21.67\uFF05"
+        en: 'Match 2 ofuda conditions: damage +56.33%
+
+          Three matching conditions add another +21.67% damage.'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +56.33%\n\u6EE1\u8DB33\u79CD\u6761\u4EF6\u65F6\uFF0C\u4F24\u5BB3\u518D+21.67%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +60.67%\n\u5BFE\u8C61\u5F793\u7A2E\u985E\u4EE5\u4E0A\u306A\u3089\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B23.33\uFF05"
+        en: 'Match 2 ofuda conditions: damage +60.67%
+
+          Three matching conditions add another +23.33% damage.'
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +60.67%\n\u6EE1\u8DB33\u79CD\u6761\u4EF6\u65F6\uFF0C\u4F24\u5BB3\u518D+23.33%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u306E\u6761\u4EF6\u6210\u7ACB\u3067\u30C0\u30E1\u30FC\u30B8 +65%\n\u5BFE\u8C61\u5F793\u7A2E\u985E\u4EE5\u4E0A\u306A\u3089\u3001\u3055\u3089\u306B\u30C0\u30E1\u30FC\u30B8\uFF0B25\uFF05\n2\u7A2E\u985E\u4EE5\u4E0A\u6210\u7ACB\u6642\u3001\u304A\u672D\u306E\u30C0\u30E1\u30FC\u30B8\u5897\u52A0\u90E8\u5206\u309220\uFF05\u5F37\u5316\u3002\u6700\u5927HP\uFF0D15\uFF05"
+        en: "Match 2 ofuda conditions: damage +65%\nThree matching conditions add another +25% damage.\nWith two matches, ofuda damage bonus portion +20%; maximum HP \u221215%."
+        zh: "\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\uFF1A\u4F24\u5BB3 +65%\n\u6EE1\u8DB33\u79CD\u6761\u4EF6\u65F6\uFF0C\u4F24\u5BB3\u518D+25%\u3002\n\u6EE1\u8DB32\u79CD\u6761\u4EF6\u65F6\uFF0C\u7B26\u5492\u4F24\u5BB3\u589E\u52A0\u90E8\u5206\u5F3A\u531620%\uFF1B\u6700\u5927HP\u221215%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"
+  - id: 10
+    devil:
+      ja: "\u30B1\u30EB\u30D9\u30ED\u30B9"
+      en: Cerberus
+      zh: "\u523B\u8033\u67CF\u6D1B\u65AF"
+    god:
+      ja: "\u30CF\u30C7\u30B9"
+      en: Hades
+      zh: "\u54C8\u8FEA\u65AF"
+    title:
+      ja: "\u51A5\u5E9C\u306E\u4E09\u3064\u306E\u8A93\u3044"
+      en: Three Oaths of the Underworld
+      zh: "\u51A5\u5E9C\u4E09\u8A93"
+    benefit:
+      ja: "\u30D1\u30C3\u30B7\u30D6\u52B9\u679C2\u7CFB\u7D71\u4EE5\u4E0A\u3067\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0B16.67\uFF05\u3002\u5404\u5C40\u958B\u59CB\u6642\u306B\u672A\u89E3\u653E\u30D1\u30C3\u30B7\u30D61\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u3067\u4E00\u6642\u89E3\u653E"
+      en: 'Two passive effect types: win damage +16.67%. Each hand temporarily unlocks one random locked passive.'
+      zh: "\u89E6\u53D12\u79CD\u88AB\u52A8\u6548\u679C\uFF0C\u548C\u724C\u4F24\u5BB3+16.67%\u3002\u6BCF\u5C40\u5F00\u59CB\u968F\u673A\u4E34\u65F6\u89E3\u95011\u4E2A\u672A\u89E3\u9501\u88AB\u52A8\u3002"
+    drawback:
+      ja: "\u30D1\u30C3\u30B7\u30D6\u52B9\u679C0\uFF5E1\u7CFB\u7D71\u306E\u548C\u4E86\u30C0\u30E1\u30FC\u30B8\uFF0D20\uFF05"
+      en: "Zero or one passive effect type: win damage \u221220%."
+      zh: "\u4EC50\uFF5E1\u79CD\u88AB\u52A8\u6548\u679C\u7684\u548C\u724C\u4F24\u5BB3\u221220%\u3002"
+    synergy:
+      ja: "\u30C0\u30E1\u30FC\u30B8\u5F37\u5316\u30FBHP\u56DE\u5FA9\u30FBMP\u56DE\u5FA9\u306E\u5171\u9CF4"
+      en: Damage / HP recovery / MP recovery synergy
+      zh: "\u4F24\u5BB3\u5F3A\u5316\uFF0FHP\u6062\u590D\uFF0FMP\u6062\u590D\u5171\u9E23"
+    emblem: "\u9580"
+    accent: {r: 0.7, g: 0.39, b: 0.69, a: 1}
+    mercy:
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 1"
+        en: Restraint 1
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 1"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 18%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 9%"
+        en: 'Damage penalty below 2 passive types 18%
+
+          MP lost at hand start: 9%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 18%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 9%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 2"
+        en: Restraint 2
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 2"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 16%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 8%"
+        en: 'Damage penalty below 2 passive types 16%
+
+          MP lost at hand start: 8%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 16%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 8%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 3"
+        en: Restraint 3
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 3"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 14%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 7%"
+        en: 'Damage penalty below 2 passive types 14%
+
+          MP lost at hand start: 7%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 14%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 7%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 4"
+        en: Restraint 4
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 4"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 12%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 6%"
+        en: 'Damage penalty below 2 passive types 12%
+
+          MP lost at hand start: 6%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 12%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 6%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 5"
+        en: Restraint 5
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 5"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 10%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 5%"
+        en: 'Damage penalty below 2 passive types 10%
+
+          MP lost at hand start: 5%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 10%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 5%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 6"
+        en: Restraint 6
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 6"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 8%\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 4%"
+        en: 'Damage penalty below 2 passive types 8%
+
+          MP lost at hand start: 4%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 8%\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 4%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 7"
+        en: Restraint 7
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 7"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 6%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u548C\u4E86\u306F\u3001\u6761\u4EF6\u672A\u9054\u3067\u3082\u30C0\u30E1\u30FC\u30B8\u304C\u6E1B\u3089\u306A\u3044\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 3%"
+        en: 'Damage penalty below 2 passive types 6%
+
+          First win per opponent ignores the penalty.
+
+          MP lost at hand start: 3%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 6%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u548C\u724C\u4E0D\u53D7\u6761\u4EF6\u672A\u8FBE\u51CF\u4F24\u5F71\u54CD\u3002\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 3%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 8"
+        en: Restraint 8
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 8"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 4%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u548C\u4E86\u306F\u3001\u6761\u4EF6\u672A\u9054\u3067\u3082\u30C0\u30E1\u30FC\u30B8\u304C\u6E1B\u3089\u306A\u3044\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 2%"
+        en: 'Damage penalty below 2 passive types 4%
+
+          First win per opponent ignores the penalty.
+
+          MP lost at hand start: 2%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 4%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u548C\u724C\u4E0D\u53D7\u6761\u4EF6\u672A\u8FBE\u51CF\u4F24\u5F71\u54CD\u3002\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 2%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 9"
+        en: Restraint 9
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 9"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 2%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u548C\u4E86\u306F\u3001\u6761\u4EF6\u672A\u9054\u3067\u3082\u30C0\u30E1\u30FC\u30B8\u304C\u6E1B\u3089\u306A\u3044\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 1%"
+        en: 'Damage penalty below 2 passive types 2%
+
+          First win per opponent ignores the penalty.
+
+          MP lost at hand start: 1%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 2%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u548C\u724C\u4E0D\u53D7\u6761\u4EF6\u672A\u8FBE\u51CF\u4F24\u5F71\u54CD\u3002\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 1%"
+    - name:
+        ja: "\u4EE3\u511F\u8EFD\u6E1B 10"
+        en: Restraint 10
+        zh: "\u51CF\u8F7B\u4EE3\u4EF7 10"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u672A\u6E80\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11 0%\n\u5404\u5BFE\u5C40\u306E\u6700\u521D\u306E\u548C\u4E86\u306F\u3001\u6761\u4EF6\u672A\u9054\u3067\u3082\u30C0\u30E1\u30FC\u30B8\u304C\u6E1B\u3089\u306A\u3044\n\u6761\u4EF6\u672A\u9054\u306E\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11\u3092\u306A\u304F\u3059\n\u5C40\u958B\u59CB\u6642\u306EMP\u6E1B\u5C11 0%"
+        en: 'Damage penalty below 2 passive types 0%
+
+          First win per opponent ignores the penalty.
+
+          Remove the unmet-condition damage penalty.
+
+          MP lost at hand start: 0%'
+        zh: "\u5C11\u4E8E2\u79CD\u88AB\u52A8\u7684\u4F24\u5BB3\u51CF\u5E45 0%\n\u6BCF\u6B21\u5BF9\u6218\u9996\u6B21\u548C\u724C\u4E0D\u53D7\u6761\u4EF6\u672A\u8FBE\u51CF\u4F24\u5F71\u54CD\u3002\n\u53D6\u6D88\u672A\u6EE1\u8DB3\u6761\u4EF6\u7684\u51CF\u4F24\u3002\n\u6BCF\u5C40\u5F00\u59CB\u65F6MP\u51CF\u5C11 0%"
+    power:
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 1"
+        en: Power 1
+        zh: "\u5F3A\u5316\u6069\u60E0 1"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +20%"
+        en: 'Trigger 2 passive types: damage +20%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +20%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 2"
+        en: Power 2
+        zh: "\u5F3A\u5316\u6069\u60E0 2"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +23.33%"
+        en: 'Trigger 2 passive types: damage +23.33%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +23.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 3"
+        en: Power 3
+        zh: "\u5F3A\u5316\u6069\u60E0 3"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +26.67%"
+        en: 'Trigger 2 passive types: damage +26.67%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +26.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 4"
+        en: Power 4
+        zh: "\u5F3A\u5316\u6069\u60E0 4"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +39%"
+        en: 'Trigger 2 passive types: damage +39%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +39%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 5"
+        en: Power 5
+        zh: "\u5F3A\u5316\u6069\u60E0 5"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +43.33%"
+        en: 'Trigger 2 passive types: damage +43.33%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +43.33%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 6"
+        en: Power 6
+        zh: "\u5F3A\u5316\u6069\u60E0 6"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +47.67%"
+        en: 'Trigger 2 passive types: damage +47.67%'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +47.67%"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 7"
+        en: Power 7
+        zh: "\u5F3A\u5316\u6069\u60E0 7"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +52%\n3\u7CFB\u7D71\u3059\u3079\u3066\u767A\u52D5\u6642\u3001\u30D1\u30C3\u30B7\u30D6\u306B\u3088\u308BHP\u30FBMP\u56DE\u5FA9\u91CF\uFF0B30\uFF05"
+        en: 'Trigger 2 passive types: damage +52%
+
+          All three types: passive HP and MP healing +30%.'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +52%\n\u89E6\u53D1\u5168\u90E83\u79CD\u6548\u679C\u65F6\uFF0C\u88AB\u52A8HP\uFF0FMP\u6062\u590D\u91CF+30%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 8"
+        en: Power 8
+        zh: "\u5F3A\u5316\u6069\u60E0 8"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +56.33%\n3\u7CFB\u7D71\u3059\u3079\u3066\u767A\u52D5\u6642\u3001\u30D1\u30C3\u30B7\u30D6\u306B\u3088\u308BHP\u30FBMP\u56DE\u5FA9\u91CF\uFF0B30\uFF05"
+        en: 'Trigger 2 passive types: damage +56.33%
+
+          All three types: passive HP and MP healing +30%.'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +56.33%\n\u89E6\u53D1\u5168\u90E83\u79CD\u6548\u679C\u65F6\uFF0C\u88AB\u52A8HP\uFF0FMP\u6062\u590D\u91CF+30%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 9"
+        en: Power 9
+        zh: "\u5F3A\u5316\u6069\u60E0 9"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +60.67%\n3\u7CFB\u7D71\u3059\u3079\u3066\u767A\u52D5\u6642\u3001\u30D1\u30C3\u30B7\u30D6\u306B\u3088\u308BHP\u30FBMP\u56DE\u5FA9\u91CF\uFF0B30\uFF05"
+        en: 'Trigger 2 passive types: damage +60.67%
+
+          All three types: passive HP and MP healing +30%.'
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +60.67%\n\u89E6\u53D1\u5168\u90E83\u79CD\u6548\u679C\u65F6\uFF0C\u88AB\u52A8HP\uFF0FMP\u6062\u590D\u91CF+30%\u3002"
+    - name:
+        ja: "\u6069\u6075\u5F37\u5316 10"
+        en: Power 10
+        zh: "\u5F3A\u5316\u6069\u60E0 10"
+      description:
+        ja: "\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u767A\u52D5\u3067\u30C0\u30E1\u30FC\u30B8 +65%\n3\u7CFB\u7D71\u3059\u3079\u3066\u767A\u52D5\u6642\u3001\u30D1\u30C3\u30B7\u30D6\u306B\u3088\u308BHP\u30FBMP\u56DE\u5FA9\u91CF\uFF0B30\uFF05\n3\u7CFB\u7D71\u767A\u52D5\u6642\u3001\u5951\u7D04\u306E\u30C0\u30E1\u30FC\u30B8\u5F37\u5316\u304C\u5408\u8A08\uFF0B100\uFF05\u3002\u6700\u5927HP\u30FBMP\uFF0D10\uFF05"
+        en: "Trigger 2 passive types: damage +65%\nAll three types: passive HP and MP healing +30%.\nAll three types: contract damage bonus totals +100%; max HP/MP \u221210%."
+        zh: "\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +65%\n\u89E6\u53D1\u5168\u90E83\u79CD\u6548\u679C\u65F6\uFF0C\u88AB\u52A8HP\uFF0FMP\u6062\u590D\u91CF+30%\u3002\n\u89E6\u53D13\u79CD\u6548\u679C\u65F6\u5951\u7EA6\u4F24\u5BB3\u52A0\u6210\u5171+100%\uFF1B\u6700\u5927HP\uFF0FMP\u221210%\u3002"
+    resonance:
+    - name:
+        ja: "\u5171\u9CF4 1"
+        en: Resonance 1
+        zh: "\u5171\u9E23 1"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +1%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +1%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +1%"
+    - name:
+        ja: "\u5171\u9CF4 2"
+        en: Resonance 2
+        zh: "\u5171\u9E23 2"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +2%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +2%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +2%"
+    - name:
+        ja: "\u5171\u9CF4 3"
+        en: Resonance 3
+        zh: "\u5171\u9E23 3"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +3%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +3%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +3%"
+    - name:
+        ja: "\u5171\u9CF4 4"
+        en: Resonance 4
+        zh: "\u5171\u9E23 4"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +4%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +4%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +4%"
+    - name:
+        ja: "\u5171\u9CF4 5"
+        en: Resonance 5
+        zh: "\u5171\u9E23 5"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +5%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +5%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +5%"
+    - name:
+        ja: "\u5171\u9CF4 6"
+        en: Resonance 6
+        zh: "\u5171\u9E23 6"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +6%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +6%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +6%"
+    - name:
+        ja: "\u5171\u9CF4 7"
+        en: Resonance 7
+        zh: "\u5171\u9E23 7"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +7%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +7%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +7%"
+    - name:
+        ja: "\u5171\u9CF4 8"
+        en: Resonance 8
+        zh: "\u5171\u9E23 8"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +8%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +8%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +8%"
+    - name:
+        ja: "\u5171\u9CF4 9"
+        en: Resonance 9
+        zh: "\u5171\u9E23 9"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +9%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +9%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +9%"
+    - name:
+        ja: "\u5171\u9CF4 10"
+        en: Resonance 10
+        zh: "\u5171\u9E23 10"
+      description:
+        ja: "\u304A\u672D2\u7A2E\u985E\u307E\u305F\u306F\u30D1\u30C3\u30B7\u30D62\u7A2E\u985E\u304C\u767A\u52D5\u3057\u305F\u548C\u4E86\uFF1A\u30C0\u30E1\u30FC\u30B8 +10%"
+        en: 'Win with 2 ofuda conditions or 2 passive types: damage +10%'
+        zh: "\u548C\u724C\u65F6\u6EE1\u8DB32\u79CD\u7B26\u5492\u6761\u4EF6\u6216\u53D1\u52A82\u79CD\u88AB\u52A8\uFF1A\u4F24\u5BB3 +10%"

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,14 +37,14 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         var shade=SeventeenStepsUI.Rect("BattleDimmer",root,Vector2.zero,new Vector2(10000,10000)).gameObject.AddComponent<Image>();shade.color=new Color(0,0,0,.38f);shade.raycastTarget=false;shade.transform.SetSiblingIndex(2);
         content=SeventeenStepsUI.Rect("Board",root,Vector2.zero,new Vector2(1920,1080));
         score=SeventeenStepsUI.Label(root,"",new Vector2(800,385),new Vector2(290,80),32);
-        status=SeventeenStepsUI.Label(root,"",new Vector2(0,-450),new Vector2(1250,40),27);
+        status=SeventeenStepsUI.Label(root,"",new Vector2(0,-430),new Vector2(1250,25),21);
         portrait=SeventeenStepsUI.Picture(root,null,new Vector2(-800,185),new Vector2(300,350));portrait.color=Color.clear;
         SeventeenStepsUI.Navigation(root,"遊び方",new Vector2(790,490),new Vector2(230,58),()=>{if(!busy&&!modal)Tutorial(0);});
 
-        SeventeenStepsUI.Navigation(root,"終了する",new Vector2(770,-470),new Vector2(230,58),ConfirmExit);
+        gameMenuButton=SeventeenStepsUI.Navigation(root,"メニュー",new Vector2(770,-470),new Vector2(230,58),OpenGameMenu);
         string art=SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.DyeMaster?"RandomMan_victory":SeventeenStepsMode.SelectedCharacter==SeventeenStepsMode.Character.Calligrapher?"RandomHonor_victory":"Capitalist_victory";
         playerPortrait=SeventeenStepsUI.Picture(root,SeventeenStepsUI.CharacterArt(SeventeenStepsMode.SelectedCharacter),new Vector2(800,155),new Vector2(290,350));
-        ShowOfudaOffers();
+        if(!RestoreSuspendedRound())ShowOfudaOffers();
     }
     void OnDestroy(){if(Active==this)Active=null;}
     void NewModal(string title){CloseModal();modal=SeventeenStepsUI.Modal(root,title);}
@@ -139,10 +139,10 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         RenderOpponent(true);RenderIndicators(content);RenderWinds();
         SeventeenStepsUI.TablePanel(content,new Vector2(0,30),new Vector2(1250,110));
         SeventeenStepsUI.TablePanel(content,new Vector2(0,-160),new Vector2(1250,250));
-        int n=0;foreach(int i in selected.OrderBy(i=>deck[i])){int idx=i;var tile=Tile(content,deck[i],new Vector2(-438+n++*73,30),new Vector2(65,92),()=>{AudioManager.Instance?.PlaySelectTileSE();target=idx;notice="";RenderSelection();},required.Contains(i));HighlightTarget(tile,target==idx);}
+        int n=0;foreach(int i in selected.OrderBy(i=>deck[i])){int idx=i;var tile=Tile(content,deck[i],new Vector2(-390+n++*65,30),new Vector2(65,92),()=>{AudioManager.Instance?.PlaySelectTileSE();target=idx;notice="";RenderSelection();},required.Contains(i));HighlightTarget(tile,target==idx);}
         var sortedDeck=Enumerable.Range(0,34).OrderBy(i=>deck[i]).ThenBy(i=>i).ToArray();
-        for(int i=0;i<34;i++){int idx=sortedDeck[i];var tile=Tile(content,deck[idx],new Vector2(-560+i%17*70,-100-i/17*120),new Vector2(62,90),()=>Toggle(idx),required.Contains(idx));if(selected.Contains(idx))tile.GetComponent<Image>().color=new Color(.65f,.78f,.7f);HighlightTarget(tile,target==idx);}
-        if(selected.Count==13){var hand=selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList();RenderWaitTiles(hand);RenderHandPreview(hand);}
+        for(int i=0;i<34;i++){int idx=sortedDeck[i];var tile=Tile(content,deck[idx],new Vector2(-496+i%17*62,-100-i/17*120),new Vector2(62,90),()=>Toggle(idx),required.Contains(idx));if(selected.Contains(idx))tile.GetComponent<Image>().color=new Color(.65f,.78f,.7f);HighlightTarget(tile,target==idx);}
+        if(selected.Count==13){var hand=selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList();RenderWaitTiles(hand,374);RenderHandPreview(hand);}
         var confirm=SeventeenStepsUI.Navigation(content,enemyReady?"リーチ":"敵の構築中",new Vector2(-340,-480),new Vector2(350,70),ConfirmHand);bool ready=selected.Count==13&&SeventeenStepsRules.CanDeclare(selected.Select(i=>deck[i]).ToList(),doraIndicator,false,UnusedDesignated());confirm.interactable=!busy&&enemyReady&&ready;
         if(selected.Count==13&&!ready)SeventeenStepsUI.Navigation(content,"リーチせず開始",new Vector2(-340,-480),new Vector2(350,70),ConfirmHand).interactable=!busy&&enemyReady;
         var cancel=SeventeenStepsUI.Navigation(content,"選択を全解除",new Vector2(50,-480),new Vector2(300,70),()=>{if(busy||dealing)return;selected.Clear();target=-1;notice="";RenderSelection();});cancel.interactable=!busy&&!dealing;
@@ -154,7 +154,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
     void ConfirmHand()
     {
         if(busy||dealing||!building||!enemyReady||selected.Count!=13)return;
-        playerHand=selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList();candidates.Clear();candidates.AddRange(Enumerable.Range(0,34).Where(i=>!selected.Contains(i)).Select(i=>deck[i]));
+        playerHand=selected.OrderBy(i=>deck[i]).ThenBy(i=>i).Select(i=>deck[i]).ToList();candidates.Clear();candidates.AddRange(Enumerable.Range(0,34).Where(i=>!selected.Contains(i)).Select(i=>deck[i]).OrderBy(t=>t));
         waits=SeventeenStepsRules.Waits(playerHand);building=false;target=-1;busy=true;playerRiichi=false;RenderBattle();StartCoroutine(BeginDiscardPhase());
     }
     void SkillButton(){
@@ -182,15 +182,15 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         River(enemyDiscards,75);River(playerDiscards,0);
         SeventeenStepsUI.TablePanel(content,new Vector2(0,-83),new Vector2(1250,90));
         SeventeenStepsUI.TablePanel(content,new Vector2(0,-235),new Vector2(1250,205));
-        for(int i=0;i<playerHand.Count;i++){int index=i;var tile=Tile(content,playerHand[i],new Vector2(-408+i*68,-83),new Vector2(60,80),()=>{AudioManager.Instance?.PlaySelectTileSE();target=index;RenderBattle();});HighlightTarget(tile,target==index);}
-        for(int i=0;i<candidates.Count;i++){int index=i;var tile=Tile(content,candidates[i],new Vector2(-500+i%11*100,-185-i/11*92),new Vector2(59,80),()=>Discard(index));tile.interactable=playerTurn&&!busy&&!roundEnded;}
+        for(int i=0;i<playerHand.Count;i++){int index=i;var tile=Tile(content,playerHand[i],new Vector2(-360+i*60,-83),new Vector2(60,80),()=>{AudioManager.Instance?.PlaySelectTileSE();target=index;RenderBattle();});HighlightTarget(tile,target==index);}
+        for(int i=0;i<candidates.Count;i++){int index=i;var tile=Tile(content,candidates[i],new Vector2(-295+i%11*59,-185-i/11*92),new Vector2(59,80),()=>Discard(index));tile.interactable=playerTurn&&!busy&&!roundEnded;}
         RenderWaitTiles(playerHand);SkillButton();
     }
     RectTransform enemyRonTarget,playerRonTarget;
     int highlightedRonRiver; // 1: enemy discard (player ron), 2: player discard (enemy ron)
     void River(List<int> tiles,float y){
         for(int i=0;i<tiles.Count;i++){
-            var tile=Tile(content,tiles[i],new Vector2(-560+i*70,y),new Vector2(43,60),null);
+            var tile=Tile(content,tiles[i],new Vector2(-344+i*43,y),new Vector2(43,60),null);
             if(i==tiles.Count-1){if(ReferenceEquals(tiles,enemyDiscards))enemyRonTarget=(RectTransform)tile.transform;else playerRonTarget=(RectTransform)tile.transform;}
             if(i==tiles.Count-1&&((highlightedRonRiver==1&&ReferenceEquals(tiles,enemyDiscards))||(highlightedRonRiver==2&&ReferenceEquals(tiles,playerDiscards)))){
                 var outline=tile.gameObject.AddComponent<Outline>();
@@ -200,8 +200,8 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         }
     }
     void RenderWinds(){
-        SeventeenStepsUI.InfoBacking(content,building&&selected.Count==13?new Vector2(-460,492):new Vector2(0,440),new Vector2(250,60));
-        var roundLabel=SeventeenStepsUI.Label(content,"東"+Mathf.Clamp(SeventeenStepsMode.Round,1,SeventeenStepsMode.MaxRoundsPerEnemy)+"局",(building&&selected.Count==13?new Vector2(-460,492):new Vector2(0,440)),new Vector2(250,60),36);
+        SeventeenStepsUI.InfoBacking(content,new Vector2(0,440),new Vector2(250,60));
+        var roundLabel=SeventeenStepsUI.Label(content,"東"+Mathf.Clamp(SeventeenStepsMode.Round,1,SeventeenStepsMode.MaxRoundsPerEnemy)+"局",(new Vector2(0,440)),new Vector2(250,60),36);
         SeventeenStepsUI.BlackOutline(roundLabel);
 
         SeventeenStepsUI.InfoBacking(content,new Vector2(-800,405),new Vector2(295,95));
@@ -240,18 +240,18 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
             if(i<labels.Length){labels[i].text=d.Rarity+"\n"+d.name+"　×"+d.Multiplier.ToString("0.0");labels[i].font=SeventeenStepsUI.BodyFont(labels[i].text);float top=1f-(i*.29f+.13f),bottom=top-.27f;ItemArtwork.Rect(labels[i].rectTransform,new Vector2(.26f,bottom),new Vector2(1,top),new Vector2(2,4),new Vector2(-8,-4));SeventeenStepsUI.BlackOutline(labels[i]);labels[i].enableAutoSizing=true;labels[i].fontSizeMin=16;labels[i].fontSizeMax=24;OfudaRarityColors.Apply(labels[i],d.Rarity);var color=ColorUtility.ToHtmlStringRGB(labels[i].color);labels[i].color=Color.white;labels[i].text="<color=#"+color+">"+d.Rarity+"</color>\n"+d.name+"　×"+d.Multiplier.ToString("0.0");}
         }
     }
-    void RenderWaitTiles(IList<int> hand){
+    void RenderWaitTiles(IList<int> hand,float rowY=-398){
         var w=SeventeenStepsRules.Waits(hand).OrderBy(t=>t).ToArray();
-        SeventeenStepsUI.InfoBacking(content,new Vector2(0,-398),new Vector2(1250,95));
-        SeventeenStepsUI.Label(content,w.Length==0?"ノーテン":"待ち牌",new Vector2(-535,-398),new Vector2(150,60),27);
-        for(int i=0;i<w.Length;i++)Tile(content,w[i],new Vector2(-420+i*65,-398),new Vector2(48,66),null);
-        if(w.Length>0&&(!SeventeenStepsRules.CanDeclare(hand,doraIndicator,false,UnusedDesignated())||missedRon||waits.Overlaps(playerDiscards)))SeventeenStepsUI.Label(content,missedRon||waits.Overlaps(playerDiscards)?"フリテン":"満貫未満",new Vector2(520,-398),new Vector2(170,55),25);
+        SeventeenStepsUI.InfoBacking(content,new Vector2(0,rowY),new Vector2(1250,rowY>0?70:95));
+        SeventeenStepsUI.Label(content,w.Length==0?"ノーテン":"待ち牌",new Vector2(-535,rowY),new Vector2(150,60),27);
+        for(int i=0;i<w.Length;i++)Tile(content,w[i],new Vector2(-420+i*48,rowY),new Vector2(48,66),null);
+        if(w.Length>0&&(!SeventeenStepsRules.CanDeclare(hand,doraIndicator,false,UnusedDesignated())||missedRon||waits.Overlaps(playerDiscards)))SeventeenStepsUI.Label(content,missedRon||waits.Overlaps(playerDiscards)?"フリテン":"満貫未満",new Vector2(520,rowY),new Vector2(170,55),25);
     }
     IEnumerator EnemyTurn()
     {
         playerTurn=false;busy=true;notice="";RenderBattle();yield return new WaitForSecondsRealtime(.9f);while(modal)yield return null;turn++;
         int index=SeventeenStepsRules.SafeDiscard(enemyCandidates,enemyDeck,enemyDiscards,playerDiscards,random);int tile=enemyCandidates[index];enemyCandidates.RemoveAt(index);enemyDiscards.Add(tile);AudioManager.Instance?.PlayDiscardTileSE();
-        if(enemyDiscards.Count==1&&SeventeenStepsRules.CanDeclare(enemyHand,doraIndicator,true)){enemyRiichi=true;RenderBattle();yield return ShowCutin("リーチ",CutinArt(false),()=>AudioManager.Instance?.PlayCutin_EnemyRiichi(),1.7f);}
+        if(enemyDiscards.Count==1&&SeventeenStepsRules.CanDeclare(enemyHand,doraIndicator,true)){enemyRiichi=true;enemyCandidates.Sort();RenderBattle();yield return ShowCutin("リーチ",CutinArt(false),()=>AudioManager.Instance?.PlayCutin_EnemyRiichi(),1.7f);}
         var win=SeventeenStepsRules.EvaluateRound(playerHand,tile,playerRiichi,doraIndicator,uraIndicator,false,false,playerRiichi&&playerDiscards.Count==1&&enemyDiscards.Count==2,enemyDiscards.Count==17);
         win=SeventeenStepsRules.ApplyDesignatedPenalty(win,UnusedDesignated());
         if(waits.Contains(tile)&&!SeventeenStepsRules.MeetsMinimum(playerHand,tile,playerRiichi,doraIndicator,false,UnusedDesignated(),playerRiichi&&playerDiscards.Count==1&&enemyDiscards.Count==2,enemyDiscards.Count==17))missedRon=true;
@@ -267,7 +267,7 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
     IEnumerator AfterPlayerDiscard(int tile)
     {
         RenderBattle();
-        if(playerDiscards.Count==1&&SeventeenStepsRules.CanDeclare(playerHand,doraIndicator,false,UnusedDesignated())){playerRiichi=true;yield return ShowCutin("リーチ",CutinArt(true),()=>AudioManager.Instance?.PlayCutin_PlayerRiichi(),2f);}
+        if(playerDiscards.Count==1&&SeventeenStepsRules.CanDeclare(playerHand,doraIndicator,false,UnusedDesignated())){playerRiichi=true;candidates.Sort();RenderBattle();yield return ShowCutin("リーチ",CutinArt(true),()=>AudioManager.Instance?.PlayCutin_PlayerRiichi(),2f);}
         var win=SeventeenStepsRules.EvaluateRound(enemyHand,tile,enemyRiichi,doraIndicator,uraIndicator,false,true,enemyRiichi&&enemyDiscards.Count==1&&playerDiscards.Count==1,playerDiscards.Count==17);
         if(enemyWaits.Contains(tile)&&!SeventeenStepsRules.MeetsMinimum(enemyHand,tile,enemyRiichi,doraIndicator,true,0,enemyRiichi&&enemyDiscards.Count==1&&playerDiscards.Count==1,playerDiscards.Count==17))enemyMissedRon=true;
         if(enemyWaits.Contains(tile)&&!enemyMissedRon&&!enemyWaits.Overlaps(enemyDiscards)&&win.points>0){yield return EnemyRonAfterPause(win,tile);yield break;}
@@ -321,10 +321,10 @@ public sealed partial class SeventeenStepsController : MonoBehaviour
         SeventeenStepsUI.Button(modal,"閉じる",new Vector2(0,-290),new Vector2(350,70),CloseModal);
     }
     void ConfirmExit(){NewModal("今回の挑戦を終了？");SeventeenStepsUI.Label(modal,"獲得済み遺物は保持。\n現在の対局は保存されない。",new Vector2(0,70),new Vector2(1100,170),36);SeventeenStepsUI.Button(modal,"戻る",new Vector2(-280,-200),new Vector2(330,70),()=>{CloseModal();if(deck==null)ShowOfudaOffers();});SeventeenStepsUI.Button(modal,"終了する",new Vector2(280,-200),new Vector2(330,70),Exit);}
-    void Exit(){SeventeenStepsMode.LeaveMode();Time.timeScale=1;SceneManager.LoadScene("MenuScene");}
+    void Exit(){ClearSuspendedRound();SeventeenStepsMode.LeaveMode();Time.timeScale=1;SceneManager.LoadScene("MenuScene");}
     public static string TileLabel(int t)=>t<27?(t%9+1)+new[]{"萬","筒","索"}[t/9]:new[]{"東","南","西","北","白","發","中"}[t-27];
     static Color RarityColor(int r)=>new[]{Color.gray,Color.cyan,new Color(.25f,.55f,1),new Color(.65f,.35f,.9f),new Color(1,.7f,.15f)}[r];
-    static Button Tile(Transform parent,int tile,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action,bool marked=false){var b=SeventeenStepsUI.Button(parent,"",pos,size,null);if(action!=null)b.onClick.AddListener(action);var image=b.GetComponent<Image>();image.sprite=Resources.Load<Sprite>("Sprites/Tiles/"+SeventeenStepsRules.Tiles[tile]);image.preserveAspect=true;image.color=Color.white;if(!image.sprite)b.GetComponentInChildren<TMP_Text>().text=TileLabel(tile);if(marked){var o=b.gameObject.AddComponent<Outline>();o.effectColor=new Color(1,.65f,.12f);o.effectDistance=new Vector2(4,4);}return b;}
+    static Button Tile(Transform parent,int tile,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action,bool marked=false){var b=SeventeenStepsUI.Button(parent,"",pos,size,null,false);if(action!=null)b.onClick.AddListener(action);var image=b.GetComponent<Image>();image.sprite=Resources.Load<Sprite>("Sprites/Tiles/"+SeventeenStepsRules.Tiles[tile]);image.preserveAspect=true;image.color=Color.white;if(!image.sprite)b.GetComponentInChildren<TMP_Text>().text=TileLabel(tile);if(marked){var o=b.gameObject.AddComponent<Outline>();o.effectColor=new Color(1,.65f,.12f);o.effectDistance=new Vector2(4,4);}return b;}
 }
 
 public static class SeventeenStepsUI
@@ -350,7 +350,7 @@ public static class SeventeenStepsUI
         var bg=Rect("Background",root,Vector2.zero,new Vector2(10000,10000)).gameObject.AddComponent<Image>();bg.color=new Color(.045f,.08f,.085f);
         var shared=Picture(root,Resources.LoadAll<Sprite>("Sprites/Tiles/Image_fx (5)").FirstOrDefault(),Vector2.zero,new Vector2(1920,1080));shared.preserveAspect=false;shared.color=Color.white;
         if(EventSystem.current)EventSystem.current.gameObject.SetActive(false);
-        {var es=new GameObject("EventSystem",typeof(EventSystem),typeof(InputSystemUIInputModule));es.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();}
+        {var es=new GameObject("EventSystem");es.SetActive(false);es.AddComponent<EventSystem>();var module=es.AddComponent<InputSystemUIInputModule>();es.AddComponent<SeventeenStepsInputActions>().Configure(module);es.SetActive(true);}
         
         if(title=="外伝モード")InfoBacking(root,new Vector2(0,492),new Vector2(360,65));
         var header=Label(root,title,new Vector2(0,492),new Vector2(1380,65),42);if(title=="外伝モード")BlackOutline(header);return root;
@@ -361,20 +361,21 @@ public static class SeventeenStepsUI
         if(!text||!text.font)return;
         if(!outlinedMaterials.TryGetValue(text.font,out var material)||!material){
             material=new Material(text.font.material);material.name="Seventeen Black Outline";
-            material.SetColor(ShaderUtilities.ID_OutlineColor,Color.black);
+            material.SetColor(ShaderUtilities.ID_FaceColor,Color.white);material.SetColor(ShaderUtilities.ID_OutlineColor,Color.black);
             material.SetFloat(ShaderUtilities.ID_OutlineWidth,.2f);material.EnableKeyword("OUTLINE_ON");
             outlinedMaterials[text.font]=material;
         }
         text.fontSharedMaterial=material;text.UpdateMeshPadding();
     }
     public static TextMeshProUGUI Label(Transform p,string value,Vector2 pos,Vector2 size,float font){var t=Rect("Text",p,pos,size).gameObject.AddComponent<TextMeshProUGUI>();t.font=BodyFont(value);t.text=value;t.color=new Color(.97f,.94f,.85f);t.fontSize=font;t.enableAutoSizing=true;t.fontSizeMin=font*.8f;t.fontSizeMax=font;t.raycastTarget=false;t.alignment=TextAlignmentOptions.Center;return t;}
-    public static Button Button(Transform p,string text,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action){var r=Rect("Button",p,pos,size);var image=r.gameObject.AddComponent<Image>();image.color=new Color(.94f,.93f,.84f);var b=r.gameObject.AddComponent<Button>();b.targetGraphic=image;var t=Label(r,text,Vector2.zero,size-new Vector2(20,10),30);t.color=new Color(.07f,.09f,.10f);if(action!=null)b.onClick.AddListener(()=>{AudioManager.Instance?.PlayClickSE();action();});return b;}
+    public static Button Button(Transform p,string text,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action,bool themed=true){var r=Rect("Button",p,pos,size);var image=r.gameObject.AddComponent<Image>();image.color=new Color(.94f,.93f,.84f);var b=r.gameObject.AddComponent<Button>();b.targetGraphic=image;var t=Label(r,text,Vector2.zero,size-new Vector2(20,10),30);t.color=JanshinPanelTheme.Ivory;if(themed)JanshinPanelTheme.Button(b);if(action!=null)b.onClick.AddListener(()=>{AudioManager.Instance?.PlayClickSE();action();});return b;}
     public static Image Picture(Transform p,Sprite sprite,Vector2 pos,Vector2 size){var image=Rect("Artwork",p,pos,size).gameObject.AddComponent<Image>();image.sprite=sprite;image.preserveAspect=true;image.raycastTarget=false;if(!sprite)image.color=Color.clear;return image;}
-    public static RectTransform Modal(Transform p,string title){var shade=Rect("Modal",p,Vector2.zero,new Vector2(10000,10000));shade.gameObject.AddComponent<Image>().color=new Color(0,0,0,.88f);var panel=Rect("Panel",shade,Vector2.zero,new Vector2(1470,800));panel.gameObject.AddComponent<Image>().color=new Color(.07f,.11f,.12f);var frame=Picture(panel,Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,new Vector2(1470,800));frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=5;Label(shade,title,new Vector2(0,320),new Vector2(1320,80),40);return shade;}
-    public static void TablePanel(Transform parent,Vector2 position,Vector2 size,bool enemy=false){var r=Rect("TablePanel",parent,position,size);var image=r.gameObject.AddComponent<Image>();image.color=enemy?new Color(.60f,.32f,.32f,.83f):new Color(.96f,.94f,.82f,.90f);image.raycastTarget=false;Frame(r,size);}
+    public static RectTransform Modal(Transform p,string title){var shade=Rect("Modal",p,Vector2.zero,new Vector2(10000,10000));shade.gameObject.AddComponent<Image>().color=new Color(0,0,0,.88f);var panel=Rect("Panel",shade,Vector2.zero,new Vector2(1470,800));JanshinPanelTheme.Apply(panel.gameObject.AddComponent<Image>());Label(shade,title,new Vector2(0,320),new Vector2(1320,80),40);return shade;}
+    public static void TablePanel(Transform parent,Vector2 position,Vector2 size,bool enemy=false){var r=Rect("TablePanel",parent,position,size);var image=r.gameObject.AddComponent<Image>();JanshinPanelTheme.Apply(image);image.raycastTarget=false;}
     public static void InfoBacking(Transform parent,Vector2 pos,Vector2 size){var image=Rect("InfoBacking",parent,pos,size).gameObject.AddComponent<Image>();image.color=new Color(0,0,0,.65f);image.raycastTarget=false;}
-    public static void Frame(Transform parent,Vector2 size){var frame=Picture(parent,Resources.Load<Sprite>("Consumables/PanelFrame"),Vector2.zero,size);frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=8;}
-    public static void Paper(Transform parent,Vector2 size){var image=parent.GetComponent<Image>();if(!image)image=parent.gameObject.AddComponent<Image>();image.color=new Color(.97f,.96f,.87f,.97f);Frame(parent,size);}
-    public static Button Navigation(Transform parent,string text,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action){var b=Button(parent,text,pos,size,action);var im=b.GetComponent<Image>();im.sprite=Resources.LoadAll<Sprite>("Sprites/Tiles/ゲーム用ボタンUI向けの横長の墨の筆致（").FirstOrDefault(sprite=>sprite.name.EndsWith("_47"));im.color=Color.black;var t=b.GetComponentInChildren<TMP_Text>();t.font=TMP_Settings.defaultFontAsset;t.color=Color.white;return b;}
+    public static void Frame(Transform parent,Vector2 size){if(parent.Find("UnifiedGoldBorder"))return;var frame=Picture(parent,JanshinPanelTheme.Frame,Vector2.zero,size);frame.type=Image.Type.Sliced;frame.preserveAspect=false;frame.pixelsPerUnitMultiplier=8;}
+    public static void Paper(Transform parent,Vector2 size){var image=parent.GetComponent<Image>();if(!image)image=parent.gameObject.AddComponent<Image>();JanshinPanelTheme.Apply(image);}
+    public static Button Navigation(Transform parent,string text,Vector2 pos,Vector2 size,UnityEngine.Events.UnityAction action){return Button(parent,text,pos,size,action);}
+
     public static void Clear(Transform parent){for(int i=parent.childCount-1;i>=0;i--){var g=parent.GetChild(i).gameObject;g.SetActive(false);UnityEngine.Object.Destroy(g);}}
 }

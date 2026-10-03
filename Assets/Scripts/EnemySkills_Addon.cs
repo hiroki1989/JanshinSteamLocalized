@@ -634,7 +634,7 @@ private System.Collections.IEnumerator __EnemySkill_ApplyDamageToPlayerAnimated_
     // SE（和了ダメージ演出と同じSE/Sourceを使う）
     if (enemyWinDamageSESource != null && enemyWinDamageSEClip != null)
     {
-        try { enemyWinDamageSESource.PlayOneShot(enemyWinDamageSEClip); } catch {}
+        try { AudioManager.NotifyUserSound(); enemyWinDamageSESource.PlayOneShot(enemyWinDamageSEClip); } catch {}
     }
 
     float dur = Mathf.Max(0.01f, enemyWinDamageAnimSeconds);
@@ -885,7 +885,7 @@ private System.Collections.IEnumerator __EnemySkill_DisturbMpAfterCutin_Co(int m
     {
         if (enemyWinDamageSESource != null && enemyWinDamageSEClip != null)
         {
-            try { enemyWinDamageSESource.PlayOneShot(enemyWinDamageSEClip); } catch { }
+            try { AudioManager.NotifyUserSound(); enemyWinDamageSESource.PlayOneShot(enemyWinDamageSEClip); } catch { }
         }
     }
 

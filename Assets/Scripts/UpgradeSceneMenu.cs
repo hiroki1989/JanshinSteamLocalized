@@ -46,6 +46,7 @@ private bool _gemPanelShowing = false;
 
 private void Awake()
 {
+    DevilContracts.EnterShop();
     // 参照が未設定でも可能な限り自動探索（後方互換）
     if (!menuRoot)        menuRoot = gameObject;
     if (!ofudaStoreRoot)  ofudaStoreRoot = FindObjectOfType<UpgradeOfudaStore>(true)?.gameObject;
@@ -89,7 +90,7 @@ private void PlayUpgradeResultSE(AudioClip clip)
 {
     if (upgradeResultSESource != null && clip != null)
     {
-        try { upgradeResultSESource.PlayOneShot(clip); } catch { }
+        try { AudioManager.NotifyUserSound(); upgradeResultSESource.PlayOneShot(clip); } catch { }
     }
 }
 
@@ -346,8 +347,9 @@ private void OnBackToMenu()
     PlayerPrefs.SetString("UpgradeSectionMode", "ALL");
     PlayerPrefs.Save();
 }
-private void Start()
+private System.Collections.IEnumerator Start()
 {
+    yield return MissionRewardView.Present();
     // UpgradeManager は最初メニュー構成の都合で非表示にしているため、
     // 宝石抽選はここ(UpgradeSceneMenu)で必ず消化して付与する。
 

@@ -29,7 +29,7 @@ public static class SeventeenStepsMode
     public static bool EnemyMatchFinished=>Current.round>3;
     public static bool PlayerWonEnemy=>Current.playerScore>Current.enemyScore;
     public static void Save(){PlayerPrefs.SetString(SaveKey,JsonUtility.ToJson(Current));PlayerPrefs.Save();}
-    public static void StartNewRun(Character character){Current=new State{character=(int)character};PlayerPrefs.SetString(ModeKey,ModeValue);Save();}
+    public static void StartNewRun(Character character){SeventeenStepsController.ClearSuspendedRound();Current=new State{character=(int)character};PlayerPrefs.SetString(ModeKey,ModeValue);Save();}
     public static void LeaveMode(){PlayerPrefs.SetString(ModeKey,"Normal");PlayerPrefs.Save();}
     public static void RecordRound(int playerPoints,int enemyPoints){Current.playerScore+=playerPoints;Current.enemyScore+=enemyPoints;Current.round++;Save();}
     public static void AdvanceEnemy(){Current.enemy++;Current.round=1;Current.playerScore=Current.enemyScore=0;Save();}

@@ -1,4 +1,4 @@
-
+﻿
 // GameManager_SkillMP_Addon.cs
 // Drop-in partial for GameManager (do not add as a separate component; just keep this file in project)
 // Replaces MP handling, case-insensitive skill resolution, and routes button to OnClickSkill_MP.
@@ -48,7 +48,7 @@ try
 }
 catch { uniqueMp = 0; }
 
-return Mathf.Max(0, omMax + runMp + permMp + uniqueMp);
+return ContractsMaxMp(Mathf.Max(0, omMax + runMp + permMp + uniqueMp));
 
 }
 
@@ -699,7 +699,7 @@ private int ComputeFinalSkillMpCost(int baseCost)
     catch { }
 
     int finalCost = Mathf.RoundToInt(Mathf.Max(0, baseCost) * Mathf.Max(0f, mul));
-    return Mathf.Max(0, finalCost);
+    return DevilContracts.Active ? Mathf.CeilToInt(Mathf.Max(0, finalCost)*DevilContracts.MpCostScale(DevilContracts.Run())) : Mathf.Max(0, finalCost);
 }
 public void TryRegenMP_TurnStart()
 {
@@ -720,7 +720,7 @@ public void TryRegenMP_TurnStart()
     catch { }
 
     int startMp = Mathf.Max(0, _mp);
-    _mp = ClampToEffectiveMaxMP(_mp + regen);
+    ContractsRecoverMp(regen);
     int endMp = Mathf.Max(0, _mp);
 
     _skillCastsUsedThisTurn = 0;
@@ -747,7 +747,7 @@ public void TryRegenMP_TurnStart()
         if (PlayerData.IsEquippedUniqueEffect(PlayerData.UniqueOmamoriEffectKind.Luna_Heal2PctPerTurn))
         {
             int heal = Mathf.RoundToInt(Mathf.Max(1, playerMaxHP) * 0.02f);
-            playerHP = Mathf.Clamp(playerHP + Mathf.Max(0, heal), 0, Mathf.Max(1, playerMaxHP));
+            ContractsRecoverHp(Mathf.Max(0,heal));
             UpdateHpUI();
         }
     }
@@ -763,7 +763,7 @@ public void CallOnWinRecoveredMP()
     var om = __Om();
     int regen = Mathf.Max(0, _skillSet.regenOnWin);
     // お守りによる勝利時固定加算は未実装。regen のみ反映。
-    _mp = ClampToEffectiveMaxMP(_mp + regen);
+    ContractsRecoverMp(regen);
     UpdateMpUI();
 }
 
@@ -931,7 +931,7 @@ private int GetMaxSkillCastsThisTurn()
     }
     catch { uniqueExtra = 0; }
 
-    return Mathf.Max(1, baseLimit + extraLegendary + runExtra + uniqueExtra + RunConsumables.Load().castsBonus);
+    return Mathf.Max(1, baseLimit + extraLegendary + runExtra + uniqueExtra + RunConsumables.Load().castsBonus + (DevilContracts.Active && DevilContracts.Run().id==8 && DevilContracts.Run().power>=3 ? 1 : 0));
 }
 
 
@@ -1013,6 +1013,7 @@ private void OnClickSkill_MP()
     // ★重要：最終コストは必ず共通関数を通す（お守り減少 + バステト半減）
     int finalCost = ComputeFinalSkillMpCost(baseCost);
 
+    if (playerHP <= ContractsSkillHpCost()) { statusTMP?.SetText(GameUIText.Get("契約の代償を支払うHPが足りない","Not enough HP to pay the contract price","HP不足以支付契约代价")); return; }
     if (_mp < finalCost)
     {
         statusTMP?.SetText(GetSkillMpFixedText_Local("skill_not_enough_mp"));
@@ -1032,6 +1033,7 @@ if (!_lastSkillApplied)
 }
 
 // 成功したのでMP消費
+ContractsSkillUsed();
 ConsumablesConsumeFreeCast();
 int startMp = Mathf.Max(0, _mp);
 _mp = Mathf.Max(0, _mp - finalCost);
@@ -1592,7 +1594,7 @@ int RecoverMpByShunYakuIfAny(List<string> yaku, int baseScore)
     if (add <= 0)
         return 0;
 
-    _mp = ClampToEffectiveMaxMP(_mp + add);
+    ContractsRecoverMp(add);
     UpdateMpUI();
     return add;
 }

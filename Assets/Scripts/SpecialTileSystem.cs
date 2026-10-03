@@ -82,12 +82,13 @@ public struct Entry
     private const string KEY_OWNED = "SP_Owned";
     private const string KEY_EQUIPPED = "SP_Equipped";
     private const string KEY_SLOTS = "SP_EquipSlots";
+    public static event Action EquipmentChanged;
 
     // 所持上限（既存仕様：20）
     private const int OWNED_MAX = 20;
 
-    public static int GetGems() => GemWallet.Balance;
-    public static void SetGems(int v) => GemWallet.Set(v);
+    public static int GetGems() => PlayerPrefs.GetInt(KEY_GEMS, 0);
+    public static void SetGems(int v) { PlayerPrefs.SetInt(KEY_GEMS, Mathf.Max(0, v)); PlayerPrefs.Save(); }
 
     public static bool TryConsumeGems(int cost)
     {
@@ -96,7 +97,14 @@ public struct Entry
         SetGems(g - cost);
         return true;
     }
-public static void AddGems(int add) => GemWallet.Add(add);
+public static void AddGems(int add)
+{
+    if (add <= 0) return;
+    int v = GetGems();
+    v = Mathf.Max(0, v + add);
+    PlayerPrefs.SetInt("SP_Gems", v);
+    PlayerPrefs.Save();
+}
 
     public static int GetEquipSlotsUnlocked()
     {
@@ -172,6 +180,7 @@ public static void AddOwned(Entry e)
         {
             PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
             PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
         }
     }
 public static bool TryEquipAppend(Entry e)
@@ -190,6 +199,7 @@ public static bool TryEquipAppend(Entry e)
         eq.Add(e);
         PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
         PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
         return true;
     }
 public static bool TryEquipReplaceAt(int slotIndex, Entry e)
@@ -219,6 +229,7 @@ public static bool TryEquipReplaceAt(int slotIndex, Entry e)
 
         PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
         PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
         return true;
     }
 
@@ -244,6 +255,7 @@ public static bool TryEquipReplace(Entry e)
 
         PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
         PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
         return true;
     }
     public static void UnequipAt(int slotIndex)
@@ -253,6 +265,7 @@ public static bool TryEquipReplace(Entry e)
         eq.RemoveAt(slotIndex);
         PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
         PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
     }
 
     // 既存互換：BaseType指定で最初の1個だけ外す（複数装備がある場合は先頭のみ）
@@ -266,6 +279,7 @@ public static bool TryEquipReplace(Entry e)
                 eq.RemoveAt(i);
                 PlayerPrefs.SetString(KEY_EQUIPPED, SerializeList(eq));
                 PlayerPrefs.Save();
+        EquipmentChanged?.Invoke();
                 return;
             }
         }
@@ -585,9 +599,11 @@ public static Dictionary<string, int> GetEquippedTraitBonusMap()
         var d = UnpackTraitBonus(e.traitBonusPacked);
         foreach (var kv in d)
         {
+            string key=SpecialTilePassiveBonuses.Normalize(kv.Key);
+            if(string.IsNullOrEmpty(key))continue;
             int prev = 0;
-            map.TryGetValue(kv.Key, out prev);
-            map[kv.Key] = Mathf.Max(0, prev + Mathf.Max(0, kv.Value));
+            map.TryGetValue(key, out prev);
+            map[key] = Mathf.Max(0, prev + Mathf.Max(0, kv.Value));
         }
     }
 
@@ -597,23 +613,8 @@ public static Dictionary<string, int> GetEquippedTraitBonusMap()
 // 単体取得（GameManager側から呼びやすい）
 public static int GetEquippedTraitBonusLv(string yakuKey)
 {
-    if (string.IsNullOrEmpty(yakuKey)) return 0;
-
-    int sum = 0;
-    var eq = GetEquipped();
-    if (eq == null || eq.Count <= 0) return 0;
-
-    for (int i = 0; i < eq.Count; i++)
-    {
-        var e = eq[i];
-        if (string.IsNullOrEmpty(e.traitBonusPacked)) continue;
-
-        var d = UnpackTraitBonus(e.traitBonusPacked);
-        int v = 0;
-        if (d.TryGetValue(yakuKey, out v))
-            sum += Mathf.Max(0, v);
-    }
-
-    return Mathf.Max(0, sum);
+    string key=SpecialTilePassiveBonuses.Normalize(yakuKey);
+    if(string.IsNullOrEmpty(key))return 0;
+    return GetEquippedTraitBonusMap().TryGetValue(key,out var value)?Mathf.Max(0,value):0;
 }
 }

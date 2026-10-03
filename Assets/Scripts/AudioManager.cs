@@ -409,9 +409,13 @@ private bool IsZeusBattleNow()
     // ==============================
     //  SE 制御（用途別）
     // ==============================
+    public static float LastUserSoundTime { get; private set; } = -1f;
+    public static int UserSoundSequence { get; private set; }
+    public static void NotifyUserSound(){LastUserSoundTime=Time.unscaledTime;UserSoundSequence++;}
     private void PlaySE_Internal(AudioClip clip)
     {
         if (!seSource || clip == null) return;
+        NotifyUserSound();
         seSource.PlayOneShot(clip, seVolume);
     }
     public void PlayScoringStepGoldSE()            => PlaySE_Internal(scoringStepGoldSE);
@@ -423,7 +427,8 @@ public void PlaySE(AudioClip clip, float volumeScale = 1f)
     if (!seSource || clip == null) return;
 
     float v = Mathf.Clamp01(seVolume * Mathf.Clamp01(volumeScale));
-    seSource.PlayOneShot(clip, v);
+    NotifyUserSound();
+        seSource.PlayOneShot(clip, v);
 }
 public void PlayClickSE()       => PlaySE_Internal(clickSE);
 public void PlayDiscardTileSE() => PlaySE_Internal(discardTileSE);
