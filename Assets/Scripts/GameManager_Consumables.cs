@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -48,7 +48,7 @@ public partial class GameManager
     }
     bool CanUseConsumableNow()
     {
-        return phase==Phase.Offer && offers.Count==4 && playerHP>0 && enemyHP>0 &&
+        return !isRiichi && phase==Phase.Offer && offers.Count==4 && playerHP>0 && enemyHP>0 &&
             !_preparedForSceneUnload && !_defeatTransitionRunning && !_tutorialRunning &&
             !_tutorialDealingFirstDraw && !_consumableDealing && !_playerSkillCutinRunning &&
             !_playerSkillTransformRunning && !_rinshanDrawRunning && !_enemyWinDamageAnimating &&
@@ -102,6 +102,7 @@ void OpenConsumableInventory()
     }
     string ConsumableUnavailable(int id,RunConsumables.State s)
     {
+        if(isRiichi)return ItemText("立直中は遺物を使用できません。","Relics are unavailable in riichi.","立直中不可使用遗物。");
         if(!CanUseConsumableNow())return ItemText("自分のツモ番で使用できます。","Use during your draw turn.","可在己方摸牌回合使用。");
         if(s.usedThisTurn)return ItemText("このターンは使用済みです。","A relic has already been used this turn.","本回合已使用过遗物。");
         bool noEffect=(id==1&&playerHP>=playerMaxHP)||(id==2&&_mp>=EffectiveMaxMP())||

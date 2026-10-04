@@ -7078,7 +7078,7 @@ private void UpdateButtons()
         if (btnMenu)          btnMenu.interactable          = true;
         bool menuInner = isMenuOpen;
         if (btnMenuOption)    btnMenuOption.interactable    = menuInner;
-        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner;
+        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner && CanSuspendCurrentPosition();
         if (btnMenuExit)      btnMenuExit.interactable      = menuInner;
         if (btnMenuClose)     btnMenuClose.interactable     = menuInner;
 
@@ -7127,7 +7127,7 @@ private void UpdateButtons()
         if (btnMenu)          btnMenu.interactable          = true;
         bool menuInner = isMenuOpen;
         if (btnMenuOption)    btnMenuOption.interactable    = menuInner;
-        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner;
+        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner && CanSuspendCurrentPosition();
         if (btnMenuExit)      btnMenuExit.interactable      = menuInner;
         if (btnMenuClose)     btnMenuClose.interactable     = menuInner;
 
@@ -7157,7 +7157,7 @@ private void UpdateButtons()
         if (btnMenu)          btnMenu.interactable          = true;
         bool menuInner = isMenuOpen;
         if (btnMenuOption)    btnMenuOption.interactable    = menuInner;
-        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner;
+        if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner && CanSuspendCurrentPosition();
         if (btnMenuExit)      btnMenuExit.interactable      = menuInner;
         if (btnMenuClose)     btnMenuClose.interactable     = menuInner;
         return;
@@ -7314,7 +7314,7 @@ UpdateTenpaiBadge(); // ← 追加（毎回安全に呼べる軽量実装）
         {
             bool menuInner = isMenuOpen;
             if (btnMenuOption)    btnMenuOption.interactable    = menuInner;
-            if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner;
+            if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner && CanSuspendCurrentPosition();
             if (btnMenuExit)      btnMenuExit.interactable      = menuInner;
             if (btnMenuClose)     btnMenuClose.interactable     = menuInner;
         }
@@ -7438,7 +7438,7 @@ if (btnMenu)          btnMenu.interactable          = true;
 {
     bool menuInner = isMenuOpen;
     if (btnMenuOption)    btnMenuOption.interactable    = menuInner;
-    if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner;
+    if (btnMenuSuspend)   btnMenuSuspend.interactable   = menuInner && CanSuspendCurrentPosition();
     if (btnMenuExit)      btnMenuExit.interactable      = menuInner;
     if (btnMenuClose)     btnMenuClose.interactable     = menuInner;
 }
@@ -8667,7 +8667,9 @@ RefreshDiscardUI();
 }
 private IEnumerator EnterEnemyTurnAfterPlayerAfterDelay(float seconds)
 {
+    _suspendEnemyTurnDelayPending=true;
     yield return new WaitForSeconds(seconds);
+    _suspendEnemyTurnDelayPending=false;
     if (phase != Phase.EnemyTurn) yield break;
     EnterEnemyTurnAfterPlayer();
 }
@@ -19927,6 +19929,12 @@ private void OnClickMenuOption()
 [System.Serializable]
 private class SuspendSnapshot
 {
+    public int version;
+    public List<BattleSavedField> battleFields;
+    public List<BattleTileRow> meldRows;
+    public string specialTilesEquippedJson;
+    public int savedEffectiveMaxMP;
+    public UnityEngine.Random.State randomState;
     public RunConsumables.State consumables;
     public DevilContracts.RunState devilContract;
     public int roundNumber;
@@ -19994,9 +20002,11 @@ public string equippedOmamoriIdsCsv;
 }
 private void OnClickMenuSuspend()
 {
-    if (_menuSuspendInProgress)
+    if (_menuSuspendInProgress || !CanSuspendCurrentPosition())
         return;
 
+    try { SaveSuspendSnapshot(true); }
+    catch (Exception e) { Debug.LogError("[MenuSuspend] Cannot save: " + e); return; }
     _menuSuspendInProgress = true;
 
     try
@@ -20025,14 +20035,6 @@ private void OnClickMenuSuspend()
         Debug.LogWarning("[MenuSuspend] __PrepareForSceneUnload failed: " + e);
     }
 
-    try
-    {
-        SaveSuspendSnapshot(true);
-    }
-    catch (Exception e)
-    {
-        Debug.LogError("[MenuSuspend] SaveSuspendSnapshot failed: " + e);
-    }
 
     try
     {
@@ -20058,6 +20060,12 @@ private void SaveSuspendSnapshot(bool markAsSuspend)
 {
     if (_defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
     var ss = new SuspendSnapshot();
+    ss.version = 2;
+    ss.battleFields = CaptureBattleSuspendFields();
+    ss.meldRows = melds.Select(m=>new BattleTileRow{tiles=new List<string>(m)}).ToList();
+    ss.specialTilesEquippedJson = PlayerPrefs.GetString("SP_Equipped", "");
+    ss.savedEffectiveMaxMP = EffectiveMaxMP();
+    ss.randomState = UnityEngine.Random.state;
     ss.consumables = RunConsumables.Load();
     ss.devilContract = DevilContracts.Run();
 
@@ -20131,7 +20139,7 @@ ss.equippedOmamoriIdsCsv = DumpPlayerDataIntIdsCsv_Safe(new string[]
     ss.suppressTsumoThisOffer = suppressTsumoThisOffer;
     ss.phase = phase.ToString();
 
-    try { ss.currentEnemyIndex = Mathf.Max(0, PlayerData.CurrentEnemy); } catch { ss.currentEnemyIndex = 0; }
+    try { ss.currentEnemyIndex = Mathf.Max(0, ProgressionFlowController.GetCurrentEnemyIndex()); } catch { ss.currentEnemyIndex = 0; }
 
     ss.enemyIsRiichi = _enemyIsRiichi;
     ss.enemyTurnCounter = _enemyTurnCounter;
@@ -20228,6 +20236,11 @@ private bool TryLoadSuspendSnapshot()
         if (ss == null || ss.currentEnemyIndex != ProgressionFlowController.GetCurrentEnemyIndex() || ss.enemyHP <= 0 || ss.playerHP <= 0) { ClearBattleResume(); return false; }
         // ===== このセッションは「中断復元」扱い。以後の上乗せ処理を絶対に止める =====
         _suspendRestoredThisSession = true;
+        if (ss.version >= 2) {
+            PlayerPrefs.SetString("SP_Equipped",ss.specialTilesEquippedJson ?? "");
+            _suspendLoadoutLocked=true;
+            _suspendLockedEffectiveMaxMP=Mathf.Max(0,ss.savedEffectiveMaxMP);
+        }
         if (ss.consumables != null) RunConsumables.Save(ss.consumables);
         if (ss.devilContract != null) DevilContracts.SaveRun(ss.devilContract);
 
@@ -20335,10 +20348,10 @@ try { PlayerPrefs.Save(); } catch { }
         _committedDiscardInstanceIDs.Clear();
 
         melds.Clear();
-        if (ss.melds != null)
-        {
+        if (ss.version >= 2 && ss.meldRows != null)
+            foreach (var row in ss.meldRows) melds.Add(new List<string>(row.tiles));
+        else if (ss.melds != null)
             foreach (var m in ss.melds) melds.Add(new List<string>(m ?? new List<string>()));
-        }
 
         doraIndicators.Clear();
         if (ss.doraIndicators != null) doraIndicators.AddRange(ss.doraIndicators);
@@ -20357,8 +20370,12 @@ try { PlayerPrefs.Save(); } catch { }
         if (System.Enum.TryParse<Phase>(ss.phase, out var p)) phase = p;
         else phase = Phase.Offer;
 
+        RestoreBattleSuspendFields(ss.battleFields);
+        _mp = Mathf.Max(0,ss.playerMP);
+        _observedRoundNumber=roundNumber; _observedEnemyIndex=ss.currentEnemyIndex;
+        _lastProcessedEnemyDiscardCount=enemyDiscards.Count;
+        _addonUiDirty=true; _addonGreyDirty=true;
         // ===== UI更新 =====
-        SortHand();
         RefreshHandUI();
         RefreshOfferUI();
         RefreshDiscardUI();
@@ -20378,11 +20395,14 @@ try { PlayerPrefs.Save(); } catch { }
         PlayerPrefs.DeleteKey("PF_ResumeScene");
         PlayerPrefs.Save();
 
+        if (ss.version >= 2) UnityEngine.Random.state=ss.randomState;
+        ResumeBattleContinuations();
         if (statusTMP) statusTMP.text = "中断データから再開しました";
         return true;
     }
-    catch
+    catch (Exception e)
     {
+        Debug.LogError("[BattleResume] Failed to restore snapshot: " + e);
         return false;
     }
 }

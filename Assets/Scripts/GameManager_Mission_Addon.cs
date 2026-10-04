@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -118,7 +118,7 @@ public partial class GameManager : MonoBehaviour
         string text = MissionSystem.GetMissionDisplayText();
         missionDisplayTMP.richText = true;
         bool claimed = MissionSystem.IsAlreadyClaimed(MissionSystem.CurrentEnemyKey);
-        bool completed = MissionSystem.IsCompleted;
+        bool completed = MissionSystem.IsCompleted || MissionSystem.HasPendingCompletion;
 
         if (claimed || completed)
         {
@@ -139,6 +139,7 @@ public partial class GameManager : MonoBehaviour
     {
         // Record eligibility only. Completion, Gold and acquisition notices belong to shop entry.
         MissionSystem.CheckCompletion(yakuNames);
+        RefreshMissionDisplayText();
     }
 
     public void TryShowMissionCompletePanel() { }
