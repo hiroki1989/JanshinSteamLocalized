@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -301,6 +301,22 @@ if (s == "九蓮宝燈" || s.Equals("Chuuren_Poutou", StringComparison.OrdinalIg
     return s.ToUpperInvariant();
 }
 
+// Keys belonging to this run's passive progression; permanent character unlocks are excluded.
+public IEnumerable<KeyValuePair<string,bool>> BattleTraitPreferenceKeys()
+{
+    foreach(var skill in activeSkills){
+        if(skill==null||string.IsNullOrEmpty(skill.activeSkillName))continue;
+        string active=skill.activeSkillName;var map=GetTraitYakuFor(active);
+        foreach(var tr in new[]{Trait.Geki,Trait.Shun,Trait.Iyu}){
+            yield return new KeyValuePair<string,bool>(PrefKey_Unlocked(tr,active),false);
+            var names=new List<string>(tr==Trait.Geki?map.ge:tr==Trait.Shun?map.sh:map.iy);
+            names.AddRange(GetUnlockedList(tr,active));
+            names.AddRange(traitMap.Where(e=>e!=null).Select(e=>e.yakuName));
+            foreach(var yaku in names.Where(y=>!string.IsNullOrWhiteSpace(y)).Distinct())
+                yield return new KeyValuePair<string,bool>(PrefKey_Level(tr,active,yaku),true);
+        }
+    }
+}
 private string PrefKey_Unlocked(Trait t, string activeSkillName)
     => $"PF_TraitUnlocked_{id}_{activeSkillName}_{t}";
 

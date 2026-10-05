@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -823,6 +823,7 @@ private void StartPlayerSkillCutin(string skillDisplayName)
 }
 private void __StartScoringStepReveal(bool attackerIsPlayer)
 {
+    ConfigureAppliedScoringEffects(attackerIsPlayer);
     if (!scoringStepRevealEnabled) return;
 
     // 既に走っていたら止めてから再スタート
@@ -1599,6 +1600,7 @@ try { PlayerPrefs.DeleteKey("Run_PlayerHP"); PlayerPrefs.DeleteKey("Run_PlayerMP
 // （最大値の確定：お守り/Run_HPBonus/Run_MPBonus 反映の後に、__ApplyRunBonusesAndRefreshUI() で一括処理する）
 private void ApplyPendingFullHealIfAny()
 {
+    if (_suspendRestoredThisSession) return;
     try
     {
         if (PlayerPrefs.GetInt(KeyPendingFullHeal, 0) == 1)
@@ -5008,6 +5010,7 @@ private void Awake()
     _inst = this;
     CacheTraitIconConfigStatic(); // ★追加：他シーンから使うためのstaticキャッシュ
     ValidateBattleResume();
+    RestoreSuspendPreferencesBeforeInitialization();
 
     // ★重要：中断復元がある場合、ここでお守り/Shopの上乗せを絶対にしない（復元スナップショットを優先）
     bool hasSuspendForAwake = false;
@@ -5194,7 +5197,11 @@ RefreshAll();
         catch { enemyIdxSafe = 0; }
     }
 
-    if (enemyIdxSafe <= 0)
+    if (_suspendRestoredThisSession)
+    {
+        // The restored currency and per-opponent score are authoritative.
+    }
+    else if (enemyIdxSafe <= 0)
     {
         ResetRunGold();         // ★ゴールドをリセット（新しいラン）
         scoreThisEnemy = 0;     // ★敵ごとのスコア初期化
@@ -5208,7 +5215,7 @@ RefreshAll();
     RefreshTopUI();
 }
 var sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-if (sceneName != rewardSceneName && sceneName != upgradeSceneName) // 報酬/強化シーンでは操作しない
+if (!_suspendRestoredThisSession && sceneName != rewardSceneName && sceneName != upgradeSceneName) // 復元値を保持
 {
     try
     {
@@ -5276,6 +5283,7 @@ private void ToggleSpecialTilePopup(string rawTileId)
 }
 private void __BootstrapTraitUpgradeDeltaPrefs_FromRunSceneInspector()
 {
+    if (_suspendRestoredThisSession || PlayerPrefs.GetInt(PF_SUSPEND_FLAG,0)==1) return;
     if (!bootstrapWriteTraitUpgradeDeltaPrefsOnAwake)
         return;
 
@@ -14068,9 +14076,7 @@ int finalDamageForApply = Mathf.Max(0, totalPoints);
 // 実ダメージは別経路で半減されているが、UI表示が totalPoints のままになっていたためここで補正する
 if (!_currentScoringAttackerIsPlayer)
 {
-    RecordContractDelta("被ダメージ", "Incoming damage", "所受伤害", finalDamageForApply, DevilContracts.Incoming(finalDamageForApply,false));
-    finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
-    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), DevilContracts.Incoming(finalDamageForApply,false), playerHP, true);
+    finalDamageForApply = CalculateEnemyWinIncoming(_pendingEnemyWinDamage ? _pendingEnemyWinDamageBase : finalDamageForApply,false);
 }
 
 int traitMpHeal = Mathf.Max(0, mpRecovered);
@@ -14193,8 +14199,7 @@ if (finalDamageForApply > 0)
         }
 
         // レジェンダリー②（直後の敵和了ダメージ半減）が有効な場合、表示値だけ半減後にする（ここでは消費しない）
-        finalDamageForApply = PreviewLegendaryDamageHalfOnEnemyWin(finalDamageForApply);
-    finalDamageForApply = RunConsumables.IncomingDamage(RunConsumables.Load(), DevilContracts.Incoming(finalDamageForApply,false), playerHP, true);
+        // The pending value already includes all incoming modifiers.
 
 // 敵側ではダメージ適用はしない（スコアOK直後に演出付きで適用する）
 // ここは UI 表示のための値だけ整える
@@ -15241,7 +15246,7 @@ if (playerWinDamageAnimSeconds <= 0f)
         return;
     }
 
-    if (_wasEnemyScoring && _pendingEnemyWinDamage && _pendingEnemyWinDamageFinal > 0)
+    if (_wasEnemyScoring && _pendingEnemyWinDamage)
     {
         // 演出中は次のターン／次局／敗北演出へ進めない
         _freezeProgression = true;
@@ -15250,11 +15255,9 @@ if (playerWinDamageAnimSeconds <= 0f)
         try { CancelInvoke(); } catch {}
 
         // ★レジェンダリー②：直後の敵和了ダメージ半減（1回だけ消費）
-        _pendingEnemyWinDamageFinal = TryConsumeLegendaryDamageHalfOnEnemyWin(_pendingEnemyWinDamageFinal);
-
-        // 既に演出中なら二重起動しない
+        // Guard before consuming one-shot effects, including repeated OK clicks.
         if (_enemyWinDamageAnimating) return;
-        _pendingEnemyWinDamageFinal = ConsumablesModifyIncoming(_pendingEnemyWinDamageFinal, true);
+        _pendingEnemyWinDamageFinal = CalculateEnemyWinIncoming(_pendingEnemyWinDamageBase, true);
 
         // 演出時間が0以下なら即時反映して続行
         if (enemyWinDamageAnimSeconds <= 0f)
@@ -16167,6 +16170,7 @@ if (isGroupEnd || isLast)
 }
 private void TryAutoSaveSuspendSnapshot()
 {
+    if (!CanSuspendCurrentPosition()) return;
     try
     {
         // ★自動セーブは「復帰フラグを立てない」。データだけ更新する。
@@ -16184,7 +16188,7 @@ private void OnApplicationPause(bool pause)
     if (pause)
     {
         // ★ここは本当の中断なので「復帰フラグを立てる」
-        try { SaveSuspendSnapshot(true); } catch {}
+        try { SaveOrPromoteStableBattleSnapshot(); } catch {}
     }
 }
 
@@ -16192,7 +16196,7 @@ private void OnApplicationQuit()
 {
     // 終了直前にも念のため保存
     // ★ここも本当の中断なので「復帰フラグを立てる」
-    try { SaveSuspendSnapshot(true); } catch {}
+    try { SaveOrPromoteStableBattleSnapshot(); } catch {}
 }
 private void EnterUpgradeFlow()
 {
@@ -17998,6 +18002,7 @@ private void DBG_AttachHandEditHook(GameObject tileGO, int handIndex)
 
 private void Update()
 {
+    TickStableBattleCheckpoint();
     if (_defeatTransitionRunning || _preparedForSceneUnload) return;
     if (_tutorialRunning || _activeSkillPopup || _consumableWindow) return;
     // 新InputSystem: ESC でメニュー開閉
@@ -19485,6 +19490,7 @@ private void ApplyHpMpLayering()
 }
 private bool TryApplyExcelEnemyConfigForCurrentIndex()
 {
+    if (_suspendRestoredThisSession) return true;
     int idx = 0;
     bool idxResolved = false;
     try { idx = ProgressionFlowController.GetCurrentEnemyIndex(); idxResolved = true; } catch {}
@@ -19930,6 +19936,8 @@ private void OnClickMenuOption()
 private class SuspendSnapshot
 {
     public int version;
+    public BattleRunPreferences runPreferences;
+    public List<EnemySkillConfig> enemySkills;
     public List<BattleSavedField> battleFields;
     public List<BattleTileRow> meldRows;
     public string specialTilesEquippedJson;
@@ -20058,9 +20066,12 @@ private void OnClickMenuSuspend()
 }
 private void SaveSuspendSnapshot(bool markAsSuspend)
 {
-    if (_defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
+    if (_preparedForSceneUnload || _defeatTransitionRunning || playerHP <= 0 || enemyHP <= 0) return;
     var ss = new SuspendSnapshot();
-    ss.version = 2;
+    ss.version = 3;
+    runGold = RunCurrency.Get();
+    ss.runPreferences = BattleRunPreferences.Capture();
+    ss.enemySkills = _enemySkills.Select(e=>new EnemySkillConfig(e.id,e.paramX,e.paramY,e.paramZ)).ToList();
     ss.battleFields = CaptureBattleSuspendFields();
     ss.meldRows = melds.Select(m=>new BattleTileRow{tiles=new List<string>(m)}).ToList();
     ss.specialTilesEquippedJson = PlayerPrefs.GetString("SP_Equipped", "");
@@ -20180,7 +20191,7 @@ ss.equippedOmamoriIdsCsv = DumpPlayerDataIntIdsCsv_Safe(new string[]
     }
     catch {}
 
-    if (statusTMP) statusTMP.text = markAsSuspend ? "中断データを保存しました" : "";
+    if (markAsSuspend && statusTMP) statusTMP.text = "中断データを保存しました";
 }
 private static void ClearBattleResume()
 {
@@ -20236,6 +20247,11 @@ private bool TryLoadSuspendSnapshot()
         if (ss == null || ss.currentEnemyIndex != ProgressionFlowController.GetCurrentEnemyIndex() || ss.enemyHP <= 0 || ss.playerHP <= 0) { ClearBattleResume(); return false; }
         // ===== このセッションは「中断復元」扱い。以後の上乗せ処理を絶対に止める =====
         _suspendRestoredThisSession = true;
+        if(ss.runPreferences!=null)ss.runPreferences.Restore();
+        if(ss.enemySkills!=null){_enemySkills.Clear();_enemySkills.AddRange(ss.enemySkills);}
+        else if(EnemyConfigExcel.TryGetForRuntimeIndex(ss.currentEnemyIndex,out var resumeConfig))EnemySkills_SetFromConfig(resumeConfig,ss.currentEnemyIndex);
+        PlayerPrefs.DeleteKey("PF_PendingFullHeal");
+        PlayerPrefs.DeleteKey("PF_ResetRunOnLoad");
         if (ss.version >= 2) {
             PlayerPrefs.SetString("SP_Equipped",ss.specialTilesEquippedJson ?? "");
             _suspendLoadoutLocked=true;
@@ -20389,7 +20405,7 @@ try { PlayerPrefs.Save(); } catch { }
 
         // ===== フラグ消費（保存データはここで破棄）=====
         PlayerPrefs.DeleteKey(PF_SUSPEND_FLAG);
-        PlayerPrefs.DeleteKey(PF_SUSPEND_JSON);
+        // Retain JSON as a checkpoint during the initial resumed frames.
 
         PlayerPrefs.SetInt("PF_ResumeDirect", 0);
         PlayerPrefs.DeleteKey("PF_ResumeScene");
@@ -20991,7 +21007,7 @@ __SetTMP(scoringGoldGainValue, (_goldGainThisWin > 0) ? _goldGainDisplayTextThis
 
         // ★表示用：レジェンダリー②（直後の敵和了ダメージ半減）が有効なら「表示上のダメージ」も半減後にする
         int displayDamageToPlayer = Mathf.Max(0, finalDamageForApply);
-        displayDamageToPlayer = PreviewLegendaryDamageHalfOnEnemyWin(displayDamageToPlayer);
+        // Incoming modifiers were already included in finalDamageForApply.
 
         // お守り（効果が無ければ「-」）
         __SetTMP(scoringOmamoriReduceValue, (omamoriPct > 0) ? $"{omamoriPct}％" : "-");
@@ -21001,7 +21017,7 @@ __SetTMP(scoringGoldGainValue, (_goldGainThisWin > 0) ? _goldGainDisplayTextThis
                 : "プレイヤーへのダメージ　0");
 
         // --- 合計値（数値のみ） ---
-        __SetTMP(scoringAddedDamageValue_Enemy, Mathf.Max(0, addedDamageAmount).ToString());
+        __SetTMP(scoringAddedDamageValue_Enemy, addedDamageAmount.ToString());
         __SetTMP(scoringTotalHpRecoverValue_Enemy, Mathf.Max(0, totalHpHeal).ToString());
         __SetTMP(scoringTotalMpRecoverValue_Enemy, Mathf.Max(0, totalMpHeal).ToString());
 

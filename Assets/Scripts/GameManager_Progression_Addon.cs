@@ -86,7 +86,7 @@ try
     try { pendingFullHeal = PlayerPrefs.GetInt(GameManager.KeyPendingFullHeal, 0) != 0; } catch {}
 
     // --- HP のみ読み戻し ---
-    if (!pendingFullHeal && PlayerPrefs.HasKey("Run_PlayerHP"))
+    if (!_suspendRestoredThisSession && !pendingFullHeal && PlayerPrefs.HasKey("Run_PlayerHP"))
     {
         int saved = PlayerPrefs.GetInt("Run_PlayerHP", -1);
         if (saved >= 0)
@@ -96,7 +96,7 @@ try
     }
 
     // --- MP のみ読み戻し ---
-    if (!pendingFullHeal && PlayerPrefs.HasKey("Run_PlayerMP"))
+    if (!_suspendRestoredThisSession && !pendingFullHeal && PlayerPrefs.HasKey("Run_PlayerMP"))
     {
         int savedMp = PlayerPrefs.GetInt("Run_PlayerMP", -1);
         if (savedMp >= 0)

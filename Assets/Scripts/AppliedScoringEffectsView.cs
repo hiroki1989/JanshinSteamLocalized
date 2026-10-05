@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,7 +22,7 @@ public sealed class AppliedScoringEffectsView : MonoBehaviour
         if(scroll)scroll.verticalNormalizedPosition=1;
         Suppress();
     }
-    public void Add(Sprite icon,string body)
+    public void Add(Sprite icon,string body,Color? iconColor=null)
     {
         if(string.IsNullOrWhiteSpace(body)||Count>=rows.Length)return;
         var row=rows[Count++];row.text.text=body;
@@ -30,7 +30,7 @@ public sealed class AppliedScoringEffectsView : MonoBehaviour
         float width=scroll&&scroll.viewport?scroll.viewport.rect.width-92:558;
         var layout=row.root.GetComponent<LayoutElement>();
         if(layout)layout.preferredHeight=Mathf.Max(64,row.text.GetPreferredValues(body,Mathf.Max(300,width),2000).y+12);
-        row.icon.sprite=icon;row.icon.color=Color.white;row.icon.gameObject.SetActive(icon);
+        row.icon.sprite=icon;row.icon.preserveAspect=true;row.icon.color=iconColor??Color.white;row.icon.gameObject.SetActive(icon);
         row.root.SetActive(true);
     }
     public List<GameObject> VisibleRows()

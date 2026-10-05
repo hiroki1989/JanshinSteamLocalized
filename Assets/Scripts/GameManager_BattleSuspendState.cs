@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +20,8 @@ public partial class GameManager
     }
     // Explicit gameplay state only: scene objects, coroutines and UI caches are never persisted.
     private static readonly string[] BattleSuspendFields = (
+        "scoreThisEnemy _omamoriDoubleWinsRemain _consumableBloodPactAppliedThisScoring _consumableSealThisEnemyTurn " +
+        "_continueAfterPlayerWin_ExcludedTileId _continueAfterPlayerWin_ExcludedDiscardIndex _lastPlayerRonEnemyDiscardIndex _lastPlayerRonEnemyDiscardTileLogic " +
         "totalScore runScore runGold _mp _playerTsumoCountThisRound _playerDidAnkanOnFirstTurnThisHand " +
         "_pendingTsumoPenalty _pendingNextWinPointPenalty _skillCastsUsedThisTurn _activeSkillChargesLeft " +
         "_skillNextOfferTile _afterSkillNoHandDiscardOnce _suppressEnemyEffectsOnce " +
@@ -41,6 +43,28 @@ public partial class GameManager
         "_observedRoundNumber _observedEnemyIndex _addonLocalTsumoPenalty _playerHasWonThisHand _enemyHasWonThisHand " +
         "_autoSkipPending _autoConfirmOfferPending _suspendEnemyTurnDelayPending"
     ).Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
+    float _nextStableCheckpointTime;
+    private void RestoreSuspendPreferencesBeforeInitialization()
+    {
+        if(PlayerPrefs.GetInt(PF_SUSPEND_FLAG,0)!=1)return;
+        var ss=JsonUtility.FromJson<SuspendSnapshot>(PlayerPrefs.GetString(PF_SUSPEND_JSON,""));
+        if(ss?.runPreferences!=null)ss.runPreferences.Restore();
+    }
+    private void TickStableBattleCheckpoint()
+    {
+        if(!Application.isPlaying||Time.unscaledTime<_nextStableCheckpointTime)return;
+        _nextStableCheckpointTime=Time.unscaledTime+1f;
+        if(CanSuspendCurrentPosition())TryAutoSaveSuspendSnapshot();
+    }
+    private void SaveOrPromoteStableBattleSnapshot()
+    {
+        if(_preparedForSceneUnload||_defeatTransitionRunning||playerHP<=0||enemyHP<=0)return;
+        if(CanSuspendCurrentPosition()){SaveSuspendSnapshot(true);return;}
+        // During an animation, resume from the last complete decision point.
+        if(string.IsNullOrEmpty(PlayerPrefs.GetString(PF_SUSPEND_JSON,"")))return;
+        PlayerPrefs.SetInt(PF_SUSPEND_FLAG,1);PlayerPrefs.SetInt("PF_ResumeDirect",1);
+        PlayerPrefs.SetString("PF_ResumeScene","RunScene");PlayerPrefs.Save();
+    }
     private bool _suspendEnemyTurnDelayPending;
     private bool CanSuspendCurrentPosition()
     {
@@ -49,7 +73,7 @@ public partial class GameManager
             !_beginOfferPhaseInProgress && !_playerSkillCutinRunning && !_playerSkillTransformRunning &&
             !_enemySkillCutinRunning && !_enemyRiichiCutinRunning && !_playerRiichiCutinRunning &&
             !_rinshanDrawRunning && !_tutorialDealingFirstDraw && !_consumableDealing &&
-            !_playerWinDamageAnimating && !_enemyWinDamageAnimating && !_enemySkillDamageAnimating;
+            !_playerWinDamageAnimating && !_enemyWinDamageAnimating && !_enemySkillDamageAnimating && !_mpDecreaseAnimRunning;
     }
     private List<BattleSavedField> CaptureBattleSuspendFields()
     {

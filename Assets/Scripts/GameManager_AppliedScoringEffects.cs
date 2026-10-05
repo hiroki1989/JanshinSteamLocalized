@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -54,12 +54,15 @@ public partial class GameManager
             }
             if(lines.Count>0)view.Add(ItemArtwork.Load("Body/"+ItemArtwork.OmamoriKey(item)),string.Join(" / ",lines));
         }
-        // Enemy skill / relic text was already determined by the actual scoring calculation.
-        var other=player?scoringEnemySkillEffectValue:scoringEnemySkillEffectValue_Enemy;
-        if(HasScoringEffect(other)){
-            var relic=RunConsumables.Load();int relicId=player?(_consumableBloodPactAppliedThisScoring?20:0):(relic.shield?13:0);
-            view.Add(relicId>0?Resources.Load<Sprite>("Consumables/item_"+relicId.ToString("00")):null,other.text);
-        }
+        // Read the skill that actually modified this win, not the current HUD timer.
+        if(player&&_enemySkillLastAppliedDefenseRate>0f)
+            AddAppliedEnemySkill(view,enemySkillDefenseIcon,"defense",dmg+" -"+(_enemySkillLastAppliedDefenseRate*100).ToString("0.###")+"%");
+        if(!player&&_enemySkillLastAppliedAngerMultiplier>1f)
+            AddAppliedEnemySkill(view,enemySkillAngerIcon,"anger",dmg+" +"+((_enemySkillLastAppliedAngerMultiplier-1)*100).ToString("0.###")+"%");
+        if(player&&_consumableBloodPactAppliedThisScoring)
+            view.Add(Resources.Load<Sprite>("Consumables/item_20"),dmg+" +50%");
+        if(!player)foreach(var effect in incomingRelicScoreEffects)
+            view.Add(Resources.Load<Sprite>("Consumables/item_"+effect.Key.ToString("00")),effect.Value);
         if(!player&&(_legendaryDamageHalfTriggeredThisScoring||IsLegendaryDamageHalfActive())){
             var sources=_legendaryDamageHalfTriggeredThisScoring?_legendaryDamageHalfTriggeredSourceTiles:_legendaryDamageHalfReservedSourceTiles;
             var source=sources.FirstOrDefault();
@@ -71,6 +74,36 @@ public partial class GameManager
         HideEmptyScoreTotal(view,player?scoringTotalHpRecoverValue:scoringTotalHpRecoverValue_Enemy,"LabelscoringTotalHpRecoverValue");
         HideEmptyScoreTotal(view,player?scoringTotalMpRecoverValue:scoringTotalMpRecoverValue_Enemy,"LabelscoringTotalMpRecoverValue");
         view.Suppress();
+    }
+    readonly List<KeyValuePair<int,string>> incomingRelicScoreEffects=new List<KeyValuePair<int,string>>();
+    void AddAppliedEnemySkill(AppliedScoringEffectsView view,GameObject hud,string skill,string effect)
+    {
+        var image=hud?hud.GetComponentInChildren<UnityEngine.UI.Image>(true):null;
+        view.Add(image?image.sprite:null,EnemySkills_GetDisplayName(skill)+"  "+effect,image?(Color?)image.color:null);
+    }
+    // Preview has no persistent side effects. OK commits the same pipeline exactly once.
+    int CalculateEnemyWinIncoming(int baseDamage,bool commit)
+    {
+        contractWinEffects.Clear();incomingRelicScoreEffects.Clear();
+        int damage=Omamori_ModifyIncomingDamage(Mathf.Max(0,baseDamage));
+        if(roundNumber==1&&PlayerData.IsEquippedUniqueEffect(PlayerData.UniqueOmamoriEffectKind.Shiva_East1_PlayerDamageDown50))
+            damage=Mathf.RoundToInt(damage*.5f);
+        damage=commit?TryConsumeLegendaryDamageHalfOnEnemyWin(damage):PreviewLegendaryDamageHalfOnEnemyWin(damage);
+        int before=damage;damage=DevilContracts.Incoming(damage,commit);
+        RecordContractDelta("被ダメージ","Incoming damage","所受伤害",before,damage);
+        var state=RunConsumables.Load();
+        if(damage>0){
+            if(state.bloodPact){before=damage;damage=Mathf.CeilToInt(damage*1.25f);RecordIncomingRelic(20,before,damage);}
+            if(state.shield){before=damage;damage=Mathf.CeilToInt(damage*.5f);state.shield=false;RecordIncomingRelic(13,before,damage);}
+            if(damage>=playerHP&&playerHP>0&&state.effigy){before=damage;damage=playerHP-1;state.effigy=false;RecordIncomingRelic(15,before,damage);}
+        }
+        if(commit)RunConsumables.Save(state);
+        return Mathf.Max(0,damage);
+    }
+    void RecordIncomingRelic(int id,int before,int after)
+    {
+        int delta=after-before;if(delta==0)return;
+        incomingRelicScoreEffects.Add(new KeyValuePair<int,string>(id,EquipmentText("被ダメージ","Incoming damage","所受伤害")+" "+(delta>0?"+":"")+delta.ToString("N0")));
     }
     void HideEmptyScoreTotal(AppliedScoringEffectsView view,TMP_Text value,string labelName)
     {

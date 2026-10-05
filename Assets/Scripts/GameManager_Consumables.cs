@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -312,12 +312,6 @@ void OpenConsumableInventory()
     {
         var state=RunConsumables.Load();
         int itemId=playerScoring?(state.bloodPact||_consumableBloodPactAppliedThisScoring?20:0):(state.shield?13:0);
-        if(scoringDefenseIcon_Player)
-        {
-            scoringDefenseIcon_Player.gameObject.SetActive(itemId!=0);
-            scoringDefenseIcon_Player.sprite=itemId==0?null:Resources.Load<Sprite>("Consumables/item_"+itemId.ToString("00"));
-            scoringDefenseIcon_Player.preserveAspect=true;
-        }
         string effect="";
         if(itemId!=0)
         {

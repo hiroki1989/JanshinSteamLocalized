@@ -1,4 +1,4 @@
-// ------------------------------------------------------------------------------
+﻿// ------------------------------------------------------------------------------
 // GameManager_EnemyMeldMode_Addon.cs  (no Awake/Update conflict, compile-safe)
 // - Prevents reusing already-committed enemy discards within the same局
 // - Keeps grey highlight until the 局 ends (discards reset / round change)
@@ -2824,21 +2824,9 @@ private void FinalizeEnemyWin_ShowScoringAndCleanup(int score, int hpDmg, int pr
         hpDmg = Mathf.Max(1, Mathf.RoundToInt(hpDmg * 0.5f));
     }
 
-    int applied = 0;
-    try
-    {
-        int beforeHP = playerHP;
-
-        // ★仕様変更：ここでは playerHP を減らさず、「最終ダメージ量（お守り軽減後）」だけ確定する
-        applied = ApplyDamageToPlayer_WithOmamori(hpDmg, "enemy_win");
-        playerHP = beforeHP;
-    }
-    catch
-    {
-        applied = Mathf.Max(0, hpDmg);
-    }
+    int applied = CalculateEnemyWinIncoming(hpDmg, false);
     // ★仕様変更：敵の和了でプレイヤーが受けるダメージは、スコアOK後に演出付きで反映する
-    _pendingEnemyWinDamage = (applied > 0);
+    _pendingEnemyWinDamage = (hpDmg > 0);
     _pendingEnemyWinDamageBase = Mathf.Max(0, hpDmg);
     _pendingEnemyWinDamageFinal = Mathf.Max(0, applied);
 
@@ -3003,12 +2991,15 @@ if (scoringFinalDamageToPlayerValue != null)
     int displayDamage = Mathf.Max(0, EnemyAddon_LastFinalDamage);
 
     // レジェ②は「スコアOK時に消費」なので、ここでは Preview で“本当に受ける量”を表示する
-    displayDamage = PreviewLegendaryDamageHalfOnEnemyWin(displayDamage);
+    // Already previewed through every incoming modifier exactly once.
 
     scoringFinalDamageToPlayerValue.text = displayDamage.ToString();
 }
             // ★追加：怒り/防御など「最終ダメージに影響した敵スキル」を更新
             UpdateScoringPanelUI_EnemyExtra();
+            int displayedBase=EnemyAddon_LastPoints;
+            if(_enemyLastWinWasTsumo)displayedBase=Mathf.Max(1,Mathf.RoundToInt(displayedBase*.5f));
+            if(scoringAddedDamageValue_Enemy)scoringAddedDamageValue_Enemy.text=(appliedHpDamage-displayedBase).ToString();
 
             // ★お守り軽減％と最終ダメージはここで反映
 

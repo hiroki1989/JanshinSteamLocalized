@@ -1,4 +1,4 @@
-// GameManager_ExcelApply_Addon.cs
+﻿// GameManager_ExcelApply_Addon.cs
 using UnityEngine;
 
 public partial class GameManager : MonoBehaviour
@@ -6,6 +6,7 @@ public partial class GameManager : MonoBehaviour
 public void ApplyExcelEnemyConfig(EnemyConfig cfg)
 {
     if (cfg == null) return;
+    if (_suspendRestoredThisSession) return;
 
     // ★修正：中断復帰中はHP/デッキを上書きしない（スナップショット優先）
     bool isSuspendResume = false;

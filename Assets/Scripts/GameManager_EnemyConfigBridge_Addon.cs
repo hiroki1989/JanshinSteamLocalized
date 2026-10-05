@@ -1,4 +1,4 @@
-// GameManager_EnemyConfigBridge_Addon.cs
+﻿// GameManager_EnemyConfigBridge_Addon.cs
 // Excelローダーで取得した設定を GameManager に"後から"適用する（既存と重複させない）
 
 using UnityEngine;
@@ -7,6 +7,11 @@ public partial class GameManager : MonoBehaviour
 {
 public void ApplyEnemyConfigFromExcel(int runtimeIndex)
 {
+    // Start/bootstrap callbacks run after the one-shot resume flag has been consumed.
+    if (_suspendRestoredThisSession) {
+        try { RefreshEnemyNameUIFromCurrentConfig(); } catch {}
+        UpdateHpUI(); return;
+    }
     // ← ランタイム用のインデックス正規化 API を使用
     if (EnemyConfigExcel.TryGetForRuntimeIndex(runtimeIndex, out var cfg))
     {
